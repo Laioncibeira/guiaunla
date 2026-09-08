@@ -42,6 +42,16 @@ es orientativo y sin escala.
 llamar la atención. Los códigos van en DM Mono para que se alineen. Si no te convence, se cambian
 en un solo lugar (`src/styles.scss`).
 
+## Verla en tu teléfono ahora mismo, sin Firebase
+
+```bash
+npm install
+npm run ver
+```
+
+Eso la sirve en la red local. En la terminal aparece una dirección tipo
+`http://192.168.x.x:4200`: abrila desde el celular estando en la misma wifi.
+
 ## Lo que falta y necesita algo tuyo
 
 1. **Firebase.** No pude publicar: la CLI no está instalada y el login es con tu cuenta de Google.

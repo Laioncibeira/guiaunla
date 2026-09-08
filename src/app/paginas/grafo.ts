@@ -466,7 +466,7 @@ export class Grafo {
   private arrastro = false;
 
   protected alApretar(e: PointerEvent): void {
-    (e.target as Element).setPointerCapture?.(e.pointerId);
+    this.svg()?.nativeElement.setPointerCapture?.(e.pointerId);
     this.punteros.set(e.pointerId, { x: e.clientX, y: e.clientY });
     this.arrastro = false;
     const v = this.vista();
@@ -499,11 +499,7 @@ export class Grafo {
 
   protected alSoltar(e: PointerEvent): void {
     this.punteros.delete(e.pointerId);
-    if (this.punteros.size === 0) {
-      this.inicio = null;
-      // El toque se resuelve en el mismo gesto; el flag se limpia después.
-      setTimeout(() => (this.arrastro = false), 0);
-    }
+    if (this.punteros.size === 0) this.inicio = null;
   }
 
   protected alRodar(e: WheelEvent): void {

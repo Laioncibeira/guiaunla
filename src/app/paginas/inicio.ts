@@ -2,11 +2,12 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CALENDARIO, CARRERAS, type Evento } from '../core/datos';
 import { CarreraElegida } from '../shared/ui';
+import { Instalar } from '../shared/instalar';
 import { fechaCorta, diasHasta, ETIQUETA_TIPO } from './formato';
 
 @Component({
   selector: 'app-inicio',
-  imports: [RouterLink],
+  imports: [RouterLink, Instalar],
   template: `
     <header>
       <div>
@@ -17,6 +18,8 @@ import { fechaCorta, diasHasta, ETIQUETA_TIPO } from './formato';
         <a routerLink="/carreras" class="pastilla">{{ c.nombreCorto }}</a>
       }
     </header>
+
+    <app-instalar />
 
     <main>
       @if (!elegida.carrera()) {

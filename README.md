@@ -27,6 +27,7 @@ teléfono; no viajan a ningún servidor.
 ```bash
 npm install
 npm start          # servidor de desarrollo en http://localhost:4200
+npm run ver        # lo mismo, accesible desde el celular en la misma wifi
 npm test           # motor de correlatividades y layout del grafo
 npm run build      # genera las páginas estáticas en dist/guiaunla/browser
 ```
@@ -37,9 +38,7 @@ Los planes, el calendario y el campus son archivos JSON en `src/data/`. Nada se 
 tiempo de ejecución: al compilar quedan dentro de la app.
 
 ```bash
-node tools/extraer-plan.mjs            # baja los planes de unla.edu.ar y arma los JSON
-node tools/cotejar-fuente.mjs          # verifica que el JSON coincida con la tabla publicada
-node tools/validar-datos.mjs           # correlativas, ciclos, fechas y edificios
+npm run datos      # baja los planes, los coteja contra la web y valida todo
 ```
 
 `cotejar-fuente` compara el JSON contra la tabla original leída por otro camino que el extractor.

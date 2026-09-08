@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "vitest run",
     "test:watch": "vitest",
-    "datos": "node tools/extraer-plan.mjs"
+    "datos": "node tools/extraer-plan.mjs && node tools/cotejar-fuente.mjs && node tools/validar-datos.mjs",
+    "ver": "ng serve --host 0.0.0.0"
   },
   "private": true,
   "packageManager": "npm@11.13.0",
