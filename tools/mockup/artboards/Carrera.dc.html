@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :host, body { margin: 0; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    .tel {
+      width: 390px; height: 844px; overflow: hidden; position: relative;
+      background: #141317; color: #f5f3f7;
+      font-family: Archivo, system-ui, sans-serif;
+      font-size: 14px; line-height: 1.35; display: flex; flex-direction: column;
+    }
+    .mono { font-family: 'DM Mono', ui-monospace, monospace; }
+    a { color: #c77dff; }
+    a:hover { color: #8b5cb8; }
+    .cab {
+      flex: none; padding: 14px 16px 10px; display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid #35313c; background: #141317;
+    }
+    .cab h1 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+    .cab .sub { margin: 2px 0 0; font-size: 11.5px; color: #a79db0; }
+    .atras {
+      width: 32px; height: 32px; flex: none; display: grid; place-items: center;
+      border: 1px solid #35313c; border-radius: 9px; background: #1d1b21;
+    }
+    .cuerpo { flex: 1; overflow: hidden; padding: 14px 16px 8px; display: flex; flex-direction: column; gap: 12px; }
+    .card { background: #1d1b21; border: 1px solid #35313c; border-radius: 12px; padding: 13px 14px; }
+    .rot { font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #736b7c; }
+    .nav {
+      flex: none; display: grid; grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid #35313c; background: #1d1b21; padding: 7px 4px 18px;
+    }
+    .nav div { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #736b7c; font-size: 9.5px; min-height: 44px; justify-content: center; }
+    .nav div.on { color: #c77dff; }
+    .nav svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .pie { padding: 10px 16px 4px; font-size: 10.5px; color: #736b7c; text-align: center; }
+</style>
+</helmet>
+<div class="tel">
+  <header class="cab">
+    <div class="atras" style="color:#a79db0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div>
+    <div style="flex:1"><h1 style="font-size:18px">Audiovisión</h1><p class="sub">Licenciatura · 5 años · 2880 h</p></div>
+  </header>
+  <div class="cuerpo" style="gap:11px">
+    <div class="card" style="background:#c77dff;border-color:#c77dff;color:#17141b;display:flex;align-items:center;gap:12px">
+      <div style="flex:1">
+        <div style="font-size:15px;font-weight:700">Ver el mapa de correlatividades</div>
+        <div style="font-size:11.5px;opacity:.85;margin-top:3px">Todo el plan y sus caminos</div>
+      </div>
+      <span style="transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
+    </div>
+    <div class="card" style="padding:11px 13px;display:flex;gap:10px;align-items:center">
+      <div style="width:26px;height:26px;border-radius:7px;background:#26232b;color:#c77dff;display:grid;place-items:center;flex:none"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4z"/><path d="M6.5 10.8v4.4c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.4"/></svg></div>
+      <div style="font-size:11.5px;color:#a79db0;line-height:1.4">Con las materias de 1° a 3° obtenés el título de <span style="color:#f5f3f7;font-weight:600">Técnico/a Universitario en Audiovisión</span>.</div>
+    </div>
+    <div style="flex:1;overflow:hidden">
+      <div class="rot" style="margin-bottom:7px">Primer año</div>
+      <div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">01</span>
+        <span style="flex:1;font-size:13px">Tecnología de la Imagen</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">02</span>
+        <span style="flex:1;font-size:13px">Elementos de Audio</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">03</span>
+        <span style="flex:1;font-size:13px">Taller de Lectura y Escritura …</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">04</span>
+        <span style="flex:1;font-size:13px">Educación Auditiva</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">05</span>
+        <span style="flex:1;font-size:13px">Electrónica de las Comunicacio…</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">06</span>
+        <span style="flex:1;font-size:13px">Lenguaje Audiovisual 1</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div><div style="display:flex;align-items:center;gap:11px;padding:8.5px 0;border-bottom:1px solid #35313c">
+        <span class="mono" style="font-size:10.5px;color:#736b7c;min-width:18px">07</span>
+        <span style="flex:1;font-size:13px">Registro de Sonido en Audiovis…</span>
+        <span style="font-size:10px;color:#736b7c;white-space:nowrap">4 h</span>
+      </div>
+    </div>
+  </div>
+  <nav class="nav"><div class=""><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg><span>Inicio</span></div><div class="on"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4z"/><path d="M8 5.5v13M4 12h16"/></svg><span>Carreras</span></div><div class=""><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Horarios</span></div><div class=""><svg viewBox="0 0 24 24"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"/><path d="M9 3v15M15 5.5v15"/></svg><span>Mapa</span></div><div class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span>Fechas</span></div></nav>
+</div>
+</x-dc>
+</body>
+</html>

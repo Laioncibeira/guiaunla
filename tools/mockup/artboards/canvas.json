@@ -1,0 +1,104 @@
+{
+  "artboards": [
+    {
+      "file": "Inicio.dc.html",
+      "x": 40,
+      "y": 60,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Carreras.dc.html",
+      "x": 520,
+      "y": 60,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Carrera.dc.html",
+      "x": 1000,
+      "y": 60,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Main.dc.html",
+      "x": 1480,
+      "y": 60,
+      "w": 390,
+      "h": 844,
+      "title": "Grafo · vista completa"
+    },
+    {
+      "file": "GrafoMateria.dc.html",
+      "x": 1960,
+      "y": 60,
+      "w": 390,
+      "h": 844,
+      "title": "Grafo · materia tocada"
+    },
+    {
+      "file": "GrafoBuscar.dc.html",
+      "x": 2440,
+      "y": 60,
+      "w": 390,
+      "h": 844,
+      "title": "Grafo · buscador"
+    },
+    {
+      "file": "Horarios.dc.html",
+      "x": 40,
+      "y": 1054,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Mapa.dc.html",
+      "x": 520,
+      "y": 1054,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Calendario.dc.html",
+      "x": 1000,
+      "y": 1054,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "InicioClaro.dc.html",
+      "x": 1480,
+      "y": 1054,
+      "w": 390,
+      "h": 844,
+      "title": "Inicio · tema claro"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "nota-flujo",
+      "x": 40,
+      "y": -60,
+      "w": 700,
+      "text": "Guía UNLa · Humanidades y Artes. Recorrido de uso, todo a 390 px de ancho: Inicio → Carreras → Detalle → Mapa de correlatividades (tres estados) . Abajo: Horarios, Campus, Fechas y el mismo Inicio en tema claro."
+    },
+    {
+      "id": "nota-grafo",
+      "x": 1480,
+      "y": 928,
+      "w": 820,
+      "text": "El grafo es de verdad: 58 materias y 71 correlativas de Audiovisión, con las columnas ordenadas para que se crucen menos líneas. Color por año de origen. Al tocar una materia, su camino queda al frente y el resto se apaga."
+    },
+    {
+      "id": "nota-datos",
+      "x": 40,
+      "y": 1922,
+      "w": 820,
+      "text": "Los horarios son de ejemplo hasta que el Departamento pase la planilla del cuatrimestre. El campus está dibujado con las 32 referencias del plano oficial. Las fechas salen del calendario académico 2026."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}
