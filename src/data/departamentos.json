@@ -1,0 +1,17 @@
+{
+  "departamentos": [
+    {
+      "slug": "humanidades-y-artes",
+      "nombre": "Humanidades y Artes",
+      "sigla": "HyA",
+      "edificio": "jose-hernandez",
+      "sitio": "https://www.unla.edu.ar/departamentos/humanidades-y-artes",
+      "carreras": [
+        "audiovision",
+        "diseno-y-comunicacion-visual",
+        "diseno-industrial",
+        "traductorado-publico-en-idioma-ingles"
+      ]
+    }
+  ]
+}

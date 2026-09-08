@@ -1,0 +1,446 @@
+{
+  "slug": "traductorado-publico-en-idioma-ingles",
+  "nombre": "Traductorado Público en Idioma Inglés",
+  "nombreCorto": "Traductorado en Inglés",
+  "departamento": "humanidades-y-artes",
+  "titulo": "Traductor/a Público/a en Idioma Inglés",
+  "tituloIntermedio": {
+    "nombre": "Traductor/a Técnico/a Universitario/a en Idioma Inglés",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 4,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/traductorado-publico-en-idioma-ingles",
+  "fuenteFecha": "2026-09-08",
+  "revisado": false,
+  "materias": [
+    {
+      "codigo": "13300",
+      "nombre": "Lengua Inglesa I",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13301",
+      "nombre": "Gramática Inglesa I",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13302",
+      "nombre": "Lengua Española I",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "8103",
+      "nombre": "Principios Básicos de la Traducción",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13304",
+      "nombre": "Introducción al Derecho y Constitucionalismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "8107",
+      "nombre": "Traducción Técnica I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13303",
+      "nombre": "Semiótica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular/ promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13305",
+      "nombre": "Lengua Inglesa II",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13300"
+      ]
+    },
+    {
+      "codigo": "8110",
+      "nombre": "Traducción Técnica II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "8107"
+      ]
+    },
+    {
+      "codigo": "13306",
+      "nombre": "Lengua Española II",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13302"
+      ]
+    },
+    {
+      "codigo": "13307",
+      "nombre": "Fonética Inglesa",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13308",
+      "nombre": "Gramática Inglesa II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13301"
+      ]
+    },
+    {
+      "codigo": "8114",
+      "nombre": "Traducción Técnica III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "8110"
+      ]
+    },
+    {
+      "codigo": "8108",
+      "nombre": "Historia Social General Contenporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "13309",
+      "nombre": "Tecnología Aplicada a la Traducción",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "8121",
+      "nombre": "Elementos de Derecho Civil y Comercial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13310",
+      "nombre": "Lengua Especializada I",
+      "dedicacion": "anual",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13305"
+      ]
+    },
+    {
+      "codigo": "8119",
+      "nombre": "Traducción Legal I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "nombre": "Ética Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13311",
+      "nombre": "Contratos Civiles y Comerciales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": [
+        "8121"
+      ]
+    },
+    {
+      "codigo": "8134",
+      "nombre": "Estructuras comparadas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13305",
+        "13306",
+        "13308"
+      ]
+    },
+    {
+      "codigo": "S01",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S02",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "8123",
+      "nombre": "Traducción Legal II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "8119"
+      ]
+    },
+    {
+      "codigo": "8130",
+      "nombre": "Elementos de Derecho Procesal",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13314",
+      "nombre": "Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "8115",
+      "nombre": "Principios Generales de Economía y Finanzas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13313",
+      "nombre": "Historia y Cultura Inglesa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13315",
+      "nombre": "Prácticas Pre-profesionales I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 20,
+      "correlativas": [
+        "13310",
+        "8119",
+        "13311",
+        "8134"
+      ]
+    },
+    {
+      "codigo": "13318",
+      "nombre": "Lengua Especializada II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "13310"
+      ]
+    },
+    {
+      "codigo": "8129",
+      "nombre": "Traducción Legal III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "8123"
+      ]
+    },
+    {
+      "codigo": "8120",
+      "nombre": "Literatura de los Países de Habla Inglesa I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13319",
+      "nombre": "Traducción Especializada",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": []
+    },
+    {
+      "codigo": "8132",
+      "nombre": "Literatura de los Países de Habla Inglesa II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": [
+        "8120"
+      ]
+    },
+    {
+      "codigo": "8133",
+      "nombre": "Traducción Legal IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular",
+      "correlativas": [
+        "8129"
+      ]
+    },
+    {
+      "codigo": "8135",
+      "nombre": "Régimen Legal de la Traducción y del Traductor",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "8131",
+      "nombre": "Derecho Comparado",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "regimen": "Libre/ regular/ Promocional",
+      "correlativas": []
+    },
+    {
+      "codigo": "13320",
+      "nombre": "Prácticas Pre-profesionales II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 32,
+      "correlativas": [
+        "13315",
+        "13318",
+        "8129"
+      ]
+    },
+    {
+      "codigo": "13321",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13305",
+        "13308",
+        "13310",
+        "8123",
+        "13314"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,467 @@
+{
+  "slug": "diseno-y-comunicacion-visual",
+  "nombre": "Licenciatura en Diseño y Comunicación Visual",
+  "nombreCorto": "Diseño y Comunicación Visual",
+  "departamento": "humanidades-y-artes",
+  "titulo": "Licenciado/a en Diseño y Comunicación Visual",
+  "duracionAnios": 5,
+  "tipoNivel": "anio",
+  "niveles": 5,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-y-comunicacion-visual",
+  "fuenteFecha": "2026-09-08",
+  "revisado": false,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Taller de Diseño I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Geometría descriptiva aplicada",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Medios Expresivos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Espacio Tipográfico I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Teoría del Diseño I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Lectura y Escritura Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Tecnología I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Computación I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Medios Expresivos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Taller de Diseño II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "01",
+        "02",
+        "04",
+        "08"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Espacio Tipográfico II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Historia de la Comunicación visual",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Taller de Diseño III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "07",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Tecnología II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Computación II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Fotografía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Medios Expresivos III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Espacio Tipográfico III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Historia Social del Diseño",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Taller de Diseño IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "14",
+        "16",
+        "19"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Computación III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Taller de Diseño Orientado",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "14",
+        "15",
+        "18"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Comunicación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Teoría del Diseño II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Semiótica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05",
+        "13"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Video",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "23",
+        "24"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Práctica Pre Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasTotales": 64,
+      "correlativas": [
+        "21",
+        "24",
+        "26"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Estética",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "18",
+        "20"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Ética profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Idioma Extranjero I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Idioma Extranjero II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "33"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "36",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "37",
+      "nombre": "Optativa 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Las tres optativas se cumplen a través de: Materias o seminarios departamentales, módulos de investigación o módulos de cooperación, según la oferta disponible anualmente",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Optativa 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Cuatrimestral",
+      "horasSemanales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Optativa 3",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Cuatrimestral",
+      "horasSemanales": 32,
+      "optativa": true,
+      "correlativas": []
+    }
+  ]
+}

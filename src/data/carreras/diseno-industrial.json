@@ -1,0 +1,401 @@
+{
+  "slug": "diseno-industrial",
+  "nombre": "Licenciatura en Diseño Industrial",
+  "nombreCorto": "Diseño Industrial",
+  "departamento": "humanidades-y-artes",
+  "titulo": "Licenciado/a en Diseño Industrial",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a en Diseño Industrial",
+    "hastaNivel": 3
+  },
+  "duracionAnios": 5,
+  "horasTotales": 2912,
+  "orientaciones": [
+    "Maquinaria, equipos y vehículos",
+    "Textil e indumentaria",
+    "Metales básicos y productos de metal"
+  ],
+  "nota": "La carrera tiene tres orientaciones. Comparten códigos, correlativas y carga horaria; solo cambia el nombre de los talleres y de Tecnología, Materiales y Procesos. Acá se muestra el plan común.",
+  "tipoNivel": "anio",
+  "niveles": 5,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-industrial",
+  "fuenteFecha": "2026-09-08",
+  "revisado": false,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Taller de Diseño Industrial I (Formación Básica)",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 256,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Tecnología, Materiales y Procesos I (Formación Básica)",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Desarrollos Visuales",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Dibujo Técnico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Taller de Diseño Industrial II",
+      "dedicacion": "anual",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 256,
+      "correlativas": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Tecnología, Materiales y Procesos II",
+      "dedicacion": "anual",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "07",
+      "nombre": "Morfología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Representación Digital",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Taller de Lectura y Escritura Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Métodos del Diseño",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Taller de Diseño Industrial III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "05",
+        "06"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Tecnología, Materiales y Procesos III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Modelado Digital",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Ciencia Aplicada al Diseño Industrial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Historia Social del Diseño I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Taller de Práctica Pre Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Idioma Extranjero Nivel I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "20",
+      "nombre": "Taller de Diseño Industrial IV",
+      "dedicacion": "anual",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 256,
+      "correlativas": [
+        "11",
+        "12"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Tecnología, Materiales y Procesos IV",
+      "dedicacion": "anual",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Semiótica Aplicada al Diseño Industrial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08",
+        "15"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Manufactura Digital",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Historia Social del Diseño II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Taller de Diseño Industrial V",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "20",
+        "21"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Desarrollo científico y tecnológico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "21"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Diseño Sustentable",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "29",
+      "nombre": "Etica y Legislación Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Taller de Trabajo Integrador Final",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "21",
+        "23",
+        "25",
+        "26",
+        "27",
+        "28"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Idioma Extranjero Nivel II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Optativa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia electiva",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    }
+  ]
+}

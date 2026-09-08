@@ -1,0 +1,775 @@
+{
+  "slug": "audiovision",
+  "nombre": "Licenciatura en Audiovisión",
+  "nombreCorto": "Audiovisión",
+  "departamento": "humanidades-y-artes",
+  "titulo": "Licenciado/a en Audiovisión",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Audiovisión",
+    "hastaNivel": 3
+  },
+  "duracionAnios": 5,
+  "horasTotales": 2880,
+  "menciones": [
+    "Sonido y Grabación",
+    "Postproducción de Imagen"
+  ],
+  "tipoNivel": "anio",
+  "niveles": 5,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/audiovision",
+  "fuenteFecha": "2026-09-08",
+  "revisado": false,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Tecnología de la Imagen",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Elementos de Audio",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Taller de Lectura y Escritura profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Educación Auditiva",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Electrónica de las Comunicaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Lenguaje Audiovisual 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Registro de Sonido en Audiovisuales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Montaje 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Fotografía e Iluminación en Audiovisuales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Lenguaje Audiovisual 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "09"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Audición y Análisis Musical",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03",
+        "04"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Taller de Edición de Sonido",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02",
+        "07"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Taller de Montaje",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "08"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Realización Integral Audiovisual 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11",
+        "13",
+        "15"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Arte y Sociedad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Guión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Taller de Composición Sonora",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12",
+        "13"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "nombre": "Banda Sonora",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "19"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Géneros Estilos Audiovisuales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Taller de Experimentación Audiovisual",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11",
+        "19"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Realización Integral Audiovisual 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16",
+        "18"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Ética Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Gestión de proyectos Audiovisuales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Estética",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Comunicación Audiovisual",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Tecnología de Postproducción 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "01",
+        "05"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Imagen, Tipografía e Identidad Cultural",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "47",
+      "nombre": "Acústica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "02",
+        "13"
+      ]
+    },
+    {
+      "codigo": "48",
+      "nombre": "Organología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "02",
+        "12"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Semiótica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Metodología de Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Optativa 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "cicloOrientado": true,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Edición y Corrección Digital de Imagen",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "01",
+        "09",
+        "15"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Tecnología de Postproducción 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Montaje 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Animación 3D 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "32"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Composición Digital",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "32"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Tecnología de Postproducción 3",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "34"
+      ]
+    },
+    {
+      "codigo": "49",
+      "nombre": "Masterización y Postproducción 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "47",
+        "48"
+      ]
+    },
+    {
+      "codigo": "50",
+      "nombre": "Sistemas de Electroacústica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "47"
+      ]
+    },
+    {
+      "codigo": "51",
+      "nombre": "Taller de Grabación 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "47",
+        "48"
+      ]
+    },
+    {
+      "codigo": "52",
+      "nombre": "Masterización y Postproducción 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "49"
+      ]
+    },
+    {
+      "codigo": "53",
+      "nombre": "Taller de Grabación 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "51"
+      ]
+    },
+    {
+      "codigo": "54",
+      "nombre": "Alineación y Operación de sistemas de Amplificación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "47"
+      ]
+    },
+    {
+      "codigo": "44",
+      "nombre": "Optativa 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "cicloOrientado": true,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "45",
+      "nombre": "Optativa 3",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "cicloOrientado": true,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Taller de Trabajo Final Integrador Mención Postproducción de Imagen",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "22",
+        "26",
+        "27",
+        "29",
+        "31"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Animación 3D 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "37",
+        "38"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Taller de Postproducción de Imagen",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "37",
+        "38"
+      ]
+    },
+    {
+      "codigo": "46",
+      "nombre": "Práctica Preprofesional Mención Postproducción de Imagen",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Postproducción de Imagen",
+      "cicloOrientado": true,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "55",
+      "nombre": "Taller de Postproducción de Sonido en Audiovisuales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "21",
+        "52"
+      ]
+    },
+    {
+      "codigo": "56",
+      "nombre": "Audioanalisis",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "50",
+        "53"
+      ]
+    },
+    {
+      "codigo": "57",
+      "nombre": "Taller de Trabajo Final Integrador Mención Sonido y Grabación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "22",
+        "26",
+        "27",
+        "31",
+        "47"
+      ]
+    },
+    {
+      "codigo": "58",
+      "nombre": "Práctica Preprofesional Mención Sonido y Grabación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención Sonido y Grabación",
+      "cicloOrientado": true,
+      "correlativas": [
+        "24"
+      ]
+    }
+  ]
+}
