@@ -1,12 +1,5 @@
 {
   "projects": {
-    "default": "guiaunla"
-  },
-  "targets": {
-    "guiaunla": {
-      "hosting": {
-        "guiaunla": ["guiaunla"]
-      }
-    }
+    "default": "guiaunla-51aa7"
   }
 }
