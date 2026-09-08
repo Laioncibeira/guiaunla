@@ -11,7 +11,7 @@
 <helmet>
   <style>
     :host, body { margin: 0; }
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    * { box-sizing: border-box; }
     .tel {
       width: 390px; height: 844px; overflow: hidden; position: relative;
       background: #141317; color: #f5f3f7;
@@ -19,68 +19,73 @@
       font-size: 14px; line-height: 1.35; display: flex; flex-direction: column;
     }
     .mono { font-family: 'DM Mono', ui-monospace, monospace; }
-    a { color: #c77dff; }
-    a:hover { color: #8b5cb8; }
-    .cab {
-      flex: none; padding: 14px 16px 10px; display: flex; align-items: center; gap: 10px;
-      border-bottom: 1px solid #35313c; background: #141317;
-    }
+    a { color: #c77dff; text-decoration: none; }
+    a:hover { opacity: .85; }
+    .cab { flex: none; padding: 14px 16px 10px; display: flex; align-items: center; gap: 10px; }
+    .cab.linea { border-bottom: 1px solid #35313c; }
     .cab h1 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
     .cab .sub { margin: 2px 0 0; font-size: 11.5px; color: #a79db0; }
     .atras {
       width: 32px; height: 32px; flex: none; display: grid; place-items: center;
-      border: 1px solid #35313c; border-radius: 9px; background: #1d1b21;
+      border: 1px solid #35313c; border-radius: 9px; background: #1d1b21; color: #a79db0;
     }
-    .cuerpo { flex: 1; overflow: hidden; padding: 14px 16px 8px; display: flex; flex-direction: column; gap: 12px; }
+    .cuerpo { flex: 1; overflow: hidden; padding: 0 16px 8px; display: flex; flex-direction: column; gap: 12px; }
     .card { background: #1d1b21; border: 1px solid #35313c; border-radius: 12px; padding: 13px 14px; }
-    .rot { font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #736b7c; }
+    .rot { font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #8e8598; }
     .nav {
       flex: none; display: grid; grid-template-columns: repeat(5, 1fr);
       border-top: 1px solid #35313c; background: #1d1b21; padding: 7px 4px 18px;
     }
-    .nav div { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #736b7c; font-size: 9.5px; min-height: 44px; justify-content: center; }
+    .nav div { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #8e8598; font-size: 9.5px; min-height: 48px; justify-content: center; }
     .nav div.on { color: #c77dff; }
     .nav svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-    .pie { padding: 10px 16px 4px; font-size: 10.5px; color: #736b7c; text-align: center; }
+    .hoja {
+      flex: none; background: #1d1b21; border-top: 1px solid #35313c;
+      border-radius: 18px 18px 0 0; padding: 10px 16px 14px; box-shadow: 0 -12px 28px rgba(0,0,0,.45);
+    }
+    .tirador { width: 38px; height: 4px; border-radius: 2px; background: #35313c; margin: 0 auto 12px; }
 </style>
 </helmet>
 <div class="tel">
-  <header class="cab" style="border:none;padding-top:18px"><div><h1>Carreras</h1><p class="sub">Departamento de Humanidades y Artes</p></div></header>
-  <div class="cuerpo">
-    <div class="card" style="display:flex;gap:12px;align-items:center">
+  <header class="cab" style="padding-top:18px"><div><h1 style="font-size:22px">Carreras</h1><p class="sub">Departamento de Humanidades y Artes</p></div></header>
+  <div class="cuerpo" style="gap:12px">
+    <div class="card" style="display:flex;gap:12px;align-items:center;min-height:68px">
       <span style="width:4px;align-self:stretch;border-radius:2px;background:#c77dff;flex:none"></span>
       <div style="flex:1;min-width:0">
-        <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em">Audiovisión</div>
+        <div style="font-size:15px;font-weight:600;letter-spacing:-.01em">Audiovisión</div>
         <div style="font-size:11.5px;color:#a79db0;margin-top:3px">58 materias · 5 años · título intermedio</div>
       </div>
-      <span style="color:#736b7c;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
-    </div><div class="card" style="display:flex;gap:12px;align-items:center">
+      <span style="color:#8e8598;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
+    </div><div class="card" style="display:flex;gap:12px;align-items:center;min-height:68px">
       <span style="width:4px;align-self:stretch;border-radius:2px;background:#5da9ff;flex:none"></span>
       <div style="flex:1;min-width:0">
-        <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em">Diseño y Comunicación Visual</div>
+        <div style="font-size:15px;font-weight:600;letter-spacing:-.01em">Diseño y Comunicación Visual</div>
         <div style="font-size:11.5px;color:#a79db0;margin-top:3px">39 materias · 5 años</div>
       </div>
-      <span style="color:#736b7c;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
-    </div><div class="card" style="display:flex;gap:12px;align-items:center">
+      <span style="color:#8e8598;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
+    </div><div class="card" style="display:flex;gap:12px;align-items:center;min-height:68px">
       <span style="width:4px;align-self:stretch;border-radius:2px;background:#2dd4cf;flex:none"></span>
       <div style="flex:1;min-width:0">
-        <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em">Diseño Industrial</div>
+        <div style="font-size:15px;font-weight:600;letter-spacing:-.01em">Diseño Industrial</div>
         <div style="font-size:11.5px;color:#a79db0;margin-top:3px">32 materias · 5 años · título intermedio</div>
       </div>
-      <span style="color:#736b7c;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
-    </div><div class="card" style="display:flex;gap:12px;align-items:center">
+      <span style="color:#8e8598;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
+    </div><div class="card" style="display:flex;gap:12px;align-items:center;min-height:68px">
       <span style="width:4px;align-self:stretch;border-radius:2px;background:#ffa552;flex:none"></span>
       <div style="flex:1;min-width:0">
-        <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em">Traductorado en Inglés</div>
+        <div style="font-size:15px;font-weight:600;letter-spacing:-.01em">Traductorado en Inglés</div>
         <div style="font-size:11.5px;color:#a79db0;margin-top:3px">39 materias · 4 años · título intermedio</div>
       </div>
-      <span style="color:#736b7c;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
+      <span style="color:#8e8598;transform:rotate(180deg);display:flex"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span>
     </div>
-    <div style="padding:12px 14px;border:1px dashed #35313c;border-radius:12px;font-size:11.5px;color:#a79db0;line-height:1.45">
-      Los planes salen de la web de la universidad. Si ves algo que no coincide con tu plan, avisanos.
-    </div>
+    
+  <a style="flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;padding:13px 16px 12px;border-radius:12px;background:#17151b;border:1px solid #332e3a;color:#a79db0;font-size:11.5px">
+    <span style="display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" width="11" height="11" style="vertical-align:middle"><path d="M12 0.6C12.45 6.6 17.4 11.55 23.4 12C17.4 12.45 12.45 17.4 12 23.4C11.55 17.4 6.6 12.45 0.6 12C6.6 11.55 11.55 6.6 12 0.6Z" fill="#ffa533"/></svg><svg viewBox="0 0 24 24" width="11" height="11" style="vertical-align:middle"><path d="M12 0.6C12.45 6.6 17.4 11.55 23.4 12C17.4 12.45 12.45 17.4 12 23.4C11.55 17.4 6.6 12.45 0.6 12C6.6 11.55 11.55 6.6 12 0.6Z" fill="#ff454c"/></svg><svg viewBox="0 0 24 24" width="11" height="11" style="vertical-align:middle"><path d="M12 0.6C12.45 6.6 17.4 11.55 23.4 12C17.4 12.45 12.45 17.4 12 23.4C11.55 17.4 6.6 12.45 0.6 12C6.6 11.55 11.55 6.6 12 0.6Z" fill="#9059b3"/></svg></span>
+    <span>Hecha por estudiantes del</span>
+    <img src="fei-logo.webp" alt="Frente de Estudiantes de Izquierda" style="display:block;width:132px;height:66px">
+  </a>
   </div>
-  <nav class="nav"><div class=""><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg><span>Inicio</span></div><div class="on"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4z"/><path d="M8 5.5v13M4 12h16"/></svg><span>Carreras</span></div><div class=""><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Horarios</span></div><div class=""><svg viewBox="0 0 24 24"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"/><path d="M9 3v15M15 5.5v15"/></svg><span>Mapa</span></div><div class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span>Fechas</span></div></nav>
+  <nav class="nav"><div class=""><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg><span>Inicio</span></div><div class="on"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4z"/><path d="M8 5.5v13M4 12h16"/></svg><span>Carreras</span></div><div class=""><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Horarios</span></div><div class=""><svg viewBox="0 0 24 24"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"/><path d="M9 3v15M15 5.5v15"/></svg><span>Campus</span></div><div class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span>Fechas</span></div></nav>
 </div>
 </x-dc>
 </body>

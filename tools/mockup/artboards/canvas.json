@@ -48,28 +48,30 @@
     {
       "file": "Horarios.dc.html",
       "x": 40,
-      "y": 1054,
+      "y": 1074,
       "w": 390,
       "h": 844
     },
     {
       "file": "Mapa.dc.html",
       "x": 520,
-      "y": 1054,
+      "y": 1074,
       "w": 390,
-      "h": 844
+      "h": 844,
+      "title": "Campus"
     },
     {
       "file": "Calendario.dc.html",
       "x": 1000,
-      "y": 1054,
+      "y": 1074,
       "w": 390,
-      "h": 844
+      "h": 844,
+      "title": "Fechas"
     },
     {
       "file": "InicioClaro.dc.html",
       "x": 1480,
-      "y": 1054,
+      "y": 1074,
       "w": 390,
       "h": 844,
       "title": "Inicio · tema claro"
@@ -79,23 +81,30 @@
     {
       "id": "nota-flujo",
       "x": 40,
-      "y": -60,
-      "w": 700,
-      "text": "Guía UNLa · Humanidades y Artes. Recorrido de uso, todo a 390 px de ancho: Inicio → Carreras → Detalle → Mapa de correlatividades (tres estados) . Abajo: Horarios, Campus, Fechas y el mismo Inicio en tema claro."
+      "y": -80,
+      "w": 900,
+      "text": "Guía UNLa · Humanidades y Artes — al día con lo publicado en guiaunla.web.app.\nRecorrido de uso, todo a 390 px: Inicio → Carreras → Detalle → Mapa de correlatividades (tres estados). Abajo: Horarios, Campus, Fechas y el mismo Inicio en tema claro."
+    },
+    {
+      "id": "nota-fei",
+      "x": 40,
+      "y": 934,
+      "w": 860,
+      "text": "La identidad del FEI aparece en tres lugares y no más: una chispa violeta al lado del título, el banner de las elecciones del CEDHA con el logo y la Lista 7, y la firma con las tres chispas al pie de cada pantalla de la barra. Los bloques del FEI van siempre sobre oscuro, también en tema claro, porque el logo es blanco."
     },
     {
       "id": "nota-grafo",
       "x": 1480,
-      "y": 928,
-      "w": 820,
-      "text": "El grafo es de verdad: 58 materias y 71 correlativas de Audiovisión, con las columnas ordenadas para que se crucen menos líneas. Color por año de origen. Al tocar una materia, su camino queda al frente y el resto se apaga."
+      "y": 934,
+      "w": 860,
+      "text": "El grafo es de verdad: 58 materias y 71 correlativas de Audiovisión, con las columnas ordenadas para que se crucen menos líneas. Al tocar una materia el mapa se acerca a ella, su camino queda al frente y la hoja de abajo lista qué necesita y qué habilita."
     },
     {
-      "id": "nota-datos",
+      "id": "nota-barra",
       "x": 40,
-      "y": 1922,
-      "w": 820,
-      "text": "Los horarios son de ejemplo hasta que el Departamento pase la planilla del cuatrimestre. El campus está dibujado con las 32 referencias del plano oficial. Las fechas salen del calendario académico 2026."
+      "y": 1948,
+      "w": 860,
+      "text": "La barra de abajo es fija y se ve siempre. Las pantallas con hoja inferior tienen alto acotado para que ningún botón quede tapado. El plano del campus toma su proporción real y debajo va la lista de los 32 edificios: en un teléfono vertical un plano apaisado solo no alcanza."
     }
   ],
   "launch": {
