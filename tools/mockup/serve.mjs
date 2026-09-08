@@ -1,7 +1,12 @@
+/**
+ * Servidor estatico minimo para mirar el build sin instalar nada.
+ *   node tools/mockup/serve.mjs [carpeta] [puerto]
+ */
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-const raiz = process.argv[2] ?? '.';
+const raiz = process.argv[2] ?? 'dist/guiaunla/browser';
+const puerto = Number(process.argv[3] ?? 4600);
 const tipos = { '.html': 'text/html', '.svg': 'image/svg+xml', '.json': 'application/json', '.css': 'text/css', '.js': 'text/javascript' };
 http.createServer((req, res) => {
   const p = path.join(raiz, decodeURIComponent(req.url.split('?')[0]));
@@ -9,4 +14,4 @@ http.createServer((req, res) => {
   if (!fs.existsSync(f)) { res.writeHead(404); return res.end('no'); }
   res.writeHead(200, { 'content-type': tipos[path.extname(f)] ?? 'application/octet-stream' });
   res.end(fs.readFileSync(f));
-}).listen(4601, () => console.log('http://localhost:4601'));
+}).listen(puerto, () => console.log(`http://localhost:${puerto}`));
