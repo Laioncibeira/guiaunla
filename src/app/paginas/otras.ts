@@ -4,9 +4,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CALENDARIO, CAMPUS, type Edificio, type Evento } from '../core/datos';
 import { CarreraElegida } from '../shared/ui';
 import { COLOR_TIPO, ETIQUETA_TIPO, comoIcs, diasHasta, fechaCorta, fechaLarga } from './formato';
+import { FirmaFei } from '../shared/fei';
 
 @Component({
   selector: 'app-fechas',
+  imports: [FirmaFei],
   template: `
     <header>
       <div>
@@ -41,6 +43,7 @@ import { COLOR_TIPO, ETIQUETA_TIPO, comoIcs, diasHasta, fechaCorta, fechaLarga }
       }
 
       <p class="fuente">{{ calendario.nota }}</p>
+      <app-firma-fei />
     </main>
   `,
   styles: `
@@ -141,6 +144,20 @@ export class Fechas {
       </svg>
     </div>
 
+    <ul class="lista">
+      @for (e of campus.edificios; track e.id) {
+        <li>
+          <button type="button" [class.on]="e.id === elegido()?.id" (click)="elegir(e)">
+            <span class="num">{{ e.num }}</span>
+            <span class="nom">{{ e.nombre }}</span>
+            @if (e.aulas) {
+              <span class="aulas">aulas</span>
+            }
+          </button>
+        </li>
+      }
+    </ul>
+
     @if (elegido(); as e) {
       <section class="hoja">
         <button type="button" class="tirador" (click)="elegido.set(null)" aria-label="Cerrar"></button>
@@ -167,13 +184,22 @@ export class Fechas {
     }
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+    /* Alto exacto del area util: la barra de abajo es fija y su lugar ya esta
+       reservado por el contenedor, asi que la hoja inferior nunca queda debajo. */
+    :host { display: flex; flex-direction: column; min-height: 0;
+      height: calc(100dvh - var(--barra) - env(safe-area-inset-bottom)); }
     header { padding: 18px var(--e4) var(--e3); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .lienzo { flex: 1; min-height: 0; margin: 0 var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); padding: var(--e2); display: flex; align-items: center; }
-    .lienzo svg { width: 100%; height: auto; max-height: 100%; }
+    .lienzo { flex: none; margin: 0 var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); padding: var(--e2); }
+    .lienzo svg { display: block; width: 100%; height: auto; }
     .lienzo g { cursor: pointer; }
+    .lista { flex: 1; min-height: 0; overflow-y: auto; list-style: none; margin: var(--e3) 0 0; padding: 0 var(--e4); }
+    .lista button { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 46px; padding: 8px 0; background: none; border: none; border-bottom: 1px solid var(--borde); text-align: left; }
+    .lista .num { flex: none; width: 26px; height: 26px; border-radius: 7px; background: var(--superficie-2); color: var(--texto-2); display: grid; place-items: center; font-size: var(--t-s); font-weight: 600; }
+    .lista button.on .num { background: var(--marca); color: var(--sobre-marca); }
+    .lista .nom { flex: 1; font-size: var(--t-m); }
+    .lista .aulas { flex: none; font-size: var(--t-xs); color: var(--verde); }
     .hoja { flex: none; background: var(--superficie); border-top: 1px solid var(--borde); border-radius: var(--r-grande) var(--r-grande) 0 0; padding: 10px var(--e4) var(--e4); box-shadow: var(--sombra); margin-top: var(--e3); }
     .tirador { display: block; width: 44px; height: 22px; margin: 0 auto 6px; background: none; border: none; position: relative; }
     .tirador::before { content: ''; position: absolute; inset: 9px 3px; border-radius: 2px; background: var(--borde); }
@@ -205,7 +231,7 @@ export class Campus {
 
 @Component({
   selector: 'app-horarios',
-  imports: [RouterLink],
+  imports: [RouterLink, FirmaFei],
   template: `
     <header>
       <div>
@@ -231,6 +257,7 @@ export class Campus {
         <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
         <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
       </div>
+      <app-firma-fei />
     </main>
   `,
   styles: `
@@ -238,7 +265,7 @@ export class Campus {
     header { padding: 18px var(--e4) var(--e3); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: 0 var(--e4) var(--e4); }
+    main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
     .vacio { background: var(--superficie); border: 1px dashed var(--borde); border-radius: var(--r); padding: var(--e4); }
     h2 { margin: 0 0 var(--e2); font-size: var(--t-l); }
     p { margin: 0 0 var(--e3); font-size: var(--t-m); color: var(--texto-2); line-height: 1.5; }

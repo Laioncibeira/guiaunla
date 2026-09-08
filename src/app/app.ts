@@ -22,6 +22,8 @@ import { Barra } from './shared/ui';
       display: flex;
       flex-direction: column;
       min-height: 0;
+      /* Lugar para la barra fija, más la franja de gestos del teléfono. */
+      padding-bottom: calc(var(--barra) + env(safe-area-inset-bottom));
     }
   `,
 })

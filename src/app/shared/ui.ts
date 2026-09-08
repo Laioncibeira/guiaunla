@@ -79,14 +79,20 @@ export class Icono {
   `,
   styles: `
     nav {
-      position: sticky;
+      /* Fija, no sticky: en las pantallas que scrollean la sticky se iba con el
+         contenido. Va centrada y con el mismo ancho que la columna de la app. */
+      position: fixed;
       bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       border-top: 1px solid var(--borde);
       background: var(--superficie);
       padding: 7px 4px calc(10px + env(safe-area-inset-bottom));
-      z-index: 5;
+      z-index: 20;
     }
     a {
       display: flex;

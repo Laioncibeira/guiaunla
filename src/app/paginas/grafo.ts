@@ -191,7 +191,10 @@ const VISIBLE = { w: 348, h: 470 };
     }
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+    /* Alto exacto del area util: la barra de abajo es fija y su lugar ya esta
+       reservado por el contenedor, asi que la hoja inferior nunca queda debajo. */
+    :host { display: flex; flex-direction: column; min-height: 0;
+      height: calc(100dvh - var(--barra) - env(safe-area-inset-bottom)); }
     header { display: flex; align-items: center; gap: var(--e3); padding: 14px var(--e4) 10px; border-bottom: 1px solid var(--borde); }
     h1 { margin: 0; font-size: var(--t-xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
@@ -210,7 +213,7 @@ const VISIBLE = { w: 348, h: 470 };
     .nada { padding: var(--e4) 0; font-size: var(--t-m); color: var(--texto-2); }
     .niveles { display: flex; gap: 4px; padding: 0 var(--e4) 6px; }
     .niveles span { flex: 1; text-align: center; font-size: 9px; font-weight: 600; color: var(--texto-3); border-top: 2px solid; padding-top: 5px; }
-    .lienzo { flex: 1; min-height: 0; position: relative; margin: 0 var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); overflow: hidden; }
+    .lienzo { flex: 1; min-height: 200px; position: relative; margin: 0 var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); overflow: hidden; }
     .lienzo svg { display: block; width: 100%; height: 100%; touch-action: none; }
     .lienzo g { cursor: pointer; }
     .lienzo text { font-family: var(--mono); font-weight: 500; }
@@ -218,7 +221,7 @@ const VISIBLE = { w: 348, h: 470 };
     .ayuda, .reencuadrar { position: absolute; left: 50%; transform: translateX(-50%); bottom: 12px; background: var(--superficie-2); border: 1px solid var(--borde); border-radius: 999px; padding: 8px 14px; font-size: var(--t-s); color: var(--texto-2); margin: 0; white-space: nowrap; }
     .reencuadrar { min-height: 40px; }
     .lista-oculta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-    .hoja { flex: none; background: var(--superficie); border-top: 1px solid var(--borde); border-radius: var(--r-grande) var(--r-grande) 0 0; padding: 10px var(--e4) var(--e4); box-shadow: var(--sombra); max-height: 62dvh; overflow-y: auto; }
+    .hoja { flex: none; background: var(--superficie); border-top: 1px solid var(--borde); border-radius: var(--r-grande) var(--r-grande) 0 0; padding: 10px var(--e4) var(--e4); box-shadow: var(--sombra); max-height: 46dvh; overflow-y: auto; overscroll-behavior: contain; }
     .tirador { display: block; width: 44px; height: 22px; margin: 0 auto 6px; background: none; border: none; position: relative; }
     .tirador::before { content: ''; position: absolute; inset: 9px 3px; border-radius: 2px; background: var(--borde); }
     .encabezado { display: flex; align-items: baseline; gap: 9px; }

@@ -4,10 +4,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CARRERAS, carreraPorSlug, nombreNivel, type Carrera, type Materia } from '../core/datos';
 import { habilita, necesita, vincular } from '../core/correlatividades';
 import { CarreraElegida } from '../shared/ui';
+import { FirmaFei } from '../shared/fei';
 
 @Component({
   selector: 'app-carreras',
-  imports: [RouterLink],
+  imports: [RouterLink, FirmaFei],
   template: `
     <header>
       <div>
@@ -34,6 +35,7 @@ import { CarreraElegida } from '../shared/ui';
       <p class="aviso">
         Los planes salen de la web de la universidad. Si algo no coincide con tu plan, escribinos.
       </p>
+      <app-firma-fei />
     </main>
   `,
   styles: `
