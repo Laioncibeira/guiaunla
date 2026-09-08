@@ -9,4 +9,4 @@ http.createServer((req, res) => {
   if (!fs.existsSync(f)) { res.writeHead(404); return res.end('no'); }
   res.writeHead(200, { 'content-type': tipos[path.extname(f)] ?? 'application/octet-stream' });
   res.end(fs.readFileSync(f));
-}).listen(4599, () => console.log('http://localhost:4599'));
+}).listen(4600, () => console.log('http://localhost:4600'));

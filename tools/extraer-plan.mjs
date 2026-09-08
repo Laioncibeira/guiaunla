@@ -255,7 +255,8 @@ async function main() {
       niveles: Math.max(...materias.map((m) => m.nivel)),
       fuenteUrl: BASE + '/' + slug,
       fuenteFecha: new Date().toISOString().slice(0, 10),
-      revisado: false,
+      // Lo pone en true tools/cotejar-fuente.mjs cuando el JSON coincide con la tabla.
+      cotejado: false,
       materias,
     };
     const out = 'src/data/carreras/' + slug + '.json';

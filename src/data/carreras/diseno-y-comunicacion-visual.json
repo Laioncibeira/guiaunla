@@ -9,7 +9,7 @@
   "niveles": 5,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-y-comunicacion-visual",
   "fuenteFecha": "2026-09-08",
-  "revisado": false,
+  "cotejado": true,
   "materias": [
     {
       "codigo": "01",

@@ -45,3 +45,6 @@ Thumbs.db
 
 # datos crudos descargados por tools/extraer-plan.mjs
 tools/cache/
+
+dist/
+.firebase/

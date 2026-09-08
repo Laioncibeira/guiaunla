@@ -1,1 +1,173 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tokens y base. Todo color, tamaño y espacio sale de acá: los componentes
+   nunca escriben un hex ni un px suelto.
+   La paleta deriva de la web del FEI, en versión sobria: violeta como único
+   acento, superficies neutras, naranja sólo para lo que apura. */
+
+:root {
+  color-scheme: dark light;
+
+  --bg: #141317;
+  --superficie: #1d1b21;
+  --superficie-2: #26232b;
+  --borde: #35313c;
+  --marca: #c77dff;
+  --marca-suave: #8b5cb8;
+  --sobre-marca: #17141b;
+  --texto: #f5f3f7;
+  --texto-2: #a79db0;
+  --texto-3: #8e8598;
+  --naranja: #ffa552;
+  --verde: #5fd39a;
+  --sombra: 0 -12px 28px rgb(0 0 0 / 45%);
+
+  /* Un color por año/cuatrimestre de origen, para las líneas del grafo. */
+  --n1: #c77dff;
+  --n2: #5da9ff;
+  --n3: #2dd4cf;
+  --n4: #ffa552;
+  --n5: #f783c7;
+  --n6: #4ade80;
+  --n7: #ffd166;
+  --n8: #ff6b6b;
+
+  --e1: 4px;
+  --e2: 8px;
+  --e3: 12px;
+  --e4: 16px;
+  --e5: 24px;
+  --r-chico: 8px;
+  --r: 12px;
+  --r-grande: 18px;
+  --t-xs: 10.5px;
+  --t-s: 11.5px;
+  --t-m: 13.5px;
+  --t-l: 15px;
+  --t-xl: 19px;
+  --t-2xl: 22px;
+  --sans: Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --barra: 66px;
+  --foco: 0 0 0 3px color-mix(in oklab, var(--marca) 55%, transparent);
+}
+
+/* El tema sigue al del teléfono. data-tema lo fuerza, por si algún día
+   agregamos un botón para elegirlo a mano. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-tema='oscuro']) {
+  --bg: #faf8fb;
+  --superficie: #ffffff;
+  --superficie-2: #f2eff4;
+  --borde: #e2dde7;
+  --marca: #7b3fb5;
+  --marca-suave: #a274cc;
+  --sobre-marca: #ffffff;
+  --texto: #191720;
+  --texto-2: #5d5568;
+  --texto-3: #6b6376;
+  --naranja: #a85a12;
+  --verde: #1f7a52;
+  --sombra: 0 -12px 28px rgb(30 20 40 / 12%);
+  --n1: #7b3fb5;
+  --n2: #1f6fd0;
+  --n3: #0f7c78;
+  --n4: #a85a12;
+  --n5: #b5387f;
+  --n6: #1f7a52;
+  --n7: #8a6512;
+  --n8: #c02b2b;
+  }
+}
+
+:root[data-tema='claro'] {
+  --bg: #faf8fb;
+  --superficie: #ffffff;
+  --superficie-2: #f2eff4;
+  --borde: #e2dde7;
+  --marca: #7b3fb5;
+  --marca-suave: #a274cc;
+  --sobre-marca: #ffffff;
+  --texto: #191720;
+  --texto-2: #5d5568;
+  --texto-3: #6b6376;
+  --naranja: #a85a12;
+  --verde: #1f7a52;
+  --sombra: 0 -12px 28px rgb(30 20 40 / 12%);
+  --n1: #7b3fb5;
+  --n2: #1f6fd0;
+  --n3: #0f7c78;
+  --n4: #a85a12;
+  --n5: #b5387f;
+  --n6: #1f7a52;
+  --n7: #8a6512;
+  --n8: #c02b2b;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}
+
+body {
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+a {
+  color: var(--marca);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--marca-suave);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--foco);
+  border-radius: var(--r-chico);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+/* Un solo layout: el del teléfono. En pantalla grande es la misma columna,
+   centrada, no una versión de escritorio aparte. */
+app-root {
+  display: block;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background: var(--bg);
+  border-inline: 1px solid var(--borde);
+}
+
+@media (max-width: 460px) {
+  app-root {
+    border: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
