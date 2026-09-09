@@ -4,7 +4,7 @@
    acento, superficies neutras, naranja sólo para lo que apura. */
 
 :root {
-  color-scheme: dark light;
+  color-scheme: dark;
 
   --bg: #141317;
   --superficie: #1d1b21;
@@ -62,6 +62,7 @@
    agregamos un botón para elegirlo a mano. */
 @media (prefers-color-scheme: light) {
   :root:not([data-tema='oscuro']) {
+  color-scheme: light;
   --bg: #faf8fb;
   --superficie: #ffffff;
   --superficie-2: #f2eff4;
@@ -87,6 +88,7 @@
 }
 
 :root[data-tema='claro'] {
+  color-scheme: light;
   --bg: #faf8fb;
   --superficie: #ffffff;
   --superficie-2: #f2eff4;
