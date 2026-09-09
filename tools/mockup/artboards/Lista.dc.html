@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :host, body { margin: 0; }
+    * { box-sizing: border-box; }
+    .tel {
+      width: 390px; height: 844px; overflow: hidden; position: relative;
+      background: #141317; color: #f5f3f7;
+      font-family: Archivo, system-ui, sans-serif;
+      font-size: 14px; line-height: 1.35; display: flex; flex-direction: column;
+    }
+    .mono { font-family: 'DM Mono', ui-monospace, monospace; }
+    a { color: #c77dff; text-decoration: none; }
+    a:hover { opacity: .85; }
+    .cab { flex: none; padding: 14px 16px 10px; display: flex; align-items: center; gap: 10px; }
+    .cab.linea { border-bottom: 1px solid #35313c; }
+    .cab h1 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+    .cab .sub { margin: 2px 0 0; font-size: 11.5px; color: #a79db0; }
+    .atras {
+      width: 32px; height: 32px; flex: none; display: grid; place-items: center;
+      border: 1px solid #35313c; border-radius: 9px; background: #1d1b21; color: #a79db0;
+    }
+    .cuerpo { flex: 1; overflow: hidden; padding: 0 16px 8px; display: flex; flex-direction: column; gap: 12px; }
+    .card { background: #1d1b21; border: 1px solid #35313c; border-radius: 12px; padding: 13px 14px; }
+    .rot { font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #8e8598; }
+    .nav {
+      flex: none; display: grid; grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid #35313c; background: #1d1b21; padding: 7px 4px 18px;
+    }
+    .nav div { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #8e8598; font-size: 9.5px; min-height: 48px; justify-content: center; }
+    .nav div.on { color: #c77dff; }
+    .nav svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .hoja {
+      flex: none; background: #1d1b21; border-top: 1px solid #35313c;
+      border-radius: 18px 18px 0 0; padding: 10px 16px 14px; box-shadow: 0 -12px 28px rgba(0,0,0,.45);
+    }
+    .tirador { width: 38px; height: 4px; border-radius: 2px; background: #35313c; margin: 0 auto 12px; }
+</style>
+</helmet>
+<div class="tel">
+  <header class="cab linea">
+    <div class="atras"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div>
+    <div style="flex:1"><h1 style="font-size:17px">Correlatividades</h1><p class="sub">Audiovisión · 58 materias</p></div>
+    <div style="flex:none;display:flex;border:1px solid #35313c;border-radius:999px;background:#1d1b21;padding:2px">
+      <span style="min-height:34px;display:grid;place-items:center;padding:0 11px;border-radius:999px;color:#a79db0;font-size:11.5px;font-weight:600">Mapa</span>
+      <span style="min-height:34px;display:grid;place-items:center;padding:0 11px;border-radius:999px;background:#c77dff;color:#17141b;font-size:11.5px;font-weight:600">Lista</span>
+    </div>
+  </header>
+  
+  <div style="flex:none;padding:10px 16px 8px">
+    <div style="display:flex;align-items:center;gap:9px;background:#1d1b21;border:1px solid #35313c;border-radius:11px;padding:0 12px;min-height:44px;color:#8e8598">
+      <span style="flex:none;display:flex"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/></svg></span>
+      <span style="font-size:13.5px;flex:1;color:inherit">Buscar una materia</span>
+      
+    </div>
+  </div>
+  <div style="flex:1;overflow:hidden;padding:0 16px">
+    <div style="margin:0 0 8px;padding-top:7px;border-top:2px solid #c77dff;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#a79db0">1° año</div>
+    <div style="background:#1d1b21;border:1px solid #35313c;border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:#8e8598;min-width:26px">01</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">Tecnología de la Imagen</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        
+        <span style="font-size:10.5px;color:#c77dff;border:1px solid #c77dff;border-radius:999px;padding:2px 7px">se dicta ahora</span>
+        <span style="font-size:10.5px;color:#5fd39a;border:1px solid #5fd39a;border-radius:999px;padding:2px 7px">sin correlativas</span>
+      </div>
+    </div><div style="background:#1d1b21;border:1px solid #35313c;border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:#8e8598;min-width:26px">02</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">Elementos de Audio</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        
+        <span style="font-size:10.5px;color:#c77dff;border:1px solid #c77dff;border-radius:999px;padding:2px 7px">se dicta ahora</span>
+        <span style="font-size:10.5px;color:#5fd39a;border:1px solid #5fd39a;border-radius:999px;padding:2px 7px">sin correlativas</span>
+      </div>
+    </div><div style="background:#1d1b21;border:1px solid #35313c;border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:#8e8598;min-width:26px">03</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">Taller de Lectura y Escritura profesional</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        
+        <span style="font-size:10.5px;color:#c77dff;border:1px solid #c77dff;border-radius:999px;padding:2px 7px">se dicta ahora</span>
+        <span style="font-size:10.5px;color:#5fd39a;border:1px solid #5fd39a;border-radius:999px;padding:2px 7px">sin correlativas</span>
+      </div>
+    </div><div style="background:#1d1b21;border:1px solid #35313c;border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:#8e8598;min-width:26px">04</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">Educación Auditiva</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        
+        
+        <span style="font-size:10.5px;color:#5fd39a;border:1px solid #5fd39a;border-radius:999px;padding:2px 7px">sin correlativas</span>
+      </div>
+    </div><div style="background:#1d1b21;border:1px solid #35313c;border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:#8e8598;min-width:26px">05</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">Electrónica de las Comunicaciones</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        
+        <span style="font-size:10.5px;color:#c77dff;border:1px solid #c77dff;border-radius:999px;padding:2px 7px">se dicta ahora</span>
+        <span style="font-size:10.5px;color:#5fd39a;border:1px solid #5fd39a;border-radius:999px;padding:2px 7px">sin correlativas</span>
+      </div>
+    </div>
+  </div>
+  <nav class="nav"><div class=""><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg><span>Inicio</span></div><div class="on"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4z"/><path d="M8 5.5v13M4 12h16"/></svg><span>Carreras</span></div><div class=""><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>Horarios</span></div><div class=""><svg viewBox="0 0 24 24"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3z"/><path d="M9 3v15M15 5.5v15"/></svg><span>Campus</span></div><div class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg><span>Fechas</span></div></nav>
+</div>
+</x-dc>
+</body>
+</html>

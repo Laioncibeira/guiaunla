@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { calcularLayout, curva, COLOR_NIVEL } from '../layout-grafo.mjs';
+import { partirNombre } from '../nombres-mockup.mjs';
 
 const SALIDA = 'tools/mockup/artboards';
 fs.mkdirSync(SALIDA, { recursive: true });
@@ -193,7 +194,7 @@ ${cuerpo}
 }
 
 // ---------------------------------------------------------------- grafo
-const layout = calcularLayout(av, 4, 'ficha');
+const layout = calcularLayout(av, 4, 'tarjeta');
 
 function svgGrafo(sel, c, opts = {}) {
   const pos = new Map(layout.nodos.map((n) => [n.codigo, n]));
@@ -205,36 +206,39 @@ function svgGrafo(sel, c, opts = {}) {
     .map((a) => {
       const activa = sel && (a.de === sel || a.a === sel);
       const col = COLOR_NIVEL[(a.nivelDe - 1) % COLOR_NIVEL.length];
-      return `<path d="${curva(pos.get(a.de), pos.get(a.a))}" fill="none" stroke="${col}" stroke-width="${activa ? 2 : 1}" opacity="${sel && !activa ? 0.05 : activa ? 1 : 0.34}"/>`;
+      return `<path d="${curva(pos.get(a.de), pos.get(a.a))}" fill="none" stroke="${col}" stroke-width="${activa ? 2.6 : 1.4}" opacity="${sel && !activa ? 0.04 : activa ? 1 : 0.4}"${activa ? ` marker-end="url(#punta${a.nivelDe})"` : ''}/>`;
     })
     .join('');
 
-  const fichas = layout.nodos
+  const tarjetas = layout.nodos
     .map((n) => {
       const es = n.codigo === sel;
       const marcada = necesita.has(n.codigo) || habilita.has(n.codigo);
       const ac = COLOR_NIVEL[(n.nivel - 1) % COLOR_NIVEL.length];
-      return `<g opacity="${foco(n.codigo) ? 1 : 0.16}">
-<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="7" fill="${es ? ac : c.surface}" stroke="${es || marcada ? ac : c.border}" stroke-width="${es || marcada ? 1.8 : 1}"/>
-<text x="${n.x + n.w / 2}" y="${n.y + n.h / 2 + 3.6}" text-anchor="middle" font-family="'DM Mono', ui-monospace, monospace" font-size="11" font-weight="500" fill="${es ? c.onBrand : c.texto}">${n.codigo}</text>
+      const texto = es ? c.onBrand : c.texto;
+      const tenue = es ? c.onBrand : c.texto3;
+      const filas = partirNombre(n.nombre)
+        .map((l, i) => `<text x="${n.x + 12}" y="${n.y + 29 + i * 11}" font-family="Archivo, sans-serif" font-size="10" font-weight="600" fill="${texto}">${l}</text>`)
+        .join('');
+      return `<g opacity="${foco(n.codigo) ? 1 : 0.14}">
+<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="9" fill="${es ? ac : c.surface}" stroke="${es || marcada ? ac : c.border}" stroke-width="${es || marcada ? 2.2 : 1.2}"/>
+${es ? '' : `<rect x="${n.x}" y="${n.y + 10}" width="3.5" height="${n.h - 20}" rx="1.75" fill="${ac}"/>`}
+<text x="${n.x + 12}" y="${n.y + 15}" font-family="'DM Mono', ui-monospace, monospace" font-size="8.5" letter-spacing="0.5" fill="${tenue}">${n.codigo}</text>
+${filas}
 </g>`;
     })
     .join('');
 
-  if (opts.recorte) {
-    const n = pos.get(opts.recorte.codigo);
-    const [vw, vh] = [opts.recorte.w, opts.recorte.h];
-    const tope = (v, max) => Math.max(0, Math.min(v, Math.max(0, max)));
-    const vx = tope(n.x + n.w / 2 - vw / 2, layout.ancho - vw);
-    const vy = tope(n.y + n.h / 2 - vh / 2, layout.alto - vh);
-    return `<svg viewBox="${vx} ${vy} ${vw} ${vh}" width="${vw}" height="${vh}">${lineas}${fichas}</svg>`;
-  }
-  const esc = opts.escala ?? 348 / layout.ancho;
-  return `<svg viewBox="0 0 ${layout.ancho} ${layout.alto}" width="${layout.ancho * esc}" height="${layout.alto * esc}">${lineas}${fichas}</svg>`;
+  const puntas = [1, 2, 3, 4, 5]
+    .map((i) => `<marker id="punta${i}" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 z" fill="${COLOR_NIVEL[i - 1]}"/></marker>`)
+    .join('');
+
+  const v = opts.recorte ?? { x: 0, y: 0, w: layout.ancho, h: layout.alto };
+  return `<svg viewBox="${v.x} ${v.y} ${v.w} ${v.h}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><defs>${puntas}</defs>${lineas}${tarjetas}</svg>`;
 }
 
-const cabNiveles = (c) =>
-  `<div style="display:flex;gap:4px;padding:0 16px 6px">${Array.from({ length: layout.niveles }, (_, i) => `<div style="flex:1;text-align:center;font-size:9px;font-weight:600;color:${c.texto3};border-top:2px solid ${COLOR_NIVEL[i]};padding-top:5px">${i + 1}° año</div>`).join('')}</div>`;
+const cabNiveles = (c, visibles = [1, 2]) =>
+  `<div style="display:flex;gap:4px;padding:0 16px 6px">${Array.from({ length: layout.niveles }, (_, i) => `<div style="flex:1;text-align:center;font-size:9px;font-weight:600;color:${c.texto2};border-top:2px solid ${COLOR_NIVEL[i]};padding-top:5px;opacity:${visibles.includes(i + 1) ? 1 : 0.3}">${i + 1}° año</div>`).join('')}</div>`;
 
 const cabGrafo = () => `
   <header class="cab linea">
@@ -251,18 +255,24 @@ const buscador = (c, texto, activo = false) => `
     </div>
   </div>`;
 
-// 1. Grafo completo
+// 1. Grafo, vista cercana con tarjetas
+const cerca = { x: 0, y: layout.nodos.filter((n) => n.nivel === 1).reduce((m, n) => Math.min(m, n.y), 1e9) - 14, w: 340, h: 470 };
 artboard(
   'Main.dc.html',
   `<div class="tel">
   ${cabGrafo()}
   ${buscador(T, 'Buscar una materia')}
-  ${cabNiveles(T)}
+  ${cabNiveles(T, [1, 2])}
   <div style="flex:1;overflow:hidden;padding:0 16px;position:relative;display:flex">
-    <div style="border:1px solid ${T.border};border-radius:14px;background:${T.surface};padding:6px;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden">
-      ${svgGrafo(null, T, { escala: 470 / layout.alto })}
+    <div style="border:1px solid ${T.border};border-radius:14px;background:${T.surface};width:100%;overflow:hidden">
+      ${svgGrafo(null, T, { recorte: cerca })}
     </div>
-    <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:16px;background:${T.surface2};border:1px solid ${T.border};border-radius:999px;padding:8px 14px;font-size:11.5px;color:${T.texto2};white-space:nowrap">Tocá una materia · pellizcá para acercar</div>
+    <div style="position:absolute;left:26px;bottom:22px;max-width:55%;background:${T.surface2};border:1px solid ${T.border};border-radius:999px;padding:8px 12px;font-size:10.5px;color:${T.texto2}">Tocá una materia para ver su camino</div>
+    <div style="position:absolute;right:26px;bottom:22px;display:flex;gap:6px">
+      <span style="min-width:40px;min-height:40px;display:grid;place-items:center;border-radius:10px;border:1px solid ${T.border};background:${T.surface2};font-size:18px">+</span>
+      <span style="min-width:40px;min-height:40px;display:grid;place-items:center;border-radius:10px;border:1px solid ${T.border};background:${T.surface2};font-size:18px">−</span>
+      <span style="min-height:40px;display:grid;place-items:center;padding:0 8px;border-radius:10px;border:1px solid ${T.border};background:${T.surface2};font-size:10.5px;font-weight:600">Ver todo</span>
+    </div>
   </div>
   ${nav('carreras')}
 </div>`,
@@ -277,15 +287,21 @@ const fila = (m, c) =>
      <span class="mono" style="font-size:10.5px;color:${c.texto3};min-width:22px">${m.codigo}</span>
      <span style="flex:1;font-size:13.5px">${m.nombre}</span>
    </div>`;
+const recorteSel = {
+  x: Math.max(0, sel.x + sel.w / 2 - 170),
+  y: Math.max(0, sel.y + sel.h / 2 - 110),
+  w: 340,
+  h: 220,
+};
 
 artboard(
   'GrafoMateria.dc.html',
   `<div class="tel">
   ${cabGrafo()}
-  ${cabNiveles(T)}
+  ${cabNiveles(T, [2, 3])}
   <div style="flex:1;min-height:200px;overflow:hidden;padding:0 16px;display:flex">
-    <div style="border:1px solid ${T.border};border-radius:14px;background:${T.surface};padding:6px;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden">
-      ${svgGrafo('16', T, { recorte: { codigo: '16', w: 344, h: 196 } })}
+    <div style="border:1px solid ${T.border};border-radius:14px;background:${T.surface};width:100%;overflow:hidden">
+      ${svgGrafo('16', T, { recorte: recorteSel })}
     </div>
   </div>
   <section class="hoja">
@@ -294,7 +310,7 @@ artboard(
       <span class="mono" style="font-size:11.5px;color:${T.brand}">16</span>
       <h2 style="margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em">Realización Integral Audiovisual 1</h2>
     </div>
-    <p style="margin:5px 0 12px;font-size:11.5px;color:${T.texto2}">2° año · Materia · 4 h semanales · 64 h totales</p>
+    <p style="margin:5px 0 12px;font-size:11.5px;color:${T.texto2}">2° año · Materia · cuatrimestral · 4 h semanales · se dicta este cuatrimestre</p>
     <div class="rot">Necesitás aprobar antes</div>
     ${necesitaSel.map((m) => fila(m, T)).join('')}
     <div class="rot" style="margin-top:12px">Te habilita</div>
@@ -343,49 +359,41 @@ const fmt = (iso) => {
 };
 const dias = (iso) => Math.round((new Date(iso) - hoy) / 86400000);
 
+const bienvenida = (c) => `
+  <section style="flex:none;background:${c.surface};border:1px solid ${c.border};border-radius:12px;padding:16px;text-align:center">
+    ${estrella(FEI.amarillo, 13)}
+    <h2 style="margin:8px 0 0;font-size:15px;font-weight:700;letter-spacing:-.01em">Bienvenidx a la Guía UNLa</h2>
+    <p style="margin:7px 0 12px;font-size:11.5px;color:${c.texto2};line-height:1.5">Un espacio que centraliza la información importante de cada carrera: materias, novedades, fechas del calendario académico y se vienen cositas.</p>
+    <span style="display:inline-flex;align-items:center;min-height:44px;padding:0 24px;border-radius:999px;background:${c.brand};color:${c.onBrand};font-size:13.5px;font-weight:600">Tutorial</span>
+  </section>`;
+
+const tarjetaInicio = (c, titulo, pie, destacada = false) => `
+  <div style="min-height:108px;display:flex;flex-direction:column;gap:6px;background:${destacada ? c.brand : c.surface};border:1px solid ${destacada ? c.brand : c.border};border-radius:12px;padding:14px;color:${destacada ? c.onBrand : c.texto}">
+    <span style="font-size:15px;font-weight:700;line-height:1.2;letter-spacing:-.01em">${titulo}</span>
+    <span style="font-size:11.5px;line-height:1.35;color:${destacada ? c.onBrand : c.texto2};opacity:${destacada ? 0.85 : 1}">${pie}</span>
+  </div>`;
+
 const inicio = (c) => `<div class="tel">
   <header class="cab" style="padding-top:18px">
     <div style="flex:1">
       <h1 style="font-size:22px">Guía UNLa ${estrella(FEI.violeta, 15)}</h1>
       <p class="sub">Humanidades y Artes</p>
     </div>
+    <span style="flex:none;border:1px solid ${c.border};background:${c.surface};border-radius:999px;padding:8px 13px;font-size:11.5px;color:${c.texto2}">Audiovisión</span>
   </header>
   ${avisoInstalar(c)}
-  <div class="cuerpo">
+  <div class="cuerpo" style="gap:16px">
     ${bannerElecciones()}
     <section style="flex:none">
-      <div class="rot" style="margin-bottom:7px">Lo que viene</div>
-      ${proximas
-        .map((e, i) => {
-          const [d, mes] = fmt(e.desde);
-          const faltan = dias(e.desde);
-          return `<div class="card" style="margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;border-color:${i === 0 ? c.naranja : c.border}">
-        <div style="flex:none;text-align:center;min-width:44px">
-          <div style="font-size:17px;font-weight:700;line-height:1.1;color:${i === 0 ? c.naranja : c.texto}">${d}</div>
-          <div style="font-size:10px;color:${c.texto3};text-transform:uppercase;letter-spacing:.06em">${mes}</div>
-        </div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13.5px;font-weight:600;line-height:1.25">${e.titulo}</div>
-          <div style="font-size:11.5px;color:${c.texto2};margin-top:3px">${faltan < 0 ? 'En curso' : 'En ' + faltan + ' días'}${e.hasta !== e.desde ? ' · hasta el ' + fmt(e.hasta).join(' ') : ''}</div>
-        </div>
-      </div>`;
-        })
-        .join('')}
-    </section>
-    <section style="flex:none">
-      <div class="rot" style="margin-bottom:7px">Tu carrera</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
-        <div class="card" style="background:${c.brand};border-color:${c.brand};color:${c.onBrand};min-height:92px">
-          <div style="font-size:14.5px;font-weight:700;line-height:1.2">Mapa de correlatividades</div>
-          <div style="font-size:11.5px;margin-top:5px;opacity:.82">Qué necesitás para cada materia</div>
-        </div>
-        <div class="card" style="min-height:92px">
-          <div style="font-size:14.5px;font-weight:700;line-height:1.2">Plan de estudios</div>
-          <div style="font-size:11.5px;color:${c.texto2};margin-top:5px">58 materias, 5 años</div>
-        </div>
+      <div class="rot" style="margin-bottom:8px">Tu carrera</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        ${tarjetaInicio(c, 'Mapa de correlatividades', 'Qué necesitás para cada materia', true)}
+        ${tarjetaInicio(c, 'Plan de estudios', '58 materias, 5 años')}
+        ${tarjetaInicio(c, 'Horarios y aulas', '62 clases este cuatrimestre')}
+        ${tarjetaInicio(c, 'Mapa del campus', 'Cómo llegar a cada edificio')}
       </div>
     </section>
-    ${firmaFei()}
+    ${bienvenida(c)}
   </div>
   ${nav('inicio')}
 </div>`;
@@ -455,20 +463,59 @@ artboard(
 </div>`,
 );
 
-// 7. Horarios
+// 7. Horarios, con la grilla del Departamento
+const horarios = leer('src/data/horarios/audiovision.json');
+const nombreDeClase = (cl) =>
+  av.materias.find((m) => m.codigo === cl.materiaCodigo)?.nombre ?? cl.materiaTexto;
+const edificioDe = (u) => {
+  if (u.virtual) return 'Virtual';
+  const e = campus.edificios.find((x) => x.id === u.edificio);
+  const nombre = e ? e.nombre.replace(/^Edificio\s+/, '') : '';
+  if (!nombre) return u.aula ?? '';
+  return nombre.toLowerCase().includes((u.aula ?? '').toLowerCase()) ? nombre : `${u.aula} · ${nombre}`;
+};
+const delDia = (dia, turno) =>
+  horarios.clases.filter((cl) => cl.dia === dia && cl.turno === turno);
+const CUENTA = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'].map((d) => ({
+  d,
+  n: horarios.clases.filter((cl) => cl.dia === d).length,
+}));
+
 artboard(
   'Horarios.dc.html',
   `<div class="tel">
-  <header class="cab" style="padding-top:18px"><div><h1 style="font-size:22px">Horarios</h1><p class="sub">Audiovisión</p></div></header>
-  <div class="cuerpo">
-    <div style="background:${T.surface};border:1px dashed ${T.border};border-radius:12px;padding:16px">
-      <h2 style="margin:0 0 8px;font-size:15px">Todavía no tenemos la grilla</h2>
-      <p style="margin:0 0 12px;font-size:13.5px;color:${T.texto2};line-height:1.5">Los días, horarios y aulas los publica el Departamento al abrir cada cuatrimestre. Apenas nos pasen la planilla, esta pantalla muestra en qué edificio cursás cada materia y te lleva al mapa.</p>
-      <p style="margin:0 0 8px;font-size:11.5px;color:${T.texto3}">Mientras tanto:</p>
-      <div style="display:flex;align-items:center;justify-content:center;min-height:46px;margin-bottom:8px;border-radius:10px;background:${T.surface2};border:1px solid ${T.border};font-size:13.5px;font-weight:600">Ver el mapa del campus</div>
-      <div style="display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;background:${T.surface2};border:1px solid ${T.border};font-size:13.5px;font-weight:600">Ver las fechas del cuatrimestre</div>
-    </div>
-    ${firmaFei()}
+  <header class="cab" style="padding-top:18px"><div><h1 style="font-size:22px">Horarios</h1><p class="sub">Audiovisión · 2° cuatrimestre 2026</p></div></header>
+  <div style="flex:none;display:flex;gap:5px;padding:0 16px 12px">
+    ${['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
+      .map(
+        (etiqueta, i) => `<div style="flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;border:1px solid ${i === 2 ? T.brand : T.border};background:${i === 2 ? T.brand : T.surface};color:${i === 2 ? T.onBrand : T.texto2};font-size:11.5px;font-weight:600">${etiqueta}<span style="font-size:9.5px;opacity:.75;font-weight:500">${CUENTA[i].n}</span></div>`,
+      )
+      .join('')}
+  </div>
+  <div class="cuerpo" style="gap:14px">
+    ${['manana', 'tarde']
+      .map(
+        (turno) => `<section style="flex:none">
+      <div class="rot" style="margin-bottom:8px">${turno === 'manana' ? 'Mañana' : 'Tarde'}</div>
+      ${delDia('miercoles', turno)
+        .slice(0, turno === 'manana' ? 3 : 2)
+        .map(
+          (cl) => `<div class="card" style="margin-bottom:8px">
+        <div style="font-size:13.5px;font-weight:600;line-height:1.3">${nombreDeClase(cl)}${cl.fueraDePlan ? ` <span style="font-size:10.5px;font-weight:500;color:${T.naranja};border:1px solid ${T.naranja};border-radius:999px;padding:1px 7px">optativa o seminario</span>` : ''}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:9px">
+          ${cl.ubicaciones
+            .map(
+              (u) => `<span style="display:inline-flex;align-items:center;gap:5px;min-height:34px;padding:0 10px;border:1px solid ${u.virtual ? T.verde : T.brand};border-radius:9px;font-size:11.5px;color:${u.virtual ? T.verde : T.brand}">${u.virtual ? '' : icono('mapa', 13)}${edificioDe(u)}</span>`,
+            )
+            .join('')}
+        </div>
+      </div>`,
+        )
+        .join('')}
+    </section>`,
+      )
+      .join('')}
+    <p style="margin:0;font-size:10.5px;color:${T.texto3};line-height:1.45">Grilla de aulas del Departamento de Humanidades y Artes, 2° cuatrimestre 2026.</p>
   </div>
   ${nav('horarios')}
 </div>`,
@@ -567,6 +614,75 @@ artboard(
 </div>`,
 );
 
+// 10. Vista Lista: el plan por año y cuatrimestre
+const etiqueta = (texto, color) =>
+  `<span style="font-size:10.5px;color:${color};border:1px solid ${color};border-radius:999px;padding:2px 7px">${texto}</span>`;
+const seDicta = new Set(horarios.clases.map((cl) => cl.materiaCodigo).filter(Boolean));
+
+artboard(
+  'Lista.dc.html',
+  `<div class="tel">
+  <header class="cab linea">
+    <div class="atras">${icono('flecha', 18)}</div>
+    <div style="flex:1"><h1 style="font-size:17px">Correlatividades</h1><p class="sub">Audiovisión · 58 materias</p></div>
+    <div style="flex:none;display:flex;border:1px solid ${T.border};border-radius:999px;background:${T.surface};padding:2px">
+      <span style="min-height:34px;display:grid;place-items:center;padding:0 11px;border-radius:999px;color:${T.texto2};font-size:11.5px;font-weight:600">Mapa</span>
+      <span style="min-height:34px;display:grid;place-items:center;padding:0 11px;border-radius:999px;background:${T.brand};color:${T.onBrand};font-size:11.5px;font-weight:600">Lista</span>
+    </div>
+  </header>
+  ${buscador(T, 'Buscar una materia')}
+  <div style="flex:1;overflow:hidden;padding:0 16px">
+    <div style="margin:0 0 8px;padding-top:7px;border-top:2px solid ${COLOR_NIVEL[0]};font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:${T.texto2}">1° año</div>
+    ${av.materias
+      .filter((m) => m.nivel === 1)
+      .slice(0, 5)
+      .map(
+        (m) => `<div style="background:${T.surface};border:1px solid ${T.border};border-radius:12px;padding:11px 12px;margin-bottom:7px">
+      <div style="display:flex;gap:9px;align-items:baseline">
+        <span class="mono" style="font-size:10.5px;color:${T.texto3};min-width:26px">${m.codigo}</span>
+        <span style="flex:1;font-size:13.5px;font-weight:500">${m.nombre}</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+        ${m.dedicacion === 'anual' ? etiqueta('anual', T.naranja) : ''}
+        ${seDicta.has(m.codigo) ? etiqueta('se dicta ahora', T.brand) : ''}
+        ${m.correlativas.length ? etiqueta(m.correlativas.length + ' correlativas', T.texto3) : etiqueta('sin correlativas', T.verde)}
+      </div>
+    </div>`,
+      )
+      .join('')}
+  </div>
+  ${nav('carreras')}
+</div>`,
+);
+
+// 11. Tutorial abierto sobre el inicio
+artboard(
+  'Tutorial.dc.html',
+  `<div class="tel">
+  <div style="position:absolute;inset:0;opacity:.35">${inicio(T)}</div>
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,.55)"></div>
+  <section style="position:absolute;left:0;right:0;bottom:0;background:${T.surface};border-top:1px solid ${T.border};border-radius:18px 18px 0 0;padding:12px 16px 18px;box-shadow:0 -12px 28px rgba(0,0,0,.45);text-align:center">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:${T.texto3}">El mapa</span>
+      <span style="font-size:11.5px;color:${T.texto2}">Saltar</span>
+    </div>
+    <div style="margin:8px auto 0;width:54px;height:54px;border-radius:15px;background:${T.surface2};display:grid;place-items:center;color:${FEI.amarillo}">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h5v4H6zM13 14h5v4h-5zM11 8h2v8h-2z"/></svg>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:19px;font-weight:700;letter-spacing:-.02em">El mapa de correlatividades</h2>
+    <p style="margin:7px 0 0;font-size:13.5px;color:${T.texto2};line-height:1.5">Cada tarjeta es una materia y cada línea va de lo que aprobás a lo que se te abre. Las columnas son los años.</p>
+    <div style="display:flex;justify-content:center;gap:6px;margin:16px 0 12px">
+      ${Array.from({ length: 8 }, (_, i) => `<span style="width:${i === 5 ? 18 : 6}px;height:6px;border-radius:${i === 5 ? '3px' : '50%'};background:${i === 5 ? T.brand : T.border}"></span>`).join('')}
+    </div>
+    <div style="display:flex;gap:8px">
+      <span style="flex:1;min-height:48px;display:grid;place-items:center;border-radius:12px;border:1px solid ${T.border};background:${T.surface2};font-size:13.5px;font-weight:600">Atrás</span>
+      <span style="flex:1;min-height:48px;display:grid;place-items:center;border-radius:12px;border:1px solid ${T.brand};background:${T.brand};color:${T.onBrand};font-size:13.5px;font-weight:600">Siguiente</span>
+    </div>
+    <p style="margin:8px 0 0;font-size:10.5px;color:${T.texto3}">6 de 8</p>
+  </section>
+</div>`,
+);
+
 // ---------------------------------------------------------------- canvas
 const F = { w: 390, h: 844 };
 const col = (i) => 40 + i * (F.w + 90);
@@ -574,22 +690,17 @@ const filaY = (i) => 60 + i * (F.h + 170);
 const canvas = {
   artboards: [
     { file: 'Inicio.dc.html', x: col(0), y: filaY(0), w: F.w, h: F.h },
-    { file: 'Carreras.dc.html', x: col(1), y: filaY(0), w: F.w, h: F.h },
-    { file: 'Carrera.dc.html', x: col(2), y: filaY(0), w: F.w, h: F.h },
-    { file: 'Main.dc.html', x: col(3), y: filaY(0), w: F.w, h: F.h, title: 'Grafo · vista completa' },
-    {
-      file: 'GrafoMateria.dc.html',
-      x: col(4),
-      y: filaY(0),
-      w: F.w,
-      h: F.h,
-      title: 'Grafo · materia tocada',
-    },
-    { file: 'GrafoBuscar.dc.html', x: col(5), y: filaY(0), w: F.w, h: F.h, title: 'Grafo · buscador' },
-    { file: 'Horarios.dc.html', x: col(0), y: filaY(1), w: F.w, h: F.h },
-    { file: 'Mapa.dc.html', x: col(1), y: filaY(1), w: F.w, h: F.h, title: 'Campus' },
-    { file: 'Calendario.dc.html', x: col(2), y: filaY(1), w: F.w, h: F.h, title: 'Fechas' },
-    { file: 'InicioClaro.dc.html', x: col(3), y: filaY(1), w: F.w, h: F.h, title: 'Inicio · tema claro' },
+    { file: 'Tutorial.dc.html', x: col(1), y: filaY(0), w: F.w, h: F.h, title: 'Tutorial' },
+    { file: 'Carreras.dc.html', x: col(2), y: filaY(0), w: F.w, h: F.h },
+    { file: 'Carrera.dc.html', x: col(3), y: filaY(0), w: F.w, h: F.h },
+    { file: 'Main.dc.html', x: col(0), y: filaY(1), w: F.w, h: F.h, title: 'Grafo · tarjetas' },
+    { file: 'GrafoMateria.dc.html', x: col(1), y: filaY(1), w: F.w, h: F.h, title: 'Grafo · materia tocada' },
+    { file: 'GrafoBuscar.dc.html', x: col(2), y: filaY(1), w: F.w, h: F.h, title: 'Grafo · buscador' },
+    { file: 'Lista.dc.html', x: col(3), y: filaY(1), w: F.w, h: F.h, title: 'Grafo · vista lista' },
+    { file: 'Horarios.dc.html', x: col(0), y: filaY(2), w: F.w, h: F.h },
+    { file: 'Mapa.dc.html', x: col(1), y: filaY(2), w: F.w, h: F.h, title: 'Campus' },
+    { file: 'Calendario.dc.html', x: col(2), y: filaY(2), w: F.w, h: F.h, title: 'Fechas' },
+    { file: 'InicioClaro.dc.html', x: col(3), y: filaY(2), w: F.w, h: F.h, title: 'Inicio · tema claro' },
   ],
   annotations: [
     {
@@ -597,28 +708,28 @@ const canvas = {
       x: 40,
       y: -80,
       w: 900,
-      text: 'Guía UNLa · Humanidades y Artes — al día con lo publicado en guiaunla.web.app.\nRecorrido de uso, todo a 390 px: Inicio → Carreras → Detalle → Mapa de correlatividades (tres estados). Abajo: Horarios, Campus, Fechas y el mismo Inicio en tema claro.',
+      text: 'Guía UNLa · Humanidades y Artes, al día con lo publicado en guiaunla.web.app.\nArriba el recorrido de entrada. En el medio las cuatro caras del mapa de correlatividades. Abajo los horarios reales, el campus, las fechas y el tema claro.',
     },
     {
-      id: 'nota-fei',
+      id: 'nota-inicio',
       x: col(0),
       y: filaY(0) + F.h + 30,
       w: 860,
-      text: 'La identidad del FEI aparece en tres lugares y no más: una chispa violeta al lado del título, el banner de las elecciones del CEDHA con el logo y la Lista 7, y la firma con las tres chispas al pie de cada pantalla de la barra. Los bloques del FEI van siempre sobre oscuro, también en tema claro, porque el logo es blanco.',
+      text: 'El inicio ya no lista fechas: los cuatro accesos de "Tu carrera" ocupan ese lugar y se leen de un vistazo. Abajo, la bienvenida con el botón de Tutorial, que son ocho pasos: cinco explican los menúes y tres el mapa.',
     },
     {
       id: 'nota-grafo',
-      x: col(3),
-      y: filaY(0) + F.h + 30,
-      w: 860,
-      text: 'El grafo es de verdad: 58 materias y 71 correlativas de Audiovisión, con las columnas ordenadas para que se crucen menos líneas. Al tocar una materia el mapa se acerca a ella, su camino queda al frente y la hoja de abajo lista qué necesita y qué habilita.',
-    },
-    {
-      id: 'nota-barra',
       x: col(0),
       y: filaY(1) + F.h + 30,
       w: 860,
-      text: 'La barra de abajo es fija y se ve siempre. Las pantallas con hoja inferior tienen alto acotado para que ningún botón quede tapado. El plano del campus toma su proporción real y debajo va la lista de los 32 edificios: en un teléfono vertical un plano apaisado solo no alcanza.',
+      text: 'El mapa pasó de fichas con el código a tarjetas con el nombre completo. Arranca cerca, donde se lee, y el detalle sube o baja con el zoom. Al tocar una materia su camino queda al frente con punta de flecha. La franja de años se apaga para mostrar dónde estás parado, y quien prefiera texto tiene la vista Lista, con las materias por año y cuatrimestre.',
+    },
+    {
+      id: 'nota-horarios',
+      x: col(0),
+      y: filaY(2) + F.h + 30,
+      w: 860,
+      text: 'Horarios ya tiene datos: 188 clases de la grilla del Departamento, por día y turno, con cada aula enlazada a su edificio en el mapa. Lo que no figura en el plan publicado se marca como optativa o seminario en vez de esconderse.',
     },
   ],
   launch: { view: 'canvas' },

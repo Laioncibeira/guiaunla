@@ -8,54 +8,70 @@
       "h": 844
     },
     {
-      "file": "Carreras.dc.html",
+      "file": "Tutorial.dc.html",
       "x": 520,
       "y": 60,
       "w": 390,
-      "h": 844
+      "h": 844,
+      "title": "Tutorial"
     },
     {
-      "file": "Carrera.dc.html",
+      "file": "Carreras.dc.html",
       "x": 1000,
       "y": 60,
       "w": 390,
       "h": 844
     },
     {
-      "file": "Main.dc.html",
+      "file": "Carrera.dc.html",
       "x": 1480,
       "y": 60,
       "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Main.dc.html",
+      "x": 40,
+      "y": 1074,
+      "w": 390,
       "h": 844,
-      "title": "Grafo · vista completa"
+      "title": "Grafo · tarjetas"
     },
     {
       "file": "GrafoMateria.dc.html",
-      "x": 1960,
-      "y": 60,
+      "x": 520,
+      "y": 1074,
       "w": 390,
       "h": 844,
       "title": "Grafo · materia tocada"
     },
     {
       "file": "GrafoBuscar.dc.html",
-      "x": 2440,
-      "y": 60,
+      "x": 1000,
+      "y": 1074,
       "w": 390,
       "h": 844,
       "title": "Grafo · buscador"
     },
     {
+      "file": "Lista.dc.html",
+      "x": 1480,
+      "y": 1074,
+      "w": 390,
+      "h": 844,
+      "title": "Grafo · vista lista"
+    },
+    {
       "file": "Horarios.dc.html",
       "x": 40,
-      "y": 1074,
+      "y": 2088,
       "w": 390,
       "h": 844
     },
     {
       "file": "Mapa.dc.html",
       "x": 520,
-      "y": 1074,
+      "y": 2088,
       "w": 390,
       "h": 844,
       "title": "Campus"
@@ -63,7 +79,7 @@
     {
       "file": "Calendario.dc.html",
       "x": 1000,
-      "y": 1074,
+      "y": 2088,
       "w": 390,
       "h": 844,
       "title": "Fechas"
@@ -71,7 +87,7 @@
     {
       "file": "InicioClaro.dc.html",
       "x": 1480,
-      "y": 1074,
+      "y": 2088,
       "w": 390,
       "h": 844,
       "title": "Inicio · tema claro"
@@ -83,28 +99,28 @@
       "x": 40,
       "y": -80,
       "w": 900,
-      "text": "Guía UNLa · Humanidades y Artes — al día con lo publicado en guiaunla.web.app.\nRecorrido de uso, todo a 390 px: Inicio → Carreras → Detalle → Mapa de correlatividades (tres estados). Abajo: Horarios, Campus, Fechas y el mismo Inicio en tema claro."
+      "text": "Guía UNLa · Humanidades y Artes, al día con lo publicado en guiaunla.web.app.\nArriba el recorrido de entrada. En el medio las cuatro caras del mapa de correlatividades. Abajo los horarios reales, el campus, las fechas y el tema claro."
     },
     {
-      "id": "nota-fei",
+      "id": "nota-inicio",
       "x": 40,
       "y": 934,
       "w": 860,
-      "text": "La identidad del FEI aparece en tres lugares y no más: una chispa violeta al lado del título, el banner de las elecciones del CEDHA con el logo y la Lista 7, y la firma con las tres chispas al pie de cada pantalla de la barra. Los bloques del FEI van siempre sobre oscuro, también en tema claro, porque el logo es blanco."
+      "text": "El inicio ya no lista fechas: los cuatro accesos de \"Tu carrera\" ocupan ese lugar y se leen de un vistazo. Abajo, la bienvenida con el botón de Tutorial, que son ocho pasos: cinco explican los menúes y tres el mapa."
     },
     {
       "id": "nota-grafo",
-      "x": 1480,
-      "y": 934,
-      "w": 860,
-      "text": "El grafo es de verdad: 58 materias y 71 correlativas de Audiovisión, con las columnas ordenadas para que se crucen menos líneas. Al tocar una materia el mapa se acerca a ella, su camino queda al frente y la hoja de abajo lista qué necesita y qué habilita."
-    },
-    {
-      "id": "nota-barra",
       "x": 40,
       "y": 1948,
       "w": 860,
-      "text": "La barra de abajo es fija y se ve siempre. Las pantallas con hoja inferior tienen alto acotado para que ningún botón quede tapado. El plano del campus toma su proporción real y debajo va la lista de los 32 edificios: en un teléfono vertical un plano apaisado solo no alcanza."
+      "text": "El mapa pasó de fichas con el código a tarjetas con el nombre completo. Arranca cerca, donde se lee, y el detalle sube o baja con el zoom. Al tocar una materia su camino queda al frente con punta de flecha. La franja de años se apaga para mostrar dónde estás parado, y quien prefiera texto tiene la vista Lista, con las materias por año y cuatrimestre."
+    },
+    {
+      "id": "nota-horarios",
+      "x": 40,
+      "y": 2962,
+      "w": 860,
+      "text": "Horarios ya tiene datos: 188 clases de la grilla del Departamento, por día y turno, con cada aula enlazada a su edificio en el mapa. Lo que no figura en el plan publicado se marca como optativa o seminario en vez de esconderse."
     }
   ],
   "launch": {
