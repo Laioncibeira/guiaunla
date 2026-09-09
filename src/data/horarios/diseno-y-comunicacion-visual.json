@@ -4,7 +4,7 @@
   "periodoNombre": "2° cuatrimestre 2026",
   "fuente": "Grilla de aulas del Departamento de Humanidades y Artes",
   "fuenteFecha": "2026-09-09",
-  "nota": "Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido.",
+  "nota": "Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido. La carrera cambió de plan. La web de la universidad ya publica el vigente, pero la grilla del Departamento todavía nombra materias del plan anterior, a veces con los dos nombres separados por barra. Lo que no coincide con el plan vigente queda marcado.",
   "clases": [
     {
       "dia": "lunes",
@@ -354,7 +354,8 @@
       "ubicaciones": [
         {
           "textoOriginal": "MUD",
-          "aula": "MUD"
+          "aula": "MUD",
+          "externo": "mud"
         }
       ]
     },

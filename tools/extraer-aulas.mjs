@@ -14,9 +14,25 @@ import fs from 'node:fs';
 
 /** Cada página del PDF es una carrera. */
 const PAGINAS = [
-  { desde: 1, hasta: 43, slug: 'audiovision', edificioPorDefecto: 'jose-hernandez' },
-  { desde: 44, hasta: 88, slug: 'diseno-y-comunicacion-visual' },
-  { desde: 89, hasta: 200, slug: 'traductorado-publico-en-idioma-ingles' },
+  {
+    desde: 1,
+    hasta: 43,
+    slug: 'audiovision',
+    edificioPorDefecto: 'jose-hernandez',
+    nota: 'Lo que no coincide con el plan vigente son optativas y seminarios que se dictan este cuatrimestre.',
+  },
+  {
+    desde: 44,
+    hasta: 88,
+    slug: 'diseno-y-comunicacion-visual',
+    nota: 'La carrera cambió de plan. La web de la universidad ya publica el vigente, pero la grilla del Departamento todavía nombra materias del plan anterior, a veces con los dos nombres separados por barra. Lo que no coincide con el plan vigente queda marcado.',
+  },
+  {
+    desde: 89,
+    hasta: 200,
+    slug: 'traductorado-publico-en-idioma-ingles',
+    nota: 'Lo que no coincide con el plan vigente son seminarios y cursos que se dictan este cuatrimestre.',
+  },
 ];
 
 const DIAS = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
@@ -39,6 +55,9 @@ const EDIFICIOS = {
   estudio: 'estudio-discepolo',
   humanidades: 'jose-hernandez',
 };
+
+/** Lugares de cursada que no están en el predio. */
+const EXTERNOS = { mud: 'mud' };
 
 /** Abreviaturas de la grilla que no se parecen al nombre del plan. */
 const ALIAS = {
@@ -147,6 +166,8 @@ function ubicar(lugar, porDefecto) {
     .map((p) => {
       if (/^virtual/i.test(p)) return { virtual: true };
       const plano = sinAcentos(p);
+      const externo = Object.keys(EXTERNOS).find((k) => plano === k || plano.startsWith(k + ' '));
+      if (externo) return { textoOriginal: p, aula: p, externo: EXTERNOS[externo] };
       const clave = Object.keys(EDIFICIOS).find((k) => plano.includes(k));
       const num = p.match(/\d+/)?.[0];
       const espacio = /\baudio\b|audiovisi/i.test(plano);
@@ -276,7 +297,9 @@ for (const pagina of PAGINAS) {
       periodoNombre: '2° cuatrimestre 2026',
       fuente: 'Grilla de aulas del Departamento de Humanidades y Artes',
       fuenteFecha: '2026-09-09',
-      nota: 'Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido.',
+      nota:
+        'Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido. ' +
+        pagina.nota,
       clases,
     };
     fs.writeFileSync(`src/data/horarios/${pagina.slug}.json`, JSON.stringify(salida, null, 2) + '\n');

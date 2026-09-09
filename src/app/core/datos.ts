@@ -102,6 +102,8 @@ export const CAMPUS = campusJson as unknown as {
   viewBox: string;
   calles: readonly { nombre: string; lado: string }[];
   accesos: readonly { id: string; nombre: string; detalle: string; x: number; y: number; principal?: boolean }[];
+  /** Lugares de cursada que no están en el predio, como el MUD. */
+  externos: readonly { id: string; nombre: string; sigla: string; detalle: string }[];
   edificios: readonly Edificio[];
 };
 
@@ -115,6 +117,8 @@ export interface Ubicacion {
   readonly textoOriginal: string;
   readonly aula?: string;
   readonly edificio?: string;
+  /** Lugar de cursada que no está en el predio, como el MUD. */
+  readonly externo?: string;
   readonly espacioAudiovision?: boolean;
   readonly virtual?: boolean;
 }
@@ -125,7 +129,11 @@ export interface Clase {
   /** Nombre tal como figura en la grilla, a veces recortado. */
   readonly materiaTexto: string;
   readonly materiaCodigo?: string;
-  /** Optativa, seminario o curso que no está en el plan publicado. */
+  /**
+   * No coincide con ninguna materia del plan vigente: puede ser una optativa,
+   * un seminario, o un nombre del plan anterior, porque la grilla del
+   * Departamento todavía usa los dos.
+   */
   readonly fueraDePlan?: boolean;
   readonly ubicaciones: readonly Ubicacion[];
 }

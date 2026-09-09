@@ -6,50 +6,384 @@
   "nota": "Esquema propio, orientativo y sin escala, dibujado a partir del plano de orientación oficial. El norte es el lado de las vías del ferrocarril Roca.",
   "viewBox": "0 0 1440 760",
   "calles": [
-    { "nombre": "Vías del Ferrocarril Roca", "lado": "norte" },
-    { "nombre": "Pablo Nogués", "lado": "norte" },
-    { "nombre": "Presbítero Malabia", "lado": "oeste" },
-    { "nombre": "Oscar Bidegain", "lado": "este" },
-    { "nombre": "Av. 29 de Septiembre", "lado": "sur" }
+    {
+      "nombre": "Vías del Ferrocarril Roca",
+      "lado": "norte"
+    },
+    {
+      "nombre": "Pablo Nogués",
+      "lado": "norte"
+    },
+    {
+      "nombre": "Presbítero Malabia",
+      "lado": "oeste"
+    },
+    {
+      "nombre": "Oscar Bidegain",
+      "lado": "este"
+    },
+    {
+      "nombre": "Av. 29 de Septiembre",
+      "lado": "sur"
+    }
   ],
   "accesos": [
-    { "id": "acc-norte", "nombre": "Acceso peatonal norte", "detalle": "Por Pablo Nogués", "x": 485, "y": 38 },
-    { "id": "acc-noreste", "nombre": "Acceso peatonal noreste", "detalle": "Por Pablo Nogués, lado Remedios de Escalada", "x": 997, "y": 38 },
-    { "id": "acc-oeste", "nombre": "Acceso peatonal oeste", "detalle": "Por Presbítero Malabia", "x": 79, "y": 445 },
-    { "id": "acc-sur", "nombre": "Acceso peatonal sur", "detalle": "Por Av. 29 de Septiembre, el más usado", "x": 486, "y": 744, "principal": true }
+    {
+      "id": "acc-norte",
+      "nombre": "Acceso peatonal norte",
+      "detalle": "Por Pablo Nogués",
+      "x": 485,
+      "y": 38
+    },
+    {
+      "id": "acc-noreste",
+      "nombre": "Acceso peatonal noreste",
+      "detalle": "Por Pablo Nogués, lado Remedios de Escalada",
+      "x": 997,
+      "y": 38
+    },
+    {
+      "id": "acc-oeste",
+      "nombre": "Acceso peatonal oeste",
+      "detalle": "Por Presbítero Malabia",
+      "x": 79,
+      "y": 445
+    },
+    {
+      "id": "acc-sur",
+      "nombre": "Acceso peatonal sur",
+      "detalle": "Por Av. 29 de Septiembre, el más usado",
+      "x": 486,
+      "y": 744,
+      "principal": true
+    }
+  ],
+  "externos": [
+    {
+      "id": "mud",
+      "nombre": "Museo Universitario del Diseño",
+      "sigla": "MUD",
+      "detalle": "Queda fuera del predio de la UNLa, junto con los talleres."
+    }
   ],
   "edificios": [
-    { "num": 1, "id": "jose-hernandez", "nombre": "Edificio José Hernández", "x": 600, "y": 53, "w": 400, "h": 50, "aulas": true, "nota": "Es el edificio más grande del campus. Acá funcionan los departamentos, incluido Humanidades y Artes.", "departamentos": ["humanidades-y-artes"], "comoLlegar": "Desde el acceso de 29 de Septiembre, cruzá el campus en línea recta hacia las vías. Es el bloque largo del fondo." },
-    { "num": 24, "id": "aula-magna-ana-jaramillo", "nombre": "Aula Magna Ana Jaramillo", "x": 600, "y": 105, "w": 400, "h": 42, "nota": "Pegada al José Hernández, sobre el lado del campus.", "comoLlegar": "Está en la planta baja del bloque del José Hernández, mirando hacia el campus." },
-    { "num": 8, "id": "hernandez-arregui", "nombre": "Edificio Hernández Arregui", "x": 1045, "y": 53, "w": 45, "h": 29, "aulas": true },
-    { "num": 30, "id": "gimnasio-gatica", "nombre": "Gimnasio Universitario Gatica", "x": 1100, "y": 53, "w": 62, "h": 29 },
-    { "num": 32, "id": "quincho-fontanarrosa", "nombre": "Quincho Roberto Fontanarrosa", "x": 1172, "y": 53, "w": 53, "h": 29 },
-    { "num": 26, "id": "escuela-judicial-dorrego", "nombre": "Escuela Judicial Manuel Dorrego", "x": 1285, "y": 137, "w": 100, "h": 31 },
-    { "num": 23, "id": "comedor-padre-mujica", "nombre": "Comedor Universitario Padre Mujica", "x": 663, "y": 177, "w": 107, "h": 28, "comoLlegar": "Al lado del edificio José Hernández, sobre el eje central del campus." },
-    { "num": 28, "id": "estudio-discepolo", "nombre": "Estudio de Grabación Enrique Discépolo", "x": 788, "y": 177, "w": 107, "h": 28 },
-    { "num": 13, "id": "lola-mora", "nombre": "Edificio Lola Mora", "x": 948, "y": 177, "w": 50, "h": 28, "aulas": true },
-    { "num": 10, "id": "juana-azurduy", "nombre": "Edificio Juana Azurduy", "x": 510, "y": 215, "w": 65, "h": 28, "aulas": true },
-    { "num": 4, "id": "leopoldo-marechal", "nombre": "Edificio Leopoldo Marechal", "x": 285, "y": 220, "w": 165, "h": 45, "aulas": true, "comoLlegar": "Entrando por Presbítero Malabia, es el bloque largo de la izquierda, hacia el fondo." },
-    { "num": 17, "id": "rodolfo-ortega-pena", "nombre": "Edificio Rodolfo Ortega Peña", "x": 325, "y": 280, "w": 85, "h": 28, "aulas": true },
-    { "num": 9, "id": "homero-manzi", "nombre": "Edificio Homero Manzi", "x": 310, "y": 330, "w": 95, "h": 35, "nota": "Acá funciona el Campus Virtual." },
-    { "num": 3, "id": "juana-manso", "nombre": "Edificio Juana Manso", "x": 615, "y": 300, "w": 155, "h": 35, "aulas": true },
-    { "num": 16, "id": "paco-urondo", "nombre": "Edificio Paco Urondo", "x": 783, "y": 245, "w": 39, "h": 28, "aulas": true },
-    { "num": 21, "id": "vestidores-deportes", "nombre": "Vestidores del Campo de Deportes", "x": 933, "y": 245, "w": 57, "h": 28 },
-    { "num": 25, "id": "escuela-gobierno-nestor-kirchner", "nombre": "Escuela de Gobierno Néstor Kirchner", "x": 815, "y": 305, "w": 55, "h": 45 },
-    { "num": 20, "id": "campo-deportes-delfo-cabrera", "nombre": "Campo de Deportes Delfo Cabrera", "x": 908, "y": 285, "w": 100, "h": 140, "verde": true },
-    { "num": 5, "id": "manuel-ugarte", "nombre": "Edificio Manuel Ugarte", "x": 253, "y": 395, "w": 152, "h": 40, "aulas": true },
-    { "num": 18, "id": "irma-laciar-de-carrica", "nombre": "Edificio Irma Laciar de Carrica", "x": 933, "y": 445, "w": 52, "h": 40, "aulas": true },
-    { "num": 2, "id": "arturo-jauretche", "nombre": "Edificio Arturo Jauretche", "x": 250, "y": 468, "w": 155, "h": 40, "aulas": true },
-    { "num": 29, "id": "radio-unla", "nombre": "Radio UNLa", "x": 503, "y": 498, "w": 70, "h": 27 },
-    { "num": 15, "id": "maria-remedios-del-valle", "nombre": "Edificio María Remedios del Valle", "x": 813, "y": 528, "w": 72, "h": 50, "aulas": true },
-    { "num": 11, "id": "leonardo-werthein", "nombre": "Edificio Leonardo Werthein", "x": 930, "y": 528, "w": 58, "h": 50, "aulas": true },
-    { "num": 6, "id": "raul-scalabrini-ortiz", "nombre": "Edificio Raúl Scalabrini Ortiz", "x": 130, "y": 553, "w": 180, "h": 52, "nota": "Antiguo galpón ferroviario. Acá está la Biblioteca.", "comoLlegar": "Es el galpón largo del lado de Presbítero Malabia, cerca del acceso sur." },
-    { "num": 14, "id": "macedonio-fernandez", "nombre": "Edificio Macedonio Fernández", "x": 135, "y": 625, "w": 165, "h": 30, "aulas": true },
-    { "num": 22, "id": "casa-del-estudiante-claudia-falcone", "nombre": "Casa del Estudiante Claudia Falcone", "x": 470, "y": 595, "w": 40, "h": 33 },
-    { "num": 12, "id": "lisandro-de-la-torre", "nombre": "Edificio Lisandro de la Torre", "x": 385, "y": 625, "w": 63, "h": 30, "aulas": true },
-    { "num": 7, "id": "hector-oesterheld", "nombre": "Edificio Héctor Oesterheld", "x": 700, "y": 665, "w": 55, "h": 30, "aulas": true },
-    { "num": 31, "id": "jardin-azucena-villaflor", "nombre": "Jardín Maternal Azucena Villaflor", "x": 768, "y": 650, "w": 50, "h": 35 },
-    { "num": 27, "id": "laboratorio-varsavsky", "nombre": "Laboratorio Oscar Varsavsky", "x": 930, "y": 635, "w": 58, "h": 50 },
-    { "num": 19, "id": "cine-tita-merello", "nombre": "Cine Universitario Tita Merello", "x": 600, "y": 682, "w": 58, "h": 33, "comoLlegar": "Apenas entrás por el acceso de 29 de Septiembre, a mano izquierda." }
+    {
+      "num": 1,
+      "id": "jose-hernandez",
+      "nombre": "Edificio José Hernández",
+      "x": 600,
+      "y": 53,
+      "w": 400,
+      "h": 50,
+      "aulas": true,
+      "nota": "Es el edificio más grande del campus. Acá funcionan los departamentos, incluido Humanidades y Artes.",
+      "departamentos": [
+        "humanidades-y-artes"
+      ],
+      "comoLlegar": "Desde el acceso de 29 de Septiembre, cruzá el campus en línea recta hacia las vías. Es el bloque largo del fondo."
+    },
+    {
+      "num": 24,
+      "id": "aula-magna-ana-jaramillo",
+      "nombre": "Aula Magna Ana Jaramillo",
+      "x": 600,
+      "y": 105,
+      "w": 400,
+      "h": 42,
+      "nota": "Pegada al José Hernández, sobre el lado del campus.",
+      "comoLlegar": "Está en la planta baja del bloque del José Hernández, mirando hacia el campus."
+    },
+    {
+      "num": 8,
+      "id": "hernandez-arregui",
+      "nombre": "Edificio Hernández Arregui",
+      "x": 1045,
+      "y": 53,
+      "w": 45,
+      "h": 29,
+      "aulas": true
+    },
+    {
+      "num": 30,
+      "id": "gimnasio-gatica",
+      "nombre": "Gimnasio Universitario Gatica",
+      "x": 1100,
+      "y": 53,
+      "w": 62,
+      "h": 29
+    },
+    {
+      "num": 32,
+      "id": "quincho-fontanarrosa",
+      "nombre": "Quincho Roberto Fontanarrosa",
+      "x": 1172,
+      "y": 53,
+      "w": 53,
+      "h": 29
+    },
+    {
+      "num": 26,
+      "id": "escuela-judicial-dorrego",
+      "nombre": "Escuela Judicial Manuel Dorrego",
+      "x": 1285,
+      "y": 137,
+      "w": 100,
+      "h": 31
+    },
+    {
+      "num": 23,
+      "id": "comedor-padre-mujica",
+      "nombre": "Comedor Universitario Padre Mujica",
+      "x": 663,
+      "y": 177,
+      "w": 107,
+      "h": 28,
+      "comoLlegar": "Al lado del edificio José Hernández, sobre el eje central del campus."
+    },
+    {
+      "num": 28,
+      "id": "estudio-discepolo",
+      "nombre": "Estudio de Grabación Enrique Discépolo",
+      "x": 788,
+      "y": 177,
+      "w": 107,
+      "h": 28
+    },
+    {
+      "num": 13,
+      "id": "lola-mora",
+      "nombre": "Edificio Lola Mora",
+      "x": 948,
+      "y": 177,
+      "w": 50,
+      "h": 28,
+      "aulas": true
+    },
+    {
+      "num": 10,
+      "id": "juana-azurduy",
+      "nombre": "Edificio Juana Azurduy",
+      "x": 510,
+      "y": 215,
+      "w": 65,
+      "h": 28,
+      "aulas": true
+    },
+    {
+      "num": 4,
+      "id": "leopoldo-marechal",
+      "nombre": "Edificio Leopoldo Marechal",
+      "x": 285,
+      "y": 220,
+      "w": 165,
+      "h": 45,
+      "aulas": true,
+      "comoLlegar": "Entrando por Presbítero Malabia, es el bloque largo de la izquierda, hacia el fondo."
+    },
+    {
+      "num": 17,
+      "id": "rodolfo-ortega-pena",
+      "nombre": "Edificio Rodolfo Ortega Peña",
+      "x": 325,
+      "y": 280,
+      "w": 85,
+      "h": 28,
+      "aulas": true
+    },
+    {
+      "num": 9,
+      "id": "homero-manzi",
+      "nombre": "Edificio Homero Manzi",
+      "x": 310,
+      "y": 330,
+      "w": 95,
+      "h": 35,
+      "nota": "Acá funciona el Campus Virtual."
+    },
+    {
+      "num": 3,
+      "id": "juana-manso",
+      "nombre": "Edificio Juana Manso",
+      "x": 615,
+      "y": 300,
+      "w": 155,
+      "h": 35,
+      "aulas": true
+    },
+    {
+      "num": 16,
+      "id": "paco-urondo",
+      "nombre": "Edificio Paco Urondo",
+      "x": 783,
+      "y": 245,
+      "w": 39,
+      "h": 28,
+      "aulas": true
+    },
+    {
+      "num": 21,
+      "id": "vestidores-deportes",
+      "nombre": "Vestidores del Campo de Deportes",
+      "x": 933,
+      "y": 245,
+      "w": 57,
+      "h": 28
+    },
+    {
+      "num": 25,
+      "id": "escuela-gobierno-nestor-kirchner",
+      "nombre": "Escuela de Gobierno Néstor Kirchner",
+      "x": 815,
+      "y": 305,
+      "w": 55,
+      "h": 45
+    },
+    {
+      "num": 20,
+      "id": "campo-deportes-delfo-cabrera",
+      "nombre": "Campo de Deportes Delfo Cabrera",
+      "x": 908,
+      "y": 285,
+      "w": 100,
+      "h": 140,
+      "verde": true
+    },
+    {
+      "num": 5,
+      "id": "manuel-ugarte",
+      "nombre": "Edificio Manuel Ugarte",
+      "x": 253,
+      "y": 395,
+      "w": 152,
+      "h": 40,
+      "aulas": true
+    },
+    {
+      "num": 18,
+      "id": "irma-laciar-de-carrica",
+      "nombre": "Edificio Irma Laciar de Carrica",
+      "x": 933,
+      "y": 445,
+      "w": 52,
+      "h": 40,
+      "aulas": true
+    },
+    {
+      "num": 2,
+      "id": "arturo-jauretche",
+      "nombre": "Edificio Arturo Jauretche",
+      "x": 250,
+      "y": 468,
+      "w": 155,
+      "h": 40,
+      "aulas": true
+    },
+    {
+      "num": 29,
+      "id": "radio-unla",
+      "nombre": "Radio UNLa",
+      "x": 503,
+      "y": 498,
+      "w": 70,
+      "h": 27
+    },
+    {
+      "num": 15,
+      "id": "maria-remedios-del-valle",
+      "nombre": "Edificio María Remedios del Valle",
+      "x": 813,
+      "y": 528,
+      "w": 72,
+      "h": 50,
+      "aulas": true
+    },
+    {
+      "num": 11,
+      "id": "leonardo-werthein",
+      "nombre": "Edificio Leonardo Werthein",
+      "x": 930,
+      "y": 528,
+      "w": 58,
+      "h": 50,
+      "aulas": true
+    },
+    {
+      "num": 6,
+      "id": "raul-scalabrini-ortiz",
+      "nombre": "Edificio Raúl Scalabrini Ortiz",
+      "x": 130,
+      "y": 553,
+      "w": 180,
+      "h": 52,
+      "nota": "Antiguo galpón ferroviario. Acá está la Biblioteca.",
+      "comoLlegar": "Es el galpón largo del lado de Presbítero Malabia, cerca del acceso sur."
+    },
+    {
+      "num": 14,
+      "id": "macedonio-fernandez",
+      "nombre": "Edificio Macedonio Fernández",
+      "x": 135,
+      "y": 625,
+      "w": 165,
+      "h": 30,
+      "aulas": true
+    },
+    {
+      "num": 22,
+      "id": "casa-del-estudiante-claudia-falcone",
+      "nombre": "Casa del Estudiante Claudia Falcone",
+      "x": 470,
+      "y": 595,
+      "w": 40,
+      "h": 33
+    },
+    {
+      "num": 12,
+      "id": "lisandro-de-la-torre",
+      "nombre": "Edificio Lisandro de la Torre",
+      "x": 385,
+      "y": 625,
+      "w": 63,
+      "h": 30,
+      "aulas": true
+    },
+    {
+      "num": 7,
+      "id": "hector-oesterheld",
+      "nombre": "Edificio Héctor Oesterheld",
+      "x": 700,
+      "y": 665,
+      "w": 55,
+      "h": 30,
+      "aulas": true
+    },
+    {
+      "num": 31,
+      "id": "jardin-azucena-villaflor",
+      "nombre": "Jardín Maternal Azucena Villaflor",
+      "x": 768,
+      "y": 650,
+      "w": 50,
+      "h": 35
+    },
+    {
+      "num": 27,
+      "id": "laboratorio-varsavsky",
+      "nombre": "Laboratorio Oscar Varsavsky",
+      "x": 930,
+      "y": 635,
+      "w": 58,
+      "h": 50
+    },
+    {
+      "num": 19,
+      "id": "cine-tita-merello",
+      "nombre": "Cine Universitario Tita Merello",
+      "x": 600,
+      "y": 682,
+      "w": 58,
+      "h": 33,
+      "comoLlegar": "Apenas entrás por el acceso de 29 de Septiembre, a mano izquierda."
+    }
   ]
 }

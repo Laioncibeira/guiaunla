@@ -66,13 +66,17 @@ function diaDeHoy(): Dia {
                   <div class="nombre">
                     {{ nombreDe(c) }}
                     @if (c.fueraDePlan) {
-                      <span class="et">optativa o seminario</span>
+                      <span class="et">fuera del plan vigente</span>
                     }
                   </div>
                   <div class="lugares">
                     @for (u of c.ubicaciones; track $index) {
                       @if (u.virtual) {
                         <span class="lugar virtual">Virtual</span>
+                      } @else if (externoDe(u); as ex) {
+                        <span class="lugar externo" [title]="ex.detalle">
+                          {{ ex.sigla }} · fuera del predio
+                        </span>
                       } @else if (u.edificio) {
                         <a class="lugar" routerLink="/campus" [queryParams]="{ edificio: u.edificio }">
                           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3zM9 3v15M15 5.5v15"/></svg>
@@ -133,6 +137,7 @@ function diaDeHoy(): Dia {
       border: 1px solid var(--borde); border-radius: 9px; font-size: var(--t-s); color: var(--texto-2);
     }
     a.lugar { color: var(--marca); border-color: color-mix(in oklab, var(--marca) 45%, var(--borde)); }
+    .externo { color: var(--naranja); border-color: color-mix(in oklab, var(--naranja) 45%, var(--borde)); }
     .virtual { color: var(--verde); border-color: color-mix(in oklab, var(--verde) 45%, var(--borde)); }
     .vacio { font-size: var(--t-m); color: var(--texto-2); }
     .fuente { font-size: var(--t-xs); color: var(--texto-3); line-height: 1.45; margin: 0; }
@@ -174,6 +179,11 @@ export class Horarios {
     const carrera = this.carrera();
     if (!c.materiaCodigo || !carrera) return c.materiaTexto;
     return carrera.materias.find((m) => m.codigo === c.materiaCodigo)?.nombre ?? c.materiaTexto;
+  }
+
+  /** El lugar de cursada cuando queda fuera del predio, como el MUD. */
+  protected externoDe(u: Ubicacion) {
+    return u.externo ? (CAMPUS.externos.find((e) => e.id === u.externo) ?? null) : null;
   }
 
   /**

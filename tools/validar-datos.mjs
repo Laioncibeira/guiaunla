@@ -102,6 +102,7 @@ for (const d of departamentos)
     fallar(`departamentos/${d.slug}: edificio desconocido ${d.edificio}`);
 
 // -------------------------------------------------------------- horarios
+const idsExternos = new Set((campus.externos ?? []).map((e) => e.id));
 const DIAS_OK = new Set(['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']);
 const TURNOS_OK = new Set(['manana', 'tarde', 'noche']);
 let totalClases = 0;
@@ -127,6 +128,10 @@ for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/d
     if (!c.ubicaciones?.length) fallar(`${donde}: ${c.materiaTexto} sin lugar`);
     for (const u of c.ubicaciones) {
       if (u.virtual) continue;
+      if (u.externo) {
+        if (!idsExternos.has(u.externo)) fallar(`${donde}: lugar externo desconocido ${u.externo}`);
+        continue;
+      }
       if (u.edificio && !idsEd.has(u.edificio))
         fallar(`${donde}: edificio desconocido ${u.edificio}`);
       if (!u.edificio) avisar(`${donde}: ${u.aula ?? u.textoOriginal} sin edificio asignado`);

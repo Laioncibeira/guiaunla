@@ -74,6 +74,18 @@ Eso la sirve en la red local. En la terminal aparece una dirección tipo
 4. **Revisá dos o tres materias contra tu propio plan.** El cotejo automático garantiza que no
    perdimos filas, pero no que la universidad tenga la tabla bien publicada.
 
+## Lo que aclaró Leon sobre la grilla de aulas (9 de septiembre)
+
+- **MUD es el Museo Universitario del Diseño**, y queda **fuera del predio**, junto con los
+  talleres. Está cargado como lugar externo en `src/data/campus/edificios.json`: en Horarios sale
+  como "MUD · fuera del predio" y no enlaza al mapa del campus, porque no está ahí.
+- **Diseño y Comunicación Visual cambió de plan.** La web de la universidad ya publica el plan
+  vigente, que es el que tiene la app. La grilla del Departamento todavía nombra materias del plan
+  anterior, a veces con los dos nombres separados por barra ("Taller de diseño II / Diseño II").
+  Por eso las clases que no cierran con el plan se marcan **"fuera del plan vigente"** y no
+  "optativa": en esa carrera suelen ser del plan viejo, y en Audiovisión y Traductorado son
+  optativas y seminarios. Cada JSON de horarios lo explica en su campo `nota`.
+
 ## Cosas que dejé anotadas para más adelante
 
 - El campus virtual es Moodle. Moodle exporta un calendario personal en formato `.ics` con una URL
