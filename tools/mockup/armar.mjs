@@ -255,6 +255,23 @@ const buscador = (c, texto, activo = false) => `
     </div>
   </div>`;
 
+const chipsFiltro = () =>
+  `<div style="display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 8px">${['Puedo cursar', 'Se dicta ahora', 'Aprobadas']
+    .map(
+      (t, i) => `<span style="min-height:36px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;border:1px solid ${i === 0 ? T.brand : T.border};background:${i === 0 ? T.brand : T.surface};color:${i === 0 ? T.onBrand : T.texto2};font-size:11.5px;font-weight:600">${t}</span>`,
+    )
+    .join('')}</div>`;
+
+const simBar = () => `
+  <div style="flex:none;margin:0 16px 8px;padding:10px 12px;border:1px solid ${T.brand};border-radius:12px;background:${T.surface2}">
+    <div style="display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:${T.texto2}">
+      <span><strong style="color:${T.texto}">1</strong> materia prendida</span>
+      <span>Se habilitarían <strong style="color:${T.texto}">1</strong></span>
+      <span>Avance <strong style="color:${T.texto}">0%</strong> → <strong style="color:${T.texto}">2%</strong></span>
+    </div>
+    <p style="margin:6px 0 0;font-size:10.5px;color:${T.texto2}">Se abren: Montaje 2</p>
+  </div>`;
+
 // 1. Grafo, vista cercana con tarjetas
 const cerca = { x: 0, y: layout.nodos.filter((n) => n.nivel === 1).reduce((m, n) => Math.min(m, n.y), 1e9) - 14, w: 340, h: 470 };
 artboard(
@@ -262,6 +279,7 @@ artboard(
   `<div class="tel">
   ${cabGrafo()}
   ${buscador(T, 'Buscar una materia')}
+  ${simBar()}
   ${cabNiveles(T, [1, 2])}
   <div style="flex:1;overflow:hidden;padding:0 16px;position:relative;display:flex">
     <div style="border:1px solid ${T.border};border-radius:14px;background:${T.surface};width:100%;overflow:hidden">
@@ -614,10 +632,43 @@ artboard(
 </div>`,
 );
 
-// 10. Vista Lista: el plan por año y cuatrimestre
+// 10. Vista Lista: el explorador con la rama abierta
 const etiqueta = (texto, color) =>
   `<span style="font-size:10.5px;color:${color};border:1px solid ${color};border-radius:999px;padding:2px 7px">${texto}</span>`;
 const seDicta = new Set(horarios.clases.map((cl) => cl.materiaCodigo).filter(Boolean));
+const porCodigo = new Map(av.materias.map((m) => [m.codigo, m]));
+const elegida = porCodigo.get('16');
+const necesitaDe = elegida.correlativas.map((c) => porCodigo.get(c));
+const destrabaDe = av.materias.filter((m) => m.correlativas.includes('16'));
+
+const mini = (m, sangria = 0) => `
+  <li style="margin:4px 0;margin-left:${sangria}px">
+    <div style="display:flex;align-items:flex-start;gap:6px">
+      <span style="flex:none;width:14px;padding-top:11px;text-align:center;color:${T.texto3};font-size:11px">${(porCodigo.get(m.codigo)?.correlativas.length ?? 0) ? '▾' : '·'}</span>
+      <span style="flex:1;display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 10px;border:1px solid ${T.border};border-radius:9px;background:${T.surface}">
+        <span class="mono" style="flex:none;font-size:10.5px;color:${T.texto3};min-width:24px">${m.codigo}</span>
+        <span style="flex:1;font-size:11.5px;color:${T.texto}">${m.nombre}</span>
+      </span>
+    </div>
+  </li>`;
+
+const filaLista = (m, prendida = false, apagada = false) => `
+  <div style="margin-bottom:7px">
+    <div style="display:flex;align-items:flex-start;gap:6px">
+      <span style="flex:none;width:14px;padding-top:12px;text-align:center;color:${T.texto3};font-size:11px;opacity:${apagada ? 0.4 : 1}">${prendida ? '▾' : (m.correlativas.length ? '▸' : '·')}</span>
+      <div style="flex:1;min-width:0;background:${prendida ? 'color-mix(in oklab, ' + T.brand + ' 10%, ' + T.surface + ')' : apagada ? 'transparent' : T.surface};border:1px solid ${prendida ? T.brand : apagada ? '#2a2730' : T.border};border-radius:12px;padding:11px 12px">
+        <div style="display:flex;gap:9px;align-items:baseline">
+          <span class="mono" style="font-size:10.5px;color:${T.texto3};min-width:26px">${m.codigo}</span>
+          <span style="flex:1;font-size:13.5px;font-weight:${apagada ? 500 : 600};color:${T.texto}">${m.nombre}</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;opacity:${apagada ? 0.5 : 1}">
+          ${m.dedicacion === 'anual' ? etiqueta('anual', T.naranja) : ''}
+          ${seDicta.has(m.codigo) ? etiqueta('se dicta ahora', T.brand) : ''}
+          ${etiqueta('podés cursarla', T.verde)}
+        </div>
+      </div>
+    </div>
+  </div>`;
 
 artboard(
   'Lista.dc.html',
@@ -631,25 +682,37 @@ artboard(
     </div>
   </header>
   ${buscador(T, 'Buscar una materia')}
+  ${chipsFiltro()}
+  ${simBar()}
   <div style="flex:1;overflow:hidden;padding:0 16px">
-    <div style="margin:0 0 8px;padding-top:7px;border-top:2px solid ${COLOR_NIVEL[0]};font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:${T.texto2}">1° año</div>
-    ${av.materias
-      .filter((m) => m.nivel === 1)
-      .slice(0, 5)
-      .map(
-        (m) => `<div style="background:${T.surface};border:1px solid ${T.border};border-radius:12px;padding:11px 12px;margin-bottom:7px">
-      <div style="display:flex;gap:9px;align-items:baseline">
-        <span class="mono" style="font-size:10.5px;color:${T.texto3};min-width:26px">${m.codigo}</span>
-        <span style="flex:1;font-size:13.5px;font-weight:500">${m.nombre}</span>
+    <div style="margin:0 0 8px;padding-top:7px;border-top:2px solid ${COLOR_NIVEL[1]};font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:${T.texto2}">2° año</div>
+    ${filaLista(porCodigo.get('11'), false, true)}
+    <div style="margin-bottom:7px">
+      <div style="display:flex;align-items:flex-start;gap:6px">
+        <span style="flex:none;width:14px;padding-top:12px;text-align:center;color:${T.texto3};font-size:11px">▾</span>
+        <div style="flex:1;min-width:0;background:color-mix(in oklab, ${T.brand} 10%, ${T.surface});border:1px solid ${T.brand};border-radius:12px;padding:11px 12px">
+          <div style="display:flex;gap:9px;align-items:baseline">
+            <span class="mono" style="font-size:10.5px;color:${T.texto3};min-width:26px">16</span>
+            <span style="flex:1;font-size:13.5px;font-weight:600;color:${T.texto}">${elegida.nombre}</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
+            ${etiqueta('se dicta ahora', T.brand)}
+          </div>
+        </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px">
-        ${m.dedicacion === 'anual' ? etiqueta('anual', T.naranja) : ''}
-        ${seDicta.has(m.codigo) ? etiqueta('se dicta ahora', T.brand) : ''}
-        ${m.correlativas.length ? etiqueta(m.correlativas.length + ' correlativas', T.texto3) : etiqueta('sin correlativas', T.verde)}
+      <div style="margin:8px 0 0 20px">
+        <span style="display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${T.texto3};margin-bottom:4px">Necesita</span>
+        <ul style="list-style:none;margin:0;padding:0 0 0 12px;border-left:1px solid ${T.border}">
+          ${necesitaDe.map((m) => mini(m)).join('')}
+        </ul>
       </div>
-    </div>`,
-      )
-      .join('')}
+      <div style="margin:8px 0 0 20px">
+        <span style="display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${T.texto3};margin-bottom:4px">Destraba</span>
+        <ul style="list-style:none;margin:0;padding:0 0 0 12px;border-left:1px solid color-mix(in oklab, ${T.verde} 50%, ${T.border})">
+          ${destrabaDe.map((m) => mini(m)).join('')}
+        </ul>
+      </div>
+    </div>
   </div>
   ${nav('carreras')}
 </div>`,
