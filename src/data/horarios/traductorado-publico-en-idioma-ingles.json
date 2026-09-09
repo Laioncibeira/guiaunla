@@ -1,0 +1,670 @@
+{
+  "carrera": "traductorado-publico-en-idioma-ingles",
+  "periodo": "2026-2",
+  "periodoNombre": "2° cuatrimestre 2026",
+  "fuente": "Grilla de aulas del Departamento de Humanidades y Artes",
+  "fuenteFecha": "2026-09-09",
+  "nota": "Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido.",
+  "clases": [
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Cocina como Patrimonio Cultural",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Kirchner",
+          "aula": "Aula 1",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Elementos de Derecho Procesal",
+      "materiaCodigo": "8130",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Kirchner",
+          "aula": "Aula 2",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Lengua Española II",
+      "materiaCodigo": "13306",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Lengua Inglesa I",
+      "materiaCodigo": "13300",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Ppios. Grales. de Economía y Finanzas",
+      "materiaCodigo": "8115",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Kirchner",
+          "aula": "Aula 2",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Régimen Legal de la Traducción",
+      "materiaCodigo": "8135",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Manso",
+          "aula": "Aula 6",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Seminario de Literatura Gótica en Inglés",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "Curso de Fortalecimiento del Idioma Ing",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Lengua Española II",
+      "materiaCodigo": "13306",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Macedonio",
+          "aula": "Aula 3",
+          "edificio": "macedonio-fernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Lengua Inglesa I",
+      "materiaCodigo": "13300",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Metodología de la Investigación",
+      "materiaCodigo": "13314",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Fonética Inglesa",
+      "materiaCodigo": "13307",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Kirchner",
+          "aula": "Aula 2",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        },
+        {
+          "textoOriginal": "5 Jauretche",
+          "aula": "Aula 5",
+          "edificio": "arturo-jauretche"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Historia y Cultura Inglesa",
+      "materiaCodigo": "13313",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Semiótica",
+      "materiaCodigo": "13303",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Taller de TFI",
+      "materiaCodigo": "13321",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Sala Humanidades y Artes",
+          "aula": "Sala Humanidades y Artes",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Seminario Introducción a la Interpretación",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Audiovisión",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Derecho Comparado",
+      "materiaCodigo": "8131",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Marechal",
+          "aula": "Aula 5",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Lengua Especializada I",
+      "materiaCodigo": "13310",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Manso",
+          "aula": "Aula 6",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Semiótica",
+      "materiaCodigo": "13303",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Tecnología Aplicada a la Tradu",
+      "materiaCodigo": "13309",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Scalabrini Ortiz",
+          "aula": "Aula 2",
+          "edificio": "raul-scalabrini-ortiz"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Lengua Española I",
+      "materiaCodigo": "13302",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Lengua Inglesa II",
+      "materiaCodigo": "13305",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Kirchner",
+          "aula": "Aula 2",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Lit. de los Países de Habla Inglesa      II",
+      "materiaCodigo": "8132",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Audiovisión",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Metodología de la Investigación",
+      "materiaCodigo": "13314",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Elementos de Der. Civil y Comercial",
+      "materiaCodigo": "8121",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Macedonio",
+          "aula": "Aula 3",
+          "edificio": "macedonio-fernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Elementos de Derecho Procesal / Ppios.",
+      "materiaCodigo": "8130",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Lengua Española I",
+      "materiaCodigo": "13302",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Lit. de los Países de Habla Inglesa II",
+      "materiaCodigo": "8132",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Audiovisión",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Traducción Técnica I",
+      "materiaCodigo": "8107",
+      "ubicaciones": [
+        {
+          "textoOriginal": "18 Hernández",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Traducción Legal II",
+      "materiaCodigo": "8123",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Traducción Técnica I",
+      "materiaCodigo": "8107",
+      "ubicaciones": [
+        {
+          "textoOriginal": "18 Hernández",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Traducción Técnica III",
+      "materiaCodigo": "8114",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Curso de Fortalecimiento del Idioma Inglés",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Seminario de Herramientas de Investigación en la Universidad",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Lengua Inglesa II",
+      "materiaCodigo": "13305",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Macedonio",
+          "aula": "Aula 3",
+          "edificio": "macedonio-fernandez"
+        },
+        {
+          "textoOriginal": "5 Jauretche (Fonética Ingles2 Hernández",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Seminario de Accesibilidad, Discap",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Traducción Legal II",
+      "materiaCodigo": "8123",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Traducción Legal IV",
+      "materiaCodigo": "8133",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Audiovisión",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Elementos de Der. Civil y C",
+      "materiaCodigo": "8121",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Gramática Inglesa I",
+      "materiaCodigo": "13301",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Lengua Especializada I",
+      "materiaCodigo": "13310",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Kirchner",
+          "aula": "Aula 1",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Traducción Legal IV",
+      "materiaCodigo": "8133",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Audiovisión",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Gramática Inglesa I",
+      "materiaCodigo": "13301",
+      "ubicaciones": [
+        {
+          "textoOriginal": "8 Marechal",
+          "aula": "Aula 8",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Historia y Cultura Inglesa",
+      "materiaCodigo": "13313",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Macedonio",
+          "aula": "Aula 3",
+          "edificio": "macedonio-fernandez"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Taller de TFI",
+      "materiaCodigo": "13321",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Audiovisión",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Traducción Técnica III",
+      "materiaCodigo": "8114",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "Derecho Comparado",
+      "materiaCodigo": "8131",
+      "ubicaciones": [
+        {
+          "textoOriginal": "3 Kirchner",
+          "aula": "Aula 3",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "Estructura Comparadas",
+      "materiaCodigo": "8134",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Macedonio",
+          "aula": "Aula 4",
+          "edificio": "macedonio-fernandez"
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "Historia Social Contemporánea",
+      "materiaCodigo": "8108",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Macedonio",
+          "aula": "Aula 1",
+          "edificio": "macedonio-fernandez"
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "Prácticas Preprof. I y II",
+      "materiaCodigo": "13315",
+      "ubicaciones": [
+        {
+          "virtual": true
+        }
+      ]
+    }
+  ]
+}

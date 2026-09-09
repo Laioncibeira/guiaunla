@@ -1,22 +1,22 @@
 import { describe, expect, it } from 'vitest';
-import { CARRERAS, carreraPorSlug } from './datos';
+import { anios, CARRERAS, carreraPorSlug } from './datos';
 import type { Carrera } from './datos';
-import { calcularLayout, encuadrar, FICHA, TARJETA } from './grafo';
+import { calcularLayout, detalleDe, encuadrar, partirNombre, TARJETA } from './grafo';
 
 describe('layout del grafo', () => {
   it.each(CARRERAS.map((c) => [c.slug, c] as const))(
-    '%s: cada materia entra una sola vez y en la columna de su nivel',
+    '%s: cada materia entra una sola vez y en la columna de su año',
     (_slug, carrera) => {
       const l = calcularLayout(carrera);
       expect(l.nodos.length).toBe(carrera.materias.length);
       expect(new Set(l.nodos.map((n) => n.codigo)).size).toBe(carrera.materias.length);
       const columnas = new Map<number, number>();
       for (const n of l.nodos) {
-        const previa = columnas.get(n.nivel);
-        if (previa === undefined) columnas.set(n.nivel, n.x);
+        const previa = columnas.get(n.anio);
+        if (previa === undefined) columnas.set(n.anio, n.x);
         else expect(n.x).toBe(previa);
       }
-      expect(columnas.size).toBe(carrera.niveles);
+      expect(columnas.size).toBe(anios(carrera).length);
     },
   );
 
@@ -56,21 +56,30 @@ describe('layout del grafo', () => {
     for (const a of l.aristas) expect(a.d.startsWith('M')).toBe(true);
   });
 
-  it('las fichas ordenadas por baricentro cruzan menos que el orden del plan', () => {
+  it('el orden por baricentro acorta las líneas frente al orden del plan', () => {
     const av = carreraPorSlug('audiovision') as Carrera;
-    const largo = (pasadas: number) =>
-      calcularLayout(av, FICHA, pasadas).aristas.reduce((total, a) => {
-        const l = calcularLayout(av, FICHA, pasadas);
+    const largo = (pasadas: number) => {
+      const l = calcularLayout(av, TARJETA, pasadas);
+      return l.aristas.reduce((total, a) => {
         const o = l.porCodigo.get(a.de);
         const d = l.porCodigo.get(a.a);
         return total + Math.abs((d?.y ?? 0) - (o?.y ?? 0));
       }, 0);
+    };
     expect(largo(4)).toBeLessThan(largo(0));
   });
 
-  it('la vista acercada es más ancha que la general', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
-    expect(calcularLayout(av, TARJETA).ancho).toBeGreaterThan(calcularLayout(av, FICHA).ancho);
+  it('parte el nombre en líneas que entran en la tarjeta', () => {
+    expect(partirNombre('Montaje 1')).toEqual(['Montaje 1']);
+    const l = partirNombre('Realización Integral Audiovisual 1');
+    expect(l.length).toBeLessThanOrEqual(2);
+    for (const x of l) expect(x.length).toBeLessThanOrEqual(20);
+  });
+
+  it('el detalle de la tarjeta depende de cuán cerca esté la vista', () => {
+    expect(detalleDe(340)).toBe('completo');
+    expect(detalleDe(600)).toBe('medio');
+    expect(detalleDe(1100)).toBe('lejos');
   });
 });
 

@@ -1,0 +1,853 @@
+{
+  "carrera": "audiovision",
+  "periodo": "2026-2",
+  "periodoNombre": "2° cuatrimestre 2026",
+  "fuente": "Grilla de aulas del Departamento de Humanidades y Artes",
+  "fuenteFecha": "2026-09-09",
+  "nota": "Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido.",
+  "clases": [
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "AyS",
+      "materiaCodigo": "17",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Elementos",
+      "materiaCodigo": "02",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Ética",
+      "materiaCodigo": "25",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3 audio",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Foto",
+      "materiaCodigo": "09",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1 audio",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Guión",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 5 audio",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "LAV 1",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 6 Kirchner",
+          "aula": "Aula 6",
+          "edificio": "escuela-gobierno-nestor-kirchner"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "ELEMENTOS DE AUDIO",
+      "materiaCodigo": "02",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18 José",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "ESTÉTICA",
+      "materiaCodigo": "27",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17 José",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "ETICA PROFESIONAL",
+      "materiaCodigo": "25",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "ETICA PROFESIONAL",
+      "materiaCodigo": "25",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 5",
+          "aula": "Aula 5",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "METODOLOGÍA DE LA INVE",
+      "materiaCodigo": "36",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3 Audiovisión",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "OPTATIVA - CORRECCIÓN DE C",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1 Audiovisión",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "REGISTRO DE SONIDO EN AUDIOVISUAL",
+      "materiaCodigo": "07",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "ARTE Y SOCIEDAD",
+      "materiaCodigo": "17",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  17 José",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "REGISTRO DE SONIDO EN   AUDIOVISUAL",
+      "materiaCodigo": "07",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "TALLER DE MONTAJE",
+      "materiaCodigo": "15",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Guión",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "RIA 1",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3 audio",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "TED",
+      "materiaCodigo": "13",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2 audio",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "GUION",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17 José",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "OPTATIVA - ACUSTICA DE SALAS",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "Estudio",
+          "aula": "Estudio",
+          "edificio": "estudio-discepolo"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "ACUSTICA",
+      "materiaCodigo": "47",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  3 Audiovisión",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "GUION",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  17 José",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "MASTERIZACIÓN Y POSTPRODUCCIÓ",
+      "materiaCodigo": "49",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  6",
+          "aula": "Aula 6",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "TECNOLOGÍA DE LA IMAGEN",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula  1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Animación 3D",
+      "materiaCodigo": "37",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2 audio",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Montaje",
+      "materiaCodigo": "15",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3 audio",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "REGISTRO",
+      "materiaCodigo": "07",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1 audio",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "RIA 1",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "semiótica",
+      "materiaCodigo": "31",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "AUDICIÓN Y ANALISIS MUSICAL",
+      "materiaCodigo": "12",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18 José",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "GESTIÓN DE PROYEC",
+      "materiaCodigo": "26",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "INT. AL MUNDO DEL SONIDO Y OPERACIÓN RADIO",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "MONTAJE 1",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "PRÁCTICA PREPROFE",
+      "materiaCodigo": "46",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 6",
+          "aula": "Aula 6",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "TALLER DE GRABACIÓN 2",
+      "materiaCodigo": "53",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Estudio de Grabación",
+          "aula": "Estudio de Grabación",
+          "edificio": "estudio-discepolo"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "TALLER DE TRABAJO",
+      "materiaCodigo": "41",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "ANIMACIÓN 3D 2",
+      "materiaCodigo": "42",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "AUDICIÓN Y ANA",
+      "materiaCodigo": "12",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18 José",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "MONTAJE 1",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "PROYECTO DE PATRIMONIO       CULTURAL",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "REALIZACIÓN IN",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 17 José",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "SEMIÓTICA",
+      "materiaCodigo": "31",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18 José",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "LAV 1",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "TALLER DE COMPOSICIÓN SON",
+      "materiaCodigo": "19",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "COMUNICACIÓN AUDIOVISUAL",
+      "materiaCodigo": "30",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "EDICIÓN Y CORRECCIÓN DIGITAL DE IMAGEN",
+      "materiaCodigo": "32",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "LENGUAJE AUDIOVISUAL 1",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "TALLER DE COMPOSICIÓN SON",
+      "materiaCodigo": "19",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "ACCESIBILIDAD, DISCAPACIDAD Y POLÍTICAS PÚBLICAS",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "LENGUAJE AUDIOVISUAL 1",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "METODOLOGÍA DE LA INVESTIGACIÓN",
+      "materiaCodigo": "36",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3    Audiovisión",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "TALLER DE COMPOSICIÓN SONORA",
+      "materiaCodigo": "19",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "TALLER DE POSTPRODUCCIÓN DE IMAGEN",
+      "materiaCodigo": "41",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 6",
+          "aula": "Aula 6",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "ELECTRÓNICA DE LAS COMUNICACIONES",
+      "materiaCodigo": "05",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 18 José",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "IA EN LA POSRPRODUCCIÓN",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 3 Audiovisión",
+          "aula": "Aula 3",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "TALLER DE LECTUR",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "TALLER DE POSTPR",
+      "materiaCodigo": "41",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "tarde",
+      "materiaTexto": "TALLER DE LECTUR",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "TALLER DE MONTAJE",
+      "materiaCodigo": "15",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 2",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "manana",
+      "materiaTexto": "TECNOLOGÍA DE LA POSTPRODUCCIÓN  1",
+      "materiaCodigo": "28",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    },
+    {
+      "dia": "sabado",
+      "turno": "tarde",
+      "materiaTexto": "TECNOLOGÍA DE LA POSTPRODUCCIÓN  3",
+      "materiaCodigo": "39",
+      "ubicaciones": [
+        {
+          "textoOriginal": "Aula 1",
+          "aula": "Aula 1",
+          "edificio": "jose-hernandez",
+          "espacioAudiovision": true
+        }
+      ]
+    }
+  ]
+}

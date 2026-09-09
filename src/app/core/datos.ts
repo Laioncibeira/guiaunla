@@ -8,6 +8,9 @@ import disenoComunicacion from '../../data/carreras/diseno-y-comunicacion-visual
 import disenoIndustrial from '../../data/carreras/diseno-industrial.json';
 import traductorado from '../../data/carreras/traductorado-publico-en-idioma-ingles.json';
 import calendario2026 from '../../data/calendario/2026.json';
+import horariosAudiovision from '../../data/horarios/audiovision.json';
+import horariosDisenoComunicacion from '../../data/horarios/diseno-y-comunicacion-visual.json';
+import horariosTraductorado from '../../data/horarios/traductorado-publico-en-idioma-ingles.json';
 import campusJson from '../../data/campus/edificios.json';
 import departamentosJson from '../../data/departamentos.json';
 
@@ -103,6 +106,125 @@ export const CAMPUS = campusJson as unknown as {
 };
 
 export const DEPARTAMENTOS = departamentosJson.departamentos;
+
+// ---------------------------------------------------------------- horarios
+export type Dia = 'lunes' | 'martes' | 'miercoles' | 'jueves' | 'viernes' | 'sabado';
+export type Turno = 'manana' | 'tarde' | 'noche';
+
+export interface Ubicacion {
+  readonly textoOriginal: string;
+  readonly aula?: string;
+  readonly edificio?: string;
+  readonly espacioAudiovision?: boolean;
+  readonly virtual?: boolean;
+}
+
+export interface Clase {
+  readonly dia: Dia;
+  readonly turno: Turno;
+  /** Nombre tal como figura en la grilla, a veces recortado. */
+  readonly materiaTexto: string;
+  readonly materiaCodigo?: string;
+  /** Optativa, seminario o curso que no está en el plan publicado. */
+  readonly fueraDePlan?: boolean;
+  readonly ubicaciones: readonly Ubicacion[];
+}
+
+export interface Horarios {
+  readonly carrera: string;
+  readonly periodo: string;
+  readonly periodoNombre: string;
+  readonly fuente: string;
+  readonly fuenteFecha: string;
+  readonly nota: string;
+  readonly clases: readonly Clase[];
+}
+
+export const HORARIOS: readonly Horarios[] = [
+  horariosAudiovision,
+  horariosDisenoComunicacion,
+  horariosTraductorado,
+] as unknown as readonly Horarios[];
+
+export const horariosDe = (slug: string): Horarios | undefined =>
+  HORARIOS.find((h) => h.carrera === slug);
+
+export const DIAS: readonly Dia[] = [
+  'lunes',
+  'martes',
+  'miercoles',
+  'jueves',
+  'viernes',
+  'sabado',
+];
+
+export const NOMBRE_DIA: Record<Dia, string> = {
+  lunes: 'Lunes',
+  martes: 'Martes',
+  miercoles: 'Miércoles',
+  jueves: 'Jueves',
+  viernes: 'Viernes',
+  sabado: 'Sábado',
+};
+
+export const DIA_CORTO: Record<Dia, string> = {
+  lunes: 'Lun',
+  martes: 'Mar',
+  miercoles: 'Mié',
+  jueves: 'Jue',
+  viernes: 'Vie',
+  sabado: 'Sáb',
+};
+
+export const TURNOS: readonly Turno[] = ['manana', 'tarde', 'noche'];
+
+export const NOMBRE_TURNO: Record<Turno, string> = {
+  manana: 'Mañana',
+  tarde: 'Tarde',
+  noche: 'Noche',
+};
+
+/** Las materias que se están dictando este cuatrimestre, según la grilla. */
+export function dictadasAhora(slug: string): ReadonlySet<string> {
+  const h = horariosDe(slug);
+  return new Set(
+    (h?.clases ?? []).map((c) => c.materiaCodigo).filter((c): c is string => !!c),
+  );
+}
+
+// -------------------------------------------------------- año y cuatrimestre
+/**
+ * El año de cursada de una materia.
+ *
+ * Los planes de Audiovisión, Diseño y Comunicación Visual y Diseño Industrial
+ * están publicados por año; el del Traductorado, por cuatrimestre. Acá los dos
+ * se leen igual.
+ */
+export const anioDe = (carrera: Carrera, m: Materia): number =>
+  carrera.tipoNivel === 'anio' ? m.nivel : Math.ceil(m.nivel / 2);
+
+/**
+ * En qué cuatrimestre del año se cursa, o null cuando el plan publicado no lo
+ * dice. La universidad sólo lo detalla en el Traductorado.
+ */
+export const cuatrimestreDe = (carrera: Carrera, m: Materia): number | null =>
+  carrera.tipoNivel === 'cuatrimestre' ? ((m.nivel - 1) % 2) + 1 : null;
+
+/** True cuando el plan de esa carrera separa las materias por cuatrimestre. */
+export const tieneCuatrimestres = (carrera: Carrera): boolean =>
+  carrera.tipoNivel === 'cuatrimestre';
+
+export const anios = (carrera: Carrera): readonly number[] => {
+  const total = carrera.tipoNivel === 'anio' ? carrera.niveles : Math.ceil(carrera.niveles / 2);
+  return Array.from({ length: total }, (_, i) => i + 1);
+};
+
+export const materiasDe = (carrera: Carrera, anio: number, cuatrimestre?: number) =>
+  carrera.materias.filter(
+    (m) =>
+      anioDe(carrera, m) === anio &&
+      (cuatrimestre === undefined || cuatrimestreDe(carrera, m) === cuatrimestre),
+  );
 
 export const carreraPorSlug = (slug: string): Carrera | undefined =>
   CARRERAS.find((c) => c.slug === slug);

@@ -214,8 +214,15 @@ export class Fechas {
   `,
 })
 export class Campus {
+  private readonly ruta = inject(ActivatedRoute);
   protected readonly campus = CAMPUS;
   protected readonly elegido = signal<Edificio | null>(null);
+
+  constructor() {
+    // Se puede llegar desde Horarios con un edificio ya elegido.
+    const id = this.ruta.snapshot.queryParamMap.get('edificio');
+    if (id) this.elegido.set(CAMPUS.edificios.find((e) => e.id === id) ?? null);
+  }
   protected readonly mapaExterno =
     'https://www.google.com/maps/search/?api=1&query=Universidad+Nacional+de+Lan%C3%BAs';
 
@@ -227,54 +234,6 @@ export class Campus {
     if (e.id === this.elegido()?.id) return 'var(--marca)';
     return e.verde ? 'var(--verde)' : 'var(--borde)';
   }
-}
-
-@Component({
-  selector: 'app-horarios',
-  imports: [RouterLink, FirmaFei],
-  template: `
-    <header>
-      <div>
-        <h1>Horarios</h1>
-        <p class="sub">
-          @if (elegida.carrera(); as c) {
-            {{ c.nombreCorto }}
-          } @else {
-            Elegí tu carrera para verlos
-          }
-        </p>
-      </div>
-    </header>
-    <main>
-      <div class="vacio">
-        <h2>Todavía no tenemos la grilla</h2>
-        <p>
-          Los días, horarios y aulas los publica el Departamento de Humanidades y Artes al abrir
-          cada cuatrimestre. Apenas nos pasen la planilla, esta pantalla muestra en qué edificio
-          cursás cada materia y te lleva al mapa.
-        </p>
-        <p class="mientras">Mientras tanto:</p>
-        <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
-        <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
-      </div>
-      <app-firma-fei />
-    </main>
-  `,
-  styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { padding: 18px var(--e4) var(--e3); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
-    .vacio { background: var(--superficie); border: 1px dashed var(--borde); border-radius: var(--r); padding: var(--e4); }
-    h2 { margin: 0 0 var(--e2); font-size: var(--t-l); }
-    p { margin: 0 0 var(--e3); font-size: var(--t-m); color: var(--texto-2); line-height: 1.5; }
-    .mientras { margin-bottom: var(--e2); color: var(--texto-3); font-size: var(--t-s); }
-    .boton { display: flex; align-items: center; justify-content: center; min-height: 46px; margin-bottom: var(--e2); border-radius: 10px; background: var(--superficie-2); border: 1px solid var(--borde); font-size: var(--t-m); font-weight: 600; color: var(--texto); }
-  `,
-})
-export class Horarios {
-  protected readonly elegida = inject(CarreraElegida);
 }
 
 @Component({

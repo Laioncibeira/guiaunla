@@ -1,0 +1,1033 @@
+{
+  "carrera": "diseno-y-comunicacion-visual",
+  "periodo": "2026-2",
+  "periodoNombre": "2° cuatrimestre 2026",
+  "fuente": "Grilla de aulas del Departamento de Humanidades y Artes",
+  "fuenteFecha": "2026-09-09",
+  "nota": "Los nombres vienen recortados en la planilla original; se emparejaron contra el plan por parecido.",
+  "clases": [
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Espacio Tipográfico I",
+      "materiaCodigo": "04",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Taller de diseño II / Diseño II",
+      "materiaCodigo": "10",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "manana",
+      "materiaTexto": "Tecnología I",
+      "materiaCodigo": "07",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "Computación I",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2  Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "Diseño de Envases",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "4  Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico I",
+      "materiaCodigo": "04",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6  Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "Historia del Diseño II / Historia Soc",
+      "materiaCodigo": "20",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5  Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "tarde",
+      "materiaTexto": "OPT Fot. y Perc. Visual",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "1  Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Computación III",
+      "materiaCodigo": "22",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2  Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Ética Profesional / Ética y aspecto",
+      "materiaCodigo": "31",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4  Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Fotografía",
+      "materiaCodigo": "17",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5  Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "lunes",
+      "turno": "noche",
+      "materiaTexto": "Medios Expresivos III",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6  Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Computación I",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Imagen y Letra Conceptual",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Medios Expresivos II",
+      "materiaCodigo": "09",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Taller de diseño II / Diseño II",
+      "materiaCodigo": "10",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "manana",
+      "materiaTexto": "Taller de Diseño Or",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "virtual": true
+        },
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Computación II",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Diseño I / Taller de Diseño I",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico I",
+      "materiaCodigo": "04",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico III",
+      "materiaCodigo": "19",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Imagen y Letra Conceptual",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Medios Expresivos II",
+      "materiaCodigo": "09",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Práctica pre profesional",
+      "materiaCodigo": "29",
+      "ubicaciones": [
+        {
+          "textoOriginal": "MUD",
+          "aula": "MUD"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "tarde",
+      "materiaTexto": "Teoría del Diseño II",
+      "materiaCodigo": "25",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Diseño I / Taller de Diseño",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Estética",
+      "materiaCodigo": "30",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Fotografía",
+      "materiaCodigo": "17",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Geometría Descriptiva Aplicada / Sistemas Gráficos",
+      "materiaCodigo": "02",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Letra Experimental",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Taller de diseño II / Diseño II",
+      "materiaCodigo": "10",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "martes",
+      "turno": "noche",
+      "materiaTexto": "Taller de Diseño III / Diseño",
+      "materiaCodigo": "14",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Computación II",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "manana",
+      "materiaTexto": "Espacio Tipográfico I",
+      "materiaCodigo": "04",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico II",
+      "materiaCodigo": "11",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "tarde",
+      "materiaTexto": "Metodología de la Investigaci",
+      "materiaCodigo": "13",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Diseño en el Espacio",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Diseño IV / Taller de Diseño IV",
+      "materiaCodigo": "20",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Espacio Tipográfico II",
+      "materiaCodigo": "11",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "miercoles",
+      "turno": "noche",
+      "materiaTexto": "Medios Expresivos III",
+      "materiaCodigo": "18",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Computación I",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Geometría Descriptiva Aplicada / Sistemas Gráficos",
+      "materiaCodigo": "02",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Lectura y escritura Profesional",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "manana",
+      "materiaTexto": "Medios Expresivos II",
+      "materiaCodigo": "09",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Computación I",
+      "materiaCodigo": "08",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Computación II",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Diseño I / Taller de Diseño I",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico II",
+      "materiaCodigo": "11",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Espacio Tipográfico III",
+      "materiaCodigo": "19",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Geometría Descriptiva Apli",
+      "materiaCodigo": "02",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Historia de la Comunicac",
+      "materiaCodigo": "12",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Marechal",
+          "aula": "Aula 1",
+          "edificio": "leopoldo-marechal"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Medios Expresivos II",
+      "materiaCodigo": "09",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Semiología / Semiótica",
+      "materiaCodigo": "26",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Hernández",
+          "aula": "Aula 2",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "tarde",
+      "materiaTexto": "Teoría del Diseño I",
+      "materiaCodigo": "05",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Computación III",
+      "materiaCodigo": "22",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Comunicación",
+      "materiaCodigo": "12",
+      "ubicaciones": [
+        {
+          "textoOriginal": "17 Hernández",
+          "aula": "Aula 17",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Diseño I / Taller de Diseño",
+      "materiaCodigo": "01",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Diseño IV / Taller de Diseño IV",
+      "materiaCodigo": "20",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Diseño y Progra",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Espacio Tipográfico II",
+      "materiaCodigo": "11",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Medios Expresivos I",
+      "materiaCodigo": "03",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Práctica pre profesional",
+      "materiaCodigo": "29",
+      "ubicaciones": [
+        {
+          "textoOriginal": "1 Manso",
+          "aula": "Aula 1",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Taller de diseño II / Diseño",
+      "materiaCodigo": "10",
+      "ubicaciones": [
+        {
+          "textoOriginal": "7 Manso",
+          "aula": "Aula 7",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Taller de Diseño III / Diseño",
+      "materiaCodigo": "14",
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "jueves",
+      "turno": "noche",
+      "materiaTexto": "Teoría del Diseño I",
+      "materiaCodigo": "05",
+      "ubicaciones": [
+        {
+          "textoOriginal": "5 Manso",
+          "aula": "Aula 5",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Computación II",
+      "materiaCodigo": "16",
+      "ubicaciones": [
+        {
+          "textoOriginal": "2 Jauretche",
+          "aula": "Aula 2",
+          "edificio": "arturo-jauretche"
+        },
+        {
+          "virtual": true
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "manana",
+      "materiaTexto": "Taller de Expresión Visual",
+      "fueraDePlan": true,
+      "ubicaciones": [
+        {
+          "textoOriginal": "4 Manso",
+          "aula": "Aula 4",
+          "edificio": "juana-manso"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "tarde",
+      "materiaTexto": "Lectura y escritura Profesional",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "18 Hernández",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "tarde",
+      "materiaTexto": "Tecnología I",
+      "materiaCodigo": "07",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Lectura y escritura Profesional",
+      "materiaCodigo": "06",
+      "ubicaciones": [
+        {
+          "textoOriginal": "18 Hernández",
+          "aula": "Aula 18",
+          "edificio": "jose-hernandez"
+        }
+      ]
+    },
+    {
+      "dia": "viernes",
+      "turno": "noche",
+      "materiaTexto": "Tecnología II",
+      "materiaCodigo": "15",
+      "ubicaciones": [
+        {
+          "textoOriginal": "6 Ugarte",
+          "aula": "Aula 6",
+          "edificio": "manuel-ugarte"
+        }
+      ]
+    }
+  ]
+}

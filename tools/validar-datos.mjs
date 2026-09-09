@@ -101,6 +101,39 @@ for (const d of departamentos)
   if (d.edificio && !idsEd.has(d.edificio))
     fallar(`departamentos/${d.slug}: edificio desconocido ${d.edificio}`);
 
+// -------------------------------------------------------------- horarios
+const DIAS_OK = new Set(['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']);
+const TURNOS_OK = new Set(['manana', 'tarde', 'noche']);
+let totalClases = 0;
+let fueraDePlan = 0;
+
+for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/data/horarios') : []) {
+  const h = leer('src/data/horarios/' + archivo);
+  const donde = 'horarios/' + h.carrera;
+  if (archivo !== h.carrera + '.json') fallar(`${archivo}: el nombre no coincide con la carrera`);
+  if (!slugsDeclarados.includes(h.carrera)) fallar(`${donde}: carrera desconocida`);
+
+  const plan = leer('src/data/carreras/' + h.carrera + '.json');
+  const codigos = new Set(plan.materias.map((m) => m.codigo));
+
+  for (const c of h.clases) {
+    totalClases++;
+    if (!DIAS_OK.has(c.dia)) fallar(`${donde}: día inválido ${c.dia}`);
+    if (!TURNOS_OK.has(c.turno)) fallar(`${donde}: turno inválido ${c.turno}`);
+    if (!c.materiaTexto?.trim()) fallar(`${donde}: una clase sin materia`);
+    if (c.materiaCodigo && !codigos.has(c.materiaCodigo))
+      fallar(`${donde}: la clase de ${c.materiaTexto} apunta al código ${c.materiaCodigo}, que no está en el plan`);
+    if (!c.materiaCodigo) fueraDePlan++;
+    if (!c.ubicaciones?.length) fallar(`${donde}: ${c.materiaTexto} sin lugar`);
+    for (const u of c.ubicaciones) {
+      if (u.virtual) continue;
+      if (u.edificio && !idsEd.has(u.edificio))
+        fallar(`${donde}: edificio desconocido ${u.edificio}`);
+      if (!u.edificio) avisar(`${donde}: ${u.aula ?? u.textoOriginal} sin edificio asignado`);
+    }
+  }
+}
+
 // ---------------------------------------------------------------- salida
 for (const a of avisos) console.warn('aviso: ' + a);
 if (errores.length) {
@@ -109,6 +142,7 @@ if (errores.length) {
   process.exit(1);
 }
 console.log(
-  `datos ok: ${archivos.length} carreras, ${cal.eventos.length} fechas, ${campus.edificios.length} edificios` +
+  `datos ok: ${archivos.length} carreras, ${cal.eventos.length} fechas, ${campus.edificios.length} edificios, ` +
+    `${totalClases} clases (${fueraDePlan} fuera del plan)` +
     (avisos.length ? ` (${avisos.length} avisos)` : ''),
 );

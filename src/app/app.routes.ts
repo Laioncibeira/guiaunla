@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'horarios',
-    loadComponent: () => import('./paginas/otras').then((m) => m.Horarios),
+    loadComponent: () => import('./paginas/horarios').then((m) => m.Horarios),
     title: 'Horarios · Guía UNLa',
   },
   {

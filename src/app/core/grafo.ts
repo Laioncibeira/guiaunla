@@ -1,7 +1,7 @@
 /**
  * Layout del grafo de correlatividades.
  *
- * Los niveles son columnas de izquierda a derecha y cada materia es una ficha.
+ * Los años son columnas de izquierda a derecha y cada materia es una tarjeta.
  * Dentro de cada columna las materias se reordenan por el baricentro de sus
  * vecinas (heurística de Sugiyama): con dos o tres pasadas las líneas dejan de
  * cruzarse entre sí y el plan se lee de un vistazo, que es todo el punto.
@@ -9,6 +9,7 @@
  * Nada de esto toca el DOM: es geometría pura y se testea sin navegador.
  */
 import type { Carrera, Materia } from './datos';
+import { anioDe, cuatrimestreDe } from './datos';
 
 export interface Medidas {
   readonly ancho: number;
@@ -18,15 +19,16 @@ export interface Medidas {
   readonly margen: number;
 }
 
-/** Vista general del teléfono: sólo el código. */
-export const FICHA: Medidas = { ancho: 40, alto: 26, gapX: 34, gapY: 9, margen: 14 };
-/** Vista acercada: código y nombre. */
-export const TARJETA: Medidas = { ancho: 132, alto: 40, gapX: 56, gapY: 10, margen: 16 };
+/** Una tarjeta entra con el código, el nombre en dos líneas y una etiqueta. */
+export const TARJETA: Medidas = { ancho: 152, alto: 48, gapX: 64, gapY: 12, margen: 18 };
 
 export interface Nodo {
   readonly materia: Materia;
   readonly codigo: string;
-  readonly nivel: number;
+  readonly anio: number;
+  readonly cuatrimestre: number | null;
+  /** El nombre partido en las líneas que entran en la tarjeta. */
+  readonly lineas: readonly string[];
   readonly x: number;
   readonly y: number;
   readonly w: number;
@@ -36,7 +38,7 @@ export interface Nodo {
 export interface Arista {
   readonly de: string;
   readonly a: string;
-  readonly nivelDe: number;
+  readonly anioDe: number;
   readonly d: string;
 }
 
@@ -46,7 +48,36 @@ export interface Layout {
   readonly porCodigo: ReadonlyMap<string, Nodo>;
   readonly ancho: number;
   readonly alto: number;
-  readonly niveles: number;
+  readonly anios: number;
+}
+
+/**
+ * Parte el nombre en dos líneas que entren en la tarjeta.
+ * El SVG no corta texto solo, así que hay que decidirlo acá.
+ */
+export function partirNombre(nombre: string, porLinea = 20, lineas = 2): string[] {
+  const palabras = nombre.split(' ');
+  const salida: string[] = [];
+  let actual = '';
+  for (const p of palabras) {
+    const tentativa = actual ? actual + ' ' + p : p;
+    if (tentativa.length <= porLinea) {
+      actual = tentativa;
+      continue;
+    }
+    if (actual) salida.push(actual);
+    actual = p;
+    if (salida.length === lineas - 1) break;
+  }
+  if (salida.length < lineas && actual) salida.push(actual);
+  // Lo que no entró se resume con puntos suspensivos en la última línea.
+  const usado = salida.join(' ').length;
+  if (usado < nombre.length - 1) {
+    const resto = nombre.slice(salida.slice(0, -1).join(' ').length).trim();
+    salida[salida.length - 1] =
+      resto.length > porLinea ? resto.slice(0, porLinea - 1).trimEnd() + '…' : resto;
+  }
+  return salida;
 }
 
 /** Curva del borde derecho de una materia al borde izquierdo de la otra. */
@@ -55,16 +86,17 @@ export function curva(o: Nodo, d: Nodo): string {
   const y1 = o.y + o.h / 2;
   const x2 = d.x;
   const y2 = d.y + d.h / 2;
-  const dx = Math.max(24, (x2 - x1) * 0.5);
+  const dx = Math.max(26, (x2 - x1) * 0.45);
   return `M${x1} ${y1} C${x1 + dx} ${y1} ${x2 - dx} ${y2} ${x2} ${y2}`;
 }
 
-export function calcularLayout(carrera: Carrera, medidas: Medidas = FICHA, pasadas = 4): Layout {
+export function calcularLayout(carrera: Carrera, medidas: Medidas = TARJETA, pasadas = 4): Layout {
   const materias = carrera.materias;
-  const niveles = carrera.niveles;
+  const totalAnios = Math.max(...materias.map((m) => anioDe(carrera, m)));
 
   const columnas: Materia[][] = [];
-  for (let n = 1; n <= niveles; n++) columnas.push(materias.filter((m) => m.nivel === n));
+  for (let n = 1; n <= totalAnios; n++)
+    columnas.push(materias.filter((m) => anioDe(carrera, m) === n));
 
   const fila = new Map<string, number>();
   for (const col of columnas) col.forEach((m, i) => fila.set(m.codigo, i));
@@ -108,7 +140,9 @@ export function calcularLayout(carrera: Carrera, medidas: Medidas = FICHA, pasad
       nodos.push({
         materia: m,
         codigo: m.codigo,
-        nivel: m.nivel,
+        anio: anioDe(carrera, m),
+        cuatrimestre: cuatrimestreDe(carrera, m),
+        lineas: partirNombre(m.nombre),
         x: medidas.margen + ci * (medidas.ancho + medidas.gapX),
         y: y0 + i * (medidas.alto + medidas.gapY),
         w: medidas.ancho,
@@ -122,16 +156,16 @@ export function calcularLayout(carrera: Carrera, medidas: Medidas = FICHA, pasad
   for (const n of nodos)
     for (const c of n.materia.correlativas) {
       const o = porCodigo.get(c);
-      if (o) aristas.push({ de: c, a: n.codigo, nivelDe: o.nivel, d: curva(o, n) });
+      if (o) aristas.push({ de: c, a: n.codigo, anioDe: o.anio, d: curva(o, n) });
     }
 
   return {
     nodos,
     aristas,
     porCodigo,
-    ancho: medidas.margen * 2 + niveles * medidas.ancho + (niveles - 1) * medidas.gapX,
+    ancho: medidas.margen * 2 + totalAnios * medidas.ancho + (totalAnios - 1) * medidas.gapX,
     alto: medidas.margen * 2 + altoMax,
-    niveles,
+    anios: totalAnios,
   };
 }
 
@@ -153,4 +187,17 @@ export function encuadrar(
     w,
     h,
   };
+}
+
+/**
+ * Cuánto detalle entra en la tarjeta con el zoom actual.
+ * Se decide por el ancho del viewBox, que no depende del tamaño de pantalla:
+ * cuanto más chico, más cerca está la vista.
+ */
+export type Detalle = 'completo' | 'medio' | 'lejos';
+
+export function detalleDe(anchoVista: number): Detalle {
+  if (anchoVista <= 480) return 'completo';
+  if (anchoVista <= 820) return 'medio';
+  return 'lejos';
 }
