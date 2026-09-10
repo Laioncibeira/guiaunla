@@ -84,4 +84,4 @@ Si algo no coincide con tu plan, es un error nuestro: avisá y lo corregimos.
 ## Quiénes
 
 Hecha por estudiantes, desde el [Frente de Estudiantes de
-Izquierda](https://frente-de-estudiantes-de-izquierda-fei.web.app/).
+Izquierda](https://frentedeestudiantesdeizquierda-fei.web.app/).

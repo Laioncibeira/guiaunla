@@ -82,7 +82,7 @@ export class LogoFei {
     @if (vigente()) {
       <a
         class="banner"
-        href="https://frente-de-estudiantes-de-izquierda-fei.web.app/"
+        href="https://frentedeestudiantesdeizquierda-fei.web.app/"
         rel="noopener"
       >
         <div class="chispas" aria-hidden="true">
@@ -186,7 +186,7 @@ export class BannerElecciones {
   selector: 'app-firma-fei',
   imports: [Estrellas, LogoFei],
   template: `
-    <a href="https://frente-de-estudiantes-de-izquierda-fei.web.app/" rel="noopener">
+    <a href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener">
       <app-estrellas [tam]="11" />
       <span>Hecha por estudiantes del</span>
       <app-logo-fei [ancho]="132" />
