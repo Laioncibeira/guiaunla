@@ -100,16 +100,21 @@ export class LogoFei {
         <p class="cuenta">{{ cuenta() }}</p>
       } @else {
         <p class="antetitulo">Lista 7 · Centro de estudiantes</p>
-        <p class="fechas">Revolucionemos el CEDHA</p>
         <p class="cuenta">Conocé las propuestas y sumate</p>
       }
 
+      <img
+        class="revolucionemos"
+        src="revolucionemos.webp"
+        alt="Revolucionemos el CEDHA"
+        width="640"
+        height="187"
+        decoding="async"
+      />
+
       <div class="lista">
         <span class="siete">Lista 7</span>
-        <app-logo-fei [ancho]="112" />
-        <span class="revolucionemos" aria-hidden="true">
-          <ng-content select="[logo-revolucionemos]" />
-        </span>
+        <app-logo-fei [ancho]="104" />
       </div>
     </a>
   `,
@@ -172,8 +177,8 @@ export class LogoFei {
       font-weight: 700;
       letter-spacing: 0.01em;
     }
-    .revolucionemos { margin-left: auto; display: inline-flex; }
-    .revolucionemos:empty { display: none; }
+    .revolucionemos { display: block; width: 100%; max-width: 300px; height: auto; margin: 14px auto 0; }
+    .permanente .revolucionemos { margin-top: 10px; }
   `,
 })
 export class BannerElecciones {
