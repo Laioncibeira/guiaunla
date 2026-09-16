@@ -53,6 +53,7 @@ export class Icono {
   imports: [RouterLink, RouterLinkActive],
   template: `
     <nav aria-label="Secciones">
+      <a class="marca" routerLink="/" aria-hidden="true" tabindex="-1">Guía UNLa</a>
       @for (d of destinos; track d.ruta) {
         <a
           [routerLink]="d.ruta"
@@ -110,6 +111,50 @@ export class Icono {
     }
     a.activo {
       color: var(--marca);
+    }
+    .marca { display: none; }
+
+    @media (min-width: 900px) {
+      nav {
+        position: sticky;
+        top: 0;
+        left: auto;
+        transform: none;
+        width: 220px;
+        max-width: none;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 20px 12px;
+        border-top: none;
+        border-right: 1px solid var(--borde);
+        background: var(--bg);
+      }
+      .marca {
+        display: block;
+        padding: 6px 12px 18px;
+        font-size: var(--t-xl);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--texto);
+      }
+      a:not(.marca) {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 12px;
+        min-height: 44px;
+        padding: 0 12px;
+        border-radius: 10px;
+        font-size: var(--t-m);
+        font-weight: 500;
+      }
+      a.activo {
+        background: color-mix(in srgb, var(--marca) 12%, transparent);
+      }
+      a:not(.marca):hover {
+        background: var(--superficie);
+      }
     }
   `,
 })

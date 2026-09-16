@@ -27,6 +27,24 @@ import { Visitas } from './core/visitas';
       /* Lugar para la barra fija, más la franja de gestos del teléfono. */
       padding-bottom: calc(var(--barra) + env(safe-area-inset-bottom));
     }
+    /* Escritorio: riel de navegación a la izquierda y una columna de lectura
+       de hasta 760 px. Es la misma app, no otra. */
+    @media (min-width: 900px) {
+      :host {
+        flex-direction: row;
+        align-items: stretch;
+        max-width: 1000px;
+        border: none;
+      }
+      app-barra { order: -1; flex: none; }
+      .pantalla {
+        flex: 1;
+        min-width: 0;
+        max-width: 760px;
+        padding-bottom: 0;
+        border-inline: 1px solid var(--borde);
+      }
+    }
   `,
 })
 export class App {

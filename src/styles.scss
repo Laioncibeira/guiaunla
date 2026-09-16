@@ -173,6 +173,14 @@ app-root {
   }
 }
 
+/* En pantalla grande la barra de abajo pasa a ser un riel a la izquierda y
+   no ocupa lugar al pie. */
+@media (min-width: 900px) {
+  :root {
+    --barra: 0px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

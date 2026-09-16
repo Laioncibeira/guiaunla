@@ -21,6 +21,9 @@ import { Aprobadas, Atras, CarreraElegida } from '../shared/ui';
 
 /** Con este ancho de viewBox la tarjeta se lee cómoda en un teléfono. */
 const CERCA_ANCHO = 340;
+/** Ancho de lienzo, en px, de un teléfono común: en pantallas más anchas el
+ *  encuadre inicial se agranda en proporción para que la tarjeta mida igual. */
+const ANCHO_BASE_PX = 360;
 /** Proporción de reserva hasta que se pueda medir el lienzo de verdad. */
 const PROPORCION = 1.3;
 
@@ -599,7 +602,11 @@ export class Grafo {
     effect(() => {
       const l = this.layout();
       const pedida = this.query().get('materia');
-      const w = Math.min(CERCA_ANCHO, l.ancho);
+      // Leer el lienzo acá hace que el efecto vuelva a correr cuando aparece
+      // y el encuadre se calcule con la medida real.
+      const caja = this.cajaLienzo();
+      const escala = caja && caja.width > 0 ? Math.max(1, caja.width / ANCHO_BASE_PX) : 1;
+      const w = Math.min(CERCA_ANCHO * escala, l.ancho);
       const h = Math.min(this.altoPara(w), l.alto);
       if (pedida && l.porCodigo.has(pedida)) {
         this.seleccion.set(new Set([pedida]));

@@ -85,6 +85,10 @@ import { fechaCorta } from './formato';
       color: var(--texto-2); min-height: 36px; display: flex; align-items: center;
     }
     main { flex: 1; padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
+    @media (min-width: 900px) {
+      main { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+      .elegir, app-tutorial, app-firma-fei { grid-column: 1 / -1; }
+    }
     .rot {
       margin: 0 0 var(--e2); font-size: var(--t-xs); font-weight: 600;
       letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-3);
