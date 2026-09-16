@@ -1,6 +1,7 @@
 import { afterNextRender, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Novedades } from '../core/novedades';
+import { Avisos } from '../core/avisos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
 import { BannerElecciones, Estrella, FirmaFei, Firmas, LogoFei } from '../shared/fei';
@@ -65,6 +66,30 @@ import { fechaCorta } from './formato';
         } @empty {
           <p class="sin-novedades">Sin novedades… por ahora.</p>
         }
+
+        @switch (avisos.estado()) {
+          @case ('listo') {
+            <button type="button" class="avisos" (click)="avisos.suscribir(elegida.slug())">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0" /></svg>
+              Quiero recibir novedades
+            </button>
+          }
+          @case ('pidiendo') {
+            <p class="avisos-nota">Aceptá el permiso que te pide el navegador…</p>
+          }
+          @case ('suscripto') {
+            <p class="avisos-nota ok">✓ Te avisamos en este teléfono cuando haya una novedad.</p>
+          }
+          @case ('ios-sin-instalar') {
+            <p class="avisos-nota">Para recibir avisos en iPhone, primero agregá la app a tu inicio (Compartir → "Agregar a inicio") y abrila desde ahí.</p>
+          }
+          @case ('bloqueado') {
+            <p class="avisos-nota">Las notificaciones están bloqueadas para este sitio. Podés habilitarlas desde los ajustes del navegador.</p>
+          }
+          @case ('error') {
+            <p class="avisos-nota">No se pudo activar. Probá de nuevo en un rato.</p>
+          }
+        }
       </section>
 
       <app-reloj-ley />
@@ -114,6 +139,13 @@ import { fechaCorta } from './formato';
     .fila-titulo { display: flex; align-items: baseline; justify-content: space-between; }
     .ver-todas { font-size: var(--t-s); font-weight: 600; color: var(--marca); text-decoration: underline; text-underline-offset: 2px; }
     .novedad { margin-bottom: 8px; }
+    .avisos {
+      display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; margin-top: 10px;
+      border: 1px solid var(--marca); border-radius: 10px; background: var(--superficie); color: var(--marca);
+      font-size: var(--t-m); font-weight: 600;
+    }
+    .avisos-nota { margin: 10px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
+    .avisos-nota.ok { color: var(--verde); }
     .sin-novedades { margin: 0; padding: 12px 14px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
     .novedad .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
     .novedad h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; }
@@ -139,6 +171,7 @@ import { fechaCorta } from './formato';
 export class Inicio {
   protected readonly elegida = inject(CarreraElegida);
   private readonly servicioNovedades = inject(Novedades);
+  protected readonly avisos = inject(Avisos);
 
   /** Las tres más recientes; la lista completa vive en /novedades. */
   protected readonly novedades = computed(() => this.servicioNovedades.lista().slice(0, 3));
@@ -146,7 +179,10 @@ export class Inicio {
   constructor() {
     // Firestore sólo en el navegador y después del primer dibujo: el chunk
     // del SDK no compite con lo que el estudiante vino a ver.
-    afterNextRender(() => this.servicioNovedades.escuchar());
+    afterNextRender(() => {
+      this.servicioNovedades.escuchar();
+      this.avisos.revisar();
+    });
   }
 
   protected fecha = (iso: string) => fechaCorta(iso);

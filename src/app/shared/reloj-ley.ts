@@ -43,7 +43,7 @@ import { Estrella } from './fei';
     :host { display: block; }
     section {
       position: relative; overflow: hidden;
-      padding: 16px 16px 14px; border-radius: var(--r);
+      padding: 12px 14px 11px; border-radius: var(--r);
       background: var(--fei-fondo); border: 1px solid var(--fei-borde); color: #f5f3f7;
     }
     .chispas { position: absolute; top: 12px; right: 14px; display: flex; gap: 6px; align-items: flex-start; }
@@ -52,19 +52,19 @@ import { Estrella } from './fei';
       margin: 0; font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.11em;
       text-transform: uppercase; color: var(--fei-rojo);
     }
-    h2 { margin: 5px 24px 12px 0; font-size: var(--t-l); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+    h2 { margin: 3px 24px 9px 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
     .fichas { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; }
     .ficha {
       display: flex; flex-direction: column; align-items: center; gap: 2px;
-      padding: 10px 6px 8px; border-radius: 10px; background: #221f27; border: 1px solid var(--fei-borde);
+      padding: 7px 6px 6px; border-radius: 10px; background: #221f27; border: 1px solid var(--fei-borde);
     }
     .num {
       font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500;
-      font-size: 26px; line-height: 1; color: #f5f3f7;
+      font-size: 22px; line-height: 1; color: #f5f3f7;
     }
-    .dias .num { font-size: 34px; color: var(--fei-rojo); }
+    .dias .num { font-size: 28px; color: var(--fei-rojo); }
     .rot { font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
-    .pie { margin: 12px 0 0; font-size: var(--t-xs); color: #a79db0; line-height: 1.4; }
+    .pie { margin: 9px 0 0; font-size: var(--t-xs); color: #a79db0; line-height: 1.4; }
     .mas { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   `,
 })

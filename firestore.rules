@@ -69,7 +69,7 @@ service cloud.firestore {
 
     // ------------------- novedades: público lee publicadas, admins escriben
     function novedadValida(d) {
-      return d.keys().hasOnly(['titulo', 'cuerpo', 'fecha', 'publicada', 'creada', 'actualizada'])
+      return d.keys().hasOnly(['titulo', 'cuerpo', 'fecha', 'publicada', 'creada', 'actualizada', 'avisada'])
         && d.keys().hasAll(['titulo', 'cuerpo', 'fecha', 'publicada', 'creada', 'actualizada'])
         && texto(d.titulo, 1, 80)
         && texto(d.cuerpo, 1, 2000)
@@ -93,6 +93,22 @@ service cloud.firestore {
         && request.resource.data.actualizada == request.time;
 
       allow delete: if esAdmin();
+    }
+
+    // ------------ suscripciones a avisos: cada teléfono deja su buzón
+    // La lee sólo la función que manda los avisos (Admin SDK, fuera de reglas).
+    match /suscripciones/{id} {
+      allow create, update: if request.resource.data.keys().hasOnly(['endpoint', 'p256dh', 'auth', 'carrera', 'creada'])
+        && request.resource.data.keys().hasAll(['endpoint', 'p256dh', 'auth', 'creada'])
+        && request.resource.data.endpoint is string
+        && request.resource.data.endpoint.matches('https://.*')
+        && request.resource.data.endpoint.size() <= 1000
+        && texto(request.resource.data.p256dh, 40, 200)
+        && texto(request.resource.data.auth, 10, 100)
+        && (!('carrera' in request.resource.data)
+            || (request.resource.data.carrera is string && request.resource.data.carrera.size() <= 80))
+        && request.resource.data.creada == request.time;
+      allow read, delete: if esAdmin();
     }
 
     // ------------ visitas: contador anónimo, sólo +1 sobre el día de hoy

@@ -5,6 +5,9 @@
  * llamada y aplica cuotas; no autoriza nada. Lo que protege los datos son las
  * reglas de Firestore (firestore.rules) y las cuentas de los admins.
  */
+/** Clave pública para los avisos al teléfono (Web Push). La privada la tiene sólo la función que envía. */
+export const VAPID_PUBLICA = 'BHpdZcD6hqRcjYFkBlvwIvrqYk6kdllt46aGnAQhnuk_laHg_9U6KbyhWAc8cnfsCm3xH86CUurW-vpIFCgElyI';
+
 export const FIREBASE = {
   apiKey: 'AIzaSyCngbRSUoaQxBeW91I9R7ONkI8tnyL0f5w',
   authDomain: 'guiaunla-51aa7.firebaseapp.com',
