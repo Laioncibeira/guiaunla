@@ -54,3 +54,4 @@ tools/mockup/hoja.html
 tools/mockup/*.svg
 .claude/
 firebase-debug.log
+desktop.ini
