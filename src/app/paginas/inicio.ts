@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Novedades } from '../core/novedades';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
-import { BannerElecciones, Estrella, FirmaFei, Firmas } from '../shared/fei';
+import { BannerElecciones, Estrella, FirmaFei, Firmas, LogoFei } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
 import { RelojLey } from '../shared/reloj-ley';
 import { FormularioContacto } from '../shared/contacto';
@@ -19,16 +19,18 @@ import { fechaCorta } from './formato';
     Estrella,
     FirmaFei,
     Firmas,
+    LogoFei,
     Tutorial,
     RelojLey,
     FormularioContacto,
   ],
   template: `
     <header>
-      <div style="flex:1">
+      <div class="titulo">
         <h1>Guía UNLa <app-estrella color="var(--fei-violeta)" [tam]="15" /></h1>
         <p class="sub">Universidad Nacional de Lanús</p>
       </div>
+      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
       <app-carrera-chip />
     </header>
 
@@ -83,6 +85,11 @@ import { fechaCorta } from './formato';
     }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     h1 app-estrella { vertical-align: 4px; margin-left: 2px; }
+    .titulo { flex: 1; min-width: 0; }
+    h1, .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    /* En el teléfono el subtítulo no entra al lado del logo y la carrera. */
+    @media (max-width: 599px) { .sub { display: none; } }
+    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
     .pastilla {
       border: 1px solid var(--borde); background: var(--superficie);

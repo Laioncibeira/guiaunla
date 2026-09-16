@@ -364,7 +364,7 @@ export class Atras {
       background: var(--superficie); color: var(--texto-2); font-size: var(--t-s);
       text-decoration: none;
     }
-    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 104px; }
     /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
     .chip.vacio { border-color: var(--marca); animation: latir 2.4s ease-in-out infinite; }
     @keyframes latir {

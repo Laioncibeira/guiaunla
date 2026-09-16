@@ -53,7 +53,6 @@ const nombreDepartamento = (slug: string): string =>
       <div class="cuadros">
         @for (d of departamentos; track d.slug; let i = $index) {
           <button type="button" class="cuadro" (click)="departamento.set(d)" [style.--color]="'var(--n' + (i + 1) + ')'">
-            <span class="sigla">{{ d.sigla }}</span>
             <span class="nom">{{ d.nombre }}</span>
             <span class="meta">{{ d.carreras.length }} carreras</span>
           </button>
@@ -92,13 +91,12 @@ const nombreDepartamento = (slug: string): string =>
     .rot { margin: var(--e2) 0 var(--e1); font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-3); }
     .cuadros { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e3); }
     .cuadro {
-      display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; aspect-ratio: 1;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; aspect-ratio: 1;
       padding: 14px; border: 1px solid var(--borde); border-radius: var(--r); background: var(--superficie);
-      text-align: left; color: inherit; position: relative; overflow: hidden; font: inherit;
+      text-align: center; color: inherit; position: relative; overflow: hidden; font: inherit;
     }
     .cuadro::before { content: ''; position: absolute; inset: 0 0 auto; height: 5px; background: var(--color); }
-    .cuadro .sigla { font-family: var(--mono); font-size: var(--t-xl); font-weight: 500; color: var(--color); margin-bottom: auto; }
-    .cuadro .nom { font-size: var(--t-m); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+    .cuadro .nom { font-size: var(--t-l); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--color); text-wrap: balance; }
     .cuadro .meta { font-size: var(--t-xs); color: var(--texto-3); }
     .volver {
       align-self: flex-start; display: inline-flex; align-items: center; gap: 4px; min-height: 36px; padding: 0 12px 0 8px;

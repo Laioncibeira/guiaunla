@@ -4,17 +4,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CALENDARIO, CAMPUS, type Edificio, type Evento } from '../core/datos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { COLOR_TIPO, ETIQUETA_TIPO, comoIcs, diasHasta, fechaCorta, fechaLarga } from './formato';
-import { FirmaFei } from '../shared/fei';
+import { FirmaFei, LogoFei } from '../shared/fei';
 
 @Component({
   selector: 'app-fechas',
-  imports: [FirmaFei, CarreraChip],
+  imports: [FirmaFei, CarreraChip, LogoFei],
   template: `
     <header>
       <div style="flex:1">
         <h1>Fechas</h1>
         <p class="sub">Calendario académico {{ calendario.anio }}</p>
       </div>
+      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
       <app-carrera-chip />
     </header>
     <main>
@@ -50,6 +51,7 @@ import { FirmaFei } from '../shared/fei';
   styles: `
     :host { display: flex; flex-direction: column; flex: 1; }
     header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
+    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
     main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: 9px; }
