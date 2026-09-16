@@ -1,0 +1,554 @@
+{
+  "slug": "trabajo-social",
+  "nombre": "Licenciatura en Trabajo Social",
+  "nombreCorto": "Trabajo Social",
+  "departamento": "salud-comunitaria",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Trabajo Social",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Formulación de Proyectos Sociales",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 5,
+  "nota": "La web publica este plan como PDF; los nombres que ocupaban dos renglones quedaron con el primero.",
+  "tipoNivel": "cuatrimestre",
+  "niveles": 10,
+  "fuenteUrl": "https://www.unla.edu.ar/documentos/licenciaturas/trabajo_social/Plan%20de%20estudios.pdf",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": false,
+  "materias": [
+    {
+      "codigo": "02",
+      "nombre": "Historia del Trabajo Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Introducción a las Ciencias Sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Trabajo Social I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "05",
+      "nombre": "Historia Social Latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Estado y Políticas Públicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Análisis situacional",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "formato": "Seminario",
+      "horasSemanales": 256,
+      "horasTotales": 1,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Análisis de la realidad argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Introducción a la Psicología y Salud Mental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Políticas Sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Trabajo Social II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Metodología de la Investigación I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Antropología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Diseño, Ejecución y Evaluación de",
+      "dedicacion": "anual",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 256,
+      "horasTotales": 7,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Teoría de los Grupos y Dinámicas Grupales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Metodología de la Investigación II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Teoría de las Organizaciones y Análisis",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Promoción Comunitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Estadística y Demografía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Teoría Social I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Seminario de Pensamiento Nacional y",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "extranjero",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "nombre": "Informática A",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "nombre": "Módulo de textos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Seminario de Formación Profesional IV",
+      "dedicacion": "anual",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 320,
+      "correlativas": [
+        "14",
+        "15"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Planificación Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Teoría Social II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Legislación y Trabajo Social I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Abordajes socio-familiares",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "11",
+        "15"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Evaluación de Programas y Proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Sistematización de la Práctica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Comunicación Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Legislación y Trabajo Social II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Gestión Social y Gobierno",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "31"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Proyecto de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16",
+        "26",
+        "32"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Teoría Económica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "20"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Salud y Ciclos Vitales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Seminario / Taller I **",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Seminario / Taller II **",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Final Integrador (incluye tutorías",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "36"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Epidemiología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "19",
+        "38"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Seminario / Taller III **",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Seminario / Taller IV **",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "46",
+      "nombre": "Extranjero",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "47",
+      "nombre": "Módulo de Cálculo 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "48",
+      "nombre": "Módulo de",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "49",
+      "nombre": "Informática E",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "50",
+      "nombre": "y Acceso a Sistemas de Información",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    }
+  ]
+}

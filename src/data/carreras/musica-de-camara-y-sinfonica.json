@@ -1,0 +1,555 @@
+{
+  "slug": "musica-de-camara-y-sinfonica",
+  "nombre": "Licenciatura en Música de Cámara y Sinfónica",
+  "nombreCorto": "Música de Cámara y Sinfónica",
+  "departamento": "humanidades-y-artes",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Música de Cámara y Sinfónica",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Interpretación Musical",
+    "hastaNivel": 4
+  },
+  "duracionAnios": 4,
+  "horasTotales": 2752,
+  "nota": "El plan publicado no informa correlatividades entre materias.",
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/musica-de-camara-y-sinfonica",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Práctica Orquestal I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Estudio Orquestal I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Ensamble Musical I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Elementos de Armonía y Contrapunto",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Taller de Escritura Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Informática Módulo Opcional*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Práctica Orquestal II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Estudio Orquestal II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Ensamble Musical II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Improvisación Musical I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Proyecto de Cooperación I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Elementos Técnicos y Formas Musicales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Optativa 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Práctica Orquestal III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Estudio Orquestal III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "16",
+      "nombre": "Música de Cámara I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "17",
+      "nombre": "Improvisación Musical II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Proyecto de Cooperación II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Historia del Arte",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "20",
+      "nombre": "Idioma Extranjero I (Inglés I o Portugués I)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "nombre": "Práctica Orquestal IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Estudio Orquestal IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Música de Cámara II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "nombre": "Historia General de la Música",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Optativa 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Teoría y Práctica del Repertorio Orquestal I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Técnica y Música de Cámara I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "29",
+      "nombre": "Música de Cámara del S. XX, I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Pasajes Orquestales I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Laboratorio de Experimentación de Música Contemporánea I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Panorama histórico de la Música Sinfónica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Teoría y Práctica del Repertorio Orquestal II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "nombre": "Técnica y Música de Cámara II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "36",
+      "nombre": "Música de Cámara del S. XX, II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "37",
+      "nombre": "Pasajes Orquestales II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Laboratorio de Experimentación de Música Contemporánea II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Análisis Musical I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Panorama Histórico de la Música de Cámara",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Sociología del Arte",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "42",
+      "nombre": "Teoría y Práctica del Repertorio Orquestal III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "43",
+      "nombre": "Técnica y Música de Cámara III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Música de Cámara del S. XX, III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "45",
+      "nombre": "Pasajes Orquestales III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "46",
+      "nombre": "Análisis Musical II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "47",
+      "nombre": "Filosofía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "48",
+      "nombre": "Acústica e Instrumentación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "49",
+      "nombre": "Sistemas Digitales de Escritura Musical",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "50",
+      "nombre": "Post Producción Audiovisual",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "51",
+      "nombre": "Taller de Elaboración de Proyecto de TFI",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "52",
+      "nombre": "Teoría y Práctica del Repertorio Orquestal IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "53",
+      "nombre": "Técnica y Música de Cámara IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "54",
+      "nombre": "Música de Cámara del S. XX, IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "55",
+      "nombre": "Pasajes Orquestales IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "56",
+      "nombre": "Estética",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "57",
+      "nombre": "Sistemas de Grabación y Amplificación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "58",
+      "nombre": "Idioma Extranjero II (Inglés II o Portugués II)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "59",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    }
+  ]
+}

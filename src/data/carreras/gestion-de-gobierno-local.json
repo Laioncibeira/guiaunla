@@ -1,0 +1,302 @@
+{
+  "slug": "gestion-de-gobierno-local",
+  "nombre": "Tecnicatura Universitaria en Gestión de Gobierno Local",
+  "nombreCorto": "Gestión de Gobierno Local",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "tecnicatura",
+  "titulo": "Técnico/a Universitario/a en Gestión de Gobierno Local",
+  "duracionAnios": 3,
+  "tipoNivel": "anio",
+  "niveles": 3,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/pregrado/tecnicaturas/gestion-de-gobierno-local",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Fundamentos de Ciencia Política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Economía Política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Derecho constitucional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Principios de administración pública",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Elementos de Economía de gobierno",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "07",
+      "nombre": "Derecho administrativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Introducción a las políticas públicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Formulación y evaluación de proyectos sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Estadística social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Planificación estratégica y gestión de política local",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Derecho municipal",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Gobierno local",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Sistema financiero y contable municipal",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Seminario de Justicias y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Georeferenciamiento y Planificación del Territorio",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Logística del Transporte Urbano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Gestión del medio ambiente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Desarrollo económico y comercial local",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Gestión de política social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Política laboral y gestión de recursos humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Planeamiento y gestión de infraestructura y servicios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Comunicación institucional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Políticas de seguridad ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Informática A (Módulos 2 o 5)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Informática B (Módulo 7)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "slug": "gestion-y-administracion-universitaria",
+  "nombre": "Tecnicatura Superior en Gestión y Administración Universitaria",
+  "nombreCorto": "Gestión y Administración Universitaria",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "tecnicatura",
+  "titulo": "Técnico/a Superior en Gestión y Administración Universitaria",
+  "duracionAnios": 2,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 6,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/pregrado/tecnicaturas/gestion-y-administracion-universitaria",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Taller de Lectura y Comprensión de Textos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Historia Argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Introducción a la Administración",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Temas y Problemas de Organización Universitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Técnicas Cuantitativas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Sociología de las Organizaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Taller de Técnicas de evaluación, búsqueda y uso de información académica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Desarrollo político de la universidad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Taller de análisis y resolución de problemas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Informática aplicada a la Gestión Universitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Administración y gestión universitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Problemática universitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Legislación aplicada al Sistema Universitario Nacional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Formulación y evaluación de proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "17",
+      "nombre": "Módulo orientado III: procesos de administración y gestión en cooperación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Taller optativo (*)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Módulo orientado I: procesos de administración y gestión académica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Modulo orientado II: procesos de administración y gestión en investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 64,
+      "correlativas": [
+        "10",
+        "12"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Taller de Integración",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 128,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "nombre": "Licenciatura en Diseño Industrial",
   "nombreCorto": "Diseño Industrial",
   "departamento": "humanidades-y-artes",
+  "tipo": "licenciatura",
   "titulo": "Licenciado/a en Diseño Industrial",
   "tituloIntermedio": {
     "nombre": "Técnico/a en Diseño Industrial",
@@ -19,7 +20,7 @@
   "tipoNivel": "anio",
   "niveles": 5,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-industrial",
-  "fuenteFecha": "2026-09-08",
+  "fuenteFecha": "2026-09-16",
   "cotejado": true,
   "materias": [
     {

@@ -3,6 +3,7 @@
   "nombre": "Traductorado Público en Idioma Inglés",
   "nombreCorto": "Traductorado en Inglés",
   "departamento": "humanidades-y-artes",
+  "tipo": "traductorado",
   "titulo": "Traductor/a Público/a en Idioma Inglés",
   "tituloIntermedio": {
     "nombre": "Traductor/a Técnico/a Universitario/a en Idioma Inglés",
@@ -12,7 +13,7 @@
   "tipoNivel": "cuatrimestre",
   "niveles": 8,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/traductorado-publico-en-idioma-ingles",
-  "fuenteFecha": "2026-09-08",
+  "fuenteFecha": "2026-09-16",
   "cotejado": true,
   "materias": [
     {

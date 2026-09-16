@@ -1,0 +1,785 @@
+{
+  "slug": "ingenieria-ferroviaria",
+  "nombre": "Ingeniería Ferroviaria",
+  "nombreCorto": "Ingeniería Ferroviaria",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "ingenieria",
+  "titulo": "Ingeniero/a Ferroviario/a",
+  "duracionAnios": 5,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 10,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/ingenierias/ferroviaria",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Transporte Ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Empresa y Organización Ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Matemática I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Representación Gráfica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Seguridad, Higiene y Ambiente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "Subtotal Primer Cuatrimestre",
+      "nombre": "22",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "352",
+      "horasSemanales": 144,
+      "horasTotales": 44,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Material Rodante I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Infraestructura Ferroviaria I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Química General",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Matemática II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Inglés Técnico para Ingeniería Ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "Subtotal Segundo Cuatrimestre",
+      "nombre": "20",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "320",
+      "horasSemanales": 128,
+      "horasTotales": 40,
+      "correlativas": []
+    },
+    {
+      "codigo": "TOTALES PRIMER AÑO",
+      "nombre": "42",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "672",
+      "horasSemanales": 272,
+      "horasTotales": 84,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Matemática III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Aspectos Socioeconómicos del Ferrocarril",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Ciencia y Tecnología de los Materiales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "08",
+        "03"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Operaciones Ferroviarias I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "Subtotal Tercer Cuatrimestre",
+      "nombre": "22",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "352",
+      "horasSemanales": 144,
+      "horasTotales": 72,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Legislación Ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Matemática IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Física I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Sistemas Digitales y Modelos Informáticos Ferroviarios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03",
+        "04"
+      ]
+    },
+    {
+      "codigo": "Subtotal Cuarto Cuatrimestre",
+      "nombre": "20",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "320",
+      "horasSemanales": 144,
+      "horasTotales": 40,
+      "correlativas": []
+    },
+    {
+      "codigo": "TOTALES SEGUNDO AÑO",
+      "nombre": "42",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "672",
+      "horasSemanales": 288,
+      "horasTotales": 122,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Gestión de la Calidad y Ensayos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Estática y Resistencia de Materiales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "17"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Mecánica de la Tracción Ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "17"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Física II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "17"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Señalamiento Ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "07"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Seminario Pensamiento Nacional Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "Subtotal Quinto Cuatrimestre",
+      "nombre": "22",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "352",
+      "horasSemanales": 136,
+      "horasTotales": 72,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "nombre": "Electrotecnia",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "09",
+        "22"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Electrónica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "22"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Operaciones Ferroviarias II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Estructuras Ferroviarias",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07",
+        "20"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Mecanismos Ferroviarios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "06",
+        "20"
+      ]
+    },
+    {
+      "codigo": "S01",
+      "nombre": "Práctica Profesional Supervisada I – PPS I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 68,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "Subtotal Sexto Cuatrimestre",
+      "nombre": "22",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "352",
+      "horasSemanales": 212,
+      "horasTotales": 76,
+      "correlativas": []
+    },
+    {
+      "codigo": "TOTALES TERCER AÑO",
+      "nombre": "44",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "772",
+      "horasSemanales": 348,
+      "horasTotales": 236,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Máquinas Eléctricas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Termodinámica y Máquinas Térmicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "17"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Sistemas de control",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Seguridad Operacional Ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Probabilidad y Estadística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Matemática V",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "Subtotal Séptimo Cuatrimestre",
+      "nombre": "24",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "384",
+      "horasSemanales": 144,
+      "horasTotales": 48,
+      "correlativas": []
+    },
+    {
+      "codigo": "36",
+      "nombre": "Material Tractivo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "20"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Mecánica de los Fluidos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "09",
+        "17"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Infraestructura Ferroviaria II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07",
+        "20"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Instalaciones de Electrificación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "30"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Gestión de la Innovación y Planeamiento Estratégico Ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Asignatura",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "Subtotal Octavo Cuatrimestre",
+      "nombre": "20",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "320",
+      "horasSemanales": 140,
+      "horasTotales": 136,
+      "correlativas": []
+    },
+    {
+      "codigo": "TOTALES CUARTO AÑO",
+      "nombre": "44",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "704",
+      "horasSemanales": 284,
+      "horasTotales": 184,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Líneas Ferroviarias Electrificadas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Asignatura",
+      "horasSemanales": 8,
+      "horasTotales": 96,
+      "correlativas": [
+        "37"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Material Rodante II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Sistemas de Comunicaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Asignatura",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23",
+        "32"
+      ]
+    },
+    {
+      "codigo": "45",
+      "nombre": "Proyecto Ferroviario Integrador",
+      "dedicacion": "anual",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "16",
+        "39",
+        "40"
+      ]
+    },
+    {
+      "codigo": "Subtotal Noveno Cuatrimestre",
+      "nombre": "26",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "484",
+      "horasSemanales": 328,
+      "horasTotales": 320,
+      "correlativas": []
+    },
+    {
+      "codigo": "46",
+      "nombre": "Herramientas para la Simulación y Modelaje Ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11",
+        "18"
+      ]
+    },
+    {
+      "codigo": "47",
+      "nombre": "Mantenimiento Ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Asignatura",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "36",
+        "37"
+      ]
+    },
+    {
+      "codigo": "48",
+      "nombre": "Seminario Optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Seminario",
+      "horasSemanales": 3,
+      "horasTotales": 48,
+      "optativa": true,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "49",
+      "nombre": "Seminario Optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "S02",
+      "nombre": "Espacio curricular flexible",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "Subtotal Décimo Cuatrimestre",
+      "nombre": "17",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "304",
+      "horasSemanales": 152,
+      "horasTotales": 134,
+      "correlativas": []
+    },
+    {
+      "codigo": "TOTALES QUINTO AÑO",
+      "nombre": "43",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "788",
+      "horasSemanales": 280,
+      "horasTotales": 254,
+      "correlativas": []
+    },
+    {
+      "codigo": "Carga horaria totales de las unidades académicas",
+      "nombre": "215",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "3608",
+      "horasSemanales": 1572,
+      "horasTotales": 972,
+      "correlativas": []
+    }
+  ]
+}

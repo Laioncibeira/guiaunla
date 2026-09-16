@@ -3,12 +3,13 @@
   "nombre": "Licenciatura en Diseño y Comunicación Visual",
   "nombreCorto": "Diseño y Comunicación Visual",
   "departamento": "humanidades-y-artes",
+  "tipo": "licenciatura",
   "titulo": "Licenciado/a en Diseño y Comunicación Visual",
   "duracionAnios": 5,
   "tipoNivel": "anio",
   "niveles": 5,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-y-comunicacion-visual",
-  "fuenteFecha": "2026-09-08",
+  "fuenteFecha": "2026-09-16",
   "cotejado": true,
   "materias": [
     {

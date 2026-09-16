@@ -1,0 +1,568 @@
+{
+  "slug": "planificacion-logistica",
+  "nombre": "Licenciatura en Planificación Logística",
+  "nombreCorto": "Planificación Logística",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Planificación Logística",
+  "duracionAnios": 5,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 10,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/planificacion-logistica",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Matemática I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Fundamentos de Economía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Logística I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Transporte I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Régimen Jurídico I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Geografía Económica Argentina y regional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Matemática II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Idioma Extranjero 1 · Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Módulo de Informática 3: Planilla de Cálculo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Matemática Aplicada a la Logística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Almacenamiento I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Seguridad e Higiene",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Logística II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Transporte II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Estadística Aplicada a la Logística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Distribución I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Legislación y Práctica aduanera I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Módulo de Informática 4: Planilla de Cálculo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Régimen Jurídico II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Costos y Evaluación de Proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Tecnologías Aplicadas a la Logística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Relaciones Laborales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Logística III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13",
+        "15",
+        "18"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Transporte III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Negociación y toma de decisiones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "29",
+      "nombre": "Problemas Económicos y Políticos del Siglo XXI",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Logística de la Seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Infraestructura y Servicios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Planeamiento Estratégico I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "26"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Logística inversa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Comercio Exterior",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "nombre": "Logística y Articulación Territorial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "32"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Seminario de Actualización de Problemas Logísticos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seminario de Actualización en Problemática de Transporte",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Idiona Extranjero · Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "Portugués II",
+      "nombre": "Portugués II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Idioma Extranjero III · Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "38"
+      ]
+    },
+    {
+      "codigo": "Portugués III",
+      "nombre": "Portugués II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Taller de Práctica Pre Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "41 a",
+      "nombre": "Distribución II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Privadas",
+      "correlativas": [
+        "16",
+        "24",
+        "25"
+      ]
+    },
+    {
+      "codigo": "42 a",
+      "nombre": "Almacenamiento II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Privadas",
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "43 a",
+      "nombre": "Legislación y Práctica Aduanera",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Privadas",
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "41 b",
+      "nombre": "Planeamiento Estratégico II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Públicas",
+      "correlativas": [
+        "20",
+        "35"
+      ]
+    },
+    {
+      "codigo": "42 b",
+      "nombre": "Compras y contrataciones en el Sector Público",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Públicas",
+      "correlativas": []
+    },
+    {
+      "codigo": "43 b",
+      "nombre": "Logística de la Defensa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Públicas",
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Organizaciones Públicas",
+      "correlativas": [],
+      "correlativasNoResueltas": [
+        "42",
+        "42"
+      ]
+    },
+    {
+      "codigo": "45",
+      "nombre": "Espacio Optativo*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "formato": "Materias, seminarios, talleres",
+      "horasTotales": 256,
+      "mencion": "Mención en Organizaciones Públicas",
+      "correlativas": []
+    }
+  ]
+}

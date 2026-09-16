@@ -1,0 +1,424 @@
+{
+  "slug": "ciencia-y-tecnologia-de-los-alimentos",
+  "nombre": "Licenciatura en Ciencia y Tecnología de los Alimentos",
+  "nombreCorto": "Ciencia y Tecnología de los Alimentos",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Ciencia y Tecnología de los Alimentos",
+  "duracionAnios": 5,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/ciencia-y-tecnologia-de-los-alimentos",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "3260",
+      "nombre": "Matemática I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 100,
+      "correlativas": []
+    },
+    {
+      "codigo": "3200",
+      "nombre": "Química general",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 100,
+      "correlativas": []
+    },
+    {
+      "codigo": "3201",
+      "nombre": "Física I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 100,
+      "correlativas": []
+    },
+    {
+      "codigo": "3203",
+      "nombre": "Biología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasTotales": 100,
+      "correlativas": []
+    },
+    {
+      "codigo": "3261",
+      "nombre": "Matemática II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 100,
+      "correlativas": [
+        "3260"
+      ]
+    },
+    {
+      "codigo": "3204",
+      "nombre": "Química inorgánica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 100,
+      "correlativas": [
+        "3200"
+      ]
+    },
+    {
+      "codigo": "3243",
+      "nombre": "Física II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 100,
+      "correlativas": [
+        "3201"
+      ]
+    },
+    {
+      "codigo": "3207",
+      "nombre": "Anatomía y Fisiología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasTotales": 100,
+      "correlativas": [
+        "3203"
+      ]
+    },
+    {
+      "codigo": "3208",
+      "nombre": "Microbiología general",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 80,
+      "correlativas": [
+        "3203"
+      ]
+    },
+    {
+      "codigo": "3209",
+      "nombre": "Química orgánica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 100,
+      "correlativas": [
+        "3200"
+      ]
+    },
+    {
+      "codigo": "3247",
+      "nombre": "Matemática III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 80,
+      "correlativas": [
+        "3261"
+      ]
+    },
+    {
+      "codigo": "3211",
+      "nombre": "Fisicoquímica y biofísica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 80,
+      "correlativas": [
+        "3261",
+        "3201"
+      ]
+    },
+    {
+      "codigo": "3212",
+      "nombre": "Química analítica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasTotales": 80,
+      "correlativas": [
+        "3204"
+      ]
+    },
+    {
+      "codigo": "3244",
+      "nombre": "Química biológica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 100,
+      "correlativas": [
+        "3209"
+      ]
+    },
+    {
+      "codigo": "3245",
+      "nombre": "Bromatología I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 80,
+      "correlativas": [
+        "3212",
+        "3209"
+      ]
+    },
+    {
+      "codigo": "3216",
+      "nombre": "Industría y Tecnología de los Alimentos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 100,
+      "correlativas": [
+        "3211"
+      ]
+    },
+    {
+      "codigo": "3246",
+      "nombre": "Microbiología de Alimentos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 80,
+      "correlativas": [
+        "3208"
+      ]
+    },
+    {
+      "codigo": "3210",
+      "nombre": "Estadística y Bioestadística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasTotales": 80,
+      "correlativas": [
+        "3262"
+      ]
+    },
+    {
+      "codigo": "3219",
+      "nombre": "Nutrición",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 80,
+      "correlativas": [
+        "3244"
+      ]
+    },
+    {
+      "codigo": "3220",
+      "nombre": "Bromatología II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 80,
+      "correlativas": [
+        "3245"
+      ]
+    },
+    {
+      "codigo": "3222",
+      "nombre": "Industría y Tecnología de los Alimentos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 80,
+      "correlativas": [
+        "3216"
+      ]
+    },
+    {
+      "codigo": "3262",
+      "nombre": "Equipos e Instalaciones I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 80,
+      "correlativas": [
+        "3216",
+        "3261",
+        "3243"
+      ]
+    },
+    {
+      "codigo": "3248",
+      "nombre": "Microbiología de los Alimentos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasTotales": 80,
+      "correlativas": [
+        "3246"
+      ]
+    },
+    {
+      "codigo": "3265",
+      "nombre": "Toxicología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 80,
+      "correlativas": [
+        "3244",
+        "3245"
+      ]
+    },
+    {
+      "codigo": "3249",
+      "nombre": "Bromatología III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 80,
+      "correlativas": [
+        "3220"
+      ]
+    },
+    {
+      "codigo": "3225",
+      "nombre": "Industría y Tecnología de los Alimentos III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 100,
+      "correlativas": [
+        "3222"
+      ]
+    },
+    {
+      "codigo": "3263",
+      "nombre": "Historia, Legislación y Ética Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 68,
+      "correlativas": [
+        "3245"
+      ]
+    },
+    {
+      "codigo": "3242",
+      "nombre": "Práctica Preprofesional (Bromatología)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 60,
+      "correlativas": [
+        "3245",
+        "3246"
+      ]
+    },
+    {
+      "codigo": "3264",
+      "nombre": "Equipos e instalaciones II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 80,
+      "correlativas": [
+        "3262"
+      ]
+    },
+    {
+      "codigo": "3266",
+      "nombre": "Calidad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasTotales": 80,
+      "correlativas": [
+        "3210",
+        "3245",
+        "3246"
+      ]
+    },
+    {
+      "codigo": "3232",
+      "nombre": "Conservación y empaque",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasTotales": 80,
+      "correlativas": [
+        "3248"
+      ]
+    },
+    {
+      "codigo": "3230",
+      "nombre": "Instrumentación y Automatización",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasTotales": 80,
+      "correlativas": [
+        "3262"
+      ]
+    },
+    {
+      "codigo": "3231",
+      "nombre": "Industría y Tecnología de los Alimentos IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasTotales": 80,
+      "correlativas": [
+        "3225"
+      ]
+    },
+    {
+      "codigo": "3267",
+      "nombre": "Economía y Gestión Empresaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasTotales": 64,
+      "correlativas": [
+        "3210"
+      ]
+    },
+    {
+      "codigo": "3268",
+      "nombre": "Formulación de proyectos industriales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 100,
+      "correlativas": [
+        "3230",
+        "3232",
+        "3266",
+        "3267"
+      ]
+    },
+    {
+      "codigo": "3269",
+      "nombre": "Integración de la Industria Alimentaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 64,
+      "correlativas": [
+        "3231",
+        "3264",
+        "3266"
+      ]
+    },
+    {
+      "codigo": "3270",
+      "nombre": "Industria alimenticia y medio ambiente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 80,
+      "correlativas": [
+        "3231",
+        "3266"
+      ]
+    },
+    {
+      "codigo": "3236",
+      "nombre": "Industria y tecnología de los Alimentos V",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 100,
+      "correlativas": [
+        "3231",
+        "3248",
+        "3249"
+      ]
+    },
+    {
+      "codigo": "3271",
+      "nombre": "Educación y Fiscalización",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasTotales": 60,
+      "correlativas": [
+        "3210",
+        "3219",
+        "3231",
+        "3248"
+      ]
+    },
+    {
+      "codigo": "3255",
+      "nombre": "Trabajo Final",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    }
+  ]
+}

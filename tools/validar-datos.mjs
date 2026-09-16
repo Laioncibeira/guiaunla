@@ -17,7 +17,15 @@ const avisar = (msg) => avisos.push(msg);
 // ------------------------------------------------------------- carreras
 const departamentos = leer('src/data/departamentos.json').departamentos;
 const slugsDeclarados = departamentos.flatMap((d) => d.carreras);
-const archivos = fs.readdirSync('src/data/carreras').filter((f) => f.endsWith('.json'));
+const archivos = fs
+  .readdirSync('src/data/carreras')
+  .filter((f) => f.endsWith('.json') && f !== 'indice.json');
+
+// El índice tiene que reflejar exactamente los planes que existen.
+const indice = leer('src/data/carreras/indice.json');
+const enIndice = new Set(indice.map((i) => i.slug));
+for (const f of archivos) if (!enIndice.has(f.replace('.json', ''))) fallar(`indice.json no lista a ${f}`);
+for (const i of indice) if (!archivos.includes(i.slug + '.json')) fallar(`indice.json lista ${i.slug} pero no existe el plan`);
 
 for (const slug of slugsDeclarados)
   if (!archivos.includes(slug + '.json')) fallar(`falta el plan de ${slug}`);
@@ -29,7 +37,7 @@ for (const archivo of archivos) {
   if (archivo !== c.slug + '.json') fallar(`${archivo}: el slug no coincide con el archivo`);
   if (!slugsDeclarados.includes(c.slug)) fallar(`${donde}: no figura en departamentos.json`);
   if (!c.materias?.length) fallar(`${donde}: no tiene materias`);
-  if (!c.cotejado) avisar(`${donde}: sin cotejar contra la tabla publicada (node tools/cotejar-fuente.mjs)`);
+  if (!c.cotejado) avisar(`${donde}: sin cotejar contra la fuente` + (c.nota ? ` (${c.nota.slice(0, 60)}…)` : ''));
 
   const codigos = new Set();
   for (const m of c.materias) {

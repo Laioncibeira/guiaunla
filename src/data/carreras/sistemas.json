@@ -1,0 +1,503 @@
+{
+  "slug": "sistemas",
+  "nombre": "Licenciatura en Sistemas",
+  "nombreCorto": "Sistemas",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Sistemas",
+  "tituloIntermedio": {
+    "nombre": "Analista Programador/a Universitario/a",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 5,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 10,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/sistemas",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Expresión de Problemas y Algoritmos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Organización de Computadoras",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ARSORE",
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Elementos de Matemática",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Programación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "AyL",
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "05",
+      "nombre": "Arquitectura de Computadoras",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ARSORE",
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Taller de Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "Idioma Extranjero",
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Ingeniería de Software I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Introducción a las Bases de Datos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Algoritmos y Estructuras de Datos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "AyL",
+      "correlativas": [
+        "01",
+        "04"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Seminario de Pensamiento Nacional Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "ASyP",
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Taller de Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "Idioma Extranjero",
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Seminario de Lenguajes",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "AyL",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Introducción a los Sistemas Operativos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ARSORE",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Matemática Discreta",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Orientación a Objetos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "AyL",
+      "correlativas": [
+        "07",
+        "09"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Taller de Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "Idioma Extranjero",
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Programación Concurrente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "AyL",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Ingeniería de Software II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Análisis matemático I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Bases de Datos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "07",
+        "08"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Redes y Comunicaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ARSORE",
+      "correlativas": [
+        "03",
+        "13"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "ASyP",
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Practicas Pre-profesionales I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasTotales": 80,
+      "correlativas": []
+    },
+    {
+      "codigo": "Analista Programador Universitario",
+      "nombre": "Carga horaria total 1.968",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "nombre": "Conceptos y Paradigmas de Lenguajes de Programación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "AyL",
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Orientación a Objetos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "AyL",
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Ingeniería de Software III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Bases de Datos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Sistemas Operativos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ARSORE",
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Análisis matemático II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "19"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Fundamentos de Teoría de la Computación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "19",
+        "24"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Desarrollo de Software en Sistemas Distribuidos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": [
+        "17",
+        "18",
+        "21"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Sistemas y Organizaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "nombre": "Proyecto de Software",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "ISBDSI",
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Taller de Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "18",
+        "20",
+        "21",
+        "25",
+        "28"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Probabilidad y Estadística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "area": "CBGyE",
+      "correlativas": [
+        "14",
+        "19"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Seminario Optativo*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "37",
+      "nombre": "Escenarios Tecnológicos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "ASyP",
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Aspectos sociales y profesionales de la Informática",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "area": "ASyP",
+      "correlativas": [
+        "32"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Prácticas Preprofesionales II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasTotales": 80,
+      "area": "Espacios de integración",
+      "correlativas": [
+        "23"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Taller de Proyectos I+D+i",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 6,
+      "horasTotales": 64,
+      "area": "Espacios de integración",
+      "correlativas": [
+        "33",
+        "34",
+        "35"
+      ]
+    },
+    {
+      "codigo": "Licenciatura en Sistemas",
+      "nombre": "Total carga horaria 3.392",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "correlativas": []
+    }
+  ]
+}

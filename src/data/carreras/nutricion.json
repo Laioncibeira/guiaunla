@@ -1,0 +1,530 @@
+{
+  "slug": "nutricion",
+  "nombre": "Licenciatura en Nutrición",
+  "nombreCorto": "Nutrición",
+  "departamento": "salud-comunitaria",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Nutrición",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Nutrición Comunitaria",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 5,
+  "nota": "Este plan distingue correlativas para cursar (con la materia regular) y para rendir el final (con la correlativa aprobada). El mapa usa las de cursar.",
+  "tipoNivel": "cuatrimestre",
+  "niveles": 9,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/nutricion",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Salud Colectiva",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Anatomía y Fisiología",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Seminario de Situaciones Problemáticas y Territorio",
+      "dedicacion": "anual",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Seminario de Introducción a las Problemáticas Alimentarias",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Nutrición I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": [
+        "04"
+      ],
+      "correlativasParaRendir": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Biofísica y Bioquímica I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Salud Mental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Nutrición II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": [
+        "05"
+      ],
+      "correlativasParaRendir": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Física y Química Culinaria",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "correlativas": [
+        "06"
+      ],
+      "correlativasParaRendir": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Antropología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Seminario optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Evaluación Nutricional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": [
+        "02",
+        "05",
+        "06"
+      ],
+      "correlativasParaRendir": [
+        "02",
+        "05",
+        "06"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Biofísica y Bioquímica II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": [
+        "06"
+      ],
+      "correlativasParaRendir": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Nutrición III (Nutrición infanto-juvenil)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": [
+        "02",
+        "08",
+        "12"
+      ],
+      "correlativasParaRendir": [
+        "02",
+        "08",
+        "12"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Educación Alimentaria Nutricional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "16",
+      "nombre": "Bromatología y Tecnología de los Alimentos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": [
+        "06"
+      ],
+      "correlativasParaRendir": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Microbiología y Parasitología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": [
+        "02"
+      ],
+      "correlativasParaRendir": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Ética Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Nutrición IV (Nutrición en la adolescencia, adultez y actividad física)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": [
+        "12",
+        "14"
+      ],
+      "correlativasParaRendir": [
+        "12",
+        "14"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Promoción Comunitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": [
+        "03",
+        "15"
+      ],
+      "correlativasParaRendir": [
+        "03",
+        "15"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Economía Regional y Alimentaria",
+      "dedicacion": "anual",
+      "nivel": 5,
+      "correlativas": [
+        "08"
+      ],
+      "correlativasParaRendir": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Bromatología y Tecnología de los Alimentos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": [
+        "16"
+      ],
+      "correlativasParaRendir": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Nutrición Comunitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": [
+        "01",
+        "14"
+      ],
+      "correlativasParaRendir": [
+        "01",
+        "14"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Desarrollo Comunitario y Organización Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": [
+        "20"
+      ],
+      "correlativasParaRendir": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Seminario Optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Epidemiología I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": [
+        "01"
+      ],
+      "correlativasParaRendir": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Prácticas en Nutrición Comunitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": [
+        "19",
+        "23"
+      ],
+      "correlativasParaRendir": [
+        "19",
+        "23"
+      ]
+    },
+    {
+      "codigo": "S01",
+      "nombre": "Idioma extranjero Nivel I (Inglés I - Portugués I)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S02",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S03",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S04",
+      "nombre": "Informática - Módulo III: Planilla de cálculo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S05",
+      "nombre": "Informática - Módulo IV: Planilla de cálculo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Núcleo Clínico Integrado: Fisiopatología, Dietoterapia del Adulto y Técnica Dietoterápica",
+      "dedicacion": "anual",
+      "nivel": 7,
+      "correlativas": [
+        "08",
+        "09",
+        "17",
+        "19"
+      ],
+      "correlativasParaRendir": [
+        "08",
+        "09",
+        "17",
+        "19"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Metodología de la Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "correlativas": [
+        "15",
+        "18",
+        "20",
+        "26"
+      ],
+      "correlativasParaRendir": [
+        "15",
+        "18",
+        "20",
+        "26"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Epidemiología II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "correlativas": [
+        "23",
+        "26"
+      ],
+      "correlativasParaRendir": [
+        "23",
+        "26"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Gestión y Administración de Servicios de Alimentación",
+      "dedicacion": "anual",
+      "nivel": 7,
+      "correlativas": [
+        "19",
+        "21"
+      ],
+      "correlativasParaRendir": [
+        "19",
+        "21"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Gestión de las Organizaciones de Salud",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": [
+        "01"
+      ],
+      "correlativasParaRendir": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Fisiopatología y Dietoterapia del Niño",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": [
+        "09",
+        "17",
+        "14"
+      ],
+      "correlativasParaRendir": [
+        "09",
+        "17",
+        "14"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Prácticas en Salud Colectiva",
+      "dedicacion": "anual",
+      "nivel": 9,
+      "correlativas": [
+        "21",
+        "27",
+        "30",
+        "32"
+      ],
+      "correlativasParaRendir": [
+        "21",
+        "27",
+        "30",
+        "32"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "anual",
+      "nivel": 9,
+      "correlativas": [
+        "21",
+        "27",
+        "28",
+        "30",
+        "31",
+        "32",
+        "33"
+      ],
+      "correlativasParaRendir": [
+        "21",
+        "27",
+        "28",
+        "30",
+        "31",
+        "32",
+        "33"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Prácticas en Dietoterapia y Gestión y Administración de Servicios de Alimentación",
+      "dedicacion": "anual",
+      "nivel": 9,
+      "correlativas": [
+        "28",
+        "31",
+        "33"
+      ],
+      "correlativasParaRendir": [
+        "28",
+        "31",
+        "33"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seminario Optativo III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Seminario Optativo IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S06",
+      "nombre": "Idioma extranjero Nivel II (Inglés II - Portugués II)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S07",
+      "nombre": "Informática Módulo específico Antropometría",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    }
+  ]
+}

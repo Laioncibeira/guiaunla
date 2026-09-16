@@ -1,0 +1,473 @@
+{
+  "slug": "educacion",
+  "nombre": "Licenciatura en Educación",
+  "nombreCorto": "Educación",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Educación",
+  "duracionAnios": 4,
+  "horasTotales": 2656,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/educacion",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Psicología de la Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Taller \"Las Instituciones Educativas\"",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Filosofía de la Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Política, Estado y Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Teorías del Aprendizaje",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Historía de la Educación Argentina y Latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Economía de la Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Sociología de la Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Administración y Gestión I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Teoría Curricular",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Teorías Pedagógicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Infancia y Juventud",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Administración y Gestión II (Incluye 32 hs. de tareas de prácticas de campo)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia y Práctica",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Didáctica I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Talleres \"Las TIC en Educación\"",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "16",
+      "nombre": "Adultos Mayores",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Niveles y Modalidades del Sistema educativo argentino",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Investigación Educativa I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Didáctica II (Incluye 32 hs. de prácticas docentes)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia y práctica",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "nombre": "Nuevos Modelos Universitarios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Investigación Educativa II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Sistemas Educativos Comparados",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Políticas Públicas en Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Formulación de proyectos de Formación profesional y Capacitación Laboral",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Ateneo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Ateneo",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Prácticas Profesionales (incluye 32 hs. de prácticas fuera del aula)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Prácticas",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13",
+        "19"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Ateneo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Ateneo",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Seminario Optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Seminario Optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Seminario Optativo III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "nombre": "Seminario Optativo IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Seminario Optativo V",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "nombre": "Taller de Trabajo Final (incluye 32 hs de tutorías personalizadas)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "23",
+        "28",
+        "30",
+        "31",
+        "15"
+      ]
+    },
+    {
+      "codigo": "S01",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S02",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S01"
+      ]
+    },
+    {
+      "codigo": "S03",
+      "nombre": "Taller de Inglés para Educación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Taller",
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S02"
+      ]
+    },
+    {
+      "codigo": "S04",
+      "nombre": "Informática Módulo a elección (***)",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S05",
+      "nombre": "Informática Módulo 14. Formación de usuarios de la Biblioteca Rodolfo Puiggrós",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S06",
+      "nombre": "Informática Módulo 15. Bibliotecas digitales y acceso a sistemas de información académica.",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "Carga Horaria Total",
+      "nombre": "2.656",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    }
+  ]
+}

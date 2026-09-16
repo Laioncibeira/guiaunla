@@ -1,0 +1,449 @@
+{
+  "slug": "economia-empresarial",
+  "nombre": "Licenciatura en Economía Empresarial",
+  "nombreCorto": "Economía Empresarial",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Economía Empresarial",
+  "duracionAnios": 4,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/economia-empresarial",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Introducción a Economía Empresarial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 8,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Historia Económica Contemporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "03",
+      "nombre": "Contabilidad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "04",
+      "nombre": "Matemática I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "05",
+      "nombre": "Taller de Comunicación y Producción de Textos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Empresa, Economía y Sociedad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "07",
+      "nombre": "Organización y Gestión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Matemática II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Derecho Comercial",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Microeconomía I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Cálculo Financiero",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Comercialización",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05",
+        "07"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Costos Empresariales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03",
+        "08"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Seminario de Pensamiento Nacional Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Control de Gestión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "13"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Estadística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Microeconomía II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Macroeconomía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06",
+        "10"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Taller de Práctica Preprofesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": [
+        "12",
+        "13"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Plan de Negocios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Organización de la Producción y la Tecnología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Formulación de Proyectos de Inversión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Economía Bancaria y Financiera",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16",
+        "17"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seminario optativo 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Evaluación de Proyectos de Inversión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "21"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Relaciones Laborales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Sistemas de Organización",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Principios de Tributación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "14"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Seminario optativo 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Financiamiento",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Tecnología y ciencia de datos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Taller de Proyecto Empresarial (Anual)",
+      "dedicacion": "anual",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "19",
+        "23"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Planeamiento Estratégico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Seminario opativo 3",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Política Económica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Inteligencia de negocios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Comercio Exterior",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "30"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Seminario optativo 4",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "nombre": "Licenciatura en Audiovisión",
   "nombreCorto": "Audiovisión",
   "departamento": "humanidades-y-artes",
+  "tipo": "licenciatura",
   "titulo": "Licenciado/a en Audiovisión",
   "tituloIntermedio": {
     "nombre": "Técnico/a Universitario en Audiovisión",
@@ -17,7 +18,7 @@
   "tipoNivel": "anio",
   "niveles": 5,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/audiovision",
-  "fuenteFecha": "2026-09-08",
+  "fuenteFecha": "2026-09-16",
   "cotejado": true,
   "materias": [
     {

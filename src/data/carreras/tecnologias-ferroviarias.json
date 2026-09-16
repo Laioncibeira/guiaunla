@@ -1,0 +1,305 @@
+{
+  "slug": "tecnologias-ferroviarias",
+  "nombre": "Licenciatura en Tecnologías Ferroviarias",
+  "nombreCorto": "Tecnologías Ferroviarias",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Tecnologías Ferroviarias",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Tecnologías Ferroviarias",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 4,
+  "orientaciones": [
+    "Electromecánica Ferroviaria",
+    "Infraestructura Ferroviaria"
+  ],
+  "nota": "La web publica sólo la lista de materias de la Tecnicatura, sin códigos ni correlatividades. Los dos cuatrimestres de la Licenciatura y sus orientaciones no están detallados.",
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/tecnologias-ferroviarias",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": false,
+  "materias": [
+    {
+      "codigo": "01",
+      "sinCodigoOficial": true,
+      "nombre": "Matemática I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "sinCodigoOficial": true,
+      "nombre": "Representación gráfica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "sinCodigoOficial": true,
+      "nombre": "Historia del ferrocarril",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "sinCodigoOficial": true,
+      "nombre": "Aspectos técnicos y Socioeconómicos del Ferrocarril",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "sinCodigoOficial": true,
+      "nombre": "Matemática II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "sinCodigoOficial": true,
+      "nombre": "Física I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "sinCodigoOficial": true,
+      "nombre": "Introducción a la química",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "sinCodigoOficial": true,
+      "nombre": "El transporte ferroviario",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "sinCodigoOficial": true,
+      "nombre": "Matemática III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "sinCodigoOficial": true,
+      "nombre": "Física II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnologías de la información y de las comunicaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "sinCodigoOficial": true,
+      "nombre": "Nuevos escenarios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "sinCodigoOficial": true,
+      "nombre": "Seguridad laboral y ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "16",
+      "sinCodigoOficial": true,
+      "nombre": "Legislación ferroviaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "17",
+      "sinCodigoOficial": true,
+      "nombre": "Mecánica y tecnología de los materiales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "sinCodigoOficial": true,
+      "nombre": "Electrónica y electromecánica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "correlativas": []
+    },
+    {
+      "codigo": "20",
+      "sinCodigoOficial": true,
+      "nombre": "Termodinámica y máquinas térmicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "sinCodigoOficial": true,
+      "nombre": "Instalaciones eléctricas y electromecánicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria V",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "sinCodigoOficial": true,
+      "nombre": "Metodología de la investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "sinCodigoOficial": true,
+      "nombre": "Mecánica de los fluidos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "sinCodigoOficial": true,
+      "nombre": "Tecnología ferroviaria VI",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "sinCodigoOficial": true,
+      "nombre": "Gestión de la calidad, ensayos y mediciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "sinCodigoOficial": true,
+      "nombre": "Seminario optativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "29",
+      "sinCodigoOficial": true,
+      "nombre": "Práctica supervisada",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "sinCodigoOficial": true,
+      "nombre": "Material rodante",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "sinCodigoOficial": true,
+      "nombre": "Mantenimiento y reparación en líneas electrificadas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "sinCodigoOficial": true,
+      "nombre": "Taller de trabajo final: Proyecto de electrificación y/o electromecánico ferroviario. Práctica preprofesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "sinCodigoOficial": true,
+      "nombre": "Infraestructura ferroviaria III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "sinCodigoOficial": true,
+      "nombre": "Seminario optativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "sinCodigoOficial": true,
+      "nombre": "Taller de trabajo final: proyecto de una vía férrea. Práctica preprofesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    }
+  ]
+}

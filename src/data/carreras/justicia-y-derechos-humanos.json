@@ -1,0 +1,577 @@
+{
+  "slug": "justicia-y-derechos-humanos",
+  "nombre": "Licenciatura en Justicia y Derechos Humanos",
+  "nombreCorto": "Justicia y Derechos Humanos",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Justicia y Derechos Humanos",
+  "duracionAnios": 4,
+  "tipoNivel": "anio",
+  "niveles": 4,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/justicia-y-derechos-humanos",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Introducción a la Teoría del Estado",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Instituciones del Derecho",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Historia argentina y derechos humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Derecho Constitucional y constitucionalismo social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Configuración histórica de los derechos humanos en América Latina I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Derechos Humanos y Comunicación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Educación y TIC en Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Derechos Humanos y Soberanía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Metodología de la investigación social I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Teoría Política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Configuración histórica de los derechos humanos en América Latina II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Derecho Penal",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02",
+        "04"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Historia política, social y cultural latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Problemas actuales de acceso a la justicia",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Derechos sociales, económicos y culturales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Políticas Públicas y políticas en organizaciones sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "17",
+      "nombre": "Psicología Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "18",
+      "nombre": "Estrategias de formación, capacitación y promoción",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "20",
+      "nombre": "Informática Módulo 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Módulo",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "21",
+      "nombre": "Informática Módulo 7",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Módulo",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Informática Módulo 11",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Módulo",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Informática Módulo 12",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Módulo",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Taller de práctica pre profesional I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "09",
+        "14",
+        "17"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Taller de integración",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "09",
+        "14",
+        "17"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Sociología del derecho",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Los derechos sociales en las políticas públicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15",
+        "16"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Análisis de políticas públicas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Derechos humanos y derechos sociales en Latinoamérica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Protección internacional de derechos humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Política Contemporánea Latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "nombre": "Metodología de la investigación social II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Elementos básicos de los procesos judiciales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "02",
+        "04"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Introducción al Sistema Judicial Argentino",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Formulación y evaluación de proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "16"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Filosofía del Derecho y teoría de la Justicia",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "02",
+        "04"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Democracia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Seminario Optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "14",
+        "15",
+        "16",
+        "33"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Seminario Optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "14",
+        "15",
+        "16",
+        "33"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Seminario Optativo III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "14",
+        "15",
+        "16",
+        "33"
+      ]
+    },
+    {
+      "codigo": "44",
+      "nombre": "Seminario Optativo IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "14",
+        "15",
+        "16",
+        "33"
+      ]
+    },
+    {
+      "codigo": "45",
+      "nombre": "Taller de práctica pre profesional II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "46",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "28"
+      ]
+    }
+  ]
+}

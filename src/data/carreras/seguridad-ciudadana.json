@@ -1,0 +1,517 @@
+{
+  "slug": "seguridad-ciudadana",
+  "nombre": "Licenciatura en Seguridad Ciudadana",
+  "nombreCorto": "Seguridad Ciudadana",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Seguridad Ciudadana",
+  "duracionAnios": 4,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/seguridad-ciudadana",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Aspectos constitucionales de la Seguridad Ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Estado, Gobierno y Sociedad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Seguridad y Comunicación Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Introducción Metodológica: Metodología de análisis mediático",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Antropología Social y Jurídica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Paradigmas y Sistemas de Seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Seminario Optativo I*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Metodología de análisis de las instituciones y las organizaciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Historia moderna y contemporánea*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Perspectivas socioloógicas de fundamento de la seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Políticas Públicas y Planificación en Seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Tecnologías y Seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Taller de Derechos Humanos y Seguridad Ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Análisis socioeconómico de la sociedad argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Criminología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Problemas sociales urbanos y gestión de los territorios",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "19",
+      "nombre": "Métodos y técnicas de trabajo con grupos e instituciones",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "20",
+      "nombre": "Electiva del campo del Derecho: 1. Derecho Penal y seguridad 2. Principios de Derecho administrativo y gestión pública",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Participación comunitaria y seguridad ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Gestión de Riesgo y Seguridad Ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Diseño, gestión y evaluación de proyectos locales en seguridad ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "nombre": "Taller de intervención de operadores locales en prevención",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Taller / Práctica",
+      "horasSemanales": 10,
+      "horasTotales": 160,
+      "correlativas": [
+        "07",
+        "13",
+        "18"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Idioma extranjero I · Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "26",
+      "nombre": "Módulo de Informática 3: Planilla de Cálculo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Módulo",
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Legislación y normatividad en seguridad ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "15"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Investigación del delito y gestión de información criminal",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "29",
+      "nombre": "Ciudadanía, inseguridad y miedo al delito",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Elementos de estadística aplicada y demografía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Metodología de la investigación social aplicada a la seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Geopolítica, globalización y seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Sociología de las violencias",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Políticas comparadas en seguridad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Políticas multiagenciales de prevención de la violencia y el delito",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "36",
+      "nombre": "Taller de elaboración de proyectos de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "24",
+        "31"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seguridad, imaginario colectivo y subjetividad social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Seminario optativo II*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Políticas de formación, capacitación y promoción de la seguridad ciudadana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Métodos de gestión de la conflictividad",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Práctica pre-profesional integrada",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Práctica",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "27",
+        "34"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Taller",
+      "horasSemanales": 6,
+      "horasTotales": 192,
+      "correlativas": [
+        "36"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Informática Opción A: Módulo 4 o 6 · 4. Planilla de Cálculo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Informática Opción B: Módulo 7 u 11 · 7. Sistema de Información Geográfica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "11. Programa estadístico para las Ciencias Sociales (SPSS)",
+      "nombre": "Módulo 4",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    },
+    {
+      "codigo": "45",
+      "nombre": "Idioma Extranjero II · Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "Portugués II",
+      "nombre": "Portugués I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "correlativas": []
+    }
+  ]
+}

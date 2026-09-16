@@ -10,7 +10,51 @@
         "audiovision",
         "diseno-y-comunicacion-visual",
         "diseno-industrial",
+        "musica-de-camara-y-sinfonica",
         "traductorado-publico-en-idioma-ingles"
+      ]
+    },
+    {
+      "slug": "salud-comunitaria",
+      "nombre": "Salud Comunitaria",
+      "sigla": "DeSaCo",
+      "sitio": "https://www.unla.edu.ar/departamentos/salud-comunitaria",
+      "carreras": [
+        "enfermeria",
+        "trabajo-social",
+        "nutricion"
+      ]
+    },
+    {
+      "slug": "desarrollo-productivo-y-tecnologico",
+      "nombre": "Desarrollo Productivo y Tecnológico",
+      "sigla": "DPyT",
+      "sitio": "https://www.unla.edu.ar/departamentos/desarrollo-productivo-y-tecnologico",
+      "carreras": [
+        "gestion-ambiental-urbana",
+        "economia-empresarial",
+        "economia-politica",
+        "ciencia-y-tecnologia-de-los-alimentos",
+        "turismo",
+        "sistemas",
+        "tecnologias-ferroviarias",
+        "planificacion-logistica",
+        "ingenieria-ferroviaria"
+      ]
+    },
+    {
+      "slug": "planificacion-y-politicas-publicas",
+      "nombre": "Planificación y Políticas Públicas",
+      "sigla": "PyPP",
+      "sitio": "https://www.unla.edu.ar/departamentos/planificacion-y-politicas-publicas",
+      "carreras": [
+        "seguridad-ciudadana",
+        "ciencia-politica-y-gobierno",
+        "educacion",
+        "justicia-y-derechos-humanos",
+        "relaciones-internacionales",
+        "gestion-de-gobierno-local",
+        "gestion-y-administracion-universitaria"
       ]
     }
   ]

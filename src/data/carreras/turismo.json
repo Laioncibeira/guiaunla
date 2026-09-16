@@ -1,0 +1,604 @@
+{
+  "slug": "turismo",
+  "nombre": "Licenciatura en Turismo",
+  "nombreCorto": "Turismo",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Turismo",
+  "tituloIntermedio": {
+    "nombre": "Técnico/a Universitario en Turismo",
+    "hastaNivel": 6
+  },
+  "duracionAnios": 5,
+  "horasTotales": 3264,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 10,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/turismo",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Introducción al turismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Introducción a la geografía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Estado, derecho y legislación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Principios de la economía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Organización y gestión de la empresa turística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "06",
+      "nombre": "Introducción a la matemática",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Espacios turísticos de África, Asia y Oceanía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Procesos históricos mundiales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Servicios turísticos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Espacios turísticos de Europa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Metodología de la Investigación Social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "12",
+      "nombre": "Historia latinoamericana y argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Organización y gestión hotelera",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Servicios turísticos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Espacios turísticos de Amércica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Marketing",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "13"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Indicadores turísticos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Historia del turismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "08"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Taller de investigación turística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 96,
+      "correlativas": [
+        "01",
+        "11",
+        "17"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Espacios turísticos de Argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Análisis económico y financiero de la actividad turística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04",
+        "05"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Ética profesional y responsabilidad social",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Taller de formulación y evaluación de proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "19",
+        "21"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Patrimonio histórico - cultural argentino",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "12"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Marco normativo de la actividad turística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Práctica pre-profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 6,
+      "horasTotales": 64,
+      "correlativas": [
+        "03",
+        "13",
+        "14",
+        "20",
+        "21",
+        "22"
+      ]
+    },
+    {
+      "codigo": "S01",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S02",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S01"
+      ]
+    },
+    {
+      "codigo": "S03",
+      "nombre": "Portugués I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S04",
+      "nombre": "Portugués II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S03"
+      ]
+    },
+    {
+      "codigo": "S05",
+      "nombre": "Informática: Módulo \"Gestión de reservas\"",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S06",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S07",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Política turística",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18",
+        "25"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Procesos geopolíticos de integración del turismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 6,
+      "horasTotales": 64,
+      "correlativas": [
+        "12",
+        "25"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Diseño de productos turísticos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13",
+        "14",
+        "16",
+        "20",
+        "22",
+        "24"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Comportamiento organizacional y recursos humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "25"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Turismo social y derecho al turismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22",
+        "27"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Emprendedorismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23",
+        "30"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Planeamiento del desarrollo turístico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 96,
+      "correlativas": [
+        "20",
+        "23",
+        "27"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Cooperación internacional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23",
+        "28"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "anual",
+      "nivel": 9,
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "07",
+        "10",
+        "15",
+        "24",
+        "26",
+        "29",
+        "31",
+        "32",
+        "33",
+        "34"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Planeamiento y gestión del destino turístico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "29",
+        "34"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seminario optativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Gobernabilidad del turismo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27",
+        "33"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Seminario optativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Práctica pre-profesional orientada al ámbito público",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 6,
+      "horasTotales": 64,
+      "correlativas": [
+        "21",
+        "29",
+        "31",
+        "33"
+      ]
+    },
+    {
+      "codigo": "S08",
+      "nombre": "Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S02"
+      ]
+    },
+    {
+      "codigo": "S09",
+      "nombre": "Portugués III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "sinCodigoOficial": true,
+      "correlativas": [
+        "S04"
+      ]
+    },
+    {
+      "codigo": "S10",
+      "nombre": "Informática: \"módulo: Sistemas de Información Geográfica\"",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "S11",
+      "nombre": "Informática: \"Módulo: Aplicaciones móviles\"",
+      "dedicacion": "cuatrimestral",
+      "nivel": 10,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "sinCodigoOficial": true,
+      "correlativas": []
+    }
+  ]
+}

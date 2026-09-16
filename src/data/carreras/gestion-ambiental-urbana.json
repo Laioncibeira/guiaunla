@@ -1,0 +1,567 @@
+{
+  "slug": "gestion-ambiental-urbana",
+  "nombre": "Licenciatura en Gestión Ambiental Urbana",
+  "nombreCorto": "Gestión Ambiental Urbana",
+  "departamento": "desarrollo-productivo-y-tecnologico",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Gestión Ambiental Urbana",
+  "duracionAnios": 5,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 9,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/gestion-ambiental-urbana",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Introducción a la problemática urbana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Ambiente I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Geografía urbana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Introducción al desarrollo sustentable",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Taller de ciencias aplicadas al ambiente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Técnicas en cartografía y fotointerpretación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Principios de administración y gestión",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Matemática y estadística aplicada a estudios ambientales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario - Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Sociología ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Ciudad y territorio",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "11",
+      "nombre": "Ambiente II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Taller de investigación urbana",
+      "dedicacion": "anual",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "01",
+        "08"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Economía y desarrollo sustentable I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Teledetección y sistemas de información geográfica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "15",
+      "nombre": "Educación ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "16",
+      "nombre": "Procesos urbanos I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Fundamentos de ecología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Procesos de Evaluación de Impactos Ambientales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "07",
+        "11"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Legislación Ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Ambiente III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Economía y Desarrollo Sustentable II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Práctica Pre-Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario - Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Gestión Administrativa Municipal Ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Procesos Urbanos II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Redes I: Movilidad urbana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Seminario optativo I*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "27",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Informática Módulo 3: Planilla de Cálculo 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "30",
+      "nombre": "Informática Módulo 4: Planilla de Cálculo 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "nombre": "Política Ambiental en Argentina y Mercosur",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Procesos de Producción del Hábitat",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Ambiente IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Formulación y Gestión de proyectos Urbano-Ambientales",
+      "dedicacion": "anual",
+      "nivel": 7,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 128,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Gestión Ambiental y Empresa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Procesos urbanos III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Redes II: Servicios y saneamiento urbano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Seminario optativo II*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Auditoría Ambiental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Financiamiento y Evaluación de Proyectos Urbano - Ambientales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "36"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Negociación y Mediación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Seminario optativo III*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "45",
+      "nombre": "Seminario optativo IV*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Seminario",
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "optativa": true,
+      "correlativas": []
+    },
+    {
+      "codigo": "46",
+      "nombre": "Práctica Preprofesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Práctica",
+      "horasTotales": 120,
+      "correlativas": []
+    },
+    {
+      "codigo": "47",
+      "nombre": "Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "48",
+      "nombre": "Informática Módulo 8: Gestión de Proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "49",
+      "nombre": "Informática Módulo 9: Diseño de objetos en 3D",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "50",
+      "nombre": "Taller de Trabajo Final Integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 9,
+      "formato": "Taller",
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": []
+    }
+  ]
+}

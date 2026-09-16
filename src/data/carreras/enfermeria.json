@@ -1,0 +1,508 @@
+{
+  "slug": "enfermeria",
+  "nombre": "Licenciatura en Enfermería",
+  "nombreCorto": "Enfermería",
+  "departamento": "salud-comunitaria",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Enfermería",
+  "tituloIntermedio": {
+    "nombre": "Enfermero/a",
+    "hastaNivel": 3
+  },
+  "duracionAnios": 5,
+  "tipoNivel": "anio",
+  "niveles": 5,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/enfermeria",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Cultura y Salud",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 65,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Química y Física Biológica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Anátomo-Fisiología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Fundamentos de Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 10.6,
+      "horasTotales": 170,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Informática Módulo Electivo A · Módulo 1: Herramientas básicas de uso de la computadora",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Salud Mental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 65,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Salud Colectiva",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Microbiología y Parasitología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "09",
+      "nombre": "Nutrición y Dietoterapia",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "10",
+      "nombre": "Enfermería Materno-Infantil I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Informática Módulo Electivo B · Módulo 4: Planilla de cálculo 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Farmacología y Toxicología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Epidemiología",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 65,
+      "correlativas": []
+    },
+    {
+      "codigo": "14",
+      "nombre": "Enfermería del Adulto y del Anciano I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "02",
+        "03",
+        "04"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Enfermería en Salud Mental",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "04",
+        "06"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Idioma extranjero I · Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "17",
+      "nombre": "Educación y Salud",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Enfermería en Salud Comunitaria",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6.25,
+      "horasTotales": 100,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Enfermería del Adulto y del Anciano II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Enfermería Materno-Infantil II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "10",
+        "14"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Informática. Módulo 14: Formación de usuarios de la Biblioteca Rodolfo Puiggrós",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "22",
+      "nombre": "Ética y Problemas Legales de la Práctica Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 65,
+      "correlativas": []
+    },
+    {
+      "codigo": "23",
+      "nombre": "Filosofía del cuidado",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "24",
+      "nombre": "Psicología Social e Institucional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Gestión de las Organizaciones de Salud",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Enfermería del Niño y del Adolescente",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 8,
+      "horasTotales": 130,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Idioma extranjero II · Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "Portugués II",
+      "nombre": "Portugués I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "correlativas": []
+    },
+    {
+      "codigo": "28",
+      "nombre": "Investigación en Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04",
+        "22"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Prácticas Integradas de Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 16,
+      "horasTotales": 256,
+      "correlativas": [
+        "15",
+        "19",
+        "26"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "31",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "32",
+      "nombre": "Asignatura electiva",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 6,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "33",
+      "nombre": "Epistemología del Cuidado de Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "34",
+      "nombre": "Educación en Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Metodología de la Investigación Aplicada a la Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 6.25,
+      "horasTotales": 100,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Enfermería en el Cuidado Crítico",
+      "dedicacion": "anual",
+      "nivel": 4,
+      "horasSemanales": 8,
+      "horasTotales": 256,
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Gestión y Organización de los Servicios de Enfermería",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 14,
+      "horasTotales": 224,
+      "correlativas": [
+        "25"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Informática. Módulo 15: Bibliotecas digitales y acceso a sistemas de información académica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Ética y Deontología Profesional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Enfermería en Salud Colectiva",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": [
+        "18"
+      ]
+    },
+    {
+      "codigo": "41",
+      "nombre": "Taller Integrador de Prácticas e Investigación en Salud",
+      "dedicacion": "anual",
+      "nivel": 5,
+      "horasSemanales": 6,
+      "horasTotales": 192,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Taller Integrador de Prácticas e Investigación en Enfermería Comunitaria",
+      "dedicacion": "anual",
+      "nivel": 5,
+      "horasSemanales": 5,
+      "horasTotales": 160,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Idioma Extranjero III · Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "Portugués III",
+      "nombre": "Portugués II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "correlativas": []
+    },
+    {
+      "codigo": "44",
+      "nombre": "Informática Módulo Electivo C · Módulo 11: Programa Estadístico para las Ciencias Sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "45",
+      "nombre": "Prácticas pre-profesionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 8,
+      "horasTotales": 128,
+      "correlativas": [
+        "34",
+        "36",
+        "37"
+      ]
+    },
+    {
+      "codigo": "46",
+      "nombre": "Seminario Optativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": []
+    }
+  ]
+}

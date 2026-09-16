@@ -1,0 +1,498 @@
+{
+  "slug": "ciencia-politica-y-gobierno",
+  "nombre": "Licenciatura en Ciencia Política y Gobierno",
+  "nombreCorto": "Ciencia Política y Gobierno",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Ciencia Política y Gobierno",
+  "duracionAnios": 4,
+  "horasTotales": 2688,
+  "tipoNivel": "anio",
+  "niveles": 4,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/ciencia-politica-y-gobierno",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Sociología Política*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Fundamentos de Ciencia Política*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 6,
+      "horasTotales": 96,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Economía Política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Historia moderna y contemporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Instituciones del derecho",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Estadística social*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "08",
+      "nombre": "Teoría Política I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Metodología de la investigación social I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "07"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Teoría Política II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Derecho Constitucional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Fundamentos de Macroeconomía",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "13",
+      "nombre": "Historia política y social latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Metodología de la Investigación Social II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Teoría del Estado",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Economía internacional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Historia política y social argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "13"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Taller de práctica pre-profesional - 1º etapa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "formato": "Práctica",
+      "horasTotales": 32,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Política internacional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Análisis de la sociedad argentina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "17"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Derecho administrativo",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Teoría política contemporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Adminstración pública",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Economía de gobierno y finanzas públicas*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "25",
+      "nombre": "Gobierno local*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Políticas públicas*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Análisis político y opinión pública",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Planificación estratégica y análisis de politicas públicas*",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "26"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Formulación y evaluación de proyectos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "23"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Ideas políticas en América Latina",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "20"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Política comparada",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Política Latinoamericana",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Comunicación política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 2,
+      "horasTotales": 32,
+      "correlativas": [
+        "27"
+      ]
+    },
+    {
+      "codigo": "35",
+      "nombre": "Seminario optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Seminario optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Seminario",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "optativa": true,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Informática Modúlo 2: Procesador de textos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "38",
+      "nombre": "Informática Modúlo 7: Sistemas de información geográfica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "39",
+      "nombre": "Informática Modúlo 11: Programa estadístico para las Ciencias Sociales 1",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "40",
+      "nombre": "Informática Modúlo 12: Programa estadístico para las Ciencias Sociales 2",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Módulo",
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": []
+    },
+    {
+      "codigo": "41",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "42",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "41"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Materia",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "42"
+      ]
+    },
+    {
+      "codigo": "44",
+      "nombre": "Taller de práctica pre-profesional - 2º etapa",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Práctica",
+      "horasTotales": 32,
+      "correlativas": [
+        "30"
+      ]
+    },
+    {
+      "codigo": "45",
+      "nombre": "Taller de trabajo final integrador",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "formato": "Taller",
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "30"
+      ]
+    }
+  ]
+}

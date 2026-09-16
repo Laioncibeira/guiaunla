@@ -1,0 +1,589 @@
+{
+  "slug": "relaciones-internacionales",
+  "nombre": "Licenciatura en Relaciones Internacionales",
+  "nombreCorto": "Relaciones Internacionales",
+  "departamento": "planificacion-y-politicas-publicas",
+  "tipo": "licenciatura",
+  "titulo": "Licenciado/a en Relaciones Internacionales",
+  "duracionAnios": 4,
+  "tipoNivel": "cuatrimestre",
+  "niveles": 8,
+  "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/relaciones-internacionales",
+  "fuenteFecha": "2026-09-16",
+  "cotejado": true,
+  "materias": [
+    {
+      "codigo": "01",
+      "nombre": "Historia Moderna y Contemporánea I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "02",
+      "nombre": "Historia Argentina I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "03",
+      "nombre": "Lógica y Epistemología de las Ciencias Sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "04",
+      "nombre": "Introducción a las Relaciones Internacionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "05",
+      "nombre": "Pensamiento Filosófico",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "06",
+      "nombre": "Inglés I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 1,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "07",
+      "nombre": "Historia Moderna y Contemporánea II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01"
+      ]
+    },
+    {
+      "codigo": "08",
+      "nombre": "Historia Argentina II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "02"
+      ]
+    },
+    {
+      "codigo": "09",
+      "nombre": "Metodología de la Investigación en Ciencias Sociales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "03"
+      ]
+    },
+    {
+      "codigo": "10",
+      "nombre": "Filosofía Moderna y Contemporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "05"
+      ]
+    },
+    {
+      "codigo": "11",
+      "nombre": "Economía Política I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "01",
+        "03"
+      ]
+    },
+    {
+      "codigo": "12",
+      "nombre": "Inglés II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 2,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "06"
+      ]
+    },
+    {
+      "codigo": "13",
+      "nombre": "Historia de las Relaciones Internacionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04"
+      ]
+    },
+    {
+      "codigo": "14",
+      "nombre": "Economía Política II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "11"
+      ]
+    },
+    {
+      "codigo": "15",
+      "nombre": "Sistemática de la Ciencia Política",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "16",
+      "nombre": "Métodos y Técnicas de Investigación Aplicados",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09"
+      ]
+    },
+    {
+      "codigo": "17",
+      "nombre": "Pensamiento Clásicos de las Relaciones Internacionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "10"
+      ]
+    },
+    {
+      "codigo": "18",
+      "nombre": "Inglés III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 3,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "12"
+      ]
+    },
+    {
+      "codigo": "19",
+      "nombre": "Teoría de las Relaciones Internacionales I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04",
+        "07"
+      ]
+    },
+    {
+      "codigo": "20",
+      "nombre": "Teoría Política I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15"
+      ]
+    },
+    {
+      "codigo": "21",
+      "nombre": "Economía Política Internacional I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "14"
+      ]
+    },
+    {
+      "codigo": "22",
+      "nombre": "Política Internacional Contemporánea",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "04",
+        "07"
+      ]
+    },
+    {
+      "codigo": "23",
+      "nombre": "Diseño y Formulación de Modelos Prospectivos y de Investigación",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "09",
+        "16"
+      ]
+    },
+    {
+      "codigo": "24",
+      "nombre": "Portugués I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 4,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "25",
+      "nombre": "Economía Política Internacional II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "21"
+      ]
+    },
+    {
+      "codigo": "26",
+      "nombre": "Teoría de las Relaciones Internacionales II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "19"
+      ]
+    },
+    {
+      "codigo": "27",
+      "nombre": "Sistemas Políticos Comparados",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15",
+        "20"
+      ]
+    },
+    {
+      "codigo": "28",
+      "nombre": "Política Exterior Argentina I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08",
+        "22"
+      ]
+    },
+    {
+      "codigo": "29",
+      "nombre": "Historia de las Relaciones Internacionales Latinoamericanas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "30",
+      "nombre": "Portugués II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 5,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "24"
+      ]
+    },
+    {
+      "codigo": "31",
+      "nombre": "Derecho e Instituciones Internacionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22"
+      ]
+    },
+    {
+      "codigo": "32",
+      "nombre": "Agenda Internacional",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "22",
+        "26"
+      ]
+    },
+    {
+      "codigo": "33",
+      "nombre": "Teoría Política II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "15",
+        "20"
+      ]
+    },
+    {
+      "codigo": "34",
+      "nombre": "Seminario de Justicia y Derechos Humanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": []
+    },
+    {
+      "codigo": "35",
+      "nombre": "Política Exterior Argentina II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "28"
+      ]
+    },
+    {
+      "codigo": "36",
+      "nombre": "Módulo de Informática 11: Programa Estadístico para las Ciencias Sociales I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "37",
+      "nombre": "Seminario de Pensamiento Nacional y Latinoamericano",
+      "dedicacion": "cuatrimestral",
+      "nivel": 6,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "correlativas": [
+        "08"
+      ]
+    },
+    {
+      "codigo": "38",
+      "nombre": "Módulo de Informática 12: Programa Estadístico para las Ciencias Sociales II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "16"
+      ]
+    },
+    {
+      "codigo": "39",
+      "nombre": "Procesos de Integración Americanos",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "25",
+        "29"
+      ]
+    },
+    {
+      "codigo": "40",
+      "nombre": "Taller de Trabajo Final Integrador I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "23",
+        "26",
+        "29"
+      ]
+    },
+    {
+      "codigo": "41",
+      "nombre": "Sistemas Políticos Latinoamericanos Comparados",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "27",
+        "29"
+      ]
+    },
+    {
+      "codigo": "42",
+      "nombre": "Prospectiva Estratégica",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "23"
+      ]
+    },
+    {
+      "codigo": "43",
+      "nombre": "Política Doméstica y Externa Brasileña",
+      "dedicacion": "cuatrimestral",
+      "nivel": 7,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "44",
+      "nombre": "Taller de Trabajo Final Integrador II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "40"
+      ]
+    },
+    {
+      "codigo": "45",
+      "nombre": "Políticas Exteriores Latinoamericanas Comparadas",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 64,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "29"
+      ]
+    },
+    {
+      "codigo": "46",
+      "nombre": "Seminario Optativo I",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "optativa": true,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "47",
+      "nombre": "Seminario Optativo II",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "optativa": true,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "48",
+      "nombre": "Seminario Optativo III",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "optativa": true,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "49",
+      "nombre": "Seminario Optativo IV",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "optativa": true,
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "50",
+      "nombre": "Seminario Atlántico Sur, Malvinas y Antártida",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 32,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": [
+        "35"
+      ]
+    },
+    {
+      "codigo": "51",
+      "nombre": "Taller de Prácticas Pre-profesionales",
+      "dedicacion": "cuatrimestral",
+      "nivel": 8,
+      "horasSemanales": 4,
+      "horasTotales": 60,
+      "mencion": "Mención en Asuntos Latinoamericanos",
+      "correlativas": []
+    }
+  ]
+}
