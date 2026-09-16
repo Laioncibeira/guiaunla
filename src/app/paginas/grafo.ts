@@ -2,14 +2,9 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import {
-  anios,
-  carreraPorSlug,
-  dictadasAhora,
-  tieneCuatrimestres,
-  type Carrera,
-  type Materia,
-} from '../core/datos';
+import { map } from 'rxjs';
+import { anios, dictadasEn, tieneCuatrimestres, type Carrera, type Materia } from '../core/datos';
+import { Planes } from '../core/planes';
 import { buscar, vincular } from '../core/correlatividades';
 import {
   aplicarFiltros,
@@ -43,12 +38,12 @@ const TOLERANCIA_TOQUE_PX = 10;
   template: `
     @if (carrera(); as c) {
       <header>
-        <app-atras [respaldo]="'/carreras/' + c.slug" nombre="la carrera" />
+        <app-atras [respaldo]="'/carrera/' + c.slug" nombre="el plan de estudios" />
         <div class="titulo">
           <h1>Correlatividades</h1>
           <p class="sub">
             {{ c.nombreCorto }} · {{ c.materias.length }} materias ·
-            <a routerLink="/carreras" [queryParams]="{ volver: rutaActual() }" class="cambiar">Cambiar</a>
+            <a routerLink="/carrera/elegir" [queryParams]="{ volver: rutaActual() }" class="cambiar">Cambiar</a>
           </p>
         </div>
         <div class="vistas" role="group" aria-label="Cómo ver el plan">
@@ -371,7 +366,7 @@ const TOLERANCIA_TOQUE_PX = 10;
         </ul>
       }
     } @else {
-      <p class="vacio">No encontramos esa carrera. <a routerLink="/carreras">Ver todas</a></p>
+      <p class="vacio">No encontramos esa carrera. <a routerLink="/carrera/elegir">Ver todas</a></p>
     }
   `,
   styles: `
@@ -479,18 +474,19 @@ export class Grafo {
   private readonly router = inject(Router);
   private readonly aprobadas = inject(Aprobadas);
   private readonly elegidaCarrera = inject(CarreraElegida);
+  private readonly planes = inject(Planes);
   private readonly svg = viewChild<ElementRef<SVGSVGElement>>('svg');
 
   protected readonly filtros = FILTROS;
 
-  private readonly params = toSignal(this.ruta.paramMap, {
-    initialValue: this.ruta.snapshot.paramMap,
-  });
   private readonly query = toSignal(this.ruta.queryParamMap, {
     initialValue: this.ruta.snapshot.queryParamMap,
   });
 
-  protected readonly carrera = computed(() => carreraPorSlug(this.params().get('slug') ?? ''));
+  /** El plan y la grilla los deja cargados el resolver de la ruta. */
+  protected readonly carrera = toSignal(this.ruta.data.pipe(map((d) => (d['carrera'] as Carrera | null) ?? null)), {
+    initialValue: (this.ruta.snapshot.data['carrera'] as Carrera | null) ?? null,
+  });
   protected readonly consulta = signal('');
   protected readonly vista = signal<'mapa' | 'lista'>('mapa');
   protected readonly seleccion = signal<ReadonlySet<string>>(new Set());
@@ -511,7 +507,7 @@ export class Grafo {
 
   protected readonly seDicta = computed(() => {
     const c = this.carrera();
-    return c ? dictadasAhora(c.slug) : new Set<string>();
+    return dictadasEn(c ? this.planes.grilla(c.slug) : null);
   });
 
   private readonly aprobadasSet = computed(() => {
@@ -652,7 +648,7 @@ export class Grafo {
   /** La URL de esta pantalla sin parámetros, para volver acá después de cambiar de carrera. */
   protected rutaActual(): string {
     const c = this.carrera();
-    return c ? `/carreras/${c.slug}/correlatividades` : '/carreras';
+    return c ? `/carrera/${c.slug}/correlatividades` : '/carrera';
   }
 
   protected color = (anio: number) => `var(--n${((anio - 1) % 8) + 1})`;
@@ -791,7 +787,7 @@ export class Grafo {
     const c = this.carrera();
     if (!c) return;
     const unica = s.size === 1 ? [...s][0] : null;
-    this.router.navigate(['/carreras', c.slug, 'correlatividades'], {
+    this.router.navigate(['/carrera', c.slug, 'correlatividades'], {
       queryParams: unica ? { materia: unica } : {},
       replaceUrl: true,
     });

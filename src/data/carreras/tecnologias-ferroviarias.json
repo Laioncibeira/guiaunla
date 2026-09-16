@@ -14,7 +14,7 @@
     "Electromecánica Ferroviaria",
     "Infraestructura Ferroviaria"
   ],
-  "nota": "La web publica sólo la lista de materias de la Tecnicatura, sin códigos ni correlatividades. Los dos cuatrimestres de la Licenciatura y sus orientaciones no están detallados.",
+  "nota": "La web publica el plan como una lista por cuatrimestre, sin códigos ni correlatividades: los números son de esta guía. Las materias de cada orientación no están detalladas.",
   "tipoNivel": "cuatrimestre",
   "niveles": 8,
   "fuenteUrl": "https://www.unla.edu.ar/carreras/grado/licenciaturas/tecnologias-ferroviarias",

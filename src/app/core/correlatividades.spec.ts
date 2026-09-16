@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { Carrera } from './datos';
-import { CARRERAS, carreraPorSlug } from './datos';
+import { INDICE, type Carrera } from './datos';
+import { planDe, TODAS } from './datos.prueba';
 import {
   alcance,
   buscar,
@@ -130,16 +130,17 @@ describe('buscador', () => {
 });
 
 describe('los planes publicados', () => {
-  it('trae las cuatro carreras de Humanidades y Artes', () => {
-    expect(CARRERAS.map((c) => c.slug)).toEqual([
-      'audiovision',
-      'diseno-y-comunicacion-visual',
-      'diseno-industrial',
-      'traductorado-publico-en-idioma-ingles',
-    ]);
+  it('trae las 24 carreras de los cuatro departamentos, y el índice las lista a todas', () => {
+    expect(TODAS).toHaveLength(24);
+    expect(INDICE.map((c) => c.slug).sort()).toEqual(TODAS.map((c) => c.slug).sort());
+    for (const r of INDICE) {
+      const c = planDe(r.slug);
+      expect(r.materias).toBe(c.materias.length);
+      expect(r.tieneCorrelativas).toBe(c.materias.some((m) => m.correlativas.length > 0));
+    }
   });
 
-  it.each(CARRERAS.map((c) => [c.slug, c] as const))(
+  it.each(TODAS.map((c) => [c.slug, c] as const))(
     '%s: toda correlativa apunta a una materia del plan y no hay ciclos',
     (_slug, carrera) => {
       const codigos = new Set(carrera.materias.map((x) => x.codigo));
@@ -159,14 +160,14 @@ describe('los planes publicados', () => {
   );
 
   it('Audiovisión: Realización Integral 1 pide las tres del segundo año', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
+    const av = planDe('audiovision');
     const v = vincular(av);
     expect(necesita(v, '16').map((x) => x.codigo)).toEqual(['11', '13', '15']);
     expect(habilita(v, '16').map((x) => x.codigo)).toEqual(['24', '35']);
   });
 
   it('con el plan vacío, primer año está habilitado y el resto no', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
+    const av = planDe('audiovision');
     const v = vincular(av);
     const libres = habilitadas(av, v, new Set());
     expect(libres.every((x) => x.correlativas.length === 0)).toBe(true);

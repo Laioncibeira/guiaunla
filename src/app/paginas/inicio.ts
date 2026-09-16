@@ -1,6 +1,5 @@
 import { afterNextRender, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CARRERAS } from '../core/datos';
 import { Novedades } from '../core/novedades';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
@@ -27,7 +26,7 @@ import { fechaCorta } from './formato';
     <header>
       <div style="flex:1">
         <h1>Guía UNLa <app-estrella color="var(--fei-violeta)" [tam]="15" /></h1>
-        <p class="sub">Humanidades y Artes</p>
+        <p class="sub">Universidad Nacional de Lanús</p>
       </div>
       <app-carrera-chip />
     </header>
@@ -35,13 +34,11 @@ import { fechaCorta } from './formato';
     <app-instalar />
 
     <main>
-      @if (!elegida.carrera()) {
+      @if (!elegida.resumen()) {
         <section class="elegir">
           <h2>¿Qué estudiás?</h2>
-          <p>Elegí tu carrera una vez y la app arranca siempre ahí.</p>
-          @for (c of carreras; track c.slug) {
-            <button type="button" (click)="elegir(c.slug)">{{ c.nombreCorto }}</button>
-          }
+          <p>Elegí tu carrera una vez y la app arranca siempre ahí: plan, correlatividades y horarios.</p>
+          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/' }">Elegir mi carrera</a>
         </section>
       }
 
@@ -111,17 +108,15 @@ import { fechaCorta } from './formato';
     }
     .elegir h2 { margin: 0; font-size: var(--t-l); }
     .elegir p { margin: 6px 0 var(--e3); font-size: var(--t-s); color: var(--texto-2); }
-    .elegir button {
-      display: block; width: 100%; min-height: 46px; margin-bottom: 7px;
-      border: 1px solid var(--borde); background: var(--superficie-2);
-      border-radius: var(--r-chico); font-size: var(--t-m); font-weight: 600; text-align: left;
-      padding: 0 var(--e3);
+    .elegir .boton {
+      display: flex; align-items: center; justify-content: center; min-height: 46px;
+      border-radius: 10px; background: var(--marca); color: var(--sobre-marca);
+      font-size: var(--t-m); font-weight: 600; text-decoration: none;
     }
   `,
 })
 export class Inicio {
   protected readonly elegida = inject(CarreraElegida);
-  protected readonly carreras = CARRERAS;
   private readonly servicioNovedades = inject(Novedades);
 
   /** Las tres más recientes; la lista completa vive en /novedades. */
@@ -134,8 +129,4 @@ export class Inicio {
   }
 
   protected fecha = (iso: string) => fechaCorta(iso);
-
-  protected elegir(slug: string): void {
-    this.elegida.elegir(slug);
-  }
 }

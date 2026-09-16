@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, computed, inject, Injectable, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, Injectable, input, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { CARRERAS, type Carrera } from '../core/datos';
+import { resumenPorSlug, type Carrera, type ResumenCarrera } from '../core/datos';
+import { Planes } from '../core/planes';
 
 /** Íconos dibujados: nada de emoji, para que escalen y tomen el color del tema. */
 export const ICONOS: Record<string, string> = {
@@ -12,6 +13,7 @@ export const ICONOS: Record<string, string> = {
   calendario: 'M12 7v5.2l3.4 2',
   buscar: 'm15.5 15.5 4 4',
   atras: 'M14.5 5.5 8 12l6.5 6.5',
+  grafo: 'M5 4.5h4v4H5zM15 4.5h4v4h-4zM10 15.5h4v4h-4zM7 8.5v3.5h10V8.5M12 12v3.5',
 };
 
 @Component({
@@ -114,7 +116,7 @@ export class Icono {
 export class Barra {
   protected readonly destinos = [
     { ruta: '/', icono: 'inicio', etiqueta: 'Inicio' },
-    { ruta: '/carreras', icono: 'carreras', etiqueta: 'Carreras' },
+    { ruta: '/carrera', icono: 'carreras', etiqueta: 'Tu carrera' },
     { ruta: '/horarios', icono: 'horarios', etiqueta: 'Horarios' },
     { ruta: '/campus', icono: 'mapa', etiqueta: 'Campus' },
     { ruta: '/fechas', icono: 'calendario', etiqueta: 'Fechas' },
@@ -132,11 +134,24 @@ export class Barra {
 @Injectable({ providedIn: 'root' })
 export class CarreraElegida {
   private static readonly CLAVE = 'guiaunla.carrera';
+  private readonly planes = inject(Planes);
   private readonly interno = signal<string | null>(this.leer());
   readonly slug = this.interno.asReadonly();
-  readonly carrera = computed<Carrera | null>(
-    () => CARRERAS.find((c) => c.slug === this.interno()) ?? null,
-  );
+  /** Nombre, departamento y cantidades: siempre disponible, sale del índice. */
+  readonly resumen = computed<ResumenCarrera | null>(() => resumenPorSlug(this.interno()) ?? null);
+  /** El plan completo: null hasta que termina de cargar (un instante). */
+  readonly carrera = computed<Carrera | null>(() => this.planes.carrera(this.interno()) ?? null);
+
+  constructor() {
+    // Apenas se sabe la carrera se piden su plan y su grilla, que es lo que
+    // el estudiante va a mirar. En el pre-render no hay carrera elegida.
+    effect(() => {
+      const s = this.interno();
+      if (!s) return;
+      void this.planes.cargar(s);
+      void this.planes.cargarGrilla(s);
+    });
+  }
 
   elegir(slug: string): void {
     this.interno.set(slug);
@@ -276,8 +291,8 @@ export class Atras {
   selector: 'app-carrera-chip',
   imports: [RouterLink],
   template: `
-    <a routerLink="/carreras" [queryParams]="{ volver: volver() }" class="chip">
-      @if (elegida.carrera(); as c) {
+    <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip">
+      @if (elegida.resumen(); as c) {
         <span class="nombre">{{ c.nombreCorto }}</span>
         <span class="cambiar">Cambiar</span>
       } @else {

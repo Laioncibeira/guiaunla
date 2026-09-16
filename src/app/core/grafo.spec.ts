@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { anios, CARRERAS, carreraPorSlug } from './datos';
-import type { Carrera } from './datos';
+import { anios } from './datos';
+import { planDe, TODAS } from './datos.prueba';
+
 import { calcularLayout, detalleDe, encuadrar, partirNombre, TARJETA } from './grafo';
 
 describe('layout del grafo', () => {
-  it.each(CARRERAS.map((c) => [c.slug, c] as const))(
+  it.each(TODAS.map((c) => [c.slug, c] as const))(
     '%s: cada materia entra una sola vez y en la columna de su año',
     (_slug, carrera) => {
       const l = calcularLayout(carrera);
@@ -20,7 +21,7 @@ describe('layout del grafo', () => {
     },
   );
 
-  it.each(CARRERAS.map((c) => [c.slug, c] as const))(
+  it.each(TODAS.map((c) => [c.slug, c] as const))(
     '%s: ninguna ficha se superpone con otra',
     (_slug, carrera) => {
       const l = calcularLayout(carrera);
@@ -35,7 +36,7 @@ describe('layout del grafo', () => {
     },
   );
 
-  it.each(CARRERAS.map((c) => [c.slug, c] as const))(
+  it.each(TODAS.map((c) => [c.slug, c] as const))(
     '%s: todo queda dentro del lienzo',
     (_slug, carrera) => {
       const l = calcularLayout(carrera);
@@ -49,7 +50,7 @@ describe('layout del grafo', () => {
   );
 
   it('hay una arista por cada correlativa resuelta, con su curva', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
+    const av = planDe('audiovision');
     const l = calcularLayout(av);
     const esperadas = av.materias.reduce((a, m) => a + m.correlativas.length, 0);
     expect(l.aristas.length).toBe(esperadas);
@@ -57,7 +58,7 @@ describe('layout del grafo', () => {
   });
 
   it('el orden por baricentro acorta las líneas frente al orden del plan', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
+    const av = planDe('audiovision');
     const largo = (pasadas: number) => {
       const l = calcularLayout(av, TARJETA, pasadas);
       return l.aristas.reduce((total, a) => {
@@ -84,7 +85,7 @@ describe('layout del grafo', () => {
 });
 
 describe('encuadre', () => {
-  const av = carreraPorSlug('audiovision') as Carrera;
+  const av = planDe('audiovision');
   const l = calcularLayout(av);
 
   it('centra la materia pedida', () => {

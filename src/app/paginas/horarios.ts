@@ -7,12 +7,12 @@ import {
   NOMBRE_DIA,
   NOMBRE_TURNO,
   TURNOS,
-  horariosDe,
   type Clase,
   type Dia,
   type Ubicacion,
 } from '../core/datos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
+import { Planes } from '../core/planes';
 import { FirmaFei } from '../shared/fei';
 
 /** Índice del día de hoy en la semana; el domingo cae en lunes. */
@@ -31,8 +31,8 @@ function diaDeHoy(): Dia {
         <p class="sub">
           @if (horarios(); as h) {
             {{ h.periodoNombre }}
-          } @else if (carrera()) {
-            Grilla todavía no cargada
+          } @else if (resumen(); as r) {
+            {{ r.tieneGrilla ? 'Cargando la grilla…' : 'Grilla todavía no cargada' }}
           } @else {
             Elegí tu carrera para verlos
           }
@@ -105,8 +105,11 @@ function diaDeHoy(): Dia {
         </p>
         <app-firma-fei />
       </main>
-    } @else if (carrera(); as c) {
+    } @else if (resumen(); as c) {
       <main>
+        @if (c.tieneGrilla) {
+          <p class="vacio">Cargando la grilla…</p>
+        } @else {
         <div class="sinCarrera">
           <h2>Todavía no tenemos la grilla de {{ c.nombreCorto }}</h2>
           <p>
@@ -116,6 +119,7 @@ function diaDeHoy(): Dia {
           <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
           <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
         </div>
+        }
         <app-firma-fei />
       </main>
     } @else {
@@ -123,7 +127,7 @@ function diaDeHoy(): Dia {
         <div class="sinCarrera">
           <h2>Todavía no elegiste carrera</h2>
           <p>Los horarios son distintos en cada una. Elegí la tuya y vemos qué se cursa hoy.</p>
-          <a class="boton" routerLink="/carreras" [queryParams]="{ volver: '/horarios' }">Elegir carrera</a>
+          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/horarios' }">Elegir carrera</a>
         </div>
         <app-firma-fei />
       </main>
@@ -166,15 +170,15 @@ function diaDeHoy(): Dia {
 })
 export class Horarios {
   private readonly elegida = inject(CarreraElegida);
+  private readonly planes = inject(Planes);
   protected readonly dias = DIAS;
   protected readonly turnos = TURNOS;
   protected readonly dia = signal<Dia>(diaDeHoy());
 
+  protected readonly resumen = computed(() => this.elegida.resumen());
   protected readonly carrera = computed(() => this.elegida.carrera());
-  protected readonly horarios = computed(() => {
-    const c = this.carrera();
-    return c ? horariosDe(c.slug) : undefined;
-  });
+  /** La grilla la pide CarreraElegida apenas se elige; acá sólo se lee de la caché. */
+  protected readonly horarios = computed(() => this.planes.grilla(this.elegida.slug()) ?? undefined);
 
   protected readonly clasesDelDia = computed(
     () => this.horarios()?.clases.filter((c) => c.dia === this.dia()) ?? [],

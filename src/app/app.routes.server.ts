@@ -11,9 +11,12 @@ export const serverRoutes: ServerRoute[] = [
   // El panel de administración vive sólo en el navegador: sin pre-render.
   { path: 'admin', renderMode: RenderMode.Client },
   { path: 'admin/**', renderMode: RenderMode.Client },
-  { path: 'carreras/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: porCarrera },
+  // Las rutas viejas redirigen en el navegador; no hay nada que pre-generar.
+  { path: 'carreras', renderMode: RenderMode.Client },
+  { path: 'carreras/**', renderMode: RenderMode.Client },
+  { path: 'carrera/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: porCarrera },
   {
-    path: 'carreras/:slug/correlatividades',
+    path: 'carrera/:slug/correlatividades',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: porCarrera,
   },

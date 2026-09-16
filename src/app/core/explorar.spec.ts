@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Carrera } from './datos';
-import { carreraPorSlug } from './datos';
+import { planDe } from './datos.prueba';
 import {
   aplicarFiltros,
   calcularRama,
@@ -170,7 +170,7 @@ describe('simulación', () => {
   });
 
   it('sobre el plan real de Audiovisión abre materias de verdad', () => {
-    const av = carreraPorSlug('audiovision') as Carrera;
+    const av = planDe('audiovision');
     const primerAnio = av.materias.filter((x) => x.nivel === 1).map((x) => x.codigo);
     const s = simular(av, new Set(), new Set(primerAnio));
     expect(s.desbloqueadas.length).toBeGreaterThan(0);

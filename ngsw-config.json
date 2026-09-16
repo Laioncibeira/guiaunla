@@ -23,7 +23,16 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/**/*.(svg|webmanifest|woff2)",
+          "/**/*.(svg|webmanifest|woff2)"
+        ]
+      }
+    },
+    {
+      "name": "paginas",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
           "/**/index.html"
         ]
       }

@@ -1,7 +1,7 @@
 {
-  "name": "Guía UNLa · Humanidades y Artes",
+  "name": "Guía UNLa",
   "short_name": "Guía UNLa",
-  "description": "Correlatividades, plan de estudios, campus y fechas de las carreras del Departamento de Humanidades y Artes de la Universidad Nacional de Lanús.",
+  "description": "Correlatividades, plan de estudios, horarios, campus y fechas de las carreras de la Universidad Nacional de Lanús.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

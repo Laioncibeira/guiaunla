@@ -2,7 +2,7 @@
 
 /**
  * Clave de pantalla para el contador: '/' → 'inicio',
- * '/carreras/audiovision' → 'carreras-audiovision'. Sin parámetros ni
+ * '/carrera/audiovision' → 'carrera-audiovision'. Sin parámetros ni
  * mayúsculas ni acentos, y acotada a lo que aceptan las reglas.
  */
 export function claveDeRuta(url: string): string | null {

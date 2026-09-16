@@ -18,13 +18,13 @@ const PASOS: readonly Paso[] = [
     seccion: 'menu',
     icono: 'M3 10.5 12 3l9 7.5M5.5 9.5V20h13V9.5',
     titulo: 'Inicio',
-    texto: 'La puerta de entrada: los accesos a tu carrera y lo que está pasando en el Departamento.',
+    texto: 'Las novedades del centro de estudiantes, el contador de la Ley de Financiamiento y un lugar para dejarnos propuestas.',
   },
   {
     seccion: 'menu',
     icono: 'M4 5.5h16v13H4zM8 5.5v13M4 12h16',
-    titulo: 'Carreras',
-    texto: 'El plan de estudios completo de las cuatro carreras, año por año, con el mapa de correlatividades.',
+    titulo: 'Tu carrera',
+    texto: 'Elegís tu carrera entre las 24 de los cuatro departamentos y desde ahí vas al plan, las correlatividades, los horarios, las fechas y el campus.',
   },
   {
     seccion: 'menu',

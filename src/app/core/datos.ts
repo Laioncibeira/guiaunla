@@ -1,18 +1,14 @@
 /**
- * Los datos son archivos JSON del repo, importados de forma estática.
- * No hay red ni base de datos: al compilar quedan dentro del bundle, así que
- * la app abre igual sin señal y las páginas se pueden pre-generar.
+ * Los datos son archivos JSON del repo: no hay red ni base de datos para
+ * leerlos. El índice de carreras, el calendario y el campus entran en el
+ * bundle inicial. Los planes y las grillas de horarios se cargan por carrera
+ * con `import()`: el compilador arma un archivo por carrera y sólo se baja
+ * el de la que se está mirando. Ver `Planes` en `planes.ts`.
  */
-import audiovision from '../../data/carreras/audiovision.json';
-import disenoComunicacion from '../../data/carreras/diseno-y-comunicacion-visual.json';
-import disenoIndustrial from '../../data/carreras/diseno-industrial.json';
-import traductorado from '../../data/carreras/traductorado-publico-en-idioma-ingles.json';
 import calendario2026 from '../../data/calendario/2026.json';
-import horariosAudiovision from '../../data/horarios/audiovision.json';
-import horariosDisenoComunicacion from '../../data/horarios/diseno-y-comunicacion-visual.json';
-import horariosTraductorado from '../../data/horarios/traductorado-publico-en-idioma-ingles.json';
 import campusJson from '../../data/campus/edificios.json';
 import departamentosJson from '../../data/departamentos.json';
+import indiceJson from '../../data/carreras/indice.json';
 
 export interface Materia {
   readonly codigo: string;
@@ -30,13 +26,20 @@ export interface Materia {
   readonly optativa?: boolean;
   readonly sinCodigoOficial?: boolean;
   readonly correlativasNoResueltas?: readonly string[];
+  /** Nutrición publica dos correlatividades: las de cursar (`correlativas`) y estas. */
+  readonly correlativasParaRendir?: readonly string[];
+  /** Área de conocimiento, cuando el plan la indica (Sistemas). */
+  readonly area?: string;
 }
+
+export type TipoCarrera = 'licenciatura' | 'tecnicatura' | 'ingenieria' | 'traductorado';
 
 export interface Carrera {
   readonly slug: string;
   readonly nombre: string;
   readonly nombreCorto: string;
   readonly departamento: string;
+  readonly tipo: TipoCarrera;
   readonly titulo: string;
   readonly tituloIntermedio?: { readonly nombre: string; readonly hastaNivel: number };
   readonly duracionAnios: number;
@@ -80,12 +83,45 @@ export interface Edificio {
   readonly departamentos?: readonly string[];
 }
 
-export const CARRERAS: readonly Carrera[] = [
-  audiovision,
-  disenoComunicacion,
-  disenoIndustrial,
-  traductorado,
-] as unknown as readonly Carrera[];
+/** Lo que se sabe de una carrera sin cargar su plan: alcanza para listarla. */
+export interface ResumenCarrera {
+  readonly slug: string;
+  readonly nombre: string;
+  readonly nombreCorto: string;
+  readonly departamento: string;
+  readonly tipo: TipoCarrera;
+  /** Cantidad de materias del plan. */
+  readonly materias: number;
+  readonly duracionAnios: number;
+  readonly tieneCorrelativas: boolean;
+  readonly tituloIntermedio: boolean;
+  /** Hay grilla de horarios cargada en `src/data/horarios`. */
+  readonly tieneGrilla: boolean;
+}
+
+/** Las 24 carreras, en el orden del índice generado por tools/extraer-plan.mjs. */
+export const INDICE: readonly ResumenCarrera[] = indiceJson as readonly ResumenCarrera[];
+
+export const resumenPorSlug = (slug: string | null | undefined): ResumenCarrera | undefined =>
+  slug ? INDICE.find((c) => c.slug === slug) : undefined;
+
+export const NOMBRE_TIPO: Record<TipoCarrera, string> = {
+  licenciatura: 'Licenciatura',
+  tecnicatura: 'Tecnicatura',
+  ingenieria: 'Ingeniería',
+  traductorado: 'Traductorado',
+};
+
+/**
+ * El plan completo de una carrera. La ruta con plantilla hace que el
+ * compilador genere un archivo por cada JSON de la carpeta y lo cargue recién
+ * cuando se pide. Un slug que no está en el índice no llega a pedirse.
+ */
+export async function cargarPlan(slug: string): Promise<Carrera | null> {
+  if (!resumenPorSlug(slug)) return null;
+  const modulo = await import(`../../data/carreras/${slug}.json`);
+  return modulo.default as Carrera;
+}
 
 export const CALENDARIO = calendario2026 as unknown as {
   anio: number;
@@ -148,14 +184,12 @@ export interface Horarios {
   readonly clases: readonly Clase[];
 }
 
-export const HORARIOS: readonly Horarios[] = [
-  horariosAudiovision,
-  horariosDisenoComunicacion,
-  horariosTraductorado,
-] as unknown as readonly Horarios[];
-
-export const horariosDe = (slug: string): Horarios | undefined =>
-  HORARIOS.find((h) => h.carrera === slug);
+/** La grilla de horarios de una carrera, o null si todavía no se cargó ninguna. */
+export async function cargarGrilla(slug: string): Promise<Horarios | null> {
+  if (!resumenPorSlug(slug)?.tieneGrilla) return null;
+  const modulo = await import(`../../data/horarios/${slug}.json`);
+  return modulo.default as Horarios;
+}
 
 export const DIAS: readonly Dia[] = [
   'lunes',
@@ -193,8 +227,7 @@ export const NOMBRE_TURNO: Record<Turno, string> = {
 };
 
 /** Las materias que se están dictando este cuatrimestre, según la grilla. */
-export function dictadasAhora(slug: string): ReadonlySet<string> {
-  const h = horariosDe(slug);
+export function dictadasEn(h: Horarios | null | undefined): ReadonlySet<string> {
   return new Set(
     (h?.clases ?? []).map((c) => c.materiaCodigo).filter((c): c is string => !!c),
   );
@@ -204,16 +237,15 @@ export function dictadasAhora(slug: string): ReadonlySet<string> {
 /**
  * El año de cursada de una materia.
  *
- * Los planes de Audiovisión, Diseño y Comunicación Visual y Diseño Industrial
- * están publicados por año; el del Traductorado, por cuatrimestre. Acá los dos
- * se leen igual.
+ * Algunos planes están publicados por año (Audiovisión, los Diseños) y otros
+ * por cuatrimestre (Traductorado, Nutrición). Acá los dos se leen igual.
  */
 export const anioDe = (carrera: Carrera, m: Materia): number =>
   carrera.tipoNivel === 'anio' ? m.nivel : Math.ceil(m.nivel / 2);
 
 /**
  * En qué cuatrimestre del año se cursa, o null cuando el plan publicado no lo
- * dice. La universidad sólo lo detalla en el Traductorado.
+ * dice.
  */
 export const cuatrimestreDe = (carrera: Carrera, m: Materia): number | null =>
   carrera.tipoNivel === 'cuatrimestre' ? ((m.nivel - 1) % 2) + 1 : null;
@@ -233,9 +265,6 @@ export const materiasDe = (carrera: Carrera, anio: number, cuatrimestre?: number
       anioDe(carrera, m) === anio &&
       (cuatrimestre === undefined || cuatrimestreDe(carrera, m) === cuatrimestre),
   );
-
-export const carreraPorSlug = (slug: string): Carrera | undefined =>
-  CARRERAS.find((c) => c.slug === slug);
 
 /** "3° año" / "5° cuatrimestre", según cómo agrupa el plan de esa carrera. */
 export const nombreNivel = (carrera: Carrera, nivel: number): string =>

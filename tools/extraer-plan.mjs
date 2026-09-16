@@ -431,7 +431,7 @@ export const CARRERAS = {
     tituloIntermedio: { nombre: 'Técnico/a Universitario en Tecnologías Ferroviarias', hastaNivel: 6 },
     duracionAnios: 4, parser: 'lista-ferroviaria',
     orientaciones: ['Electromecánica Ferroviaria', 'Infraestructura Ferroviaria'],
-    nota: 'La web publica sólo la lista de materias de la Tecnicatura, sin códigos ni correlatividades. Los dos cuatrimestres de la Licenciatura y sus orientaciones no están detallados.',
+    nota: 'La web publica el plan como una lista por cuatrimestre, sin códigos ni correlatividades: los números son de esta guía. Las materias de cada orientación no están detalladas.',
   },
   'planificacion-logistica': {
     url: 'grado/licenciaturas/planificacion-logistica', departamento: DPYT, tipo: 'licenciatura',
@@ -554,6 +554,8 @@ export function armarIndice(carreras) {
     duracionAnios: c.duracionAnios,
     tieneCorrelativas: c.materias.some((m) => m.correlativas.length > 0),
     tituloIntermedio: !!c.tituloIntermedio,
+    // La grilla de horarios la carga tools/extraer-aulas.mjs, carrera por carrera.
+    tieneGrilla: fs.existsSync(path.join(SALIDA, '..', 'horarios', c.slug + '.json')),
   }));
 }
 

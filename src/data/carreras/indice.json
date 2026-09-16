@@ -8,7 +8,8 @@
     "materias": 58,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": true
   },
   {
     "slug": "diseno-y-comunicacion-visual",
@@ -19,7 +20,8 @@
     "materias": 39,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": true
   },
   {
     "slug": "diseno-industrial",
@@ -30,7 +32,8 @@
     "materias": 32,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "musica-de-camara-y-sinfonica",
@@ -41,7 +44,8 @@
     "materias": 59,
     "duracionAnios": 4,
     "tieneCorrelativas": false,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "traductorado-publico-en-idioma-ingles",
@@ -52,7 +56,8 @@
     "materias": 39,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": true
   },
   {
     "slug": "enfermeria",
@@ -63,7 +68,8 @@
     "materias": 48,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "trabajo-social",
@@ -74,7 +80,8 @@
     "materias": 48,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "nutricion",
@@ -85,7 +92,8 @@
     "materias": 45,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "gestion-ambiental-urbana",
@@ -96,7 +104,8 @@
     "materias": 50,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "economia-empresarial",
@@ -107,7 +116,8 @@
     "materias": 40,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "economia-politica",
@@ -118,7 +128,8 @@
     "materias": 46,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "ciencia-y-tecnologia-de-los-alimentos",
@@ -129,7 +140,8 @@
     "materias": 40,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "turismo",
@@ -140,7 +152,8 @@
     "materias": 51,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "sistemas",
@@ -151,7 +164,8 @@
     "materias": 42,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "tecnologias-ferroviarias",
@@ -162,7 +176,8 @@
     "materias": 35,
     "duracionAnios": 4,
     "tieneCorrelativas": false,
-    "tituloIntermedio": true
+    "tituloIntermedio": true,
+    "tieneGrilla": false
   },
   {
     "slug": "planificacion-logistica",
@@ -173,7 +188,8 @@
     "materias": 50,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "ingenieria-ferroviaria",
@@ -184,7 +200,8 @@
     "materias": 67,
     "duracionAnios": 5,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "seguridad-ciudadana",
@@ -195,7 +212,8 @@
     "materias": 47,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "ciencia-politica-y-gobierno",
@@ -206,7 +224,8 @@
     "materias": 45,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "educacion",
@@ -217,7 +236,8 @@
     "materias": 42,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "justicia-y-derechos-humanos",
@@ -228,7 +248,8 @@
     "materias": 46,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "relaciones-internacionales",
@@ -239,7 +260,8 @@
     "materias": 51,
     "duracionAnios": 4,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "gestion-de-gobierno-local",
@@ -250,7 +272,8 @@
     "materias": 28,
     "duracionAnios": 3,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   },
   {
     "slug": "gestion-y-administracion-universitaria",
@@ -261,6 +284,7 @@
     "materias": 19,
     "duracionAnios": 2,
     "tieneCorrelativas": true,
-    "tituloIntermedio": false
+    "tituloIntermedio": false,
+    "tieneGrilla": false
   }
 ]

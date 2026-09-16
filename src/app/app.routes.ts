@@ -1,27 +1,39 @@
 import { Routes } from '@angular/router';
-import { CARRERAS } from './core/datos';
+import { INDICE } from './core/datos';
+import { resolverCarrera, resolverCarreraConGrilla } from './core/planes';
 
 export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./paginas/inicio').then((m) => m.Inicio),
-    title: 'Guía UNLa · Humanidades y Artes',
+    title: 'Guía UNLa',
   },
   {
-    path: 'carreras',
-    loadComponent: () => import('./paginas/carreras').then((m) => m.Carreras),
-    title: 'Carreras · Guía UNLa',
+    path: 'carrera',
+    loadComponent: () => import('./paginas/carrera').then((m) => m.TuCarrera),
+    title: 'Tu carrera · Guía UNLa',
   },
   {
-    path: 'carreras/:slug',
+    path: 'carrera/elegir',
+    loadComponent: () => import('./paginas/carrera').then((m) => m.ElegirCarrera),
+    title: 'Elegí tu carrera · Guía UNLa',
+  },
+  {
+    path: 'carrera/:slug',
     loadComponent: () => import('./paginas/carreras').then((m) => m.DetalleCarrera),
+    resolve: { carrera: resolverCarrera },
     title: 'Plan de estudios · Guía UNLa',
   },
   {
-    path: 'carreras/:slug/correlatividades',
+    path: 'carrera/:slug/correlatividades',
     loadComponent: () => import('./paginas/grafo').then((m) => m.Grafo),
+    resolve: { carrera: resolverCarreraConGrilla },
     title: 'Correlatividades · Guía UNLa',
   },
+  // Las rutas viejas siguen andando: hay links compartidos con /carreras.
+  { path: 'carreras', redirectTo: 'carrera' },
+  { path: 'carreras/:slug', redirectTo: 'carrera/:slug' },
+  { path: 'carreras/:slug/correlatividades', redirectTo: 'carrera/:slug/correlatividades' },
   {
     path: 'horarios',
     loadComponent: () => import('./paginas/horarios').then((m) => m.Horarios),
@@ -56,4 +68,4 @@ export const routes: Routes = [
 ];
 
 /** Rutas con parámetro que hay que pre-generar: una página por carrera. */
-export const slugsDeCarreras = CARRERAS.map((c) => c.slug);
+export const slugsDeCarreras = INDICE.map((c) => c.slug);

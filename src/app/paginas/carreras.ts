@@ -1,81 +1,10 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CARRERAS, carreraPorSlug, nombreNivel, type Carrera, type Materia } from '../core/datos';
+import { map } from 'rxjs';
+import { NOMBRE_TIPO, nombreNivel, type Carrera, type Materia } from '../core/datos';
 import { habilita, necesita, vincular } from '../core/correlatividades';
 import { Atras, CarreraElegida } from '../shared/ui';
-import { FirmaFei } from '../shared/fei';
-
-@Component({
-  selector: 'app-carreras',
-  imports: [RouterLink, FirmaFei],
-  template: `
-    <header>
-      <div>
-        <h1>Carreras</h1>
-        <p class="sub">Departamento de Humanidades y Artes</p>
-      </div>
-    </header>
-    <main>
-      @for (c of carreras; track c.slug; let i = $index) {
-        <a class="card" [routerLink]="destino(c.slug)" (click)="elegir(c.slug)">
-          <span class="raya" [style.background]="'var(--n' + (i + 1) + ')'"></span>
-          <span class="txt">
-            <span class="nom">{{ c.nombreCorto }}</span>
-            <span class="meta">
-              {{ c.materias.length }} materias · {{ c.duracionAnios }} años
-              @if (c.tituloIntermedio) {
-                · título intermedio
-              }
-            </span>
-          </span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>
-        </a>
-      }
-      <p class="aviso">
-        Los planes salen de la web de la universidad. Si algo no coincide con tu plan, escribinos.
-      </p>
-      <app-firma-fei />
-    </main>
-  `,
-  styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { padding: 18px var(--e4) var(--e3); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e3); }
-    .card { display: flex; gap: var(--e3); align-items: center; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 14px; color: inherit; min-height: 68px; }
-    .raya { width: 4px; align-self: stretch; border-radius: 2px; flex: none; }
-    .txt { flex: 1; min-width: 0; }
-    .nom { display: block; font-size: var(--t-l); font-weight: 600; letter-spacing: -0.01em; }
-    .meta { display: block; font-size: var(--t-s); color: var(--texto-2); margin-top: 3px; }
-    .card svg { color: var(--texto-3); flex: none; }
-    .aviso { border: 1px dashed var(--borde); border-radius: var(--r); padding: var(--e3); font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; margin: 0; }
-  `,
-})
-export class Carreras {
-  private readonly elegida = inject(CarreraElegida);
-  private readonly ruta = inject(ActivatedRoute);
-  protected readonly carreras = CARRERAS;
-  private readonly query = toSignal(this.ruta.queryParamMap, {
-    initialValue: this.ruta.snapshot.queryParamMap,
-  });
-
-  /** Si se llegó desde otra pantalla para cambiar de carrera, se vuelve ahí. */
-  private volverA(): string | null {
-    const v = this.query().get('volver');
-    // Sólo rutas internas: un valor externo o raro no se sigue.
-    return v && v.startsWith('/') && !v.startsWith('//') ? v : null;
-  }
-
-  protected destino(slug: string): string {
-    return this.volverA() ?? `/carreras/${slug}`;
-  }
-
-  protected elegir(slug: string): void {
-    this.elegida.elegir(slug);
-  }
-}
 
 @Component({
   selector: 'app-carrera',
@@ -83,25 +12,29 @@ export class Carreras {
   template: `
     @if (carrera(); as c) {
       <header>
-        <app-atras respaldo="/carreras" nombre="carreras" />
+        <app-atras respaldo="/carrera" nombre="tu carrera" />
         <div>
           <h1>{{ c.nombreCorto }}</h1>
           <p class="sub">
             {{ subtitulo(c) }} ·
-            <a routerLink="/carreras" [queryParams]="{ volver: '/carreras/' + c.slug }" class="cambiar">Cambiar</a>
+            <a routerLink="/carrera/elegir" [queryParams]="{ volver: '/carrera/' + c.slug }" class="cambiar">Cambiar</a>
           </p>
         </div>
       </header>
 
       <main>
-        <a class="destacada" [routerLink]="['/carreras', c.slug, 'correlatividades']">
-          <span>
-            <strong>Ver el mapa de correlatividades</strong>
-            <small>Todo el plan y sus caminos</small>
-          </span>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>
-        </a>
-
+        <p class="titulo">Título: {{ c.titulo }}</p>
+        @if (tieneCorrelativas(c)) {
+          <a class="destacada" [routerLink]="['/carrera', c.slug, 'correlatividades']">
+            <span>
+              <strong>Ver el mapa de correlatividades</strong>
+              <small>Todo el plan y sus caminos</small>
+            </span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>
+          </a>
+        } @else {
+          <p class="nota">El plan publicado por la universidad no trae correlatividades, así que esta carrera no tiene mapa: sólo la lista de materias.</p>
+        }
         @if (c.tituloIntermedio; as ti) {
           <p class="nota">
             Con las materias hasta {{ nivelTexto(c, ti.hastaNivel) }} obtenés el título de
@@ -118,7 +51,7 @@ export class Carreras {
             @for (m of delNivel(c, n); track m.codigo) {
               <a
                 class="fila"
-                [routerLink]="['/carreras', c.slug, 'correlatividades']"
+                [routerLink]="['/carrera', c.slug, 'correlatividades']"
                 [queryParams]="{ materia: m.codigo }"
               >
                 <span class="mono">{{ m.codigo }}</span>
@@ -142,7 +75,7 @@ export class Carreras {
         </p>
       </main>
     } @else {
-      <p class="vacio">No encontramos esa carrera. <a routerLink="/carreras">Ver todas</a></p>
+      <p class="vacio">No encontramos esa carrera. <a routerLink="/carrera/elegir">Ver todas</a></p>
     }
   `,
   styles: `
@@ -151,6 +84,7 @@ export class Carreras {
     h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
     .cambiar { color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .titulo { margin: 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
     main { padding: var(--e3) var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e3); }
     .destacada { display: flex; align-items: center; gap: var(--e3); background: var(--marca); border-radius: var(--r); padding: 14px; color: var(--sobre-marca); min-height: 66px; }
     .destacada span { flex: 1; }
@@ -171,11 +105,10 @@ export class Carreras {
 export class DetalleCarrera {
   private readonly ruta = inject(ActivatedRoute);
   private readonly elegida = inject(CarreraElegida);
-  private readonly params = toSignal(this.ruta.paramMap, {
-    initialValue: this.ruta.snapshot.paramMap,
+  /** El plan lo carga el resolver de la ruta antes de mostrar la pantalla. */
+  protected readonly carrera = toSignal(this.ruta.data.pipe(map((d) => (d['carrera'] as Carrera | null) ?? null)), {
+    initialValue: (this.ruta.snapshot.data['carrera'] as Carrera | null) ?? null,
   });
-
-  protected readonly carrera = computed(() => carreraPorSlug(this.params().get('slug') ?? ''));
 
   constructor() {
     // Entrar por link a una carrera también la deja elegida en el teléfono.
@@ -192,8 +125,10 @@ export class DetalleCarrera {
   protected nivelTexto = (c: Carrera, n: number) => nombreNivel(c, n);
   protected delNivel = (c: Carrera, n: number) => c.materias.filter((m) => m.nivel === n);
 
+  protected tieneCorrelativas = (c: Carrera) => c.materias.some((m) => m.correlativas.length > 0);
+
   protected subtitulo(c: Carrera): string {
-    const partes = [c.materias.length + ' materias', c.duracionAnios + ' años'];
+    const partes = [NOMBRE_TIPO[c.tipo], c.materias.length + ' materias', c.duracionAnios + ' años'];
     if (c.horasTotales) partes.push(c.horasTotales + ' h');
     return partes.join(' · ');
   }
@@ -206,6 +141,7 @@ export class DetalleCarrera {
     const despues = habilita(v, m.codigo).length;
     const a = antes.length ? `necesita ${antes.join(', ')}` : '';
     const d = despues ? `habilita ${despues}` : '';
-    return [a, d].filter(Boolean).join(' · ');
+    const r = m.correlativasParaRendir?.length ? `para rendir: ${m.correlativasParaRendir.join(', ')}` : '';
+    return [a, d, r].filter(Boolean).join(' · ');
   }
 }
