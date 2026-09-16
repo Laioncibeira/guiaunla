@@ -81,10 +81,26 @@ como un PDF. Las otras 22 pasaron el cotejo automático código por código.
 web; Planificación Logística tiene una correlativa "42 a / 42 b" que la tabla no resuelve. Están
 anotados en los JSON.
 
+### Pendiente: mandar los avisos de novedades (decidido: a mano, sin plan Blaze)
+
+El botón "Quiero recibir novedades" ya guarda los teléfonos. Para que les llegue el aviso cuando
+publiques una novedad:
+
+1. Consola de Firebase → engranaje → *Configuración del proyecto* → *Cuentas de servicio* →
+   **Generar nueva clave privada**. Guardá el archivo como `tools/secretos/cuenta-servicio.json`
+   (esa carpeta no va al repo; no la compartas).
+2. Una sola vez: `cd functions && npm install`.
+3. Cada vez que publiques una novedad desde el panel, en tu compu:
+   `cd functions && npm run avisar -- <id de la novedad>` (el id aparece en el panel, en la
+   novedad). Manda el aviso a todos y borra los teléfonos que ya no existen.
+
+Si algún día pasás el proyecto a Blaze, la función `avisarNovedad` de `functions/` hace esto
+sola al publicar.
+
 ### Lo que falta y necesita algo tuyo
 
 1. Los pasos de Firebase de arriba.
-2. Las **firmas** y el **logo de Revolucionemos el CEDHA**, en PNG.
+2. El logo de la **Secretaría de Género del CESACO** en PNG (los demás ya están).
 3. Confirmar los textos del bloque de contacto y de "Leer más..." viéndolos armados.
 4. Las grillas de horarios de las carreras nuevas, cuando las publiquen los Departamentos.
 

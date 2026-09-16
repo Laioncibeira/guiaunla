@@ -57,6 +57,7 @@ const hoyIso = () => new Date().toISOString().slice(0, 10);
           <div class="meta">
             <span class="mono">{{ n.fecha }}</span>
             <span class="estado">{{ n.publicada ? 'publicada' : 'borrador' }}</span>
+            <span class="mono id" title="Id de la novedad, para mandar el aviso">id {{ n.id }}</span>
           </div>
           <h3>{{ n.titulo }}</h3>
           <p>{{ n.cuerpo }}</p>
@@ -89,7 +90,8 @@ const hoyIso = () => new Date().toISOString().slice(0, 10);
     .botones .peligro { color: var(--naranja); }
     .card { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 12px 14px; }
     .card.borrador { border-style: dashed; }
-    .meta { display: flex; gap: 10px; font-size: var(--t-xs); color: var(--texto-3); }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--t-xs); color: var(--texto-3); }
+    .id { margin-left: auto; user-select: all; }
     .estado { color: var(--verde); }
     .borrador .estado { color: var(--naranja); }
     h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; }

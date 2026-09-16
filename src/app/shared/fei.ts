@@ -199,12 +199,17 @@ export class BannerElecciones {
     <a href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener">
       <app-estrellas [tam]="11" />
       <span>Hecha por estudiantes del</span>
-      <app-logo-fei [ancho]="132" />
+      <span class="logos">
+        <app-logo-fei [ancho]="124" />
+        <img src="firma-cesaco.webp" alt="Presidencia del CESACO, Centro de Estudiantes de Salud Comunitaria" width="380" height="181" decoding="async" />
+      </span>
       <span class="ir">Conocé al FEI →</span>
     </a>
   `,
   styles: `
     :host { display: block; }
+    .logos { display: flex; align-items: center; justify-content: center; gap: 18px; }
+    .logos img { display: block; width: 124px; height: auto; }
     a {
       display: flex;
       flex-direction: column;
@@ -224,23 +229,30 @@ export class BannerElecciones {
 export class FirmaFei {}
 
 /**
- * Quiénes firman el formulario de contacto. El FEI firma siempre; las
- * secretarías del CEDHA (Arte y Cultura, Diseño y Comunicación Visual,
- * Traductorado) sólo cuando la carrera elegida es de Humanidades y Artes,
- * porque el CEDHA es el centro de estudiantes de ese departamento.
+ * Quiénes firman el formulario de contacto. El FEI firma siempre; el resto
+ * depende del centro de estudiantes del departamento de la carrera elegida:
+ * en Humanidades y Artes, las secretarías del CEDHA (Arte y Cultura, Diseño
+ * y Comunicación Visual, Traductorado); en Salud Comunitaria, la Presidencia
+ * del CESACO y la Secretaría de Género.
  */
 @Component({
   selector: 'app-firmas',
   imports: [LogoFei],
   template: `
     <p class="rot">Firman</p>
-    <div class="logos" [class.varias]="deHumanidades()">
-      @if (deHumanidades()) {
-        <img src="firma-arte.webp" alt="Secretaría de Arte y Cultura del CEDHA" width="480" height="211" decoding="async" />
-        <img src="firma-dcyv.webp" alt="Secretaría de Diseño y Comunicación Visual del CEDHA" width="480" height="211" decoding="async" />
-        <img src="firma-tradu.webp" alt="Secretaría de Traductorado Público en Inglés del CEDHA" width="480" height="130" decoding="async" />
+    <div class="logos" [class.varias]="departamento() !== null">
+      @switch (departamento()) {
+        @case ('humanidades-y-artes') {
+          <img src="firma-arte.webp" alt="Secretaría de Arte y Cultura del CEDHA" width="480" height="211" decoding="async" />
+          <img src="firma-dcyv.webp" alt="Secretaría de Diseño y Comunicación Visual del CEDHA" width="480" height="211" decoding="async" />
+          <img src="firma-tradu.webp" alt="Secretaría de Traductorado Público en Inglés del CEDHA" width="480" height="130" decoding="async" />
+        }
+        @case ('salud-comunitaria') {
+          <img src="firma-cesaco.webp" alt="Presidencia del CESACO" width="380" height="181" decoding="async" />
+          <!-- Secretaría de Género del CESACO: va acá cuando llegue el archivo. -->
+        }
       }
-      <app-logo-fei [ancho]="deHumanidades() ? 120 : 132" />
+      <app-logo-fei [ancho]="departamento() ? 120 : 132" />
     </div>
   `,
   styles: `
@@ -253,5 +265,9 @@ export class FirmaFei {}
 })
 export class Firmas {
   private readonly elegida = inject(CarreraElegida);
-  protected readonly deHumanidades = computed(() => this.elegida.resumen()?.departamento === 'humanidades-y-artes');
+  /** El departamento de la carrera elegida, si tiene firmas propias. */
+  protected readonly departamento = computed(() => {
+    const d = this.elegida.resumen()?.departamento;
+    return d === 'humanidades-y-artes' || d === 'salud-comunitaria' ? d : null;
+  });
 }
