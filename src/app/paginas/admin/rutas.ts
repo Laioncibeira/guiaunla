@@ -1,21 +1,38 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
+import { conSesion, sinSesion } from './sesion';
 
-/** Marcador hasta que el panel esté armado. */
-@Component({
-  selector: 'app-admin-pronto',
-  template: `
-    <main>
-      <h1>Panel de administración</h1>
-      <p>Todavía no está disponible.</p>
-    </main>
-  `,
-  styles: `
-    main { padding: var(--e5) var(--e4); }
-    h1 { margin: 0 0 var(--e2); font-size: var(--t-xl); }
-    p { color: var(--texto-2); font-size: var(--t-m); }
-  `,
-})
-export class AdminPronto {}
-
-export const ADMIN_RUTAS: Routes = [{ path: '', component: AdminPronto }];
+/**
+ * El panel de la agrupación. No aparece en la barra ni se pre-genera: se
+ * entra por /admin y pide cuenta.
+ */
+export const ADMIN_RUTAS: Routes = [
+  {
+    path: 'ingreso',
+    canActivate: [sinSesion],
+    loadComponent: () => import('./ingreso').then((m) => m.Ingreso),
+    title: 'Ingresar · Guía UNLa',
+  },
+  {
+    path: '',
+    canActivate: [conSesion],
+    loadComponent: () => import('./panel').then((m) => m.Panel),
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'contactos' },
+      {
+        path: 'contactos',
+        loadComponent: () => import('./contactos').then((m) => m.AdminContactos),
+        title: 'Contactos · Administración',
+      },
+      {
+        path: 'novedades',
+        loadComponent: () => import('./novedades').then((m) => m.AdminNovedades),
+        title: 'Novedades · Administración',
+      },
+      {
+        path: 'visitas',
+        loadComponent: () => import('./visitas').then((m) => m.AdminVisitas),
+        title: 'Visitas · Administración',
+      },
+    ],
+  },
+];
