@@ -1,5 +1,6 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { diasHasta, fechaCorta } from '../paginas/formato';
+import { CarreraElegida } from './ui';
 
 /**
  * La chispa de cuatro puntas de la identidad del FEI, redibujada en vectorial
@@ -224,3 +225,36 @@ export class BannerElecciones {
   `,
 })
 export class FirmaFei {}
+
+/**
+ * Quiénes firman el formulario de contacto. El FEI firma siempre; las
+ * secretarías del CEDHA (Arte y Cultura, Diseño y Comunicación Visual,
+ * Traductorado) sólo cuando la carrera elegida es de Humanidades y Artes,
+ * porque el CEDHA es el centro de estudiantes de ese departamento.
+ */
+@Component({
+  selector: 'app-firmas',
+  imports: [LogoFei],
+  template: `
+    <p class="rot">Firman</p>
+    <div class="logos" [class.varias]="deHumanidades()">
+      @if (deHumanidades()) {
+        <img src="firma-arte.webp" alt="Secretaría de Arte y Cultura del CEDHA" width="480" height="211" decoding="async" />
+        <img src="firma-dcyv.webp" alt="Secretaría de Diseño y Comunicación Visual del CEDHA" width="480" height="211" decoding="async" />
+        <img src="firma-tradu.webp" alt="Secretaría de Traductorado Público en Inglés del CEDHA" width="480" height="130" decoding="async" />
+      }
+      <app-logo-fei [ancho]="deHumanidades() ? 120 : 132" />
+    </div>
+  `,
+  styles: `
+    :host { display: block; }
+    .rot { margin: 0 0 10px; font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
+    .logos { display: flex; justify-content: center; }
+    .logos.varias { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; align-items: center; justify-items: center; }
+    img { display: block; width: 100%; max-width: 150px; height: auto; }
+  `,
+})
+export class Firmas {
+  private readonly elegida = inject(CarreraElegida);
+  protected readonly deHumanidades = computed(() => this.elegida.resumen()?.departamento === 'humanidades-y-artes');
+}

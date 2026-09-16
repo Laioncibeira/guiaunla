@@ -23,7 +23,7 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/**/*.(svg|webmanifest|woff2)"
+          "/**/*.(svg|webp|png|webmanifest|woff2)"
         ]
       }
     },

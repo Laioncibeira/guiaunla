@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Novedades } from '../core/novedades';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
-import { BannerElecciones, Estrella, FirmaFei } from '../shared/fei';
+import { BannerElecciones, Estrella, FirmaFei, Firmas } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
 import { RelojLey } from '../shared/reloj-ley';
 import { FormularioContacto } from '../shared/contacto';
@@ -18,6 +18,7 @@ import { fechaCorta } from './formato';
     BannerElecciones,
     Estrella,
     FirmaFei,
+    Firmas,
     Tutorial,
     RelojLey,
     FormularioContacto,
@@ -35,10 +36,14 @@ import { fechaCorta } from './formato';
 
     <main>
       @if (!elegida.resumen()) {
-        <section class="elegir">
-          <h2>¿Qué estudiás?</h2>
-          <p>Elegí tu carrera una vez y la app arranca siempre ahí: plan, correlatividades y horarios.</p>
-          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/' }">Elegir mi carrera</a>
+        <section class="elegir" aria-labelledby="elegir-titulo">
+          <h2 id="elegir-titulo">Primero, elegí tu departamento y tu carrera</h2>
+          <p>
+            Es una sola vez: después la app arranca en tu plan, tus correlatividades y tus horarios.
+            Lo hacés desde acá, desde el botón <strong>Elegí tu carrera</strong> de arriba o desde la pestaña
+            <strong>Tu carrera</strong> de abajo, cuando quieras.
+          </p>
+          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/' }">Elegir departamento y carrera</a>
         </section>
       }
 
@@ -61,7 +66,7 @@ import { fechaCorta } from './formato';
       <app-reloj-ley />
 
       <app-contacto>
-        <!-- Las firmas van acá cuando lleguen los archivos. -->
+        <app-firmas />
       </app-contacto>
 
       <app-banner-elecciones />
@@ -110,8 +115,10 @@ import { fechaCorta } from './formato';
       background: var(--superficie); border: 1px solid var(--borde);
       border-radius: var(--r); padding: var(--e4);
     }
+    .elegir { border-color: var(--marca); }
     .elegir h2 { margin: 0; font-size: var(--t-l); }
-    .elegir p { margin: 6px 0 var(--e3); font-size: var(--t-s); color: var(--texto-2); }
+    .elegir p { margin: 6px 0 var(--e3); font-size: var(--t-s); color: var(--texto-2); line-height: 1.5; }
+    .elegir strong { color: var(--texto); font-weight: 600; }
     .elegir .boton {
       display: flex; align-items: center; justify-content: center; min-height: 46px;
       border-radius: 10px; background: var(--marca); color: var(--sobre-marca);

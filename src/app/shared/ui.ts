@@ -77,6 +77,9 @@ export class Icono {
             <path [attr.d]="ruta(d.icono)" />
           </svg>
           <span>{{ d.etiqueta }}</span>
+          @if (d.ruta === '/carrera' && !elegida.slug()) {
+            <i class="punto" aria-hidden="true"></i>
+          }
         </a>
       }
     </nav>
@@ -111,6 +114,13 @@ export class Icono {
     }
     a.activo {
       color: var(--marca);
+    }
+    a { position: relative; }
+    /* Hasta que se elige carrera, la pestaña avisa que ahí se elige. */
+    .punto {
+      position: absolute; top: 6px; left: calc(50% + 9px);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--fei-amarillo); box-shadow: 0 0 0 2px var(--superficie);
     }
     .marca { display: none; }
 
@@ -159,6 +169,7 @@ export class Icono {
   `,
 })
 export class Barra {
+  protected readonly elegida = inject(CarreraElegida);
   protected readonly destinos = [
     { ruta: '/', icono: 'inicio', etiqueta: 'Inicio' },
     { ruta: '/carrera', icono: 'carreras', etiqueta: 'Tu carrera' },
@@ -336,7 +347,7 @@ export class Atras {
   selector: 'app-carrera-chip',
   imports: [RouterLink],
   template: `
-    <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip">
+    <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip" [class.vacio]="!elegida.resumen()">
       @if (elegida.resumen(); as c) {
         <span class="nombre">{{ c.nombreCorto }}</span>
         <span class="cambiar">Cambiar</span>
@@ -354,6 +365,12 @@ export class Atras {
       text-decoration: none;
     }
     .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
+    .chip.vacio { border-color: var(--marca); animation: latir 2.4s ease-in-out infinite; }
+    @keyframes latir {
+      0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--marca) 45%, transparent); }
+      50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--marca) 0%, transparent); }
+    }
     .cambiar { flex: none; color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   `,
 })
