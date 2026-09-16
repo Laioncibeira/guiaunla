@@ -38,6 +38,12 @@ export const routes: Routes = [
     title: 'Fechas · Guía UNLa',
   },
   {
+    // El panel no se pre-genera ni aparece en la barra: se entra por URL.
+    path: 'admin',
+    loadChildren: () => import('./paginas/admin/rutas').then((m) => m.ADMIN_RUTAS),
+    title: 'Administración · Guía UNLa',
+  },
+  {
     path: '**',
     loadComponent: () => import('./paginas/otras').then((m) => m.NoEncontrado),
     title: 'No encontrado · Guía UNLa',

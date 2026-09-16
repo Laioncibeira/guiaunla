@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "novedades",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "publicada", "order": "ASCENDING" },
+        { "fieldPath": "fecha", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

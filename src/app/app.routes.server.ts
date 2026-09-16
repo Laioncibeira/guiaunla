@@ -8,6 +8,9 @@ const porCarrera = () => Promise.resolve(slugsDeCarreras.map((slug) => ({ slug }
  * quedan como archivos HTML, así abren al instante y Google los indexa.
  */
 export const serverRoutes: ServerRoute[] = [
+  // El panel de administración vive sólo en el navegador: sin pre-render.
+  { path: 'admin', renderMode: RenderMode.Client },
+  { path: 'admin/**', renderMode: RenderMode.Client },
   { path: 'carreras/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: porCarrera },
   {
     path: 'carreras/:slug/correlatividades',

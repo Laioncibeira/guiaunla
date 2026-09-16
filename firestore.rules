@@ -1,0 +1,120 @@
+rules_version = '2';
+
+// Reglas de la Guía UNLa.
+//
+// Principio: el público puede dejar un mensaje y leer novedades publicadas,
+// nada más. Todo lo que se lee de vuelta (contactos, visitas, borradores) lo
+// ve sólo quien tiene cuenta Y figura en la colección `admins`. La apiKey del
+// front es pública por diseño: lo que protege son estas reglas.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ------------------------------------------------------------ ayudas
+    function esAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Texto no vacío (sin contar espacios) y con largo máximo.
+    function texto(s, min, max) {
+      return s is string && s.size() <= max && s.trim().size() >= min;
+    }
+
+    // 'yyyy-mm-dd' en UTC según el reloj del servidor: la fecha no la elige el cliente.
+    function hoy() {
+      return string(request.time.year()) + '-'
+        + (request.time.month() < 10 ? '0' : '') + string(request.time.month()) + '-'
+        + (request.time.day() < 10 ? '0' : '') + string(request.time.day());
+    }
+
+    // Si el documento no existe todavía, el formulario está abierto.
+    function formularioAbierto() {
+      return !exists(/databases/$(database)/documents/config/contacto)
+        || get(/databases/$(database)/documents/config/contacto).data.abierto == true;
+    }
+
+    // ---------------------------------------------- admins: lista fija
+    // Se edita sólo desde la consola de Firebase. Cada admin puede leer su
+    // propio documento para saber si está habilitado.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // -------------------------------------------- ajustes públicos
+    match /config/{doc} {
+      allow read: if true;
+      allow write: if esAdmin();
+    }
+
+    // --------------------------- contactos: cualquiera crea, sólo admins leen
+    match /contactos/{id} {
+      allow create: if formularioAbierto()
+        && request.resource.data.keys().hasOnly(['mensaje', 'contacto', 'ruta', 'creado'])
+        && request.resource.data.keys().hasAll(['mensaje', 'contacto', 'creado'])
+        && texto(request.resource.data.mensaje, 5, 300)
+        && texto(request.resource.data.contacto, 3, 120)
+        && (!('ruta' in request.resource.data)
+            || (request.resource.data.ruta is string && request.resource.data.ruta.size() <= 60))
+        // serverTimestamp() se evalúa como request.time: el cliente no inventa la fecha.
+        && request.resource.data.creado == request.time;
+
+      allow read, delete: if esAdmin();
+      // El admin sólo marca leído o no leído; el contenido original no se toca.
+      allow update: if esAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['leido'])
+        && request.resource.data.leido is bool;
+    }
+
+    // ------------------- novedades: público lee publicadas, admins escriben
+    function novedadValida(d) {
+      return d.keys().hasOnly(['titulo', 'cuerpo', 'fecha', 'publicada', 'creada', 'actualizada'])
+        && d.keys().hasAll(['titulo', 'cuerpo', 'fecha', 'publicada', 'creada', 'actualizada'])
+        && texto(d.titulo, 1, 80)
+        && texto(d.cuerpo, 1, 2000)
+        && d.fecha is timestamp
+        && d.publicada is bool;
+    }
+
+    match /novedades/{id} {
+      // Para listar sin sesión la consulta DEBE llevar where('publicada','==',true):
+      // las reglas no filtran, rechazan la consulta entera si no lo hace.
+      allow get, list: if resource.data.publicada == true || esAdmin();
+
+      allow create: if esAdmin()
+        && novedadValida(request.resource.data)
+        && request.resource.data.creada == request.time
+        && request.resource.data.actualizada == request.time;
+
+      allow update: if esAdmin()
+        && novedadValida(request.resource.data)
+        && request.resource.data.creada == resource.data.creada
+        && request.resource.data.actualizada == request.time;
+
+      allow delete: if esAdmin();
+    }
+
+    // ------------ visitas: contador anónimo, sólo +1 sobre el día de hoy
+    // Un documento por día y por pantalla: '2026-09-16_carreras-audiovision'.
+    match /visitas/{id} {
+      allow read, delete: if esAdmin();
+
+      allow create: if request.resource.data.keys().hasOnly(['dia', 'ruta', 'n'])
+        && request.resource.data.keys().hasAll(['dia', 'ruta', 'n'])
+        && request.resource.data.dia == hoy()
+        && request.resource.data.ruta is string
+        && request.resource.data.ruta.matches('^[a-z0-9-]{1,40}$')
+        && id == request.resource.data.dia + '_' + request.resource.data.ruta
+        && request.resource.data.n == 1;
+
+      allow update: if resource.data.dia == hoy()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['n'])
+        && request.resource.data.n == resource.data.n + 1;
+    }
+
+    // ------------------------------------------ todo lo demás, cerrado
+    match /{otro=**} {
+      allow read, write: if false;
+    }
+  }
+}
