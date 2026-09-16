@@ -129,21 +129,33 @@ export function construirFilas(
   }));
 }
 
+/** Una materia que lo seleccionado destraba sólo en parte. */
+export interface Parcial {
+  readonly materia: Materia;
+  /** Lo que todavía le falta, sin contar lo seleccionado. */
+  readonly faltan: readonly Materia[];
+}
+
 export interface Simulacion {
-  /** Lo que pasaría a estar habilitado si aprobaras lo prendido. */
+  /** Lo que las seleccionadas destraban directo (dependientes inmediatas). */
+  readonly habilitaDirecto: readonly Materia[];
+  /** Lo que pasaría a poder cursarse si aprobaras lo seleccionado. */
   readonly desbloqueadas: readonly Materia[];
+  /** Dependientes directas que igual seguirían pidiendo otra correlativa. */
+  readonly parciales: readonly Parcial[];
   readonly aprobadasAntes: number;
   readonly aprobadasDespues: number;
   readonly total: number;
-  readonly porcentajeAntes: number;
-  readonly porcentajeDespues: number;
 }
 
 /**
- * "Si apruebo las prendidas, ¿qué se me abre?".
+ * "Si apruebo las seleccionadas, ¿qué se me abre?".
  *
- * Cuenta sólo lo que hoy NO podés cursar y pasaría a poder cursarse. Las
- * prendidas no se cuentan a sí mismas: ya las estás dando por aprobadas.
+ * Distingue tres cosas que en la pantalla se confundían: lo que las
+ * seleccionadas destraban DIRECTO (son correlativa de eso), lo que de verdad
+ * pasa a poder cursarse (todas sus correlativas cubiertas) y lo que queda a
+ * medias porque además pide otra que no está. Las seleccionadas no se cuentan
+ * a sí mismas: ya las estás dando por aprobadas.
  */
 export function simular(
   carrera: Carrera,
@@ -152,25 +164,37 @@ export function simular(
   v: Vinculos = vincular(carrera),
 ): Simulacion {
   const despues = new Set([...aprobadas, ...seleccion]);
+
+  const directas = new Map<string, Materia>();
+  for (const codigo of seleccion)
+    for (const m of habilita(v, codigo)) if (!despues.has(m.codigo)) directas.set(m.codigo, m);
+  const habilitaDirecto = [...directas.values()];
+
   const desbloqueadas = carrera.materias.filter(
     (m) =>
       !despues.has(m.codigo) &&
       !puedeCursar(v, m.codigo, aprobadas) &&
       puedeCursar(v, m.codigo, despues),
   );
-  const total = carrera.materias.length;
-  const pct = (n: number) => (total ? Math.round((n / total) * 100) : 0);
+
+  const parciales: Parcial[] = habilitaDirecto
+    .filter((m) => !puedeCursar(v, m.codigo, despues))
+    .map((m) => ({
+      materia: m,
+      faltan: necesita(v, m.codigo).filter((x) => !despues.has(x.codigo)),
+    }));
+
   return {
+    habilitaDirecto,
     desbloqueadas,
+    parciales,
     aprobadasAntes: aprobadas.size,
     aprobadasDespues: despues.size,
-    total,
-    porcentajeAntes: pct(aprobadas.size),
-    porcentajeDespues: pct(despues.size),
+    total: carrera.materias.length,
   };
 }
 
-export type Filtro = 'aprobadas' | 'puedo-cursar' | 'se-dicta';
+export type Filtro = 'puedo-cursar' | 'se-dicta';
 
 /**
  * Los códigos que pasan los filtros prendidos. `null` sin filtros.
@@ -183,7 +207,6 @@ export function aplicarFiltros(
 ): ReadonlySet<string> | null {
   if (filtros.size === 0) return null;
   const pasa = (f: Fila) =>
-    (filtros.has('aprobadas') && f.aprobada) ||
     (filtros.has('puedo-cursar') && f.puedeCursar) ||
     (filtros.has('se-dicta') && seDicta.has(f.materia.codigo));
   return new Set(filas.filter(pasa).map((f) => f.materia.codigo));

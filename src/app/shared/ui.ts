@@ -1,5 +1,6 @@
-import { Component, computed, inject, Injectable, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Location } from '@angular/common';
+import { Component, computed, inject, Injectable, input, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CARRERAS, type Carrera } from '../core/datos';
 
 /** Íconos dibujados: nada de emoji, para que escalen y tomen el color del tema. */
@@ -201,3 +202,106 @@ export class Aprobadas {
 }
 
 export const usarCarrera = () => inject(CarreraElegida);
+
+/**
+ * Cuenta las navegaciones hechas dentro de la app, para saber si "atrás"
+ * puede usar el historial del navegador o tiene que ir a una ruta fija.
+ *
+ * Quien entra por un link compartido no tiene adónde volver: el historial
+ * anterior es de otro sitio o no existe. Quien llegó tocando dentro de la app
+ * sí, y ahí "atrás" tiene que ser el atrás de verdad.
+ */
+@Injectable({ providedIn: 'root' })
+export class Historial {
+  private readonly router = inject(Router);
+  private readonly internas = signal(0);
+  /** La última URL antes de la actual, o null si no hubo. */
+  readonly previa = signal<string | null>(null);
+  private actual: string | null = null;
+
+  constructor() {
+    this.router.events.subscribe((e) => {
+      if (!(e instanceof NavigationEnd)) return;
+      if (this.actual !== null && this.actual !== e.urlAfterRedirects) {
+        this.previa.set(this.actual);
+        this.internas.update((n) => n + 1);
+      }
+      this.actual = e.urlAfterRedirects;
+    });
+  }
+
+  /** Hay una pantalla anterior de esta misma app en el historial. */
+  puedeVolver(): boolean {
+    return this.internas() > 0;
+  }
+}
+
+/** Botón "atrás": vuelve a la pantalla anterior; si no hay, a la de respaldo. */
+@Component({
+  selector: 'app-atras',
+  template: `
+    <button type="button" (click)="volver()" [attr.aria-label]="'Volver a ' + nombre()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+    </button>
+  `,
+  styles: `
+    :host { display: inline-flex; }
+    button {
+      width: 32px; height: 32px; flex: none; display: grid; place-items: center;
+      border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie);
+      color: var(--texto-2); padding: 0;
+    }
+  `,
+})
+export class Atras {
+  /** Adónde ir cuando no hay historial propio (link compartido, recarga). */
+  readonly respaldo = input('/');
+  /** Nombre de esa pantalla, para el lector de pantalla. */
+  readonly nombre = input('la pantalla anterior');
+  private readonly historial = inject(Historial);
+  private readonly location = inject(Location);
+  private readonly router = inject(Router);
+
+  protected volver(): void {
+    if (this.historial.puedeVolver()) this.location.back();
+    else this.router.navigateByUrl(this.respaldo());
+  }
+}
+
+/**
+ * La carrera elegida como chip con "Cambiar". Lleva al selector y, al elegir,
+ * vuelve a la pantalla desde la que se tocó.
+ */
+@Component({
+  selector: 'app-carrera-chip',
+  imports: [RouterLink],
+  template: `
+    <a routerLink="/carreras" [queryParams]="{ volver: volver() }" class="chip">
+      @if (elegida.carrera(); as c) {
+        <span class="nombre">{{ c.nombreCorto }}</span>
+        <span class="cambiar">Cambiar</span>
+      } @else {
+        <span class="cambiar">Elegí tu carrera</span>
+      }
+    </a>
+  `,
+  styles: `
+    :host { display: inline-flex; max-width: 100%; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 7px; min-height: 36px; max-width: 100%;
+      padding: 0 12px; border: 1px solid var(--borde); border-radius: 999px;
+      background: var(--superficie); color: var(--texto-2); font-size: var(--t-s);
+      text-decoration: none;
+    }
+    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cambiar { flex: none; color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  `,
+})
+export class CarreraChip {
+  protected readonly elegida = inject(CarreraElegida);
+  private readonly router = inject(Router);
+  /** La URL a la que volver después de elegir: la actual, sin parámetros. */
+  protected volver(): string {
+    return this.router.url.split('?')[0] || '/';
+  }
+}

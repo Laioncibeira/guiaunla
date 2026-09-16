@@ -22,7 +22,7 @@ import {
   type Filtro,
 } from '../core/explorar';
 import { calcularLayout, detalleDe, encuadrar, TARJETA, type Layout } from '../core/grafo';
-import { Aprobadas, CarreraElegida } from '../shared/ui';
+import { Aprobadas, Atras, CarreraElegida } from '../shared/ui';
 
 /** Con este ancho de viewBox la tarjeta se lee cómoda en un teléfono. */
 const CERCA_ANCHO = 340;
@@ -32,21 +32,24 @@ const PROPORCION = 1.3;
 const FILTROS: readonly { clave: Filtro; label: string }[] = [
   { clave: 'puedo-cursar', label: 'Puedo cursar' },
   { clave: 'se-dicta', label: 'Se dicta ahora' },
-  { clave: 'aprobadas', label: 'Aprobadas' },
 ];
+
+/** Cuántos píxeles de pantalla puede moverse el dedo y seguir siendo un toque. */
+const TOLERANCIA_TOQUE_PX = 10;
 
 @Component({
   selector: 'app-grafo',
-  imports: [RouterLink, NgTemplateOutlet],
+  imports: [RouterLink, NgTemplateOutlet, Atras],
   template: `
     @if (carrera(); as c) {
       <header>
-        <a class="atras" [routerLink]="['/carreras', c.slug]" aria-label="Volver a la carrera">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
-        </a>
+        <app-atras [respaldo]="'/carreras/' + c.slug" nombre="la carrera" />
         <div class="titulo">
           <h1>Correlatividades</h1>
-          <p class="sub">{{ c.nombreCorto }} · {{ c.materias.length }} materias</p>
+          <p class="sub">
+            {{ c.nombreCorto }} · {{ c.materias.length }} materias ·
+            <a routerLink="/carreras" [queryParams]="{ volver: rutaActual() }" class="cambiar">Cambiar</a>
+          </p>
         </div>
         <div class="vistas" role="group" aria-label="Cómo ver el plan">
           <button type="button" [class.on]="vista() === 'mapa'" (click)="vista.set('mapa')">Mapa</button>
@@ -81,11 +84,11 @@ const FILTROS: readonly { clave: Filtro; label: string }[] = [
               [attr.aria-pressed]="activos().has(f.clave)"
               (click)="alternarFiltro(f.clave)"
             >
-              {{ f.label }}
+              {{ f.label }}@if (activos().has(f.clave)) {<span class="x" aria-hidden="true"> ×</span>}
             </button>
           }
           @if (activos().size || seleccion().size) {
-            <button type="button" class="chip limpiar" (click)="limpiarTodo()">Limpiar</button>
+            <button type="button" class="chip limpiar" (click)="limpiarTodo()">{{ textoLimpiar() }}</button>
           }
         </div>
       }
@@ -95,13 +98,19 @@ const FILTROS: readonly { clave: Filtro; label: string }[] = [
           <div class="sim-datos">
             <span
               ><strong>{{ seleccion().size }}</strong>
-              {{ seleccion().size === 1 ? 'materia prendida' : 'materias prendidas' }}</span
+              {{ seleccion().size === 1 ? 'materia seleccionada' : 'materias seleccionadas' }}</span
             >
-            <span>Se habilitarían <strong>{{ sim.desbloqueadas.length }}</strong></span>
-            <span>Avance <strong>{{ sim.porcentajeAntes }}%</strong> → <strong>{{ sim.porcentajeDespues }}%</strong></span>
+            <span>Habilita directamente <strong>{{ sim.habilitaDirecto.length }}</strong></span>
+            <span>Quedan cursables <strong>{{ sim.desbloqueadas.length }}</strong></span>
           </div>
           @if (sim.desbloqueadas.length) {
-            <p class="sim-lista">Se abren: {{ nombresDesbloqueadas() }}</p>
+            <p class="sim-lista">Podrías cursar: {{ nombresDesbloqueadas() }}</p>
+          }
+          @if (sim.parciales.length) {
+            <p class="sim-lista parcial">
+              {{ sim.parciales.length === 1 ? 'Queda a medias:' : 'Quedan a medias:' }}
+              {{ nombresParciales() }}
+            </p>
           }
         </div>
       }
@@ -216,7 +225,12 @@ const FILTROS: readonly { clave: Filtro; label: string }[] = [
                                   <span class="caret" aria-hidden="true">·</span>
                                   <button type="button" class="mini" [class.ok]="aprobada(d.codigo)" (click)="prender(d.codigo)">
                                     <span class="mono">{{ d.codigo }}</span>
-                                    <span class="n">{{ d.nombre }}</span>
+                                    <span class="n">
+                                      {{ d.nombre }}
+                                      @if (faltanPara(d.codigo); as faltan) {
+                                        <small class="a-medias">a medias: pide también {{ faltan }}</small>
+                                      }
+                                    </span>
                                   </button>
                                 </div>
                               </li>
@@ -371,7 +385,7 @@ const FILTROS: readonly { clave: Filtro; label: string }[] = [
     .titulo { flex: 1; min-width: 0; }
     h1 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .atras { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie); color: var(--texto-2); }
+    .cambiar { color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
     .vistas { flex: none; display: flex; border: 1px solid var(--borde); border-radius: 999px; background: var(--superficie); padding: 2px; }
     .vistas button { min-height: 34px; padding: 0 11px; border: none; border-radius: 999px; background: none; color: var(--texto-2); font-size: var(--t-s); font-weight: 600; }
     .vistas button.on { background: var(--marca); color: var(--sobre-marca); }
@@ -381,17 +395,20 @@ const FILTROS: readonly { clave: Filtro; label: string }[] = [
     .caja.activa { border-color: var(--marca); color: var(--marca); }
     .caja input { flex: 1; min-width: 0; background: none; border: none; outline: none; color: var(--texto); font: inherit; font-size: var(--t-m); }
     .caja button { background: none; border: none; font-size: 20px; line-height: 1; color: var(--texto-3); padding: 0 4px; min-width: 32px; min-height: 32px; }
-    .caja svg, .atras svg { flex: none; }
+    .caja svg { flex: none; }
 
     .filtros { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 var(--e4) 8px; }
     .chip { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto-2); font-size: var(--t-s); font-weight: 600; }
     .chip.on { border-color: var(--marca); background: var(--marca); color: var(--sobre-marca); }
     .chip.limpiar { border-style: dashed; color: var(--texto-3); }
+    .chip .x { font-weight: 400; opacity: 0.85; }
 
     .sim { margin: 0 var(--e4) 8px; padding: 10px 12px; border: 1px solid var(--marca); border-radius: var(--r); background: color-mix(in oklab, var(--marca) 12%, var(--superficie)); }
     .sim-datos { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: var(--t-s); color: var(--texto-2); }
     .sim-datos strong { color: var(--texto); font-weight: 700; }
     .sim-lista { margin: 6px 0 0; font-size: var(--t-xs); color: var(--texto-2); line-height: 1.4; }
+    .sim-lista.parcial { color: var(--naranja); }
+    .a-medias { display: block; font-size: var(--t-xs); color: var(--naranja); margin-top: 2px; }
 
     .resultados { list-style: none; margin: 0; padding: 0 var(--e4); overflow-y: auto; flex: 1; }
     .resultados button { display: flex; align-items: center; gap: 11px; width: 100%; padding: 11px 0; background: none; border: none; border-bottom: 1px solid var(--borde); text-align: left; min-height: 48px; color: var(--texto); }
@@ -542,6 +559,23 @@ export class Grafo {
     (this.simulacion()?.desbloqueadas ?? []).map((m) => m.nombre).join(' · '),
   );
 
+  protected readonly nombresParciales = computed(() =>
+    (this.simulacion()?.parciales ?? []).map((p) => p.materia.nombre).join(' · '),
+  );
+
+  /** Qué le falta a una materia destrabada a medias, para la etiqueta de la lista. */
+  protected faltanPara(codigo: string): string | null {
+    const p = this.simulacion()?.parciales.find((x) => x.materia.codigo === codigo);
+    return p && p.faltan.length ? p.faltan.map((m) => m.nombre).join(', ') : null;
+  }
+
+  protected readonly textoLimpiar = computed(() => {
+    const filtros = this.activos().size > 0;
+    const sel = this.seleccion().size > 0;
+    if (filtros && sel) return 'Limpiar todo';
+    return filtros ? 'Quitar filtros' : 'Limpiar selección';
+  });
+
   protected readonly resultados = computed(() => {
     const c = this.carrera();
     const q = this.consulta().trim();
@@ -613,6 +647,12 @@ export class Grafo {
       .nodos.filter((n) => n.anio === 1)
       .map((n) => n.y);
     return ys.length ? Math.min(...ys) : 0;
+  }
+
+  /** La URL de esta pantalla sin parámetros, para volver acá después de cambiar de carrera. */
+  protected rutaActual(): string {
+    const c = this.carrera();
+    return c ? `/carreras/${c.slug}/correlatividades` : '/carreras';
   }
 
   protected color = (anio: number) => `var(--n${((anio - 1) % 8) + 1})`;
@@ -785,7 +825,13 @@ export class Grafo {
   private arrastro = false;
 
   protected alApretar(e: PointerEvent): void {
-    this.svg()?.nativeElement.setPointerCapture?.(e.pointerId);
+    // La captura mantiene el arrastre aunque el dedo salga del lienzo. Si el
+    // navegador la rechaza, el gesto tiene que seguir andando igual.
+    try {
+      this.svg()?.nativeElement.setPointerCapture?.(e.pointerId);
+    } catch {
+      /* sin captura: el arrastre se corta al salir del svg, nada más */
+    }
     this.punteros.set(e.pointerId, { x: e.clientX, y: e.clientY });
     this.arrastro = false;
     const v = this.encuadre();
@@ -809,18 +855,48 @@ export class Grafo {
       return;
     }
 
+    // El umbral se mide en píxeles de pantalla: en unidades del viewBox un dedo
+    // que tiembla ya contaba como arrastre y el toque se perdía.
+    const movidoPx = Math.hypot(e.clientX - this.inicio.x, e.clientY - this.inicio.y);
+    if (movidoPx > TOLERANCIA_TOQUE_PX) this.arrastro = true;
+    if (!this.arrastro) return;
+
     const v = this.encuadre();
     const dx = ((e.clientX - this.inicio.x) * v.w) / caja.width;
     const dy = ((e.clientY - this.inicio.y) * v.h) / caja.height;
-    if (Math.abs(dx) + Math.abs(dy) > 3) this.arrastro = true;
     this.encuadre.set(
       this.limitar({ ...v, x: this.inicio.vista.x - dx, y: this.inicio.vista.y - dy }),
     );
   }
 
   protected alSoltar(e: PointerEvent): void {
+    const eraToque = this.punteros.size === 1 && !this.arrastro && e.type === 'pointerup';
     this.punteros.delete(e.pointerId);
     if (this.punteros.size === 0) this.inicio = null;
+    if (!eraToque) return;
+    // Hit-test propio: no depende de a qué elemento le llegue el click.
+    const codigo = this.nodoBajo(e.clientX, e.clientY);
+    if (codigo) {
+      this.prender(codigo);
+      // El click que el navegador dispara después no debe volver a alternar.
+      this.arrastro = true;
+    }
+  }
+
+  /** El código de la materia que hay bajo un punto de pantalla, si hay alguna. */
+  private nodoBajo(clientX: number, clientY: number): string | null {
+    const caja = this.cajaLienzo();
+    if (!caja || caja.width === 0 || caja.height === 0) return null;
+    const v = this.encuadre();
+    // El svg usa "meet": el viewBox se escala uniforme y se centra en la caja.
+    const escala = Math.min(caja.width / v.w, caja.height / v.h);
+    const sobraX = (caja.width - v.w * escala) / 2;
+    const sobraY = (caja.height - v.h * escala) / 2;
+    const x = v.x + (clientX - caja.left - sobraX) / escala;
+    const y = v.y + (clientY - caja.top - sobraY) / escala;
+    for (const n of this.layout().nodos)
+      if (x >= n.x && x <= n.x + n.w && y >= n.y && y <= n.y + n.h) return n.codigo;
+    return null;
   }
 
   protected alRodar(e: WheelEvent): void {

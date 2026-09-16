@@ -128,8 +128,9 @@ describe('simulación', () => {
   it('cuenta lo que se abriría al aprobar lo prendido', () => {
     const s = simular(cadena, new Set(), new Set(['01']));
     expect(s.desbloqueadas.map((x) => x.codigo)).toEqual(['03']);
-    expect(s.porcentajeAntes).toBe(0);
-    expect(s.porcentajeDespues).toBe(20);
+    expect(s.aprobadasAntes).toBe(0);
+    expect(s.aprobadasDespues).toBe(1);
+    expect(s.total).toBe(5);
   });
 
   it('no cuenta lo que ya se podía cursar', () => {
@@ -145,7 +146,27 @@ describe('simulación', () => {
   it('sin nada prendido no cambia nada', () => {
     const s = simular(cadena, new Set(['01']), new Set());
     expect(s.desbloqueadas).toEqual([]);
-    expect(s.porcentajeAntes).toBe(s.porcentajeDespues);
+    expect(s.habilitaDirecto).toEqual([]);
+    expect(s.parciales).toEqual([]);
+  });
+
+  it('separa lo que destraba directo de lo que queda cursable', () => {
+    const s = simular(cadena, new Set(), new Set(['01']));
+    expect(s.habilitaDirecto.map((x) => x.codigo).sort()).toEqual(['03', '05']);
+    expect(s.desbloqueadas.map((x) => x.codigo)).toEqual(['03']);
+    expect(s.parciales.map((p) => p.materia.codigo)).toEqual(['05']);
+    expect(s.parciales[0].faltan.map((x) => x.codigo)).toEqual(['02']);
+  });
+
+  it('una parcial deja de serlo cuando se selecciona lo que le faltaba', () => {
+    const s = simular(cadena, new Set(), new Set(['01', '02']));
+    expect(s.parciales).toEqual([]);
+    expect(s.desbloqueadas.map((x) => x.codigo).sort()).toEqual(['03', '05']);
+  });
+
+  it('lo directo no incluye lo ya aprobado ni lo seleccionado', () => {
+    const s = simular(cadena, new Set(['03']), new Set(['01']));
+    expect(s.habilitaDirecto.map((x) => x.codigo)).toEqual(['05']);
   });
 
   it('sobre el plan real de Audiovisión abre materias de verdad', () => {
@@ -164,12 +185,14 @@ describe('filtros', () => {
     expect(aplicarFiltros(filas, new Set(), new Set())).toBeNull();
   });
 
-  it('aprobadas deja sólo las aprobadas', () => {
-    expect([...(aplicarFiltros(filas, new Set(['aprobadas']), new Set()) ?? [])]).toEqual(['01']);
+  it('puedo cursar deja sólo lo habilitado con lo aprobado', () => {
+    expect([...(aplicarFiltros(filas, new Set(['puedo-cursar']), new Set()) ?? [])].sort()).toEqual([
+      '02', '03',
+    ]);
   });
 
   it('dos filtros suman en vez de restringir', () => {
-    const r = aplicarFiltros(filas, new Set(['aprobadas', 'se-dicta']), new Set(['04'])) ?? new Set();
-    expect([...r].sort()).toEqual(['01', '04']);
+    const r = aplicarFiltros(filas, new Set(['puedo-cursar', 'se-dicta']), new Set(['04'])) ?? new Set();
+    expect([...r].sort()).toEqual(['02', '03', '04']);
   });
 });

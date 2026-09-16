@@ -1,9 +1,9 @@
 import { Component, computed, effect, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CARRERAS, carreraPorSlug, nombreNivel, type Carrera, type Materia } from '../core/datos';
 import { habilita, necesita, vincular } from '../core/correlatividades';
-import { CarreraElegida } from '../shared/ui';
+import { Atras, CarreraElegida } from '../shared/ui';
 import { FirmaFei } from '../shared/fei';
 
 @Component({
@@ -18,7 +18,7 @@ import { FirmaFei } from '../shared/fei';
     </header>
     <main>
       @for (c of carreras; track c.slug; let i = $index) {
-        <a class="card" [routerLink]="['/carreras', c.slug]" (click)="elegir(c.slug)">
+        <a class="card" [routerLink]="destino(c.slug)" (click)="elegir(c.slug)">
           <span class="raya" [style.background]="'var(--n' + (i + 1) + ')'"></span>
           <span class="txt">
             <span class="nom">{{ c.nombreCorto }}</span>
@@ -55,7 +55,23 @@ import { FirmaFei } from '../shared/fei';
 })
 export class Carreras {
   private readonly elegida = inject(CarreraElegida);
+  private readonly ruta = inject(ActivatedRoute);
   protected readonly carreras = CARRERAS;
+  private readonly query = toSignal(this.ruta.queryParamMap, {
+    initialValue: this.ruta.snapshot.queryParamMap,
+  });
+
+  /** Si se llegó desde otra pantalla para cambiar de carrera, se vuelve ahí. */
+  private volverA(): string | null {
+    const v = this.query().get('volver');
+    // Sólo rutas internas: un valor externo o raro no se sigue.
+    return v && v.startsWith('/') && !v.startsWith('//') ? v : null;
+  }
+
+  protected destino(slug: string): string {
+    return this.volverA() ?? `/carreras/${slug}`;
+  }
+
   protected elegir(slug: string): void {
     this.elegida.elegir(slug);
   }
@@ -63,16 +79,17 @@ export class Carreras {
 
 @Component({
   selector: 'app-carrera',
-  imports: [RouterLink],
+  imports: [RouterLink, Atras],
   template: `
     @if (carrera(); as c) {
       <header>
-        <a class="atras" routerLink="/carreras" aria-label="Volver a carreras">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
-        </a>
+        <app-atras respaldo="/carreras" nombre="carreras" />
         <div>
           <h1>{{ c.nombreCorto }}</h1>
-          <p class="sub">{{ subtitulo(c) }}</p>
+          <p class="sub">
+            {{ subtitulo(c) }} ·
+            <a routerLink="/carreras" [queryParams]="{ volver: '/carreras/' + c.slug }" class="cambiar">Cambiar</a>
+          </p>
         </div>
       </header>
 
@@ -133,7 +150,7 @@ export class Carreras {
     header { display: flex; align-items: center; gap: var(--e3); padding: 14px var(--e4) 10px; border-bottom: 1px solid var(--borde); }
     h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .atras { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie); color: var(--texto-2); }
+    .cambiar { color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
     main { padding: var(--e3) var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e3); }
     .destacada { display: flex; align-items: center; gap: var(--e3); background: var(--marca); border-radius: var(--r); padding: 14px; color: var(--sobre-marca); min-height: 66px; }
     .destacada span { flex: 1; }

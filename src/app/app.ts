@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Barra } from './shared/ui';
+import { Barra, Historial } from './shared/ui';
 
 @Component({
   selector: 'app-root',
@@ -27,4 +27,7 @@ import { Barra } from './shared/ui';
     }
   `,
 })
-export class App {}
+export class App {
+  /** Se instancia acá para que empiece a contar navegaciones desde el arranque. */
+  private readonly historial = inject(Historial);
+}

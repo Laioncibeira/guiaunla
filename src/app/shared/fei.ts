@@ -190,6 +190,7 @@ export class BannerElecciones {
       <app-estrellas [tam]="11" />
       <span>Hecha por estudiantes del</span>
       <app-logo-fei [ancho]="132" />
+      <span class="ir">Conocé al FEI →</span>
     </a>
   `,
   styles: `
@@ -207,6 +208,7 @@ export class BannerElecciones {
       font-size: var(--t-s);
     }
     a:hover { color: #d8cfe0; }
+    .ir { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   `,
 })
 export class FirmaFei {}

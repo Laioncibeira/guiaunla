@@ -2,19 +2,20 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CALENDARIO, CAMPUS, type Edificio, type Evento } from '../core/datos';
-import { CarreraElegida } from '../shared/ui';
+import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { COLOR_TIPO, ETIQUETA_TIPO, comoIcs, diasHasta, fechaCorta, fechaLarga } from './formato';
 import { FirmaFei } from '../shared/fei';
 
 @Component({
   selector: 'app-fechas',
-  imports: [FirmaFei],
+  imports: [FirmaFei, CarreraChip],
   template: `
     <header>
-      <div>
+      <div style="flex:1">
         <h1>Fechas</h1>
         <p class="sub">Calendario académico {{ calendario.anio }}</p>
       </div>
+      <app-carrera-chip />
     </header>
     <main>
       <div class="filtros" role="group" aria-label="Filtrar fechas">
@@ -48,7 +49,7 @@ import { FirmaFei } from '../shared/fei';
   `,
   styles: `
     :host { display: flex; flex-direction: column; flex: 1; }
-    header { padding: 18px var(--e4) var(--e3); }
+    header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
     main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: 9px; }

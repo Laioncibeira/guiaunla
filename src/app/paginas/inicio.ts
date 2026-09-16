@@ -1,23 +1,21 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CARRERAS, horariosDe } from '../core/datos';
-import { CarreraElegida } from '../shared/ui';
+import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
 import { BannerElecciones, Estrella, FirmaFei } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
 
 @Component({
   selector: 'app-inicio',
-  imports: [RouterLink, Instalar, BannerElecciones, Estrella, FirmaFei, Tutorial],
+  imports: [RouterLink, Instalar, CarreraChip, BannerElecciones, Estrella, FirmaFei, Tutorial],
   template: `
     <header>
       <div style="flex:1">
         <h1>Guía UNLa <app-estrella color="var(--fei-violeta)" [tam]="15" /></h1>
         <p class="sub">Humanidades y Artes</p>
       </div>
-      @if (elegida.carrera(); as c) {
-        <a routerLink="/carreras" class="pastilla">{{ c.nombreCorto }}</a>
-      }
+      <app-carrera-chip />
     </header>
 
     <app-instalar />
@@ -116,7 +114,8 @@ export class Inicio {
   protected readonly resumenHorarios = computed(() => {
     const c = this.elegida.carrera();
     const h = c ? horariosDe(c.slug) : undefined;
-    return h ? `${h.clases.length} clases este cuatrimestre` : 'Día, turno y aula';
+    if (h) return `${h.clases.length} clases este cuatrimestre`;
+    return c ? 'Grilla todavía no cargada' : 'Día, turno y aula';
   });
 
   protected rutaGrafo(): string {

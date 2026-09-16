@@ -12,7 +12,7 @@ import {
   type Dia,
   type Ubicacion,
 } from '../core/datos';
-import { CarreraElegida } from '../shared/ui';
+import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { FirmaFei } from '../shared/fei';
 
 /** Índice del día de hoy en la semana; el domingo cae en lunes. */
@@ -23,19 +23,22 @@ function diaDeHoy(): Dia {
 
 @Component({
   selector: 'app-horarios',
-  imports: [RouterLink, FirmaFei],
+  imports: [RouterLink, FirmaFei, CarreraChip],
   template: `
     <header>
       <div style="flex:1">
         <h1>Horarios</h1>
         <p class="sub">
-          @if (carrera(); as c) {
-            {{ c.nombreCorto }} · {{ horarios()?.periodoNombre }}
+          @if (horarios(); as h) {
+            {{ h.periodoNombre }}
+          } @else if (carrera()) {
+            Grilla todavía no cargada
           } @else {
             Elegí tu carrera para verlos
           }
         </p>
       </div>
+      <app-carrera-chip />
     </header>
 
     @if (horarios(); as h) {
@@ -102,12 +105,25 @@ function diaDeHoy(): Dia {
         </p>
         <app-firma-fei />
       </main>
+    } @else if (carrera(); as c) {
+      <main>
+        <div class="sinCarrera">
+          <h2>Todavía no tenemos la grilla de {{ c.nombreCorto }}</h2>
+          <p>
+            Los días, horarios y aulas los publica el Departamento al abrir cada cuatrimestre.
+            Apenas la tengamos, esta pantalla muestra qué se cursa hoy y en qué edificio.
+          </p>
+          <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
+          <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
+        </div>
+        <app-firma-fei />
+      </main>
     } @else {
       <main>
         <div class="sinCarrera">
           <h2>Todavía no elegiste carrera</h2>
           <p>Los horarios son distintos en cada una. Elegí la tuya y vemos qué se cursa hoy.</p>
-          <a class="boton" routerLink="/carreras">Elegir carrera</a>
+          <a class="boton" routerLink="/carreras" [queryParams]="{ volver: '/horarios' }">Elegir carrera</a>
         </div>
         <app-firma-fei />
       </main>
@@ -116,6 +132,7 @@ function diaDeHoy(): Dia {
   styles: `
     :host { display: flex; flex-direction: column; flex: 1; }
     header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
+    .boton + .boton { margin-top: var(--e2); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
     .dias { display: flex; gap: 5px; padding: 0 var(--e4) var(--e3); }
