@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, computed, effect, inject, Injectable, input, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { resumenPorSlug, type Carrera, type ResumenCarrera } from '../core/datos';
+import { DEPARTAMENTOS, resumenPorSlug, type Carrera, type ResumenCarrera } from '../core/datos';
 import { Planes } from '../core/planes';
 
 /** Íconos dibujados: nada de emoji, para que escalen y tomen el color del tema. */
@@ -349,7 +349,7 @@ export class Atras {
   template: `
     <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip" [class.vacio]="!elegida.resumen()">
       @if (elegida.resumen(); as c) {
-        <span class="nombre">{{ c.nombreCorto }}</span>
+        <span class="nombre" [style.color]="colorDe(c.departamento)">{{ c.nombreCorto }}</span>
         <span class="cambiar">Cambiar</span>
       } @else {
         <span class="cambiar">Elegí tu carrera</span>
@@ -364,7 +364,7 @@ export class Atras {
       background: var(--superficie); color: var(--texto-2); font-size: var(--t-s);
       text-decoration: none;
     }
-    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 104px; }
+    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 104px; font-weight: 700; }
     /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
     .chip.vacio { border-color: var(--marca); animation: latir 2.4s ease-in-out infinite; }
     @keyframes latir {
@@ -377,6 +377,12 @@ export class Atras {
 export class CarreraChip {
   protected readonly elegida = inject(CarreraElegida);
   private readonly router = inject(Router);
+  /** El color del departamento, el mismo que lleva su cuadro en el selector. */
+  protected colorDe(departamento: string): string {
+    const i = DEPARTAMENTOS.findIndex((d) => d.slug === departamento);
+    return 'var(--n' + ((i < 0 ? 0 : i) + 1) + ')';
+  }
+
   /** La URL a la que volver después de elegir: la actual, sin parámetros. */
   protected volver(): string {
     return this.router.url.split('?')[0] || '/';

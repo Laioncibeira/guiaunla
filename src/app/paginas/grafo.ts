@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { afterNextRender, Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
@@ -620,6 +620,14 @@ export class Grafo {
     effect(() => {
       const c = this.carrera();
       if (c && this.elegidaCarrera.slug() !== c.slug) this.elegidaCarrera.elegir(c.slug);
+    });
+
+    // En el teléfono se arranca por la lista, que se lee de un vistazo; en la
+    // computadora, por el mapa, que ahí tiene lugar. Si el link trae una
+    // materia se respeta el mapa: es lo que espera quien lo recibe.
+    afterNextRender(() => {
+      const chico = typeof matchMedia === 'function' && matchMedia('(max-width: 899px)').matches;
+      if (chico && !this.query().get('materia')) this.vista.set('lista');
     });
   }
 

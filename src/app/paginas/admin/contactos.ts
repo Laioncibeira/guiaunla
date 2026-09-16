@@ -7,6 +7,7 @@ interface Recibido {
   readonly id: string;
   readonly mensaje: string;
   readonly contacto: string;
+  readonly nombre: string;
   readonly ruta: string;
   readonly creado: Date;
   readonly leido: boolean;
@@ -39,7 +40,7 @@ const PAGINA = 100;
             @if (c.ruta) { <span class="ruta">desde {{ c.ruta }}</span> }
           </div>
           <p class="mensaje">{{ c.mensaje }}</p>
-          <p class="contacto">{{ c.contacto }}</p>
+          <p class="contacto">@if (c.nombre) {<span class="nombre">{{ c.nombre }}</span> · }{{ c.contacto }}</p>
           <div class="botones">
             <button type="button" (click)="marcar(c)">{{ c.leido ? 'Marcar no leído' : 'Marcar leído' }}</button>
             <button type="button" class="peligro" (click)="borrar(c)">Borrar</button>
@@ -105,6 +106,7 @@ export class AdminContactos {
           id: d.id,
           mensaje: String(x['mensaje'] ?? ''),
           contacto: String(x['contacto'] ?? ''),
+          nombre: String(x['nombre'] ?? ''),
           ruta: String(x['ruta'] ?? ''),
           creado: creado?.toDate ? creado.toDate() : new Date(0),
           leido: x['leido'] === true,
@@ -150,8 +152,8 @@ export class AdminContactos {
 
   protected exportar(): void {
     const filas = [
-      ['fecha', 'mensaje', 'contacto', 'desde', 'leido'],
-      ...this.lista().map((c) => [fechaHoraAr(c.creado), c.mensaje, c.contacto, c.ruta, c.leido ? 'sí' : 'no']),
+      ['fecha', 'nombre', 'mensaje', 'contacto', 'desde', 'leido'],
+      ...this.lista().map((c) => [fechaHoraAr(c.creado), c.nombre, c.mensaje, c.contacto, c.ruta, c.leido ? 'sí' : 'no']),
     ];
     descargar(`contactos-${new Date().toISOString().slice(0, 10)}.csv`, aCsv(filas));
   }

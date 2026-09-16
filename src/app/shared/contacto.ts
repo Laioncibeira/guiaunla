@@ -1,6 +1,6 @@
 import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contacto, CONTACTO_MAX, MENSAJE_MAX, validar, type ResultadoEnvio } from '../core/contacto';
+import { Contacto, CONTACTO_MAX, NOMBRE_MAX, MENSAJE_MAX, validar, type ResultadoEnvio } from '../core/contacto';
 import { Estrellas } from './fei';
 
 /** Un formulario que se manda en menos de esto no lo escribió una persona. */
@@ -39,7 +39,7 @@ const TIEMPO_MINIMO_MS = 3000;
             <span class="rot">Dejá tus propuestas o consultas</span>
             <textarea
               name="mensaje"
-              rows="4"
+              rows="3"
               [attr.maxlength]="maxMensaje"
               [value]="mensaje()"
               (input)="mensaje.set($any($event.target).value)"
@@ -49,18 +49,32 @@ const TIEMPO_MINIMO_MS = 3000;
             <span class="contador" [class.al-limite]="mensaje().length >= maxMensaje">{{ mensaje().length }}/{{ maxMensaje }}</span>
           </label>
 
-          <label class="campo">
-            <span class="rot">Contacto</span>
-            <input
-              type="text"
-              name="contacto"
-              [attr.maxlength]="maxContacto"
-              [value]="contacto()"
-              (input)="contacto.set($any($event.target).value)"
-              placeholder="Mail, Instagram o teléfono"
-              autocomplete="off"
-            />
-          </label>
+          <div class="par">
+            <label class="campo">
+              <span class="rot">Nombre</span>
+              <input
+                type="text"
+                name="nombre"
+                [attr.maxlength]="maxNombre"
+                [value]="nombre()"
+                (input)="nombre.set($any($event.target).value)"
+                placeholder="Si querés"
+                autocomplete="off"
+              />
+            </label>
+            <label class="campo">
+              <span class="rot">Contacto</span>
+              <input
+                type="text"
+                name="contacto"
+                [attr.maxlength]="maxContacto"
+                [value]="contacto()"
+                (input)="contacto.set($any($event.target).value)"
+                placeholder="Mail, Instagram o teléfono"
+                autocomplete="off"
+              />
+            </label>
+          </div>
 
           <!-- Campo trampa: las personas no lo ven; los bots lo completan. -->
           <label class="trampa" aria-hidden="true">
@@ -95,13 +109,15 @@ const TIEMPO_MINIMO_MS = 3000;
     .cabecera { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
     h2 { margin: 0; font-size: var(--t-l); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
     form { display: flex; flex-direction: column; gap: 12px; }
-    .campo { display: flex; flex-direction: column; gap: 6px; position: relative; }
+    .campo { display: flex; flex-direction: column; gap: 6px; position: relative; min-width: 0; }
+    .par { display: grid; grid-template-columns: 2fr 3fr; gap: 10px; }
     .rot { font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
     textarea, input[type='text'] {
       width: 100%; font: inherit; font-size: var(--t-m); color: #f5f3f7;
       background: #221f27; border: 1px solid var(--fei-borde); border-radius: 10px;
       padding: 10px 12px; min-height: 44px; resize: vertical;
     }
+    textarea { min-height: 76px; }
     textarea::placeholder, input::placeholder { color: #736b7c; }
     textarea:focus, input:focus { outline: none; border-color: var(--fei-violeta); box-shadow: 0 0 0 3px color-mix(in oklab, var(--fei-violeta) 40%, transparent); }
     .contador { align-self: flex-end; font-family: var(--mono); font-size: var(--t-xs); color: #a79db0; }
@@ -128,8 +144,10 @@ export class FormularioContacto {
 
   protected readonly maxMensaje = MENSAJE_MAX;
   protected readonly maxContacto = CONTACTO_MAX;
+  protected readonly maxNombre = NOMBRE_MAX;
   protected readonly mensaje = signal('');
   protected readonly contacto = signal('');
+  protected readonly nombre = signal('');
   protected readonly trampa = signal('');
   protected readonly error = signal<string | null>(null);
   protected readonly estado = signal<'listo' | 'enviando' | ResultadoEnvio>('listo');
@@ -156,7 +174,7 @@ export class FormularioContacto {
       return;
     }
 
-    const problema = validar(this.mensaje(), this.contacto());
+    const problema = validar(this.mensaje(), this.contacto(), this.nombre());
     if (problema) {
       this.error.set(problema);
       return;
@@ -170,7 +188,7 @@ export class FormularioContacto {
 
     this.estado.set('enviando');
     const ruta = this.router.url.split('?')[0].replace(/^\//, '').replace(/\//g, '-') || 'inicio';
-    const r = await this.servicio.enviar(this.mensaje(), this.contacto(), ruta);
+    const r = await this.servicio.enviar(this.mensaje(), this.contacto(), this.nombre(), ruta);
     if (r === 'error') {
       this.estado.set('listo');
       this.error.set('No se pudo enviar. Probá de nuevo en un rato.');
@@ -187,6 +205,7 @@ export class FormularioContacto {
   protected otro(): void {
     this.mensaje.set('');
     this.contacto.set('');
+    this.nombre.set('');
     this.estado.set('listo');
     this.montado = performance.now();
   }

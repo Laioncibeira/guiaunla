@@ -49,21 +49,23 @@ import { fechaCorta } from './formato';
         </section>
       }
 
-      @if (novedades().length) {
-        <section aria-labelledby="novedades-titulo">
-          <div class="fila-titulo">
-            <h2 class="rot" id="novedades-titulo">Novedades</h2>
+      <section aria-labelledby="novedades-titulo">
+        <div class="fila-titulo">
+          <h2 class="rot" id="novedades-titulo">Novedades</h2>
+          @if (novedades().length) {
             <a routerLink="/novedades" class="ver-todas">Ver todas</a>
-          </div>
-          @for (n of novedades(); track n.id) {
-            <article class="card novedad">
-              <span class="fecha">{{ fecha(n.fecha) }}</span>
-              <h3>{{ n.titulo }}</h3>
-              <p>{{ n.cuerpo }}</p>
-            </article>
           }
-        </section>
-      }
+        </div>
+        @for (n of novedades(); track n.id) {
+          <article class="card novedad">
+            <span class="fecha">{{ fecha(n.fecha) }}</span>
+            <h3>{{ n.titulo }}</h3>
+            <p>{{ n.cuerpo }}</p>
+          </article>
+        } @empty {
+          <p class="sin-novedades">Sin novedades… por ahora.</p>
+        }
+      </section>
 
       <app-reloj-ley />
 
@@ -112,6 +114,7 @@ import { fechaCorta } from './formato';
     .fila-titulo { display: flex; align-items: baseline; justify-content: space-between; }
     .ver-todas { font-size: var(--t-s); font-weight: 600; color: var(--marca); text-decoration: underline; text-underline-offset: 2px; }
     .novedad { margin-bottom: 8px; }
+    .sin-novedades { margin: 0; padding: 12px 14px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
     .novedad .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
     .novedad h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; }
     .novedad p {

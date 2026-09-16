@@ -50,10 +50,11 @@ service cloud.firestore {
     // --------------------------- contactos: cualquiera crea, sólo admins leen
     match /contactos/{id} {
       allow create: if formularioAbierto()
-        && request.resource.data.keys().hasOnly(['mensaje', 'contacto', 'ruta', 'creado'])
+        && request.resource.data.keys().hasOnly(['mensaje', 'contacto', 'nombre', 'ruta', 'creado'])
         && request.resource.data.keys().hasAll(['mensaje', 'contacto', 'creado'])
         && texto(request.resource.data.mensaje, 5, 300)
         && texto(request.resource.data.contacto, 3, 120)
+        && (!('nombre' in request.resource.data) || texto(request.resource.data.nombre, 1, 80))
         && (!('ruta' in request.resource.data)
             || (request.resource.data.ruta is string && request.resource.data.ruta.size() <= 60))
         // serverTimestamp() se evalúa como request.time: el cliente no inventa la fecha.

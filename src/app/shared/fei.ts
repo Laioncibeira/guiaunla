@@ -113,7 +113,7 @@ export class LogoFei {
       />
 
       <div class="lista">
-        <span class="siete">Lista 7</span>
+        <img class="siete" src="lista7.webp" alt="Lista 7" width="320" height="105" decoding="async" />
         <app-logo-fei [ancho]="104" />
       </div>
     </a>
@@ -162,21 +162,13 @@ export class LogoFei {
     .lista {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       margin-top: 14px;
       padding-top: 12px;
       border-top: 1px solid var(--fei-borde);
     }
-    .siete {
-      flex: none;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: var(--fei-violeta);
-      color: #fff;
-      font-size: var(--t-s);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
+    .siete { flex: none; display: block; width: 88px; height: auto; }
     .revolucionemos { display: block; width: 100%; max-width: 300px; height: auto; margin: 14px auto 0; }
     .permanente .revolucionemos { margin-top: 10px; }
   `,

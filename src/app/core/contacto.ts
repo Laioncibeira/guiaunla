@@ -5,6 +5,7 @@ export const MENSAJE_MIN = 5;
 export const MENSAJE_MAX = 300;
 export const CONTACTO_MIN = 3;
 export const CONTACTO_MAX = 120;
+export const NOMBRE_MAX = 80;
 
 /** Cuánto esperar entre dos envíos desde el mismo teléfono. */
 const ESPERA_ENTRE_ENVIOS_MS = 60_000;
@@ -17,9 +18,10 @@ export type ResultadoEnvio = 'enviado' | 'encolado' | 'cerrado' | 'esperar' | 'e
  * Es la misma validación que aplican las reglas del servidor; acá se avisa
  * antes para no mandar algo que va a rebotar.
  */
-export function validar(mensaje: string, contacto: string): string | null {
+export function validar(mensaje: string, contacto: string, nombre = ''): string | null {
   const m = mensaje.trim();
   const c = contacto.trim();
+  if (nombre.trim().length > NOMBRE_MAX) return 'El nombre puede tener hasta ' + NOMBRE_MAX + ' caracteres.';
   if (m.length < MENSAJE_MIN) return `Contanos un poco más: al menos ${MENSAJE_MIN} caracteres.`;
   if (m.length > MENSAJE_MAX) return `El mensaje puede tener hasta ${MENSAJE_MAX} caracteres.`;
   if (c.length < CONTACTO_MIN) return 'Dejanos un mail, un Instagram o un teléfono para responderte.';
@@ -53,7 +55,7 @@ export class Contacto {
     }
   }
 
-  async enviar(mensaje: string, contacto: string, ruta: string): Promise<ResultadoEnvio> {
+  async enviar(mensaje: string, contacto: string, nombre: string, ruta: string): Promise<ResultadoEnvio> {
     if (!this.nube.disponible) return 'error';
     if (this.esperaRestante() > 0) return 'esperar';
     if (!(await this.abierto())) return 'cerrado';
@@ -63,6 +65,8 @@ export class Contacto {
       const escritura = fs.addDoc(fs.collection(db, 'contactos'), {
         mensaje: mensaje.trim(),
         contacto: contacto.trim(),
+        // El nombre es optativo: si no lo ponen, el campo no viaja.
+        ...(nombre.trim() ? { nombre: nombre.trim() } : {}),
         ruta: ruta.slice(0, 60),
         creado: fs.serverTimestamp(),
       });
