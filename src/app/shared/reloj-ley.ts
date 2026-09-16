@@ -36,7 +36,7 @@ import { Estrella } from './fei';
         </div>
       </div>
 
-      <p class="pie">Desde su promulgación, el 21 de octubre de 2025. <span class="mas">Leer más...</span></p>
+      <p class="pie">Desde su promulgación, el 21 de octubre de 2025. <a class="mas" href="https://www.laizquierdadiario.com/Las-autoridades-y-las-conducciones-buscan-entregar-la-ley-de-financiamiento" target="_blank" rel="noopener">Leer más...</a></p>
     </section>
   `,
   styles: `
@@ -65,7 +65,7 @@ import { Estrella } from './fei';
     .dias .num { font-size: 34px; color: var(--fei-rojo); }
     .rot { font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
     .pie { margin: 12px 0 0; font-size: var(--t-xs); color: #a79db0; line-height: 1.4; }
-    .mas { color: #d8cfe0; }
+    .mas { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   `,
 })
 export class RelojLey {
