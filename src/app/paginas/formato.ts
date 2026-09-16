@@ -85,3 +85,17 @@ export function comoIcs(e: {
     'END:VCALENDAR',
   ].join('\r\n');
 }
+
+/** Días, horas y minutos enteros entre dos instantes. Nunca negativo. */
+export function transcurrido(
+  desde: Date,
+  hasta: Date,
+): { dias: number; horas: number; minutos: number } {
+  const ms = Math.max(0, hasta.getTime() - desde.getTime());
+  const minutosTotales = Math.floor(ms / 60000);
+  return {
+    dias: Math.floor(minutosTotales / 1440),
+    horas: Math.floor((minutosTotales % 1440) / 60),
+    minutos: minutosTotales % 60,
+  };
+}

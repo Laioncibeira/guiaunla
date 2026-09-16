@@ -33,6 +33,11 @@ export const routes: Routes = [
     title: 'Campus · Guía UNLa',
   },
   {
+    path: 'novedades',
+    loadComponent: () => import('./paginas/novedades').then((m) => m.PaginaNovedades),
+    title: 'Novedades · Guía UNLa',
+  },
+  {
     path: 'fechas',
     loadComponent: () => import('./paginas/otras').then((m) => m.Fechas),
     title: 'Fechas · Guía UNLa',

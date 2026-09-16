@@ -71,36 +71,46 @@ export class LogoFei {
 }
 
 /**
- * Convocatoria a las elecciones del centro de estudiantes.
- * Desaparece sola cuando pasa la última fecha: un cartel viejo es peor que
- * ninguno.
+ * La lista para el centro de estudiantes.
+ *
+ * Mientras duran las elecciones muestra las fechas y la cuenta regresiva.
+ * Después se queda como bloque permanente de "Revolucionemos el CEDHA": la
+ * lista sigue existiendo aunque la votación haya pasado.
  */
 @Component({
   selector: 'app-banner-elecciones',
   imports: [Estrella, LogoFei],
   template: `
-    @if (vigente()) {
-      <a
-        class="banner"
-        href="https://frentedeestudiantesdeizquierda-fei.web.app/"
-        rel="noopener"
-      >
-        <div class="chispas" aria-hidden="true">
-          <app-estrella color="var(--fei-amarillo)" [tam]="13" />
-          <app-estrella color="var(--fei-rojo)" [tam]="9" />
-          <app-estrella color="var(--fei-violeta)" [tam]="17" />
-        </div>
+    <a
+      class="banner"
+      [class.permanente]="!vigente()"
+      href="https://frentedeestudiantesdeizquierda-fei.web.app/"
+      rel="noopener"
+    >
+      <div class="chispas" aria-hidden="true">
+        <app-estrella color="var(--fei-amarillo)" [tam]="13" />
+        <app-estrella color="var(--fei-rojo)" [tam]="9" />
+        <app-estrella color="var(--fei-violeta)" [tam]="17" />
+      </div>
 
+      @if (vigente()) {
         <p class="antetitulo">Elecciones CEDHA 2026</p>
         <p class="fechas">14 al 17 de septiembre</p>
         <p class="cuenta">{{ cuenta() }}</p>
+      } @else {
+        <p class="antetitulo">Lista 7 · Centro de estudiantes</p>
+        <p class="fechas">Revolucionemos el CEDHA</p>
+        <p class="cuenta">Conocé las propuestas y sumate</p>
+      }
 
-        <div class="lista">
-          <span class="siete">Lista 7</span>
-          <app-logo-fei [ancho]="112" />
-        </div>
-      </a>
-    }
+      <div class="lista">
+        <span class="siete">Lista 7</span>
+        <app-logo-fei [ancho]="112" />
+        <span class="revolucionemos" aria-hidden="true">
+          <ng-content select="[logo-revolucionemos]" />
+        </span>
+      </div>
+    </a>
   `,
   styles: `
     .banner {
@@ -161,6 +171,8 @@ export class LogoFei {
       font-weight: 700;
       letter-spacing: 0.01em;
     }
+    .revolucionemos { margin-left: auto; display: inline-flex; }
+    .revolucionemos:empty { display: none; }
   `,
 })
 export class BannerElecciones {

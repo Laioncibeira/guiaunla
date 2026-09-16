@@ -1,14 +1,28 @@
-import { Component, computed, inject } from '@angular/core';
+import { afterNextRender, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CARRERAS, horariosDe } from '../core/datos';
+import { CARRERAS } from '../core/datos';
+import { Novedades } from '../core/novedades';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
 import { BannerElecciones, Estrella, FirmaFei } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
+import { RelojLey } from '../shared/reloj-ley';
+import { FormularioContacto } from '../shared/contacto';
+import { fechaCorta } from './formato';
 
 @Component({
   selector: 'app-inicio',
-  imports: [RouterLink, Instalar, CarreraChip, BannerElecciones, Estrella, FirmaFei, Tutorial],
+  imports: [
+    RouterLink,
+    Instalar,
+    CarreraChip,
+    BannerElecciones,
+    Estrella,
+    FirmaFei,
+    Tutorial,
+    RelojLey,
+    FormularioContacto,
+  ],
   template: `
     <header>
       <div style="flex:1">
@@ -21,8 +35,6 @@ import { Tutorial } from '../shared/tutorial';
     <app-instalar />
 
     <main>
-      <app-banner-elecciones />
-
       @if (!elegida.carrera()) {
         <section class="elegir">
           <h2>¿Qué estudiás?</h2>
@@ -33,27 +45,29 @@ import { Tutorial } from '../shared/tutorial';
         </section>
       }
 
-      <section>
-        <h2 class="rot">Tu carrera</h2>
-        <div class="grilla">
-          <a class="card destacada" [routerLink]="rutaGrafo()">
-            <span class="tit">Mapa de correlatividades</span>
-            <span class="pie">Qué necesitás para cada materia</span>
-          </a>
-          <a class="card" [routerLink]="rutaCarrera()">
-            <span class="tit">Plan de estudios</span>
-            <span class="pie">{{ resumenPlan() }}</span>
-          </a>
-          <a class="card" routerLink="/horarios">
-            <span class="tit">Horarios y aulas</span>
-            <span class="pie">{{ resumenHorarios() }}</span>
-          </a>
-          <a class="card" routerLink="/campus">
-            <span class="tit">Mapa del campus</span>
-            <span class="pie">Cómo llegar a cada edificio</span>
-          </a>
-        </div>
-      </section>
+      @if (novedades().length) {
+        <section aria-labelledby="novedades-titulo">
+          <div class="fila-titulo">
+            <h2 class="rot" id="novedades-titulo">Novedades</h2>
+            <a routerLink="/novedades" class="ver-todas">Ver todas</a>
+          </div>
+          @for (n of novedades(); track n.id) {
+            <article class="card novedad">
+              <span class="fecha">{{ fecha(n.fecha) }}</span>
+              <h3>{{ n.titulo }}</h3>
+              <p>{{ n.cuerpo }}</p>
+            </article>
+          }
+        </section>
+      }
+
+      <app-reloj-ley />
+
+      <app-contacto>
+        <!-- Las firmas van acá cuando lleguen los archivos. -->
+      </app-contacto>
+
+      <app-banner-elecciones />
 
       <app-tutorial />
       <app-firma-fei />
@@ -82,12 +96,15 @@ import { Tutorial } from '../shared/tutorial';
       display: block; background: var(--superficie); border: 1px solid var(--borde);
       border-radius: var(--r); padding: 14px; color: inherit;
     }
-    .grilla { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .grilla .card { min-height: 108px; display: flex; flex-direction: column; gap: 6px; }
-    .tit { font-size: var(--t-l); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
-    .pie { font-size: var(--t-s); color: var(--texto-2); line-height: 1.35; }
-    .destacada { background: var(--marca); border-color: var(--marca); color: var(--sobre-marca); }
-    .destacada .pie { color: var(--sobre-marca); opacity: 0.85; }
+    .fila-titulo { display: flex; align-items: baseline; justify-content: space-between; }
+    .ver-todas { font-size: var(--t-s); font-weight: 600; color: var(--marca); text-decoration: underline; text-underline-offset: 2px; }
+    .novedad { margin-bottom: 8px; }
+    .novedad .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
+    .novedad h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; }
+    .novedad p {
+      margin: 6px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; white-space: pre-line;
+      display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+    }
     .elegir {
       background: var(--superficie); border: 1px solid var(--borde);
       border-radius: var(--r); padding: var(--e4);
@@ -105,28 +122,18 @@ import { Tutorial } from '../shared/tutorial';
 export class Inicio {
   protected readonly elegida = inject(CarreraElegida);
   protected readonly carreras = CARRERAS;
+  private readonly servicioNovedades = inject(Novedades);
 
-  protected readonly resumenPlan = computed(() => {
-    const c = this.elegida.carrera();
-    return c ? `${c.materias.length} materias, ${c.duracionAnios} años` : 'Elegí tu carrera';
-  });
+  /** Las tres más recientes; la lista completa vive en /novedades. */
+  protected readonly novedades = computed(() => this.servicioNovedades.lista().slice(0, 3));
 
-  protected readonly resumenHorarios = computed(() => {
-    const c = this.elegida.carrera();
-    const h = c ? horariosDe(c.slug) : undefined;
-    if (h) return `${h.clases.length} clases este cuatrimestre`;
-    return c ? 'Grilla todavía no cargada' : 'Día, turno y aula';
-  });
-
-  protected rutaGrafo(): string {
-    const c = this.elegida.carrera();
-    return c ? `/carreras/${c.slug}/correlatividades` : '/carreras';
+  constructor() {
+    // Firestore sólo en el navegador y después del primer dibujo: el chunk
+    // del SDK no compite con lo que el estudiante vino a ver.
+    afterNextRender(() => this.servicioNovedades.escuchar());
   }
 
-  protected rutaCarrera(): string {
-    const c = this.elegida.carrera();
-    return c ? `/carreras/${c.slug}` : '/carreras';
-  }
+  protected fecha = (iso: string) => fechaCorta(iso);
 
   protected elegir(slug: string): void {
     this.elegida.elegir(slug);
