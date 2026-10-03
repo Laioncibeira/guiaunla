@@ -42,8 +42,7 @@ export function calcularLayout(carrera, pasadas = 4, escala = 'tarjeta') {
   };
 
   const dependientes = new Map(materias.map((m) => [m.codigo, []]));
-  for (const m of materias)
-    for (const c of m.correlativas) dependientes.get(c)?.push(m.codigo);
+  for (const m of materias) for (const c of m.correlativas) dependientes.get(c)?.push(m.codigo);
 
   for (let p = 0; p < pasadas; p++) {
     const haciaAdelante = p % 2 === 0;
@@ -112,14 +111,29 @@ export function curva(o, d) {
 }
 
 /** Un color por nivel de origen, para distinguir de dónde sale cada línea. */
-export const COLOR_NIVEL = ['#c77dff', '#5da9ff', '#2dd4cf', '#ffa552', '#f783c7', '#4ade80', '#ffd166', '#ff6b6b'];
+export const COLOR_NIVEL = [
+  '#c77dff',
+  '#5da9ff',
+  '#2dd4cf',
+  '#ffa552',
+  '#f783c7',
+  '#4ade80',
+  '#ffd166',
+  '#ff6b6b',
+];
 
 export function aSvg(layout, opciones = {}) {
   const { seleccion = null, tema = 'oscuro' } = opciones;
   const c =
     tema === 'oscuro'
       ? { fondo: '#1a1a1a', nodo: '#242229', borde: '#3d3844', texto: '#f5f3f7', texto2: '#ab9fb3' }
-      : { fondo: '#faf9fb', nodo: '#ffffff', borde: '#e0dce4', texto: '#1a1a1a', texto2: '#5f5768' };
+      : {
+          fondo: '#faf9fb',
+          nodo: '#ffffff',
+          borde: '#e0dce4',
+          texto: '#1a1a1a',
+          texto2: '#5f5768',
+        };
 
   const pos = new Map(layout.nodos.map((n) => [n.codigo, n]));
   const necesita = seleccion ? new Set(pos.get(seleccion)?.correlativas ?? []) : new Set();

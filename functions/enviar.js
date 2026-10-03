@@ -33,7 +33,9 @@ async function enviarNovedad(db, novedad, vapidPrivada) {
       badge: 'https://guiaunla.web.app/icono.svg',
       lang: 'es-AR',
       tag: 'novedad',
-      data: { onActionClick: { default: { operation: 'navigateLastFocusedOrOpen', url: '/novedades' } } },
+      data: {
+        onActionClick: { default: { operation: 'navigateLastFocusedOrOpen', url: '/novedades' } },
+      },
     },
   });
 
@@ -61,7 +63,8 @@ async function enviarNovedad(db, novedad, vapidPrivada) {
     }
   };
 
-  for (let i = 0; i < snap.docs.length; i += DE_A) await Promise.all(snap.docs.slice(i, i + DE_A).map(avisar));
+  for (let i = 0; i < snap.docs.length; i += DE_A)
+    await Promise.all(snap.docs.slice(i, i + DE_A).map(avisar));
   return r;
 }
 

@@ -80,7 +80,9 @@ describe.skipIf(!hayEmulador)('firestore.rules', () => {
       await assertFails(addDoc(col, mensaje({ mensaje: 'hola' })));
       await assertFails(addDoc(col, mensaje({ mensaje: 'x'.repeat(301) })));
       await assertFails(addDoc(col, mensaje({ admin: true })));
-      await assertFails(addDoc(col, mensaje({ creado: Timestamp.fromDate(new Date('2020-01-01')) })));
+      await assertFails(
+        addDoc(col, mensaje({ creado: Timestamp.fromDate(new Date('2020-01-01')) })),
+      );
     });
 
     it('con el formulario cerrado no se puede escribir', async () => {
@@ -89,7 +91,9 @@ describe.skipIf(!hayEmulador)('firestore.rules', () => {
     });
 
     it('sólo los admins leen, marcan y borran', async () => {
-      await sembrar((db) => setDoc(doc(db, 'contactos', 'c1'), { ...mensaje(), creado: Timestamp.now() }));
+      await sembrar((db) =>
+        setDoc(doc(db, 'contactos', 'c1'), { ...mensaje(), creado: Timestamp.now() }),
+      );
       await assertFails(getDoc(doc(anonimo(), 'contactos', 'c1')));
       await assertFails(getDoc(doc(otraCuenta(), 'contactos', 'c1')));
       await assertSucceeds(getDoc(doc(admin(), 'contactos', 'c1')));
@@ -111,11 +115,21 @@ describe.skipIf(!hayEmulador)('firestore.rules', () => {
 
     it('el público lista sólo las publicadas, y la consulta tiene que filtrarlas', async () => {
       await sembrar(async (db) => {
-        await setDoc(doc(db, 'novedades', 'si'), { ...novedad(true), creada: Timestamp.now(), actualizada: Timestamp.now() });
-        await setDoc(doc(db, 'novedades', 'no'), { ...novedad(false), creada: Timestamp.now(), actualizada: Timestamp.now() });
+        await setDoc(doc(db, 'novedades', 'si'), {
+          ...novedad(true),
+          creada: Timestamp.now(),
+          actualizada: Timestamp.now(),
+        });
+        await setDoc(doc(db, 'novedades', 'no'), {
+          ...novedad(false),
+          creada: Timestamp.now(),
+          actualizada: Timestamp.now(),
+        });
       });
       const col = collection(anonimo(), 'novedades');
-      await assertSucceeds(getDocs(query(col, where('publicada', '==', true), orderBy('fecha', 'desc'), limit(50))));
+      await assertSucceeds(
+        getDocs(query(col, where('publicada', '==', true), orderBy('fecha', 'desc'), limit(50))),
+      );
       await assertFails(getDocs(col));
       await assertFails(getDoc(doc(anonimo(), 'novedades', 'no')));
       await assertSucceeds(getDocs(collection(admin(), 'novedades')));
@@ -161,7 +175,10 @@ describe.skipIf(!hayEmulador)('firestore.rules', () => {
 
     it('el público no puede leerlas', async () => {
       await sembrar((db) =>
-        setDoc(doc(db, 'suscripciones', 's1'), { ...buzon('https://fcm.googleapis.com/x'), creada: Timestamp.now() }),
+        setDoc(doc(db, 'suscripciones', 's1'), {
+          ...buzon('https://fcm.googleapis.com/x'),
+          creada: Timestamp.now(),
+        }),
       );
       await assertFails(getDoc(doc(anonimo(), 'suscripciones', 's1')));
       await assertSucceeds(getDoc(doc(admin(), 'suscripciones', 's1')));
@@ -172,10 +189,34 @@ describe.skipIf(!hayEmulador)('firestore.rules', () => {
     it('suma de a uno sobre el día de hoy, nada más', async () => {
       const db = anonimo();
       const id = `${hoy()}_inicio`;
-      await assertSucceeds(setDoc(doc(db, 'visitas', id), { dia: hoy(), ruta: 'inicio', n: increment(1) }, { merge: true }));
-      await assertSucceeds(setDoc(doc(db, 'visitas', id), { dia: hoy(), ruta: 'inicio', n: increment(1) }, { merge: true }));
-      await assertFails(setDoc(doc(db, 'visitas', id), { dia: hoy(), ruta: 'inicio', n: increment(5) }, { merge: true }));
-      await assertFails(setDoc(doc(db, 'visitas', '2020-01-01_inicio'), { dia: '2020-01-01', ruta: 'inicio', n: 1 }));
+      await assertSucceeds(
+        setDoc(
+          doc(db, 'visitas', id),
+          { dia: hoy(), ruta: 'inicio', n: increment(1) },
+          { merge: true },
+        ),
+      );
+      await assertSucceeds(
+        setDoc(
+          doc(db, 'visitas', id),
+          { dia: hoy(), ruta: 'inicio', n: increment(1) },
+          { merge: true },
+        ),
+      );
+      await assertFails(
+        setDoc(
+          doc(db, 'visitas', id),
+          { dia: hoy(), ruta: 'inicio', n: increment(5) },
+          { merge: true },
+        ),
+      );
+      await assertFails(
+        setDoc(doc(db, 'visitas', '2020-01-01_inicio'), {
+          dia: '2020-01-01',
+          ruta: 'inicio',
+          n: 1,
+        }),
+      );
       await assertFails(getDoc(doc(db, 'visitas', id)));
       await assertSucceeds(getDoc(doc(admin(), 'visitas', id)));
     });

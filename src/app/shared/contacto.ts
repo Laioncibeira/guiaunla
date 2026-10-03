@@ -1,6 +1,13 @@
 import { afterNextRender, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contacto, CONTACTO_MAX, NOMBRE_MAX, MENSAJE_MAX, validar, type ResultadoEnvio } from '../core/contacto';
+import {
+  Contacto,
+  CONTACTO_MAX,
+  NOMBRE_MAX,
+  MENSAJE_MAX,
+  validar,
+  type ResultadoEnvio,
+} from '../core/contacto';
 import { Estrellas } from './fei';
 
 /** Un formulario que se manda en menos de esto no lo escribió una persona. */
@@ -20,12 +27,18 @@ const TIEMPO_MINIMO_MS = 3000;
     <section aria-labelledby="contacto-titulo">
       <div class="cabecera">
         <app-estrellas [tam]="11" />
-        <h2 id="contacto-titulo">¡Las secretarías del centro de estudiantes, las construimos entre todes!</h2>
+        <h2 id="contacto-titulo">
+          ¡Las secretarías del centro de estudiantes, las construimos entre todes!
+        </h2>
       </div>
 
       @if (estado() === 'enviado' || estado() === 'encolado') {
         <div class="gracias" role="status">
-          <strong>{{ estado() === 'enviado' ? '¡Gracias! Nos llegó.' : '¡Gracias! Se envía apenas haya señal.' }}</strong>
+          <strong>{{
+            estado() === 'enviado'
+              ? '¡Gracias! Nos llegó.'
+              : '¡Gracias! Se envía apenas haya señal.'
+          }}</strong>
           <span>Lo lee alguien de la agrupación y te responde por el contacto que dejaste.</span>
           <button type="button" (click)="otro()">Mandar otra</button>
         </div>
@@ -46,7 +59,9 @@ const TIEMPO_MINIMO_MS = 3000;
               placeholder="Qué querés que hagamos, qué falta, qué te pasó…"
               [attr.aria-invalid]="!!error()"
             ></textarea>
-            <span class="contador" [class.al-limite]="mensaje().length >= maxMensaje">{{ mensaje().length }}/{{ maxMensaje }}</span>
+            <span class="contador" [class.al-limite]="mensaje().length >= maxMensaje"
+              >{{ mensaje().length }}/{{ maxMensaje }}</span
+            >
           </label>
 
           <div class="par">
@@ -79,7 +94,14 @@ const TIEMPO_MINIMO_MS = 3000;
           <!-- Campo trampa: las personas no lo ven; los bots lo completan. -->
           <label class="trampa" aria-hidden="true">
             Sitio web
-            <input type="text" name="web" tabindex="-1" autocomplete="off" [value]="trampa()" (input)="trampa.set($any($event.target).value)" />
+            <input
+              type="text"
+              name="web"
+              tabindex="-1"
+              autocomplete="off"
+              [value]="trampa()"
+              (input)="trampa.set($any($event.target).value)"
+            />
           </label>
 
           @if (error(); as e) {
@@ -90,7 +112,8 @@ const TIEMPO_MINIMO_MS = 3000;
             {{ estado() === 'enviando' ? 'Enviando…' : 'Enviar' }}
           </button>
           <p class="privacidad">
-            Lo leen sólo las personas de la agrupación, para responderte. No hace falta que pongas tu nombre.
+            Lo leen sólo las personas de la agrupación, para responderte. No hace falta que pongas
+            tu nombre.
           </p>
         </form>
       }
@@ -101,41 +124,162 @@ const TIEMPO_MINIMO_MS = 3000;
     </section>
   `,
   styles: `
-    :host { display: block; }
+    :host {
+      display: block;
+    }
     section {
-      padding: 16px 16px 14px; border-radius: var(--r);
-      background: var(--fei-fondo); border: 1px solid var(--fei-borde); color: #f5f3f7;
+      padding: 16px 16px 14px;
+      border-radius: var(--r);
+      background: var(--fei-fondo);
+      border: 1px solid var(--fei-borde);
+      color: #f5f3f7;
     }
-    .cabecera { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
-    h2 { margin: 0; font-size: var(--t-l); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
-    form { display: flex; flex-direction: column; gap: 12px; }
-    .campo { display: flex; flex-direction: column; gap: 6px; position: relative; min-width: 0; }
-    .par { display: grid; grid-template-columns: 2fr 3fr; gap: 10px; }
-    .rot { font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
-    textarea, input[type='text'] {
-      width: 100%; font: inherit; font-size: var(--t-m); color: #f5f3f7;
-      background: #221f27; border: 1px solid var(--fei-borde); border-radius: 10px;
-      padding: 10px 12px; min-height: 44px; resize: vertical;
+    .cabecera {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
     }
-    textarea { min-height: 76px; }
-    textarea::placeholder, input::placeholder { color: #736b7c; }
-    textarea:focus, input:focus { outline: none; border-color: var(--fei-violeta); box-shadow: 0 0 0 3px color-mix(in oklab, var(--fei-violeta) 40%, transparent); }
-    .contador { align-self: flex-end; font-family: var(--mono); font-size: var(--t-xs); color: #a79db0; }
-    .contador.al-limite { color: var(--fei-amarillo); }
-    .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    .error { margin: 0; font-size: var(--t-s); color: var(--fei-amarillo); }
+    h2 {
+      margin: 0;
+      font-size: var(--t-l);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      min-width: 0;
+    }
+    .par {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 10px;
+    }
+    .rot {
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #a79db0;
+    }
+    textarea,
+    input[type='text'] {
+      width: 100%;
+      font: inherit;
+      font-size: var(--t-m);
+      color: #f5f3f7;
+      background: #221f27;
+      border: 1px solid var(--fei-borde);
+      border-radius: 10px;
+      padding: 10px 12px;
+      min-height: 44px;
+      resize: vertical;
+    }
+    textarea {
+      min-height: 76px;
+    }
+    textarea::placeholder,
+    input::placeholder {
+      color: #736b7c;
+    }
+    textarea:focus,
+    input:focus {
+      outline: none;
+      border-color: var(--fei-violeta);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--fei-violeta) 40%, transparent);
+    }
+    .contador {
+      align-self: flex-end;
+      font-family: var(--mono);
+      font-size: var(--t-xs);
+      color: #a79db0;
+    }
+    .contador.al-limite {
+      color: var(--fei-amarillo);
+    }
+    .trampa {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .error {
+      margin: 0;
+      font-size: var(--t-s);
+      color: var(--fei-amarillo);
+    }
     .enviar {
-      min-height: 46px; border-radius: 11px; border: none;
-      background: var(--fei-violeta); color: #fff; font-size: var(--t-m); font-weight: 700;
+      min-height: 46px;
+      border-radius: 11px;
+      border: none;
+      background: var(--fei-violeta);
+      color: #fff;
+      font-size: var(--t-m);
+      font-weight: 700;
     }
-    .enviar:disabled { opacity: 0.6; }
-    .privacidad { margin: 0; font-size: var(--t-xs); color: #a79db0; line-height: 1.4; }
-    .gracias { display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 10px; background: #221f27; border: 1px solid var(--fei-borde); font-size: var(--t-s); color: #a79db0; }
-    .gracias strong { color: #f5f3f7; font-size: var(--t-m); }
-    .gracias button { align-self: flex-start; margin-top: 4px; min-height: 40px; padding: 0 12px; border-radius: 9px; border: 1px solid var(--fei-borde); background: none; color: var(--fei-amarillo); font-size: var(--t-s); font-weight: 600; }
-    .aviso { margin: 0; padding: 12px; border-radius: 10px; background: #221f27; font-size: var(--t-s); color: #a79db0; line-height: 1.4; }
-    .firmas:empty { display: none; }
-    .firmas { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--fei-borde); }
+    .enviar:disabled {
+      opacity: 0.6;
+    }
+    .privacidad {
+      margin: 0;
+      font-size: var(--t-xs);
+      color: #a79db0;
+      line-height: 1.4;
+    }
+    .gracias {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #221f27;
+      border: 1px solid var(--fei-borde);
+      font-size: var(--t-s);
+      color: #a79db0;
+    }
+    .gracias strong {
+      color: #f5f3f7;
+      font-size: var(--t-m);
+    }
+    .gracias button {
+      align-self: flex-start;
+      margin-top: 4px;
+      min-height: 40px;
+      padding: 0 12px;
+      border-radius: 9px;
+      border: 1px solid var(--fei-borde);
+      background: none;
+      color: var(--fei-amarillo);
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .aviso {
+      margin: 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: #221f27;
+      font-size: var(--t-s);
+      color: #a79db0;
+      line-height: 1.4;
+    }
+    .firmas:empty {
+      display: none;
+    }
+    .firmas {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--fei-borde);
+    }
   `,
 })
 export class FormularioContacto {

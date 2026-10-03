@@ -19,7 +19,10 @@ export class Sesion {
   readonly esAdmin = signal(false);
   private escucha: Promise<Auth> | null = null;
   /** El permiso de admin se pregunta una vez por cuenta, no en cada pantalla. */
-  private permiso: { readonly uid: string | null; readonly esAdmin: Promise<boolean | null> } | null = null;
+  private permiso: {
+    readonly uid: string | null;
+    readonly esAdmin: Promise<boolean | null>;
+  } | null = null;
 
   /**
    * Espera a que Firebase sepa si hay sesión guardada y devuelve el usuario
@@ -71,7 +74,12 @@ export class Sesion {
       return 'ok';
     } catch (e) {
       const codigo = (e as { code?: string }).code ?? '';
-      const deDatos = ['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-email'];
+      const deDatos = [
+        'auth/invalid-credential',
+        'auth/wrong-password',
+        'auth/user-not-found',
+        'auth/invalid-email',
+      ];
       return deDatos.includes(codigo) ? 'datos' : 'error';
     }
   }

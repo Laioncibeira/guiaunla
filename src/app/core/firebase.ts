@@ -36,7 +36,9 @@ export class Nube {
         const ac = await import('firebase/app-check');
         // En desarrollo no hay reCAPTCHA para localhost: Firebase imprime en
         // la consola un token de depuración que se registra una vez.
-        if (isDevMode()) (self as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean }).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+        if (isDevMode())
+          (self as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean }).FIREBASE_APPCHECK_DEBUG_TOKEN =
+            true;
         ac.initializeAppCheck(app, {
           provider: new ac.ReCaptchaV3Provider(APP_CHECK_CLAVE),
           isTokenAutoRefreshEnabled: true,

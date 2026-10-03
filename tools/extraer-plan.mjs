@@ -41,12 +41,26 @@ const limpiar = (h) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const sinAcentos = (s) => s.normalize('NFD').replace(/\p{Mn}/gu, '').toLowerCase();
+const sinAcentos = (s) =>
+  s
+    .normalize('NFD')
+    .replace(/\p{Mn}/gu, '')
+    .toLowerCase();
 const norm = (s) => s.replace(/\s+/g, ' ').trim();
 
 const ORDINALES = {
-  primer: 1, primero: 1, segundo: 2, tercer: 3, tercero: 3, cuarto: 4, quinto: 5,
-  sexto: 6, septimo: 7, octavo: 8, noveno: 9, decimo: 10,
+  primer: 1,
+  primero: 1,
+  segundo: 2,
+  tercer: 3,
+  tercero: 3,
+  cuarto: 4,
+  quinto: 5,
+  sexto: 6,
+  septimo: 7,
+  octavo: 8,
+  noveno: 9,
+  decimo: 10,
 };
 
 /**
@@ -58,11 +72,15 @@ const ORDINALES = {
 export function seccionDe(texto) {
   const t = sinAcentos(texto);
   const num = (s) => (ORDINALES[s] ?? Number(s.replace(/\D/g, '')) ?? null) || null;
-  let m = t.match(/^\s*(primer|primero|segundo|tercer|tercero|cuarto|quinto|sexto|septimo|octavo|noveno|decimo|\d+°?)\s*(ano|año|anio)\b/);
+  let m = t.match(
+    /^\s*(primer|primero|segundo|tercer|tercero|cuarto|quinto|sexto|septimo|octavo|noveno|decimo|\d+°?)\s*(ano|año|anio)\b/,
+  );
   if (m) return { anio: num(m[1]) };
   m = t.match(/^\s*(\d+)°?\s*-\s*(\d+)°?\s*cuatrimestres?/);
   if (m) return { cuatrimestre: Number(m[1]), abarcaAnio: true };
-  m = t.match(/^\s*(primer|primero|segundo|tercer|tercero|cuarto|quinto|sexto|septimo|octavo|noveno|decimo|\d+°?)\s*cuatrimestre/);
+  m = t.match(
+    /^\s*(primer|primero|segundo|tercer|tercero|cuarto|quinto|sexto|septimo|octavo|noveno|decimo|\d+°?)\s*cuatrimestre/,
+  );
   if (m) return { cuatrimestre: num(m[1]) };
   m = t.match(/^\s*cuatrimestre\s*(\d+)/);
   if (m) return { cuatrimestre: Number(m[1]) };
@@ -100,7 +118,8 @@ export function partirCorrelativas(celda) {
     .filter((s) => /^\d+$/.test(s));
 }
 
-const fila = (tr) => [...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((c) => limpiar(c[1]));
+const fila = (tr) =>
+  [...tr.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((c) => limpiar(c[1]));
 const filasDe = (tabla) => [...tabla.matchAll(/<tr[\s\S]*?<\/tr>/gi)].map((r) => fila(r[0]));
 const tablasDe = (doc) => [...doc.matchAll(/<table[\s\S]*?<\/table>/gi)].map((m) => m[0]);
 
@@ -146,7 +165,11 @@ export function parsearTabla(doc, cfg = {}) {
       const s = sinAcentos(txt);
       if (s.includes('mencion')) mencion = txt.replace(/^Asignaturas\s+/i, '').trim();
       else if (s.includes('ciclo de formacion orientada')) cicloOrientado = true;
-      else if (s.includes('asignaturas comunes') || s.includes('otros requisitos') || s.includes('nucleo optativo'))
+      else if (
+        s.includes('asignaturas comunes') ||
+        s.includes('otros requisitos') ||
+        s.includes('nucleo optativo')
+      )
         mencion = null;
       continue;
     }
@@ -187,7 +210,15 @@ export function parsearTabla(doc, cfg = {}) {
       tipoNivel = 'anio';
     }
 
-    const m = { codigo, _sinCodigo: !codigo, nombre, dedicacion, nivel, _tipoNivel: tipoNivel, _correl: f[cols.correl] ?? '' };
+    const m = {
+      codigo,
+      _sinCodigo: !codigo,
+      nombre,
+      dedicacion,
+      nivel,
+      _tipoNivel: tipoNivel,
+      _correl: f[cols.correl] ?? '',
+    };
     if (cols.formato >= 0 && norm(f[cols.formato] ?? '')) m.formato = norm(f[cols.formato]);
     const hSem = cols.hSem >= 0 ? parseFloat(String(f[cols.hSem] ?? '').replace(',', '.')) : NaN;
     const hTot = cols.hTot >= 0 ? parseInt(String(f[cols.hTot] ?? ''), 10) : NaN;
@@ -235,7 +266,9 @@ function terminar(materias) {
       const buscado = sinAcentos(m._correl).replace(/[:\s]+$/, '');
       const hallada = materias.find((x) => {
         const n = sinAcentos(x.nombre);
-        return x !== m && (n === buscado || n.endsWith('· ' + buscado) || n.endsWith(' ' + buscado));
+        return (
+          x !== m && (n === buscado || n.endsWith('· ' + buscado) || n.endsWith(' ' + buscado))
+        );
       });
       if (hallada) todos = [hallada.codigo];
     }
@@ -244,7 +277,9 @@ function terminar(materias) {
     if (perdidas.length) m.correlativasNoResueltas = perdidas;
     delete m._correl;
     if (m._correlRendir !== undefined) {
-      const r = partirCorrelativas(m._correlRendir).map(pad).filter((c) => existentes.has(c));
+      const r = partirCorrelativas(m._correlRendir)
+        .map(pad)
+        .filter((c) => existentes.has(c));
       if (r.length) m.correlativasParaRendir = r;
       delete m._correlRendir;
     }
@@ -267,7 +302,9 @@ export function parsearPdfTrabajoSocial(texto) {
   for (const linea of texto.split(/\r?\n/)) {
     const sec = seccionDe(linea);
     const s = sinAcentos(linea);
-    const mAnio = s.match(/(primer|segundo|tercer|cuarto|quinto)\s+ano\s*-\s*(primer|segundo)\s+cuatrimestre/);
+    const mAnio = s.match(
+      /(primer|segundo|tercer|cuarto|quinto)\s+ano\s*-\s*(primer|segundo)\s+cuatrimestre/,
+    );
     if (mAnio) {
       anio = ORDINALES[mAnio[1]];
       cuat = ORDINALES[mAnio[2]];
@@ -311,7 +348,10 @@ export function parsearListaFerroviaria(doc) {
     if (!titulo || !seccionDe(limpiar(titulo[1]))?.cuatrimestre) continue;
     cuatrimestre++;
     const resto = cuerpo.slice(titulo[0].length);
-    for (const nombre of resto.split(/<br\s*\/?>/i).map(limpiar).filter(Boolean)) {
+    for (const nombre of resto
+      .split(/<br\s*\/?>/i)
+      .map(limpiar)
+      .filter(Boolean)) {
       materias.push({
         codigo: String(++n).padStart(2, '0'),
         _sinCodigo: false,
@@ -336,150 +376,280 @@ const PYPP = 'planificacion-y-politicas-publicas';
 export const CARRERAS = {
   // ---- Humanidades y Artes
   audiovision: {
-    url: 'grado/licenciaturas/audiovision', departamento: HYA, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Audiovisión', nombreCorto: 'Audiovisión',
+    url: 'grado/licenciaturas/audiovision',
+    departamento: HYA,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Audiovisión',
+    nombreCorto: 'Audiovisión',
     titulo: 'Licenciado/a en Audiovisión',
     tituloIntermedio: { nombre: 'Técnico/a Universitario en Audiovisión', hastaNivel: 3 },
-    duracionAnios: 5, horasTotales: 2880, menciones: ['Sonido y Grabación', 'Postproducción de Imagen'],
+    duracionAnios: 5,
+    horasTotales: 2880,
+    menciones: ['Sonido y Grabación', 'Postproducción de Imagen'],
   },
   'diseno-y-comunicacion-visual': {
-    url: 'grado/licenciaturas/diseno-y-comunicacion-visual', departamento: HYA, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Diseño y Comunicación Visual', nombreCorto: 'Diseño y Comunicación Visual',
-    titulo: 'Licenciado/a en Diseño y Comunicación Visual', duracionAnios: 5,
+    url: 'grado/licenciaturas/diseno-y-comunicacion-visual',
+    departamento: HYA,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Diseño y Comunicación Visual',
+    nombreCorto: 'Diseño y Comunicación Visual',
+    titulo: 'Licenciado/a en Diseño y Comunicación Visual',
+    duracionAnios: 5,
   },
   'diseno-industrial': {
-    url: 'grado/licenciaturas/diseno-industrial', departamento: HYA, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Diseño Industrial', nombreCorto: 'Diseño Industrial',
+    url: 'grado/licenciaturas/diseno-industrial',
+    departamento: HYA,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Diseño Industrial',
+    nombreCorto: 'Diseño Industrial',
     titulo: 'Licenciado/a en Diseño Industrial',
     tituloIntermedio: { nombre: 'Técnico/a en Diseño Industrial', hastaNivel: 3 },
-    duracionAnios: 5, horasTotales: 2912,
-    orientaciones: ['Maquinaria, equipos y vehículos', 'Textil e indumentaria', 'Metales básicos y productos de metal'],
+    duracionAnios: 5,
+    horasTotales: 2912,
+    orientaciones: [
+      'Maquinaria, equipos y vehículos',
+      'Textil e indumentaria',
+      'Metales básicos y productos de metal',
+    ],
     nota: 'La carrera tiene tres orientaciones. Comparten códigos, correlativas y carga horaria; solo cambia el nombre de los talleres y de Tecnología, Materiales y Procesos. Acá se muestra el plan común.',
     limpiarNombre: true,
   },
   'musica-de-camara-y-sinfonica': {
-    url: 'grado/licenciaturas/musica-de-camara-y-sinfonica', departamento: HYA, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Música de Cámara y Sinfónica', nombreCorto: 'Música de Cámara y Sinfónica',
+    url: 'grado/licenciaturas/musica-de-camara-y-sinfonica',
+    departamento: HYA,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Música de Cámara y Sinfónica',
+    nombreCorto: 'Música de Cámara y Sinfónica',
     titulo: 'Licenciado/a en Música de Cámara y Sinfónica',
-    tituloIntermedio: { nombre: 'Técnico/a Universitario en Interpretación Musical', hastaNivel: 4 },
-    duracionAnios: 4, horasTotales: 2752,
+    tituloIntermedio: {
+      nombre: 'Técnico/a Universitario en Interpretación Musical',
+      hastaNivel: 4,
+    },
+    duracionAnios: 4,
+    horasTotales: 2752,
     nota: 'El plan publicado no informa correlatividades entre materias.',
   },
   'traductorado-publico-en-idioma-ingles': {
-    url: 'grado/licenciaturas/traductorado-publico-en-idioma-ingles', departamento: HYA, tipo: 'traductorado',
-    nombre: 'Traductorado Público en Idioma Inglés', nombreCorto: 'Traductorado en Inglés',
+    url: 'grado/licenciaturas/traductorado-publico-en-idioma-ingles',
+    departamento: HYA,
+    tipo: 'traductorado',
+    nombre: 'Traductorado Público en Idioma Inglés',
+    nombreCorto: 'Traductorado en Inglés',
     titulo: 'Traductor/a Público/a en Idioma Inglés',
-    tituloIntermedio: { nombre: 'Traductor/a Técnico/a Universitario/a en Idioma Inglés', hastaNivel: 6 },
+    tituloIntermedio: {
+      nombre: 'Traductor/a Técnico/a Universitario/a en Idioma Inglés',
+      hastaNivel: 6,
+    },
     duracionAnios: 4,
   },
   // ---- Salud Comunitaria
   enfermeria: {
-    url: 'grado/licenciaturas/enfermeria', departamento: SALUD, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Enfermería', nombreCorto: 'Enfermería', titulo: 'Licenciado/a en Enfermería',
-    tituloIntermedio: { nombre: 'Enfermero/a', hastaNivel: 3 }, duracionAnios: 5,
+    url: 'grado/licenciaturas/enfermeria',
+    departamento: SALUD,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Enfermería',
+    nombreCorto: 'Enfermería',
+    titulo: 'Licenciado/a en Enfermería',
+    tituloIntermedio: { nombre: 'Enfermero/a', hastaNivel: 3 },
+    duracionAnios: 5,
   },
   'trabajo-social': {
-    url: 'grado/licenciaturas/trabajo-social', departamento: SALUD, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Trabajo Social', nombreCorto: 'Trabajo Social', titulo: 'Licenciado/a en Trabajo Social',
-    tituloIntermedio: { nombre: 'Técnico/a Universitario en Formulación de Proyectos Sociales', hastaNivel: 6 },
-    duracionAnios: 5, parser: 'pdf-trabajo-social',
+    url: 'grado/licenciaturas/trabajo-social',
+    departamento: SALUD,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Trabajo Social',
+    nombreCorto: 'Trabajo Social',
+    titulo: 'Licenciado/a en Trabajo Social',
+    tituloIntermedio: {
+      nombre: 'Técnico/a Universitario en Formulación de Proyectos Sociales',
+      hastaNivel: 6,
+    },
+    duracionAnios: 5,
+    parser: 'pdf-trabajo-social',
     pdf: 'https://www.unla.edu.ar/documentos/licenciaturas/trabajo_social/Plan%20de%20estudios.pdf',
     nota: 'La web publica este plan como PDF; los nombres que ocupaban dos renglones quedaron con el primero.',
   },
   nutricion: {
-    url: 'grado/licenciaturas/nutricion', departamento: SALUD, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Nutrición', nombreCorto: 'Nutrición', titulo: 'Licenciado/a en Nutrición',
+    url: 'grado/licenciaturas/nutricion',
+    departamento: SALUD,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Nutrición',
+    nombreCorto: 'Nutrición',
+    titulo: 'Licenciado/a en Nutrición',
     tituloIntermedio: { nombre: 'Técnico/a Universitario en Nutrición Comunitaria', hastaNivel: 6 },
     duracionAnios: 5,
     nota: 'Este plan distingue correlativas para cursar (con la materia regular) y para rendir el final (con la correlativa aprobada). El mapa usa las de cursar.',
   },
   // ---- Desarrollo Productivo y Tecnológico
   'gestion-ambiental-urbana': {
-    url: 'grado/licenciaturas/gestion-ambiental-urbana', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Gestión Ambiental Urbana', nombreCorto: 'Gestión Ambiental Urbana',
-    titulo: 'Licenciado/a en Gestión Ambiental Urbana', duracionAnios: 5,
+    url: 'grado/licenciaturas/gestion-ambiental-urbana',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Gestión Ambiental Urbana',
+    nombreCorto: 'Gestión Ambiental Urbana',
+    titulo: 'Licenciado/a en Gestión Ambiental Urbana',
+    duracionAnios: 5,
   },
   'economia-empresarial': {
-    url: 'grado/licenciaturas/economia-empresarial', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Economía Empresarial', nombreCorto: 'Economía Empresarial',
-    titulo: 'Licenciado/a en Economía Empresarial', duracionAnios: 4,
+    url: 'grado/licenciaturas/economia-empresarial',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Economía Empresarial',
+    nombreCorto: 'Economía Empresarial',
+    titulo: 'Licenciado/a en Economía Empresarial',
+    duracionAnios: 4,
   },
   'economia-politica': {
-    url: 'grado/licenciaturas/economia-politica', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Economía Política', nombreCorto: 'Economía Política',
-    titulo: 'Licenciado/a en Economía Política', duracionAnios: 4,
+    url: 'grado/licenciaturas/economia-politica',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Economía Política',
+    nombreCorto: 'Economía Política',
+    titulo: 'Licenciado/a en Economía Política',
+    duracionAnios: 4,
   },
   'ciencia-y-tecnologia-de-los-alimentos': {
-    url: 'grado/licenciaturas/ciencia-y-tecnologia-de-los-alimentos', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Ciencia y Tecnología de los Alimentos', nombreCorto: 'Ciencia y Tecnología de los Alimentos',
-    titulo: 'Licenciado/a en Ciencia y Tecnología de los Alimentos', duracionAnios: 5,
+    url: 'grado/licenciaturas/ciencia-y-tecnologia-de-los-alimentos',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Ciencia y Tecnología de los Alimentos',
+    nombreCorto: 'Ciencia y Tecnología de los Alimentos',
+    titulo: 'Licenciado/a en Ciencia y Tecnología de los Alimentos',
+    duracionAnios: 5,
   },
   turismo: {
-    url: 'grado/licenciaturas/turismo', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Turismo', nombreCorto: 'Turismo', titulo: 'Licenciado/a en Turismo',
-    tituloIntermedio: { nombre: 'Técnico/a Universitario en Turismo', hastaNivel: 6 }, duracionAnios: 5, horasTotales: 3264,
+    url: 'grado/licenciaturas/turismo',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Turismo',
+    nombreCorto: 'Turismo',
+    titulo: 'Licenciado/a en Turismo',
+    tituloIntermedio: { nombre: 'Técnico/a Universitario en Turismo', hastaNivel: 6 },
+    duracionAnios: 5,
+    horasTotales: 3264,
   },
   sistemas: {
-    url: 'grado/licenciaturas/sistemas', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Sistemas', nombreCorto: 'Sistemas', titulo: 'Licenciado/a en Sistemas',
-    tituloIntermedio: { nombre: 'Analista Programador/a Universitario/a', hastaNivel: 6 }, duracionAnios: 5,
+    url: 'grado/licenciaturas/sistemas',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Sistemas',
+    nombreCorto: 'Sistemas',
+    titulo: 'Licenciado/a en Sistemas',
+    tituloIntermedio: { nombre: 'Analista Programador/a Universitario/a', hastaNivel: 6 },
+    duracionAnios: 5,
   },
   'tecnologias-ferroviarias': {
-    url: 'grado/licenciaturas/tecnologias-ferroviarias', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Tecnologías Ferroviarias', nombreCorto: 'Tecnologías Ferroviarias',
+    url: 'grado/licenciaturas/tecnologias-ferroviarias',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Tecnologías Ferroviarias',
+    nombreCorto: 'Tecnologías Ferroviarias',
     titulo: 'Licenciado/a en Tecnologías Ferroviarias',
-    tituloIntermedio: { nombre: 'Técnico/a Universitario en Tecnologías Ferroviarias', hastaNivel: 6 },
-    duracionAnios: 4, parser: 'lista-ferroviaria',
+    tituloIntermedio: {
+      nombre: 'Técnico/a Universitario en Tecnologías Ferroviarias',
+      hastaNivel: 6,
+    },
+    duracionAnios: 4,
+    parser: 'lista-ferroviaria',
     orientaciones: ['Electromecánica Ferroviaria', 'Infraestructura Ferroviaria'],
     nota: 'La web publica el plan como una lista por cuatrimestre, sin códigos ni correlatividades: los números son de esta guía. Las materias de cada orientación no están detalladas.',
   },
   'planificacion-logistica': {
-    url: 'grado/licenciaturas/planificacion-logistica', departamento: DPYT, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Planificación Logística', nombreCorto: 'Planificación Logística',
-    titulo: 'Licenciado/a en Planificación Logística', duracionAnios: 5,
+    url: 'grado/licenciaturas/planificacion-logistica',
+    departamento: DPYT,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Planificación Logística',
+    nombreCorto: 'Planificación Logística',
+    titulo: 'Licenciado/a en Planificación Logística',
+    duracionAnios: 5,
   },
   'ingenieria-ferroviaria': {
-    url: 'grado/ingenierias/ferroviaria', departamento: DPYT, tipo: 'ingenieria',
-    nombre: 'Ingeniería Ferroviaria', nombreCorto: 'Ingeniería Ferroviaria', titulo: 'Ingeniero/a Ferroviario/a',
+    url: 'grado/ingenierias/ferroviaria',
+    departamento: DPYT,
+    tipo: 'ingenieria',
+    nombre: 'Ingeniería Ferroviaria',
+    nombreCorto: 'Ingeniería Ferroviaria',
+    titulo: 'Ingeniero/a Ferroviario/a',
     duracionAnios: 5,
     // Encabezado de dos filas: "Carga horaria" y "Horas" se abren en Semanal/Total y Teoría/Práctica.
-    columnas: { codigo: 0, nombre: 1, formato: 2, dedicacion: 3, regimen: -1, hSem: 4, hTot: 5, correl: 9, correlRendir: -1, area: -1 },
+    columnas: {
+      codigo: 0,
+      nombre: 1,
+      formato: 2,
+      dedicacion: 3,
+      regimen: -1,
+      hSem: 4,
+      hTot: 5,
+      correl: 9,
+      correlRendir: -1,
+      area: -1,
+    },
   },
   // ---- Planificación y Políticas Públicas
   'seguridad-ciudadana': {
-    url: 'grado/licenciaturas/seguridad-ciudadana', departamento: PYPP, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Seguridad Ciudadana', nombreCorto: 'Seguridad Ciudadana',
-    titulo: 'Licenciado/a en Seguridad Ciudadana', duracionAnios: 4,
+    url: 'grado/licenciaturas/seguridad-ciudadana',
+    departamento: PYPP,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Seguridad Ciudadana',
+    nombreCorto: 'Seguridad Ciudadana',
+    titulo: 'Licenciado/a en Seguridad Ciudadana',
+    duracionAnios: 4,
   },
   'ciencia-politica-y-gobierno': {
-    url: 'grado/licenciaturas/ciencia-politica-y-gobierno', departamento: PYPP, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Ciencia Política y Gobierno', nombreCorto: 'Ciencia Política y Gobierno',
-    titulo: 'Licenciado/a en Ciencia Política y Gobierno', duracionAnios: 4, horasTotales: 2688,
+    url: 'grado/licenciaturas/ciencia-politica-y-gobierno',
+    departamento: PYPP,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Ciencia Política y Gobierno',
+    nombreCorto: 'Ciencia Política y Gobierno',
+    titulo: 'Licenciado/a en Ciencia Política y Gobierno',
+    duracionAnios: 4,
+    horasTotales: 2688,
   },
   educacion: {
-    url: 'grado/licenciaturas/educacion', departamento: PYPP, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Educación', nombreCorto: 'Educación', titulo: 'Licenciado/a en Educación',
-    duracionAnios: 4, horasTotales: 2656,
+    url: 'grado/licenciaturas/educacion',
+    departamento: PYPP,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Educación',
+    nombreCorto: 'Educación',
+    titulo: 'Licenciado/a en Educación',
+    duracionAnios: 4,
+    horasTotales: 2656,
   },
   'justicia-y-derechos-humanos': {
-    url: 'grado/licenciaturas/justicia-y-derechos-humanos', departamento: PYPP, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Justicia y Derechos Humanos', nombreCorto: 'Justicia y Derechos Humanos',
-    titulo: 'Licenciado/a en Justicia y Derechos Humanos', duracionAnios: 4,
+    url: 'grado/licenciaturas/justicia-y-derechos-humanos',
+    departamento: PYPP,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Justicia y Derechos Humanos',
+    nombreCorto: 'Justicia y Derechos Humanos',
+    titulo: 'Licenciado/a en Justicia y Derechos Humanos',
+    duracionAnios: 4,
   },
   'relaciones-internacionales': {
-    url: 'grado/licenciaturas/relaciones-internacionales', departamento: PYPP, tipo: 'licenciatura',
-    nombre: 'Licenciatura en Relaciones Internacionales', nombreCorto: 'Relaciones Internacionales',
-    titulo: 'Licenciado/a en Relaciones Internacionales', duracionAnios: 4,
+    url: 'grado/licenciaturas/relaciones-internacionales',
+    departamento: PYPP,
+    tipo: 'licenciatura',
+    nombre: 'Licenciatura en Relaciones Internacionales',
+    nombreCorto: 'Relaciones Internacionales',
+    titulo: 'Licenciado/a en Relaciones Internacionales',
+    duracionAnios: 4,
   },
   'gestion-de-gobierno-local': {
-    url: 'pregrado/tecnicaturas/gestion-de-gobierno-local', departamento: PYPP, tipo: 'tecnicatura',
-    nombre: 'Tecnicatura Universitaria en Gestión de Gobierno Local', nombreCorto: 'Gestión de Gobierno Local',
-    titulo: 'Técnico/a Universitario/a en Gestión de Gobierno Local', duracionAnios: 3,
+    url: 'pregrado/tecnicaturas/gestion-de-gobierno-local',
+    departamento: PYPP,
+    tipo: 'tecnicatura',
+    nombre: 'Tecnicatura Universitaria en Gestión de Gobierno Local',
+    nombreCorto: 'Gestión de Gobierno Local',
+    titulo: 'Técnico/a Universitario/a en Gestión de Gobierno Local',
+    duracionAnios: 3,
   },
   'gestion-y-administracion-universitaria': {
-    url: 'pregrado/tecnicaturas/gestion-y-administracion-universitaria', departamento: PYPP, tipo: 'tecnicatura',
-    nombre: 'Tecnicatura Superior en Gestión y Administración Universitaria', nombreCorto: 'Gestión y Administración Universitaria',
-    titulo: 'Técnico/a Superior en Gestión y Administración Universitaria', duracionAnios: 2,
+    url: 'pregrado/tecnicaturas/gestion-y-administracion-universitaria',
+    departamento: PYPP,
+    tipo: 'tecnicatura',
+    nombre: 'Tecnicatura Superior en Gestión y Administración Universitaria',
+    nombreCorto: 'Gestión y Administración Universitaria',
+    titulo: 'Técnico/a Superior en Gestión y Administración Universitaria',
+    duracionAnios: 2,
   },
 };
 
@@ -511,13 +681,16 @@ export async function extraer(slug) {
   const cfg = CARRERAS[slug];
   if (!cfg) throw new Error('carrera desconocida: ' + slug);
   let plan;
-  if (cfg.parser === 'pdf-trabajo-social') plan = parsearPdfTrabajoSocial(await textoPdf(slug, cfg.pdf));
-  else if (cfg.parser === 'lista-ferroviaria') plan = parsearListaFerroviaria(await html(slug, cfg));
+  if (cfg.parser === 'pdf-trabajo-social')
+    plan = parsearPdfTrabajoSocial(await textoPdf(slug, cfg.pdf));
+  else if (cfg.parser === 'lista-ferroviaria')
+    plan = parsearListaFerroviaria(await html(slug, cfg));
   else plan = parsearTabla(await html(slug, cfg), cfg);
 
   const { materias, tipoNivel } = plan;
   if (cfg.limpiarNombre)
-    for (const m of materias) m.nombre = m.nombre.replace(/\s*\(Orientaci[oó]n[^)]*\)\s*$/i, '').trim();
+    for (const m of materias)
+      m.nombre = m.nombre.replace(/\s*\(Orientaci[oó]n[^)]*\)\s*$/i, '').trim();
 
   const carrera = {
     slug,
@@ -590,7 +763,10 @@ async function main() {
     .map((s) => path.join(SALIDA, s + '.json'))
     .filter((r) => fs.existsSync(r))
     .map((r) => JSON.parse(fs.readFileSync(r, 'utf8')));
-  fs.writeFileSync(path.join(SALIDA, 'indice.json'), JSON.stringify(armarIndice(enDisco), null, 2) + '\n');
+  fs.writeFileSync(
+    path.join(SALIDA, 'indice.json'),
+    JSON.stringify(armarIndice(enDisco), null, 2) + '\n',
+  );
   console.log(`indice.json: ${enDisco.length} carreras`);
 }
 

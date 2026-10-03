@@ -82,8 +82,26 @@ function diaDeHoy(): Dia {
                           {{ ex.sigla }} · fuera del predio
                         </span>
                       } @else if (u.edificio) {
-                        <a class="lugar" routerLink="/campus" [queryParams]="{ edificio: u.edificio }">
-                          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3zM9 3v15M15 5.5v15"/></svg>
+                        <a
+                          class="lugar"
+                          routerLink="/campus"
+                          [queryParams]="{ edificio: u.edificio }"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="13"
+                            height="13"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M9 3 3 5.5v15L9 18l6 2.5 6-2.5v-15L15 5.5 9 3zM9 3v15M15 5.5v15"
+                            />
+                          </svg>
                           {{ etiquetaLugar(u) }}
                         </a>
                       } @else {
@@ -101,9 +119,7 @@ function diaDeHoy(): Dia {
           <p class="vacio">No hay clases cargadas para el {{ nombreDia(dia()) }}.</p>
         }
 
-        <p class="fuente">
-          {{ h.fuente }}, {{ h.periodoNombre }}. {{ h.nota }}
-        </p>
+        <p class="fuente">{{ h.fuente }}, {{ h.periodoNombre }}. {{ h.nota }}</p>
         <app-firma-fei />
       </main>
     } @else if (resumen(); as c) {
@@ -111,15 +127,15 @@ function diaDeHoy(): Dia {
         @if (c.tieneGrilla) {
           <p class="vacio">Cargando la grilla…</p>
         } @else {
-        <div class="sinCarrera">
-          <h2>Todavía no tenemos la grilla de {{ c.nombreCorto }}</h2>
-          <p>
-            Los días, horarios y aulas los publica el Departamento al abrir cada cuatrimestre.
-            Apenas la tengamos, esta pantalla muestra qué se cursa hoy y en qué edificio.
-          </p>
-          <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
-          <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
-        </div>
+          <div class="sinCarrera">
+            <h2>Todavía no tenemos la grilla de {{ c.nombreCorto }}</h2>
+            <p>
+              Los días, horarios y aulas los publica el Departamento al abrir cada cuatrimestre.
+              Apenas la tengamos, esta pantalla muestra qué se cursa hoy y en qué edificio.
+            </p>
+            <a class="boton" routerLink="/campus">Ver el mapa del campus</a>
+            <a class="boton" routerLink="/fechas">Ver las fechas del cuatrimestre</a>
+          </div>
         }
         <app-firma-fei />
       </main>
@@ -128,45 +144,174 @@ function diaDeHoy(): Dia {
         <div class="sinCarrera">
           <h2>Todavía no elegiste carrera</h2>
           <p>Los horarios son distintos en cada una. Elegí la tuya y vemos qué se cursa hoy.</p>
-          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/horarios' }">Elegir carrera</a>
+          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/horarios' }"
+            >Elegir carrera</a
+          >
         </div>
         <app-firma-fei />
       </main>
     }
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
-    .boton + .boton { margin-top: var(--e2); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .dias { display: flex; gap: 5px; padding: 0 var(--e4) var(--e3); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: var(--e3);
+      padding: 18px var(--e4) var(--e3);
+    }
+    .boton + .boton {
+      margin-top: var(--e2);
+    }
+    h1 {
+      margin: 0;
+      font-size: var(--t-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .dias {
+      display: flex;
+      gap: 5px;
+      padding: 0 var(--e4) var(--e3);
+    }
     .dias button {
-      flex: 1; min-height: 48px; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 2px; border-radius: 10px; border: 1px solid var(--borde);
-      background: var(--superficie); color: var(--texto-2); font-size: var(--t-s); font-weight: 600;
+      flex: 1;
+      min-height: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      border-radius: 10px;
+      border: 1px solid var(--borde);
+      background: var(--superficie);
+      color: var(--texto-2);
+      font-size: var(--t-s);
+      font-weight: 600;
     }
-    .dias button.on { border-color: var(--marca); background: var(--marca); color: var(--sobre-marca); }
-    .cuenta { font-size: 9.5px; opacity: .75; font-weight: 500; }
-    main { flex: 1; padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
-    .rot { margin: 0 0 var(--e2); font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-3); }
-    .clase { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 12px 13px; margin-bottom: 8px; }
-    .nombre { font-size: var(--t-m); font-weight: 600; line-height: 1.3; }
-    .et { display: inline-block; margin-left: 6px; font-size: var(--t-xs); font-weight: 500; color: var(--naranja); border: 1px solid var(--naranja); border-radius: 999px; padding: 1px 7px; vertical-align: 2px; }
-    .lugares { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+    .dias button.on {
+      border-color: var(--marca);
+      background: var(--marca);
+      color: var(--sobre-marca);
+    }
+    .cuenta {
+      font-size: 9.5px;
+      opacity: 0.75;
+      font-weight: 500;
+    }
+    main {
+      flex: 1;
+      padding: 0 var(--e4) var(--e4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--e4);
+    }
+    .rot {
+      margin: 0 0 var(--e2);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--texto-3);
+    }
+    .clase {
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 12px 13px;
+      margin-bottom: 8px;
+    }
+    .nombre {
+      font-size: var(--t-m);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .et {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: var(--t-xs);
+      font-weight: 500;
+      color: var(--naranja);
+      border: 1px solid var(--naranja);
+      border-radius: 999px;
+      padding: 1px 7px;
+      vertical-align: 2px;
+    }
+    .lugares {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 9px;
+    }
     .lugar {
-      display: inline-flex; align-items: center; gap: 5px; min-height: 34px; padding: 0 10px;
-      border: 1px solid var(--borde); border-radius: 9px; font-size: var(--t-s); color: var(--texto-2);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--borde);
+      border-radius: 9px;
+      font-size: var(--t-s);
+      color: var(--texto-2);
     }
-    a.lugar { color: var(--marca); border-color: color-mix(in oklab, var(--marca) 45%, var(--borde)); }
-    .externo { color: var(--naranja); border-color: color-mix(in oklab, var(--naranja) 45%, var(--borde)); }
-    .virtual { color: var(--verde); border-color: color-mix(in oklab, var(--verde) 45%, var(--borde)); }
-    .vacio { font-size: var(--t-m); color: var(--texto-2); }
-    .fuente { font-size: var(--t-xs); color: var(--texto-3); line-height: 1.45; margin: 0; }
-    .sinCarrera { background: var(--superficie); border: 1px dashed var(--borde); border-radius: var(--r); padding: var(--e4); }
-    .sinCarrera h2 { margin: 0 0 var(--e2); font-size: var(--t-l); }
-    .sinCarrera p { margin: 0 0 var(--e3); font-size: var(--t-m); color: var(--texto-2); line-height: 1.5; }
-    .boton { display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 10px; background: var(--marca); color: var(--sobre-marca); font-size: var(--t-m); font-weight: 600; }
+    a.lugar {
+      color: var(--marca);
+      border-color: color-mix(in oklab, var(--marca) 45%, var(--borde));
+    }
+    .externo {
+      color: var(--naranja);
+      border-color: color-mix(in oklab, var(--naranja) 45%, var(--borde));
+    }
+    .virtual {
+      color: var(--verde);
+      border-color: color-mix(in oklab, var(--verde) 45%, var(--borde));
+    }
+    .vacio {
+      font-size: var(--t-m);
+      color: var(--texto-2);
+    }
+    .fuente {
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .sinCarrera {
+      background: var(--superficie);
+      border: 1px dashed var(--borde);
+      border-radius: var(--r);
+      padding: var(--e4);
+    }
+    .sinCarrera h2 {
+      margin: 0 0 var(--e2);
+      font-size: var(--t-l);
+    }
+    .sinCarrera p {
+      margin: 0 0 var(--e3);
+      font-size: var(--t-m);
+      color: var(--texto-2);
+      line-height: 1.5;
+    }
+    .boton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 10px;
+      background: var(--marca);
+      color: var(--sobre-marca);
+      font-size: var(--t-m);
+      font-weight: 600;
+    }
   `,
 })
 export class Horarios {
@@ -179,7 +324,9 @@ export class Horarios {
   protected readonly resumen = computed(() => this.elegida.resumen());
   protected readonly carrera = computed(() => this.elegida.carrera());
   /** La grilla la pide CarreraElegida apenas se elige; acá sólo se lee de la caché. */
-  protected readonly horarios = computed(() => this.planes.grilla(this.elegida.slug()) ?? undefined);
+  protected readonly horarios = computed(
+    () => this.planes.grilla(this.elegida.slug()) ?? undefined,
+  );
 
   protected readonly clasesDelDia = computed(
     () => this.horarios()?.clases.filter((c) => c.dia === this.dia()) ?? [],

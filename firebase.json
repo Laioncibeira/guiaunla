@@ -6,11 +6,7 @@
   "hosting": {
     "site": "guiaunla",
     "public": "dist/guiaunla/browser",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": false,
     "rewrites": [
@@ -66,10 +62,7 @@
       "source": "functions",
       "codebase": "default",
       "runtime": "nodejs22",
-      "ignore": [
-        "node_modules",
-        ".git"
-      ]
+      "ignore": ["node_modules", ".git"]
     }
   ],
   "emulators": {

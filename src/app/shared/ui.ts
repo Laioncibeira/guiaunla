@@ -1,6 +1,21 @@
 import { Location } from '@angular/common';
-import { Component, computed, effect, inject, Injectable, input, signal, type Signal } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Injectable,
+  input,
+  signal,
+  type Signal,
+} from '@angular/core';
+import {
+  NavigationEnd,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { DEPARTAMENTOS, resumenPorSlug, type Carrera, type ResumenCarrera } from '../core/datos';
 import { Planes } from '../core/planes';
 
@@ -84,14 +99,23 @@ export const ICONOS: Record<string, string> = {
     a.activo {
       color: var(--marca);
     }
-    a { position: relative; }
+    a {
+      position: relative;
+    }
     /* Hasta que se elige carrera, la pestaña avisa que ahí se elige. */
     .punto {
-      position: absolute; top: 6px; left: calc(50% + 9px);
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--fei-amarillo); box-shadow: 0 0 0 2px var(--superficie);
+      position: absolute;
+      top: 6px;
+      left: calc(50% + 9px);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--fei-amarillo);
+      box-shadow: 0 0 0 2px var(--superficie);
     }
-    .marca { display: none; }
+    .marca {
+      display: none;
+    }
 
     @media (min-width: 900px) {
       nav {
@@ -264,8 +288,10 @@ export class Historial {
   private readonly router = inject(Router);
   private readonly posicion = signal(0);
   private actual: string | null = null;
-  private pendiente: { readonly tipo: 'nueva' | 'reemplazo' } | { readonly tipo: 'vuelta'; readonly posicion: number } | null =
-    null;
+  private pendiente:
+    | { readonly tipo: 'nueva' | 'reemplazo' }
+    | { readonly tipo: 'vuelta'; readonly posicion: number }
+    | null = null;
 
   constructor() {
     this.router.events.subscribe((e) => {
@@ -275,7 +301,9 @@ export class Historial {
           this.pendiente = { tipo: 'vuelta', posicion: typeof anotada === 'number' ? anotada : 0 };
         } else {
           const extras = this.router.currentNavigation()?.extras;
-          this.pendiente = { tipo: extras?.replaceUrl || extras?.skipLocationChange ? 'reemplazo' : 'nueva' };
+          this.pendiente = {
+            tipo: extras?.replaceUrl || extras?.skipLocationChange ? 'reemplazo' : 'nueva',
+          };
         }
         return;
       }
@@ -302,15 +330,36 @@ export class Historial {
   selector: 'app-atras',
   template: `
     <button type="button" (click)="volver()" [attr.aria-label]="'Volver a ' + nombre()">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.9"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M14.5 5.5 8 12l6.5 6.5" />
+      </svg>
     </button>
   `,
   styles: `
-    :host { display: inline-flex; }
+    :host {
+      display: inline-flex;
+    }
     button {
-      width: 32px; height: 32px; flex: none; display: grid; place-items: center;
-      border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie);
-      color: var(--texto-2); padding: 0;
+      width: 32px;
+      height: 32px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--borde);
+      border-radius: 9px;
+      background: var(--superficie);
+      color: var(--texto-2);
+      padding: 0;
     }
   `,
 })
@@ -337,7 +386,12 @@ export class Atras {
   selector: 'app-carrera-chip',
   imports: [RouterLink],
   template: `
-    <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip" [class.vacio]="!elegida.resumen()">
+    <a
+      routerLink="/carrera/elegir"
+      [queryParams]="{ volver: volver() }"
+      class="chip"
+      [class.vacio]="!elegida.resumen()"
+    >
       @if (elegida.resumen(); as c) {
         <span class="nombre" [style.color]="colorDe(c.departamento)">{{ c.nombreCorto }}</span>
         <span class="cambiar">Cambiar</span>
@@ -347,21 +401,52 @@ export class Atras {
     </a>
   `,
   styles: `
-    :host { display: inline-flex; max-width: 100%; }
+    :host {
+      display: inline-flex;
+      max-width: 100%;
+    }
     .chip {
-      display: inline-flex; align-items: center; gap: 7px; min-height: 36px; max-width: 100%;
-      padding: 0 12px; border: 1px solid var(--borde); border-radius: 999px;
-      background: var(--superficie); color: var(--texto-2); font-size: var(--t-s);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      max-width: 100%;
+      padding: 0 12px;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--superficie);
+      color: var(--texto-2);
+      font-size: var(--t-s);
       text-decoration: none;
     }
-    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 104px; font-weight: 700; }
-    /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
-    .chip.vacio { border-color: var(--marca); animation: latir 2.4s ease-in-out infinite; }
-    @keyframes latir {
-      0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--marca) 45%, transparent); }
-      50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--marca) 0%, transparent); }
+    .nombre {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 104px;
+      font-weight: 700;
     }
-    .cambiar { flex: none; color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
+    .chip.vacio {
+      border-color: var(--marca);
+      animation: latir 2.4s ease-in-out infinite;
+    }
+    @keyframes latir {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--marca) 45%, transparent);
+      }
+      50% {
+        box-shadow: 0 0 0 6px color-mix(in srgb, var(--marca) 0%, transparent);
+      }
+    }
+    .cambiar {
+      flex: none;
+      color: var(--marca);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   `,
 })
 export class CarreraChip {

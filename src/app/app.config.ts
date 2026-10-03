@@ -1,8 +1,4 @@
-import {
-  ApplicationConfig,
-  isDevMode,
-  provideBrowserGlobalErrorListeners,
-} from '@angular/core';
+import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser';
 import { provideServiceWorker } from '@angular/service-worker';

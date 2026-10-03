@@ -53,7 +53,13 @@ describe('archivo de calendario', () => {
   });
 
   it('escapa comas y saltos de línea en el detalle', () => {
-    const ics = comoIcs({ id: 'x', titulo: 'A, B', desde: '2026-01-01', hasta: '2026-01-01', detalle: 'uno\ndos' });
+    const ics = comoIcs({
+      id: 'x',
+      titulo: 'A, B',
+      desde: '2026-01-01',
+      hasta: '2026-01-01',
+      detalle: 'uno\ndos',
+    });
     expect(ics).toContain('SUMMARY:A\\, B');
     expect(ics).toContain('DESCRIPTION:uno\\ndos');
   });

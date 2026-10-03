@@ -1,0 +1,18 @@
+# Lo que generan la compilación y npm
+dist/
+.angular/
+node_modules/
+package-lock.json
+functions/package-lock.json
+
+# Datos: los escriben los scripts de tools/ con su propio formato
+src/data/
+
+# Bocetos de diseño, logos originales y archivos locales
+tools/mockup/
+tools/identidad/
+tools/cache/
+tools/secretos/
+
+# Los textos se escriben a mano
+*.md

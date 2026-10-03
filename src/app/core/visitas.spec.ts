@@ -8,7 +8,9 @@ describe('clave de pantalla para el contador', () => {
   });
 
   it('aplana la ruta a minúsculas con guiones, sin parámetros', () => {
-    expect(claveDeRuta('/carreras/audiovision/correlatividades?materia=16')).toBe('carreras-audiovision-correlatividades');
+    expect(claveDeRuta('/carreras/audiovision/correlatividades?materia=16')).toBe(
+      'carreras-audiovision-correlatividades',
+    );
     expect(claveDeRuta('/fechas#hoy')).toBe('fechas');
   });
 

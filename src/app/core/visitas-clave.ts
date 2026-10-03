@@ -7,7 +7,10 @@ import { plano } from './texto';
  * mayúsculas ni acentos, y acotada a lo que aceptan las reglas.
  */
 export function claveDeRuta(url: string): string | null {
-  const limpia = url.split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '');
+  const limpia = url
+    .split('?')[0]
+    .split('#')[0]
+    .replace(/^\/+|\/+$/g, '');
   if (limpia === 'admin' || limpia.startsWith('admin/')) return null;
   const clave = plano(limpia || 'inicio')
     .replace(/[^a-z0-9]+/g, '-')
@@ -18,4 +21,3 @@ export function claveDeRuta(url: string): string | null {
 
 /** 'yyyy-mm-dd' en UTC, igual que lo calculan las reglas. */
 export const diaUtc = (d = new Date()) => d.toISOString().slice(0, 10);
-

@@ -21,10 +21,12 @@ export type ResultadoEnvio = 'enviado' | 'encolado' | 'cerrado' | 'esperar' | 'e
 export function validar(mensaje: string, contacto: string, nombre = ''): string | null {
   const m = mensaje.trim();
   const c = contacto.trim();
-  if (nombre.trim().length > NOMBRE_MAX) return 'El nombre puede tener hasta ' + NOMBRE_MAX + ' caracteres.';
+  if (nombre.trim().length > NOMBRE_MAX)
+    return 'El nombre puede tener hasta ' + NOMBRE_MAX + ' caracteres.';
   if (m.length < MENSAJE_MIN) return `Contanos un poco más: al menos ${MENSAJE_MIN} caracteres.`;
   if (m.length > MENSAJE_MAX) return `El mensaje puede tener hasta ${MENSAJE_MAX} caracteres.`;
-  if (c.length < CONTACTO_MIN) return 'Dejanos un mail, un Instagram o un teléfono para responderte.';
+  if (c.length < CONTACTO_MIN)
+    return 'Dejanos un mail, un Instagram o un teléfono para responderte.';
   if (c.length > CONTACTO_MAX) return `El contacto puede tener hasta ${CONTACTO_MAX} caracteres.`;
   return null;
 }
@@ -55,7 +57,12 @@ export class Contacto {
     }
   }
 
-  async enviar(mensaje: string, contacto: string, nombre: string, ruta: string): Promise<ResultadoEnvio> {
+  async enviar(
+    mensaje: string,
+    contacto: string,
+    nombre: string,
+    ruta: string,
+  ): Promise<ResultadoEnvio> {
     if (!this.nube.disponible) return 'error';
     if (this.esperaRestante() > 0) return 'esperar';
     if (!(await this.abierto())) return 'cerrado';

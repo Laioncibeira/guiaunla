@@ -22,7 +22,11 @@ const texto = (h) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const sinAcentos = (s) => s.normalize('NFD').replace(/\p{Mn}/gu, '').toLowerCase();
+const sinAcentos = (s) =>
+  s
+    .normalize('NFD')
+    .replace(/\p{Mn}/gu, '')
+    .toLowerCase();
 
 /** Filas de materia de la tabla original con su celda de correlativas. */
 function filasCrudas(html, cfg) {
@@ -36,7 +40,8 @@ function filasCrudas(html, cfg) {
     .filter((f) => f.length >= 4 && /^\d{1,5}$/.test(f[0]))
     .map((f) => {
       // Misma corrección que el extractor: una celda de más corre las columnas.
-      const g = !cfg.columnas && f.length === ancho + 1 ? [f[0], f[1] + ' ' + f[2], ...f.slice(3)] : f;
+      const g =
+        !cfg.columnas && f.length === ancho + 1 ? [f[0], f[1] + ' ' + f[2], ...f.slice(3)] : f;
       return { codigo: f[0], correlativas: g[cols.correl] ?? '' };
     });
 }
@@ -69,7 +74,13 @@ for (const slug of slugs) {
   }
   cotejadas++;
   // Los códigos se comparan normalizados a dos dígitos cuando el plan es de dos.
-  const anchoMax = Math.max(0, ...json.materias.map((m) => m.codigo).filter((c) => /^\d+$/.test(c)).map((c) => c.length));
+  const anchoMax = Math.max(
+    0,
+    ...json.materias
+      .map((m) => m.codigo)
+      .filter((c) => /^\d+$/.test(c))
+      .map((c) => c.length),
+  );
   const pad = (c) => (anchoMax <= 2 ? c.padStart(2, '0') : c);
   // Algunas tablas repiten la numeración en un bloque de electivas al final:
   // como el extractor, se queda con la primera aparición de cada código.
@@ -102,7 +113,9 @@ for (const slug of slugs) {
       .map((f) => pad(f.codigo)),
   );
   const conCorrJson = new Set(
-    json.materias.filter((m) => m.correlativas.length || m.correlativasNoResueltas?.length).map((m) => m.codigo),
+    json.materias
+      .filter((m) => m.correlativas.length || m.correlativasNoResueltas?.length)
+      .map((m) => m.codigo),
   );
   const perdidas = [...conCorrFuente].filter((c) => !conCorrJson.has(c));
   const inventadas = [...conCorrJson].filter((c) => !conCorrFuente.has(c) && codigosFuente.has(c));
@@ -129,5 +142,7 @@ if (sinCache) {
     problemas++;
   } else console.warn('aviso: ' + msg);
 }
-console.log(`${cotejadas} carrera(s) cotejadas, ${problemas ? problemas + ' con problemas' : 'sin problemas'}.`);
+console.log(
+  `${cotejadas} carrera(s) cotejadas, ${problemas ? problemas + ' con problemas' : 'sin problemas'}.`,
+);
 process.exit(problemas ? 1 : 0);

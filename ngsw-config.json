@@ -22,9 +22,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-          "/**/*.(svg|webp|png|webmanifest|woff2)"
-        ]
+        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)"]
       }
     },
     {
@@ -32,16 +30,9 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-          "/**/index.html"
-        ]
+        "files": ["/**/index.html"]
       }
     }
   ],
-  "navigationUrls": [
-    "/**",
-    "!/**/*.*",
-    "!/admin",
-    "!/admin/**"
-  ]
+  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**"]
 }

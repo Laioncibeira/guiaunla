@@ -21,7 +21,19 @@ const nombreDepartamento = (slug: string): string =>
   imports: [RouterLink, NgTemplateOutlet],
   template: `
     <label class="buscador">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 4 4" /></svg>
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <path d="m15.5 15.5 4 4" />
+      </svg>
       <input
         type="search"
         placeholder="Buscá tu carrera"
@@ -37,11 +49,25 @@ const nombreDepartamento = (slug: string): string =>
       @for (c of resultados(); track c.slug; let i = $index) {
         <ng-container *ngTemplateOutlet="tarjeta; context: { c: c, i: i, depto: true }" />
       } @empty {
-        <p class="vacio">Ninguna carrera se llama así. Probá con otra palabra o buscala por departamento.</p>
+        <p class="vacio">
+          Ninguna carrera se llama así. Probá con otra palabra o buscala por departamento.
+        </p>
       }
     } @else if (departamento(); as d) {
       <button type="button" class="volver" (click)="departamento.set(null)">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" /></svg>
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M14.5 5.5 8 12l6.5 6.5" />
+        </svg>
         Departamentos
       </button>
       <h2 class="rot">{{ d.nombre }}</h2>
@@ -52,7 +78,12 @@ const nombreDepartamento = (slug: string): string =>
       <h2 class="rot">¿De qué departamento sos?</h2>
       <div class="cuadros">
         @for (d of departamentos; track d.slug; let i = $index) {
-          <button type="button" class="cuadro" (click)="departamento.set(d)" [style.--color]="'var(--n' + (i + 1) + ')'">
+          <button
+            type="button"
+            class="cuadro"
+            (click)="departamento.set(d)"
+            [style.--color]="'var(--n' + (i + 1) + ')'"
+          >
             <span class="nom">{{ d.nombre }}</span>
             <span class="meta">{{ d.carreras.length }} carreras</span>
           </button>
@@ -75,41 +106,164 @@ const nombreDepartamento = (slug: string): string =>
             }
           </span>
         </span>
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5" /></svg>
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.9"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />
+        </svg>
       </a>
     </ng-template>
   `,
   styles: `
-    :host { display: flex; flex-direction: column; gap: var(--e2); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: var(--e2);
+    }
     .buscador {
-      display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px;
-      border: 1px solid var(--borde); border-radius: 12px; background: var(--superficie); color: var(--texto-3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      background: var(--superficie);
+      color: var(--texto-3);
       margin-bottom: var(--e1);
     }
-    .buscador input { flex: 1; min-width: 0; border: 0; background: none; color: var(--texto); font: inherit; font-size: var(--t-m); outline: none; }
-    .buscador:focus-within { border-color: var(--marca); }
-    .rot { margin: var(--e2) 0 var(--e1); font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-3); }
-    .cuadros { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e3); }
+    .buscador input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: none;
+      color: var(--texto);
+      font: inherit;
+      font-size: var(--t-m);
+      outline: none;
+    }
+    .buscador:focus-within {
+      border-color: var(--marca);
+    }
+    .rot {
+      margin: var(--e2) 0 var(--e1);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--texto-3);
+    }
+    .cuadros {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--e3);
+    }
     .cuadro {
-      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; aspect-ratio: 1;
-      padding: 14px; border: 1px solid var(--borde); border-radius: var(--r); background: var(--superficie);
-      text-align: center; color: inherit; position: relative; overflow: hidden; font: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      aspect-ratio: 1;
+      padding: 14px;
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      background: var(--superficie);
+      text-align: center;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      font: inherit;
     }
-    .cuadro::before { content: ''; position: absolute; inset: 0 0 auto; height: 5px; background: var(--color); }
-    .cuadro .nom { font-size: var(--t-l); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--color); text-wrap: balance; }
-    .cuadro .meta { font-size: var(--t-xs); color: var(--texto-3); }
+    .cuadro::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: var(--color);
+    }
+    .cuadro .nom {
+      font-size: var(--t-l);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--color);
+      text-wrap: balance;
+    }
+    .cuadro .meta {
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+    }
     .volver {
-      align-self: flex-start; display: inline-flex; align-items: center; gap: 4px; min-height: 36px; padding: 0 12px 0 8px;
-      border: 1px solid var(--borde); border-radius: 999px; background: var(--superficie); color: var(--texto-2);
-      font: inherit; font-size: var(--t-s); font-weight: 600;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 36px;
+      padding: 0 12px 0 8px;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--superficie);
+      color: var(--texto-2);
+      font: inherit;
+      font-size: var(--t-s);
+      font-weight: 600;
     }
-    .card { display: flex; gap: var(--e3); align-items: center; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 14px; color: inherit; min-height: 68px; text-decoration: none; }
-    .raya { width: 4px; align-self: stretch; border-radius: 2px; flex: none; }
-    .txt { flex: 1; min-width: 0; }
-    .card .nom { display: block; font-size: var(--t-l); font-weight: 600; letter-spacing: -0.01em; }
-    .card .meta { display: block; font-size: var(--t-s); color: var(--texto-2); margin-top: 3px; line-height: 1.4; }
-    .card svg { color: var(--texto-3); flex: none; }
-    .vacio { margin: 0; padding: var(--e3); border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
+    .card {
+      display: flex;
+      gap: var(--e3);
+      align-items: center;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 14px;
+      color: inherit;
+      min-height: 68px;
+      text-decoration: none;
+    }
+    .raya {
+      width: 4px;
+      align-self: stretch;
+      border-radius: 2px;
+      flex: none;
+    }
+    .txt {
+      flex: 1;
+      min-width: 0;
+    }
+    .card .nom {
+      display: block;
+      font-size: var(--t-l);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .card .meta {
+      display: block;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .card svg {
+      color: var(--texto-3);
+      flex: none;
+    }
+    .vacio {
+      margin: 0;
+      padding: var(--e3);
+      border: 1px dashed var(--borde);
+      border-radius: var(--r);
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.45;
+    }
   `,
 })
 export class SelectorCarrera {
@@ -125,12 +279,16 @@ export class SelectorCarrera {
     const q = plano(this.consulta().trim());
     if (!q) return [];
     return INDICE.filter((c) =>
-      plano(`${c.nombre} ${c.nombreCorto} ${nombreDepartamento(c.departamento)} ${NOMBRE_TIPO[c.tipo]}`).includes(q),
+      plano(
+        `${c.nombre} ${c.nombreCorto} ${nombreDepartamento(c.departamento)} ${NOMBRE_TIPO[c.tipo]}`,
+      ).includes(q),
     );
   });
 
   protected carrerasDe(d: Departamento): ResumenCarrera[] {
-    return d.carreras.map((slug) => INDICE.find((c) => c.slug === slug)).filter((c): c is ResumenCarrera => !!c);
+    return d.carreras
+      .map((slug) => INDICE.find((c) => c.slug === slug))
+      .filter((c): c is ResumenCarrera => !!c);
   }
 
   protected tipo = (c: ResumenCarrera) => NOMBRE_TIPO[c.tipo];
@@ -164,11 +322,31 @@ export class SelectorCarrera {
     </main>
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { display: flex; align-items: center; gap: var(--e3); padding: 14px var(--e4) 10px; }
-    h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: var(--e2) var(--e4) var(--e4); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: var(--e3);
+      padding: 14px var(--e4) 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    main {
+      padding: var(--e2) var(--e4) var(--e4);
+    }
   `,
 })
 export class ElegirCarrera {
@@ -193,7 +371,9 @@ export class ElegirCarrera {
           <h1>{{ r.nombreCorto }}</h1>
           <p class="sub">
             {{ tipo(r) }} · {{ departamento(r) }} ·
-            <a routerLink="/carrera/elegir" [queryParams]="{ volver: '/carrera' }" class="cambiar">Cambiar</a>
+            <a routerLink="/carrera/elegir" [queryParams]="{ volver: '/carrera' }" class="cambiar"
+              >Cambiar</a
+            >
           </p>
         </div>
       </header>
@@ -201,7 +381,17 @@ export class ElegirCarrera {
         @for (p of puertas(); track p.ruta) {
           <a class="puerta" [routerLink]="p.ruta">
             <span class="ico" [style.--color]="p.color">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
                 @if (p.icono === 'calendario') {
                   <circle cx="12" cy="12" r="9" />
                 }
@@ -212,7 +402,18 @@ export class ElegirCarrera {
               <span class="nom">{{ p.titulo }}</span>
               <span class="meta">{{ p.detalle }}</span>
             </span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5" /></svg>
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="m9.5 5.5 6.5 6.5-6.5 6.5" />
+            </svg>
           </a>
         }
         <app-firma-fei />
@@ -231,18 +432,79 @@ export class ElegirCarrera {
     }
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { padding: 18px var(--e4) var(--e3); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .cambiar { color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-    main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e3); }
-    .puerta { display: flex; gap: var(--e3); align-items: center; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 12px 14px; color: inherit; min-height: 68px; text-decoration: none; }
-    .ico { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; color: var(--color); background: color-mix(in srgb, var(--color) 14%, transparent); }
-    .txt { flex: 1; min-width: 0; }
-    .nom { display: block; font-size: var(--t-l); font-weight: 600; letter-spacing: -0.01em; }
-    .meta { display: block; font-size: var(--t-s); color: var(--texto-2); margin-top: 3px; }
-    .puerta > svg { color: var(--texto-3); flex: none; }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    header {
+      padding: 18px var(--e4) var(--e3);
+    }
+    h1 {
+      margin: 0;
+      font-size: var(--t-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .cambiar {
+      color: var(--marca);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    main {
+      padding: 0 var(--e4) var(--e4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--e3);
+    }
+    .puerta {
+      display: flex;
+      gap: var(--e3);
+      align-items: center;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 12px 14px;
+      color: inherit;
+      min-height: 68px;
+      text-decoration: none;
+    }
+    .ico {
+      flex: none;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--color);
+      background: color-mix(in srgb, var(--color) 14%, transparent);
+    }
+    .txt {
+      flex: 1;
+      min-width: 0;
+    }
+    .nom {
+      display: block;
+      font-size: var(--t-l);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .meta {
+      display: block;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      margin-top: 3px;
+    }
+    .puerta > svg {
+      color: var(--texto-3);
+      flex: none;
+    }
   `,
 })
 export class TuCarrera {
@@ -256,15 +518,47 @@ export class TuCarrera {
   protected readonly puertas = computed(() => {
     const r = this.resumen();
     if (!r) return [];
-    const plan = `${r.materias} materias · ${r.duracionAnios} años` + (r.tituloIntermedio ? ' · título intermedio' : '');
+    const plan =
+      `${r.materias} materias · ${r.duracionAnios} años` +
+      (r.tituloIntermedio ? ' · título intermedio' : '');
     const puertas = [
       r.tieneCorrelativas
-        ? { ruta: `/carrera/${r.slug}/correlatividades`, icono: 'grafo', color: 'var(--n1)', titulo: 'Correlatividades', detalle: 'El mapa: qué necesita y qué habilita cada materia' }
+        ? {
+            ruta: `/carrera/${r.slug}/correlatividades`,
+            icono: 'grafo',
+            color: 'var(--n1)',
+            titulo: 'Correlatividades',
+            detalle: 'El mapa: qué necesita y qué habilita cada materia',
+          }
         : null,
-      { ruta: `/carrera/${r.slug}`, icono: 'carreras', color: 'var(--n2)', titulo: 'Plan de estudios', detalle: r.tieneCorrelativas ? plan : plan + ' · sin correlatividades publicadas' },
-      { ruta: '/horarios', icono: 'horarios', color: 'var(--n3)', titulo: 'Horarios', detalle: r.tieneGrilla ? 'Qué se cursa hoy y en qué aula' : 'Grilla todavía no cargada' },
-      { ruta: '/fechas', icono: 'calendario', color: 'var(--n4)', titulo: 'Calendario académico', detalle: 'Inscripciones, exámenes y recesos' },
-      { ruta: '/campus', icono: 'mapa', color: 'var(--n5)', titulo: 'Mapa del campus', detalle: 'Edificios, aulas y cómo llegar' },
+      {
+        ruta: `/carrera/${r.slug}`,
+        icono: 'carreras',
+        color: 'var(--n2)',
+        titulo: 'Plan de estudios',
+        detalle: r.tieneCorrelativas ? plan : plan + ' · sin correlatividades publicadas',
+      },
+      {
+        ruta: '/horarios',
+        icono: 'horarios',
+        color: 'var(--n3)',
+        titulo: 'Horarios',
+        detalle: r.tieneGrilla ? 'Qué se cursa hoy y en qué aula' : 'Grilla todavía no cargada',
+      },
+      {
+        ruta: '/fechas',
+        icono: 'calendario',
+        color: 'var(--n4)',
+        titulo: 'Calendario académico',
+        detalle: 'Inscripciones, exámenes y recesos',
+      },
+      {
+        ruta: '/campus',
+        icono: 'mapa',
+        color: 'var(--n5)',
+        titulo: 'Mapa del campus',
+        detalle: 'Edificios, aulas y cómo llegar',
+      },
     ];
     return puertas.filter((p): p is NonNullable<typeof p> => !!p);
   });

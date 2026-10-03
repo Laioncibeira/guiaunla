@@ -10,7 +10,10 @@ import {
   simular,
 } from './explorar';
 
-const plan = (materias: Carrera['materias'], tipoNivel: Carrera['tipoNivel'] = 'anio'): Carrera => ({
+const plan = (
+  materias: Carrera['materias'],
+  tipoNivel: Carrera['tipoNivel'] = 'anio',
+): Carrera => ({
   slug: 'prueba',
   nombre: 'Prueba',
   nombreCorto: 'Prueba',
@@ -37,16 +40,30 @@ const m = (codigo: string, nivel: number, correlativas: string[] = []) => ({
 //  01 ─┬─ 03 ── 04
 //      └─ 05
 //  02 ─┘
-const cadena = plan([m('01', 1), m('02', 1), m('03', 1, ['01']), m('04', 2, ['03']), m('05', 2, ['01', '02'])]);
+const cadena = plan([
+  m('01', 1),
+  m('02', 1),
+  m('03', 1, ['01']),
+  m('04', 2, ['03']),
+  m('05', 2, ['01', '02']),
+]);
 
 describe('relacionadas: un salto en cada dirección', () => {
   it('junta lo que la prendida necesita y lo que destraba', () => {
-    expect([...(calcularRelacionadas(new Set(['03']), cadena) ?? [])].sort()).toEqual(['01', '03', '04']);
+    expect([...(calcularRelacionadas(new Set(['03']), cadena) ?? [])].sort()).toEqual([
+      '01',
+      '03',
+      '04',
+    ]);
   });
 
   it('suma las ramas de varias prendidas', () => {
     expect([...(calcularRelacionadas(new Set(['03', '05']), cadena) ?? [])].sort()).toEqual([
-      '01', '02', '03', '04', '05',
+      '01',
+      '02',
+      '03',
+      '04',
+      '05',
     ]);
   });
 
@@ -187,13 +204,14 @@ describe('filtros', () => {
   });
 
   it('puedo cursar deja sólo lo habilitado con lo aprobado', () => {
-    expect([...(aplicarFiltros(filas, new Set(['puedo-cursar']), new Set()) ?? [])].sort()).toEqual([
-      '02', '03',
-    ]);
+    expect([...(aplicarFiltros(filas, new Set(['puedo-cursar']), new Set()) ?? [])].sort()).toEqual(
+      ['02', '03'],
+    );
   });
 
   it('dos filtros suman en vez de restringir', () => {
-    const r = aplicarFiltros(filas, new Set(['puedo-cursar', 'se-dicta']), new Set(['04'])) ?? new Set();
+    const r =
+      aplicarFiltros(filas, new Set(['puedo-cursar', 'se-dicta']), new Set(['04'])) ?? new Set();
     expect([...r].sort()).toEqual(['02', '03', '04']);
   });
 });

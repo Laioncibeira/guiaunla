@@ -107,7 +107,9 @@ export class Avisos {
   private esIphoneSinInstalar(): boolean {
     const ua = navigator.userAgent;
     const ios = /iPhone|iPad|iPod/.test(ua);
-    const instalada = window.matchMedia('(display-mode: standalone)').matches || (navigator as { standalone?: boolean }).standalone === true;
+    const instalada =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (navigator as { standalone?: boolean }).standalone === true;
     return ios && !instalada;
   }
 }
@@ -116,5 +118,8 @@ export class Avisos {
 async function huella(texto: string): Promise<string> {
   const datos = new TextEncoder().encode(texto);
   const hash = await crypto.subtle.digest('SHA-256', datos);
-  return [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 40);
+  return [...new Uint8Array(hash)]
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+    .slice(0, 40);
 }

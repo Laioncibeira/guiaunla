@@ -9,7 +9,18 @@ import path from 'node:path';
 
 const raiz = path.resolve('dist/guiaunla/browser');
 const puerto = Number(process.argv[2] ?? 5055);
-const tipos = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json', '.ico': 'image/x-icon', '.webp': 'image/webp', '.woff2': 'font/woff2', '.txt': 'text/plain' };
+const tipos = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+  '.json': 'application/json',
+  '.svg': 'image/svg+xml',
+  '.webmanifest': 'application/manifest+json',
+  '.ico': 'image/x-icon',
+  '.webp': 'image/webp',
+  '.woff2': 'font/woff2',
+  '.txt': 'text/plain',
+};
 
 http
   .createServer((req, res) => {
@@ -25,7 +36,10 @@ http
       // Sólo archivos de adentro de dist: un "../" no puede leer el resto del disco.
       const adentro = f === raiz || f.startsWith(raiz + path.sep);
       if (adentro && fs.existsSync(f) && fs.statSync(f).isFile()) {
-        res.writeHead(200, { 'content-type': tipos[path.extname(f)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
+        res.writeHead(200, {
+          'content-type': tipos[path.extname(f)] ?? 'application/octet-stream',
+          'cache-control': 'no-store',
+        });
         fs.createReadStream(f).pipe(res);
         return;
       }

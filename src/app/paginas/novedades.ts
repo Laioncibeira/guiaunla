@@ -42,16 +42,69 @@ import { fechaLarga } from './formato';
     </main>
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { display: flex; align-items: center; gap: var(--e3); padding: 14px var(--e4) 10px; border-bottom: 1px solid var(--borde); }
-    h1 { margin: 0; font-size: var(--t-xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: var(--e3) var(--e4) var(--e4); display: flex; flex-direction: column; gap: 10px; }
-    .card { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 13px 14px; }
-    .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
-    h2 { margin: 4px 0 0; font-size: var(--t-l); font-weight: 700; line-height: 1.25; }
-    p { margin: 8px 0 0; font-size: var(--t-m); color: var(--texto-2); line-height: 1.5; white-space: pre-line; }
-    .aviso, .vacio { margin: 0; padding: 12px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: var(--e3);
+      padding: 14px var(--e4) 10px;
+      border-bottom: 1px solid var(--borde);
+    }
+    h1 {
+      margin: 0;
+      font-size: var(--t-xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    main {
+      padding: var(--e3) var(--e4) var(--e4);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card {
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 13px 14px;
+    }
+    .fecha {
+      display: block;
+      font-family: var(--mono);
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+    }
+    h2 {
+      margin: 4px 0 0;
+      font-size: var(--t-l);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    p {
+      margin: 8px 0 0;
+      font-size: var(--t-m);
+      color: var(--texto-2);
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+    .aviso,
+    .vacio {
+      margin: 0;
+      padding: 12px;
+      border: 1px dashed var(--borde);
+      border-radius: var(--r);
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
   `,
 })
 export class PaginaNovedades {

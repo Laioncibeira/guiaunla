@@ -29,7 +29,9 @@ if (!id) {
 function secreto(nombre) {
   const ruta = path.join(secretos, nombre);
   if (!fs.existsSync(ruta)) {
-    console.error(`Falta ${ruta}. Mirá las instrucciones al principio de functions/avisar-local.js.`);
+    console.error(
+      `Falta ${ruta}. Mirá las instrucciones al principio de functions/avisar-local.js.`,
+    );
     process.exit(1);
   }
   return JSON.parse(fs.readFileSync(ruta, 'utf8'));

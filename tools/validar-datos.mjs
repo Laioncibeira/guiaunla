@@ -24,8 +24,11 @@ const archivos = fs
 // El índice tiene que reflejar exactamente los planes que existen.
 const indice = leer('src/data/carreras/indice.json');
 const enIndice = new Set(indice.map((i) => i.slug));
-for (const f of archivos) if (!enIndice.has(f.replace('.json', ''))) fallar(`indice.json no lista a ${f}`);
-for (const i of indice) if (!archivos.includes(i.slug + '.json')) fallar(`indice.json lista ${i.slug} pero no existe el plan`);
+for (const f of archivos)
+  if (!enIndice.has(f.replace('.json', ''))) fallar(`indice.json no lista a ${f}`);
+for (const i of indice)
+  if (!archivos.includes(i.slug + '.json'))
+    fallar(`indice.json lista ${i.slug} pero no existe el plan`);
 
 for (const slug of slugsDeclarados)
   if (!archivos.includes(slug + '.json')) fallar(`falta el plan de ${slug}`);
@@ -37,7 +40,8 @@ for (const archivo of archivos) {
   if (archivo !== c.slug + '.json') fallar(`${archivo}: el slug no coincide con el archivo`);
   if (!slugsDeclarados.includes(c.slug)) fallar(`${donde}: no figura en departamentos.json`);
   if (!c.materias?.length) fallar(`${donde}: no tiene materias`);
-  if (!c.cotejado) avisar(`${donde}: sin cotejar contra la fuente` + (c.nota ? ` (${c.nota.slice(0, 60)}…)` : ''));
+  if (!c.cotejado)
+    avisar(`${donde}: sin cotejar contra la fuente` + (c.nota ? ` (${c.nota.slice(0, 60)}…)` : ''));
 
   const codigos = new Set();
   for (const m of c.materias) {
@@ -52,7 +56,8 @@ for (const archivo of archivos) {
 
   for (const m of c.materias) {
     for (const cor of m.correlativas) {
-      if (!codigos.has(cor)) fallar(`${donde}/${m.codigo}: correlativa ${cor} no existe en el plan`);
+      if (!codigos.has(cor))
+        fallar(`${donde}/${m.codigo}: correlativa ${cor} no existe en el plan`);
       if (cor === m.codigo) fallar(`${donde}/${m.codigo}: es correlativa de sí misma`);
     }
   }
@@ -122,7 +127,9 @@ const TURNOS_OK = new Set(['manana', 'tarde', 'noche']);
 let totalClases = 0;
 let fueraDePlan = 0;
 
-for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/data/horarios') : []) {
+for (const archivo of fs.existsSync('src/data/horarios')
+  ? fs.readdirSync('src/data/horarios')
+  : []) {
   const h = leer('src/data/horarios/' + archivo);
   const donde = 'horarios/' + h.carrera;
   if (archivo !== h.carrera + '.json') fallar(`${archivo}: el nombre no coincide con la carrera`);
@@ -137,7 +144,9 @@ for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/d
     if (!TURNOS_OK.has(c.turno)) fallar(`${donde}: turno inválido ${c.turno}`);
     if (!c.materiaTexto?.trim()) fallar(`${donde}: una clase sin materia`);
     if (c.materiaCodigo && !codigos.has(c.materiaCodigo))
-      fallar(`${donde}: la clase de ${c.materiaTexto} apunta al código ${c.materiaCodigo}, que no está en el plan`);
+      fallar(
+        `${donde}: la clase de ${c.materiaTexto} apunta al código ${c.materiaCodigo}, que no está en el plan`,
+      );
     if (!c.materiaCodigo) fueraDePlan++;
     if (!c.ubicaciones?.length) fallar(`${donde}: ${c.materiaTexto} sin lugar`);
     for (const u of c.ubicaciones) {
@@ -154,11 +163,18 @@ for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/d
 }
 
 // Datos con fecha de vencimiento: mejor enterarse antes de que la app quede vieja.
-const ultimaFecha = cal.eventos.map((e) => e.hasta).sort().at(-1) ?? '';
+const ultimaFecha =
+  cal.eventos
+    .map((e) => e.hasta)
+    .sort()
+    .at(-1) ?? '';
 const diasRestantes = Math.round((Date.parse(ultimaFecha) - Date.parse(hoyIso)) / 86400000);
-if (diasRestantes < 0) avisar(`calendario ${anioCalendario}: terminó el ${ultimaFecha}; hace falta el del año nuevo`);
+if (diasRestantes < 0)
+  avisar(`calendario ${anioCalendario}: terminó el ${ultimaFecha}; hace falta el del año nuevo`);
 else if (diasRestantes <= 60)
-  avisar(`calendario ${anioCalendario}: quedan ${diasRestantes} días de fechas (hasta ${ultimaFecha}); preparar el del año que viene`);
+  avisar(
+    `calendario ${anioCalendario}: quedan ${diasRestantes} días de fechas (hasta ${ultimaFecha}); preparar el del año que viene`,
+  );
 
 const [anioHoy, mesHoy] = hoyIso.split('-').map(Number);
 const periodoActual = `${anioHoy}-${mesHoy <= 7 ? 1 : 2}`;

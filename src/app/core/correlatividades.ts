@@ -18,8 +18,7 @@ export interface Vinculos {
 export function vincular(carrera: Carrera): Vinculos {
   const porCodigo = new Map(carrera.materias.map((m) => [m.codigo, m]));
   const habilita = new Map<string, string[]>(carrera.materias.map((m) => [m.codigo, []]));
-  for (const m of carrera.materias)
-    for (const c of m.correlativas) habilita.get(c)?.push(m.codigo);
+  for (const m of carrera.materias) for (const c of m.correlativas) habilita.get(c)?.push(m.codigo);
   return { habilita, porCodigo };
 }
 
@@ -46,11 +45,7 @@ export function faltanPara(
   return necesita(v, codigo).filter((m) => !aprobadas.has(m.codigo));
 }
 
-export function puedeCursar(
-  v: Vinculos,
-  codigo: string,
-  aprobadas: ReadonlySet<string>,
-): boolean {
+export function puedeCursar(v: Vinculos, codigo: string, aprobadas: ReadonlySet<string>): boolean {
   if (aprobadas.has(codigo)) return false;
   return faltanPara(v, codigo, aprobadas).length === 0;
 }
