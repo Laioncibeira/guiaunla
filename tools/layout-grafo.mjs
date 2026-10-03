@@ -2,9 +2,10 @@
  * Layout del grafo de correlatividades: columnas por nivel, filas ordenadas
  * para que se crucen menos líneas.
  *
- * Es la implementación de referencia: el componente de Angular usa el mismo
- * algoritmo (src/app/core/grafo/layout.ts). Acá sirve para generar el SVG
- * del mockup con datos reales y para mirar el resultado sin levantar la app.
+ * Es la copia que usa el mockup (tools/mockup/armar.mjs) para dibujar el SVG
+ * con datos reales sin levantar la app. La app usa src/app/core/grafo.ts: el
+ * algoritmo es el mismo, pero las medidas de las tarjetas ya no coinciden.
+ * Si cambia el layout de la app, este archivo no se entera.
  *
  * Uso:  node tools/layout-grafo.mjs <slug> [--svg salida.svg]
  */
