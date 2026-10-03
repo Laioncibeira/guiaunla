@@ -3,9 +3,13 @@
  * otro camino que el extractor: si los dos coinciden, el JSON no perdió filas
  * ni correlativas. Las carreras sin tabla (PDF o lista) se saltan con aviso.
  *
- * Uso:  node tools/cotejar-fuente.mjs [slug ...]
+ * Uso:  node tools/cotejar-fuente.mjs [--estricto] [slug ...]
  * Necesita el HTML cacheado en tools/cache/ (lo baja tools/extraer-plan.mjs).
  * Cuando el cotejo pasa, deja `cotejado: true` en el JSON.
+ *
+ * Sin caché no hay nada que comparar. Por defecto eso es un aviso; con
+ * `--estricto` es un error, para que nadie lea "todo bien" cuando en realidad
+ * no se cotejó ninguna carrera.
  */
 import fs from 'node:fs';
 import { CARRERAS, columnasDe } from './extraer-plan.mjs';
@@ -37,8 +41,13 @@ function filasCrudas(html, cfg) {
     });
 }
 
+const argumentos = process.argv.slice(2);
+const estricto = argumentos.includes('--estricto');
+const pedidas = argumentos.filter((a) => !a.startsWith('--'));
 let problemas = 0;
-const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CARRERAS);
+let cotejadas = 0;
+let sinCache = 0;
+const slugs = pedidas.length ? pedidas : Object.keys(CARRERAS);
 
 for (const slug of slugs) {
   const cfg = CARRERAS[slug];
@@ -55,8 +64,10 @@ for (const slug of slugs) {
   const rutaHtml = `tools/cache/${slug}.html`;
   if (!fs.existsSync(rutaHtml)) {
     console.log(`----  ${slug}: sin HTML cacheado`);
+    sinCache++;
     continue;
   }
+  cotejadas++;
   // Los códigos se comparan normalizados a dos dígitos cuando el plan es de dos.
   const anchoMax = Math.max(0, ...json.materias.map((m) => m.codigo).filter((c) => /^\d+$/.test(c)).map((c) => c.length));
   const pad = (c) => (anchoMax <= 2 ? c.padStart(2, '0') : c);
@@ -111,4 +122,12 @@ for (const slug of slugs) {
   );
 }
 
+if (sinCache) {
+  const msg = `${sinCache} carrera(s) sin HTML en tools/cache/: no se cotejaron. Corré antes node tools/extraer-plan.mjs.`;
+  if (estricto) {
+    console.error('ERROR: ' + msg);
+    problemas++;
+  } else console.warn('aviso: ' + msg);
+}
+console.log(`${cotejadas} carrera(s) cotejadas, ${problemas ? problemas + ' con problemas' : 'sin problemas'}.`);
 process.exit(problemas ? 1 : 0);

@@ -81,7 +81,13 @@ for (const archivo of archivos) {
 }
 
 // ------------------------------------------------------------ calendario
-const cal = leer('src/data/calendario/2026.json');
+// Se valida el mismo archivo que importa la app, para no revisar uno viejo.
+const anioCalendario = fs
+  .readFileSync('src/app/core/datos.ts', 'utf8')
+  .match(/data\/calendario\/(\d{4})\.json/)?.[1];
+if (!anioCalendario) fallar('src/app/core/datos.ts no importa ningún calendario');
+const cal = leer(`src/data/calendario/${anioCalendario}.json`);
+const hoyIso = new Date().toISOString().slice(0, 10);
 const ids = new Set();
 for (const e of cal.eventos) {
   if (ids.has(e.id)) fallar(`calendario: id repetido ${e.id}`);
@@ -145,6 +151,21 @@ for (const archivo of fs.existsSync('src/data/horarios') ? fs.readdirSync('src/d
       if (!u.edificio) avisar(`${donde}: ${u.aula ?? u.textoOriginal} sin edificio asignado`);
     }
   }
+}
+
+// Datos con fecha de vencimiento: mejor enterarse antes de que la app quede vieja.
+const ultimaFecha = cal.eventos.map((e) => e.hasta).sort().at(-1) ?? '';
+const diasRestantes = Math.round((Date.parse(ultimaFecha) - Date.parse(hoyIso)) / 86400000);
+if (diasRestantes < 0) avisar(`calendario ${anioCalendario}: terminó el ${ultimaFecha}; hace falta el del año nuevo`);
+else if (diasRestantes <= 60)
+  avisar(`calendario ${anioCalendario}: quedan ${diasRestantes} días de fechas (hasta ${ultimaFecha}); preparar el del año que viene`);
+
+const [anioHoy, mesHoy] = hoyIso.split('-').map(Number);
+const periodoActual = `${anioHoy}-${mesHoy <= 7 ? 1 : 2}`;
+for (const archivo of fs.readdirSync('src/data/horarios').filter((f) => f.endsWith('.json'))) {
+  const h = leer('src/data/horarios/' + archivo);
+  if (h.periodo < periodoActual)
+    avisar(`horarios/${h.carrera}: es del período ${h.periodo} y ya estamos en ${periodoActual}`);
 }
 
 // ---------------------------------------------------------------- salida

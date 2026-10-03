@@ -1,0 +1,44 @@
+name: publicar
+
+# Cada cambio que entra a main se publica en https://guiaunla.web.app.
+# Necesita el secreto FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7 en GitHub
+# (lo crea `npx firebase-tools@15 init hosting:github`). Sin él, el job avisa
+# y no hace nada. Las reglas de Firestore se publican aparte, con
+# `npm run publicar`, porque cambian muy de vez en cuando.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: publicar
+
+jobs:
+  hosting:
+    runs-on: ubuntu-latest
+    env:
+      CUENTA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7 }}
+    steps:
+      - name: ¿Está la credencial?
+        id: credencial
+        run: |
+          if [ -n "$CUENTA" ]; then echo "hay=si" >> "$GITHUB_OUTPUT"
+          else echo "::warning::Falta el secreto FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7: no se publica."; fi
+      - uses: actions/checkout@v5
+        if: steps.credencial.outputs.hay == 'si'
+      - uses: actions/setup-node@v5
+        if: steps.credencial.outputs.hay == 'si'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+        if: steps.credencial.outputs.hay == 'si'
+      - name: Verificar antes de publicar
+        if: steps.credencial.outputs.hay == 'si'
+        run: npm run verificar
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: steps.credencial.outputs.hay == 'si'
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7 }}
+          projectId: guiaunla-51aa7
+          channelId: live
