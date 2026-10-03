@@ -1,5 +1,5 @@
 import { DestroyRef, inject, Injectable, signal } from '@angular/core';
-import { Nube } from './firebase';
+import { aFecha, Nube } from './firebase';
 
 export interface Novedad {
   readonly id: string;
@@ -31,7 +31,7 @@ export class Novedades {
     this.estado.set('cargando');
     (async () => {
       try {
-        const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+        const { db, fs } = await this.nube.conFirestore();
         const q = fs.query(
           fs.collection(db, 'novedades'),
           fs.where('publicada', '==', true),
@@ -45,8 +45,7 @@ export class Novedades {
             this.lista.set(
               snap.docs.map((d) => {
                 const x = d.data();
-                const f = x['fecha'] as { toDate?: () => Date } | undefined;
-                const fecha = f?.toDate ? f.toDate() : new Date();
+                const fecha = aFecha(x['fecha'], new Date());
                 return {
                   id: d.id,
                   titulo: String(x['titulo'] ?? ''),

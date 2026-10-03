@@ -1,6 +1,6 @@
 import { afterNextRender, Component, inject, signal } from '@angular/core';
 import type { QueryDocumentSnapshot } from 'firebase/firestore';
-import { Nube } from '../../core/firebase';
+import { aFecha, Nube } from '../../core/firebase';
 import { aCsv, descargar, fechaHoraAr } from './csv';
 
 interface Recibido {
@@ -26,6 +26,10 @@ const PAGINA = 100;
         </label>
         <button type="button" (click)="exportar()" [disabled]="!lista().length">Exportar a Excel (CSV)</button>
       </div>
+
+      @if (aviso(); as a) {
+        <p class="aviso" role="alert">{{ a }}</p>
+      }
 
       @if (estado() === 'cargando') {
         <p class="vacio">Cargando…</p>
@@ -71,6 +75,7 @@ const PAGINA = 100;
     .botones button { min-height: 36px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--borde); background: var(--superficie-2); color: var(--texto); font-size: var(--t-xs); font-weight: 600; }
     .botones .peligro { color: var(--naranja); }
     .mas { min-height: 44px; border-radius: 10px; border: 1px solid var(--borde); background: var(--superficie-2); color: var(--texto); font-weight: 600; }
+    .aviso { margin: 0; font-size: var(--t-s); color: var(--naranja); }
     .vacio { margin: 0; padding: 12px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
   `,
 })
@@ -80,6 +85,8 @@ export class AdminContactos {
   protected readonly estado = signal<'cargando' | 'listo' | 'error'>('cargando');
   protected readonly abierto = signal(true);
   protected readonly hayMas = signal(false);
+  /** Qué no se pudo guardar, para no dejar la pantalla mintiendo. */
+  protected readonly aviso = signal<string | null>(null);
   private ultimo: QueryDocumentSnapshot | null = null;
 
   constructor() {
@@ -93,7 +100,7 @@ export class AdminContactos {
 
   protected async cargarMas(): Promise<void> {
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const partes = [fs.orderBy('creado', 'desc'), fs.limit(PAGINA)];
       const q = this.ultimo
         ? fs.query(fs.collection(db, 'contactos'), ...partes.slice(0, 1), fs.startAfter(this.ultimo), partes[1])
@@ -101,14 +108,13 @@ export class AdminContactos {
       const snap = await fs.getDocs(q);
       const nuevos = snap.docs.map((d) => {
         const x = d.data();
-        const creado = x['creado'] as { toDate?: () => Date } | undefined;
         return {
           id: d.id,
           mensaje: String(x['mensaje'] ?? ''),
           contacto: String(x['contacto'] ?? ''),
           nombre: String(x['nombre'] ?? ''),
           ruta: String(x['ruta'] ?? ''),
-          creado: creado?.toDate ? creado.toDate() : new Date(0),
+          creado: aFecha(x['creado'], new Date(0)),
           leido: x['leido'] === true,
         };
       });
@@ -123,7 +129,7 @@ export class AdminContactos {
 
   private async leerInterruptor(): Promise<void> {
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const d = await fs.getDoc(fs.doc(db, 'config', 'contacto'));
       this.abierto.set(d.exists() ? d.data()['abierto'] !== false : true);
     } catch {
@@ -132,22 +138,39 @@ export class AdminContactos {
   }
 
   protected async cambiarAbierto(valor: boolean): Promise<void> {
+    this.aviso.set(null);
     this.abierto.set(valor);
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
-    await fs.setDoc(fs.doc(db, 'config', 'contacto'), { abierto: valor });
+    try {
+      const { db, fs } = await this.nube.conFirestore();
+      await fs.setDoc(fs.doc(db, 'config', 'contacto'), { abierto: valor });
+    } catch {
+      // El interruptor vuelve a como estaba: lo que se ve es lo que quedó guardado.
+      this.abierto.set(!valor);
+      this.aviso.set('No se pudo cambiar el formulario. Revisá la conexión y probá de nuevo.');
+    }
   }
 
   protected async marcar(c: Recibido): Promise<void> {
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
-    await fs.updateDoc(fs.doc(db, 'contactos', c.id), { leido: !c.leido });
-    this.lista.update((l) => l.map((x) => (x.id === c.id ? { ...x, leido: !c.leido } : x)));
+    this.aviso.set(null);
+    try {
+      const { db, fs } = await this.nube.conFirestore();
+      await fs.updateDoc(fs.doc(db, 'contactos', c.id), { leido: !c.leido });
+      this.lista.update((l) => l.map((x) => (x.id === c.id ? { ...x, leido: !c.leido } : x)));
+    } catch {
+      this.aviso.set('No se pudo marcar el mensaje. Probá de nuevo.');
+    }
   }
 
   protected async borrar(c: Recibido): Promise<void> {
     if (!confirm('¿Borrar este mensaje? No se puede deshacer.')) return;
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
-    await fs.deleteDoc(fs.doc(db, 'contactos', c.id));
-    this.lista.update((l) => l.filter((x) => x.id !== c.id));
+    this.aviso.set(null);
+    try {
+      const { db, fs } = await this.nube.conFirestore();
+      await fs.deleteDoc(fs.doc(db, 'contactos', c.id));
+      this.lista.update((l) => l.filter((x) => x.id !== c.id));
+    } catch {
+      this.aviso.set('No se pudo borrar el mensaje. Probá de nuevo.');
+    }
   }
 
   protected exportar(): void {

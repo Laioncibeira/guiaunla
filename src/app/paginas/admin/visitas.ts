@@ -96,7 +96,7 @@ export class AdminVisitas {
 
   private async cargar(): Promise<void> {
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const desde = diaUtc(new Date(Date.now() - DIAS * 86400000));
       const snap = await fs.getDocs(fs.query(fs.collection(db, 'visitas'), fs.where('dia', '>=', desde)));
       this.registros.set(

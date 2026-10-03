@@ -1,5 +1,5 @@
 import { afterNextRender, Component, inject, signal } from '@angular/core';
-import { Nube } from '../../core/firebase';
+import { aFecha, Nube } from '../../core/firebase';
 
 interface Nota {
   readonly id: string;
@@ -118,17 +118,16 @@ export class AdminNovedades {
 
   private async cargar(): Promise<void> {
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const snap = await fs.getDocs(fs.query(fs.collection(db, 'novedades'), fs.orderBy('fecha', 'desc'), fs.limit(200)));
       this.lista.set(
         snap.docs.map((d) => {
           const x = d.data();
-          const f = x['fecha'] as { toDate?: () => Date } | undefined;
           return {
             id: d.id,
             titulo: String(x['titulo'] ?? ''),
             cuerpo: String(x['cuerpo'] ?? ''),
-            fecha: (f?.toDate ? f.toDate() : new Date()).toISOString().slice(0, 10),
+            fecha: aFecha(x['fecha'], new Date()).toISOString().slice(0, 10),
             publicada: x['publicada'] === true,
           };
         }),
@@ -166,7 +165,7 @@ export class AdminNovedades {
     }
     this.guardando.set(true);
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       // La fecha se guarda al mediodía de Argentina para que no cambie de día en ninguna zona.
       const fechaTs = fs.Timestamp.fromDate(new Date(this.fecha() + 'T12:00:00-03:00'));
       const base = { titulo: this.titulo().trim(), cuerpo: this.cuerpo().trim(), fecha: fechaTs, publicada: this.publicada() };
@@ -186,18 +185,30 @@ export class AdminNovedades {
   }
 
   protected async alternar(n: Nota): Promise<void> {
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
-    await fs.updateDoc(fs.doc(db, 'novedades', n.id), {
-      publicada: !n.publicada,
-      actualizada: fs.serverTimestamp(),
-    });
-    this.lista.update((l) => l.map((y) => (y.id === n.id ? { ...y, publicada: !n.publicada } : y)));
+    this.error.set(null);
+    try {
+      const { db, fs } = await this.nube.conFirestore();
+      await fs.updateDoc(fs.doc(db, 'novedades', n.id), {
+        publicada: !n.publicada,
+        actualizada: fs.serverTimestamp(),
+      });
+      this.lista.update((l) => l.map((y) => (y.id === n.id ? { ...y, publicada: !n.publicada } : y)));
+    } catch {
+      this.error.set(`No se pudo ${n.publicada ? 'despublicar' : 'publicar'} "${n.titulo}". Probá de nuevo.`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   protected async borrar(n: Nota): Promise<void> {
     if (!confirm(`¿Borrar "${n.titulo}"? No se puede deshacer.`)) return;
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
-    await fs.deleteDoc(fs.doc(db, 'novedades', n.id));
-    this.lista.update((l) => l.filter((y) => y.id !== n.id));
+    this.error.set(null);
+    try {
+      const { db, fs } = await this.nube.conFirestore();
+      await fs.deleteDoc(fs.doc(db, 'novedades', n.id));
+      this.lista.update((l) => l.filter((y) => y.id !== n.id));
+    } catch {
+      this.error.set(`No se pudo borrar "${n.titulo}". Probá de nuevo.`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }

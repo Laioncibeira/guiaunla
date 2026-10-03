@@ -29,7 +29,7 @@ export class Visitas {
   }
 
   private async sumar(clave: string): Promise<void> {
-    const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+    const { db, fs } = await this.nube.conFirestore();
     const dia = diaUtc();
     await fs.setDoc(fs.doc(db, 'visitas', `${dia}_${clave}`), { dia, ruta: clave, n: fs.increment(1) }, { merge: true });
   }

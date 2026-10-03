@@ -37,7 +37,7 @@ export class Contacto {
   async abierto(): Promise<boolean> {
     if (!this.nube.disponible) return true;
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const doc = await fs.getDoc(fs.doc(db, 'config', 'contacto'));
       return doc.exists() ? doc.data()['abierto'] !== false : true;
     } catch {
@@ -61,7 +61,7 @@ export class Contacto {
     if (!(await this.abierto())) return 'cerrado';
 
     try {
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const escritura = fs.addDoc(fs.collection(db, 'contactos'), {
         mensaje: mensaje.trim(),
         contacto: contacto.trim(),

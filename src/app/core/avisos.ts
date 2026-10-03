@@ -61,7 +61,7 @@ export class Avisos {
       const sub = await this.push.requestSubscription({ serverPublicKey: VAPID_PUBLICA });
       const json = sub.toJSON();
       if (!json.endpoint || !json.keys) throw new Error('suscripción incompleta');
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const id = await huella(json.endpoint);
       await fs.setDoc(fs.doc(db, 'suscripciones', id), {
         endpoint: json.endpoint,
