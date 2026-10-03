@@ -1,0 +1,48 @@
+name: verificar
+
+# En cada cambio: formato, pruebas, datos, build y CSP. Si algo falla, el PR
+# lo muestra en rojo antes de que llegue a la app publicada.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Formato (Prettier)
+        run: npm run formato:revisar
+      - name: Pruebas de la lógica
+        run: npm test
+      - name: Tipos de las pruebas
+        run: npm run test:tipos
+      - name: Datos consistentes
+        run: node tools/validar-datos.mjs
+      - name: Build con las páginas pre-generadas
+        run: npm run build
+      - name: Ningún script inline que la CSP bloquee
+        run: node tools/revisar-csp.mjs
+
+  reglas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      # El emulador de Firestore es un programa de Java.
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - name: Reglas de Firestore contra el emulador
+        run: npm run test:reglas

@@ -36,7 +36,10 @@ import { Visitas } from './core/visitas';
         max-width: 1000px;
         border: none;
       }
-      app-barra { order: -1; flex: none; }
+      app-barra {
+        order: -1;
+        flex: none;
+      }
       .pantalla {
         flex: 1;
         min-width: 0;

@@ -4,7 +4,7 @@ import { Novedades } from '../core/novedades';
 import { Avisos } from '../core/avisos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
-import { BannerElecciones, Estrella, FirmaFei, Firmas, LogoFei } from '../shared/fei';
+import { BannerElecciones, EnlaceFei, Estrella, FirmaFei, Firmas } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
 import { RelojLey } from '../shared/reloj-ley';
 import { FormularioContacto } from '../shared/contacto';
@@ -20,7 +20,7 @@ import { fechaCorta } from './formato';
     Estrella,
     FirmaFei,
     Firmas,
-    LogoFei,
+    EnlaceFei,
     Tutorial,
     RelojLey,
     FormularioContacto,
@@ -31,7 +31,7 @@ import { fechaCorta } from './formato';
         <h1>Guía UNLa <app-estrella color="var(--fei-violeta)" [tam]="15" /></h1>
         <p class="sub">Universidad Nacional de Lanús</p>
       </div>
-      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
+      <app-enlace-fei />
       <app-carrera-chip />
     </header>
 
@@ -43,10 +43,12 @@ import { fechaCorta } from './formato';
           <h2 id="elegir-titulo">Primero, elegí tu departamento y tu carrera</h2>
           <p>
             Es una sola vez: después la app arranca en tu plan, tus correlatividades y tus horarios.
-            Lo hacés desde acá, desde el botón <strong>Elegí tu carrera</strong> de arriba o desde la pestaña
-            <strong>Tu carrera</strong> de abajo, cuando quieras.
+            Lo hacés desde acá, desde el botón <strong>Elegí tu carrera</strong> de arriba o desde
+            la pestaña <strong>Tu carrera</strong> de abajo, cuando quieras.
           </p>
-          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/' }">Elegir departamento y carrera</a>
+          <a class="boton" routerLink="/carrera/elegir" [queryParams]="{ volver: '/' }"
+            >Elegir departamento y carrera</a
+          >
         </section>
       }
 
@@ -70,7 +72,19 @@ import { fechaCorta } from './formato';
         @switch (avisos.estado()) {
           @case ('listo') {
             <button type="button" class="avisos" (click)="avisos.suscribir(elegida.slug())">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0" /></svg>
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0" />
+              </svg>
               Quiero recibir novedades
             </button>
           }
@@ -78,13 +92,27 @@ import { fechaCorta } from './formato';
             <p class="avisos-nota">Aceptá el permiso que te pide el navegador…</p>
           }
           @case ('suscripto') {
-            <p class="avisos-nota ok">✓ Te avisamos en este teléfono cuando haya una novedad.</p>
+            <p class="avisos-nota ok">
+              ✓ Te avisamos en este teléfono cuando haya una novedad.
+              <button type="button" class="avisos-baja" (click)="avisos.desuscribir()">
+                Dejar de recibir
+              </button>
+            </p>
+          }
+          @case ('cancelando') {
+            <p class="avisos-nota">Cancelando los avisos…</p>
           }
           @case ('ios-sin-instalar') {
-            <p class="avisos-nota">Para recibir avisos en iPhone, primero agregá la app a tu inicio (Compartir → "Agregar a inicio") y abrila desde ahí.</p>
+            <p class="avisos-nota">
+              Para recibir avisos en iPhone, primero agregá la app a tu inicio (Compartir → "Agregar
+              a inicio") y abrila desde ahí.
+            </p>
           }
           @case ('bloqueado') {
-            <p class="avisos-nota">Las notificaciones están bloqueadas para este sitio. Podés habilitarlas desde los ajustes del navegador.</p>
+            <p class="avisos-nota">
+              Las notificaciones están bloqueadas para este sitio. Podés habilitarlas desde los
+              ajustes del navegador.
+            </p>
           }
           @case ('error') {
             <p class="avisos-nota">No se pudo activar. Probá de nuevo en un rato.</p>
@@ -105,66 +133,197 @@ import { fechaCorta } from './formato';
     </main>
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
     header {
-      display: flex; align-items: center; gap: var(--e3);
+      display: flex;
+      align-items: center;
+      gap: var(--e3);
       padding: 18px var(--e4) var(--e3);
     }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    h1 app-estrella { vertical-align: 4px; margin-left: 2px; }
-    .titulo { flex: 1; min-width: 0; }
-    h1, .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    /* En el teléfono el subtítulo no entra al lado del logo y la carrera. */
-    @media (max-width: 599px) { .sub { display: none; } }
-    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .pastilla {
-      border: 1px solid var(--borde); background: var(--superficie);
-      border-radius: 999px; padding: 8px 13px; font-size: var(--t-s);
-      color: var(--texto-2); min-height: 36px; display: flex; align-items: center;
+    h1 {
+      margin: 0;
+      font-size: var(--t-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
-    main { flex: 1; padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
+    h1 app-estrella {
+      vertical-align: 4px;
+      margin-left: 2px;
+    }
+    .titulo {
+      flex: 1;
+      min-width: 0;
+    }
+    h1,
+    .sub {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* En el teléfono el subtítulo no entra al lado del logo y la carrera. */
+    @media (max-width: 599px) {
+      .sub {
+        display: none;
+      }
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    main {
+      flex: 1;
+      padding: 0 var(--e4) var(--e4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--e4);
+    }
     @media (min-width: 900px) {
-      main { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
-      .elegir, app-tutorial, app-firma-fei { grid-column: 1 / -1; }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+      .elegir,
+      app-tutorial,
+      app-firma-fei {
+        grid-column: 1 / -1;
+      }
     }
     .rot {
-      margin: 0 0 var(--e2); font-size: var(--t-xs); font-weight: 600;
-      letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-3);
+      margin: 0 0 var(--e2);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--texto-3);
     }
     .card {
-      display: block; background: var(--superficie); border: 1px solid var(--borde);
-      border-radius: var(--r); padding: 14px; color: inherit;
+      display: block;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 14px;
+      color: inherit;
     }
-    .fila-titulo { display: flex; align-items: baseline; justify-content: space-between; }
-    .ver-todas { font-size: var(--t-s); font-weight: 600; color: var(--marca); text-decoration: underline; text-underline-offset: 2px; }
-    .novedad { margin-bottom: 8px; }
+    .fila-titulo {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .ver-todas {
+      font-size: var(--t-s);
+      font-weight: 600;
+      color: var(--marca);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .novedad {
+      margin-bottom: 8px;
+    }
     .avisos {
-      display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; margin-top: 10px;
-      border: 1px solid var(--marca); border-radius: 10px; background: var(--superficie); color: var(--marca);
-      font-size: var(--t-m); font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 46px;
+      margin-top: 10px;
+      border: 1px solid var(--marca);
+      border-radius: 10px;
+      background: var(--superficie);
+      color: var(--marca);
+      font-size: var(--t-m);
+      font-weight: 600;
     }
-    .avisos-nota { margin: 10px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
-    .avisos-nota.ok { color: var(--verde); }
-    .sin-novedades { margin: 0; padding: 12px 14px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
-    .novedad .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
-    .novedad h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; }
+    .avisos-nota {
+      margin: 10px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.45;
+    }
+    .avisos-nota.ok {
+      color: var(--verde);
+    }
+    .avisos-baja {
+      margin-left: 4px;
+      padding: 0;
+      border: none;
+      background: none;
+      font: inherit;
+      color: var(--texto-2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .sin-novedades {
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px dashed var(--borde);
+      border-radius: var(--r);
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .novedad .fecha {
+      display: block;
+      font-family: var(--mono);
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+    }
+    .novedad h3 {
+      margin: 4px 0 0;
+      font-size: var(--t-m);
+      font-weight: 700;
+      line-height: 1.25;
+    }
     .novedad p {
-      margin: 6px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; white-space: pre-line;
-      display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+      margin: 6px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.45;
+      white-space: pre-line;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .elegir {
-      background: var(--superficie); border: 1px solid var(--borde);
-      border-radius: var(--r); padding: var(--e4);
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: var(--e4);
     }
-    .elegir { border-color: var(--marca); }
-    .elegir h2 { margin: 0; font-size: var(--t-l); }
-    .elegir p { margin: 6px 0 var(--e3); font-size: var(--t-s); color: var(--texto-2); line-height: 1.5; }
-    .elegir strong { color: var(--texto); font-weight: 600; }
+    .elegir {
+      border-color: var(--marca);
+    }
+    .elegir h2 {
+      margin: 0;
+      font-size: var(--t-l);
+    }
+    .elegir p {
+      margin: 6px 0 var(--e3);
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.5;
+    }
+    .elegir strong {
+      color: var(--texto);
+      font-weight: 600;
+    }
     .elegir .boton {
-      display: flex; align-items: center; justify-content: center; min-height: 46px;
-      border-radius: 10px; background: var(--marca); color: var(--sobre-marca);
-      font-size: var(--t-m); font-weight: 600; text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 10px;
+      background: var(--marca);
+      color: var(--sobre-marca);
+      font-size: var(--t-m);
+      font-weight: 600;
+      text-decoration: none;
     }
   `,
 })

@@ -96,13 +96,21 @@ service cloud.firestore {
     }
 
     // ------------ suscripciones a avisos: cada teléfono deja su buzón
-    // La lee sólo la función que manda los avisos (Admin SDK, fuera de reglas).
+    // La lee sólo quien manda los avisos (Admin SDK, fuera de reglas).
+    //
+    // El buzón tiene que ser de un servicio de push real (Chrome/Android,
+    // Firefox, Safari/iPhone, Edge): si no, el envío le haría un pedido a
+    // cualquier dirección que alguien inventara.
+    function buzonDePush(url) {
+      return url is string
+        && url.size() <= 1000
+        && url.matches('https://(fcm[.]googleapis[.]com|updates[.]push[.]services[.]mozilla[.]com|web[.]push[.]apple[.]com|[a-z0-9-]+[.]notify[.]windows[.]com)/.+');
+    }
+
     match /suscripciones/{id} {
       allow create, update: if request.resource.data.keys().hasOnly(['endpoint', 'p256dh', 'auth', 'carrera', 'creada'])
         && request.resource.data.keys().hasAll(['endpoint', 'p256dh', 'auth', 'creada'])
-        && request.resource.data.endpoint is string
-        && request.resource.data.endpoint.matches('https://.*')
-        && request.resource.data.endpoint.size() <= 1000
+        && buzonDePush(request.resource.data.endpoint)
         && texto(request.resource.data.p256dh, 40, 200)
         && texto(request.resource.data.auth, 10, 100)
         && (!('carrera' in request.resource.data)

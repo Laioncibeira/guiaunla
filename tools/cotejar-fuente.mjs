@@ -3,9 +3,13 @@
  * otro camino que el extractor: si los dos coinciden, el JSON no perdió filas
  * ni correlativas. Las carreras sin tabla (PDF o lista) se saltan con aviso.
  *
- * Uso:  node tools/cotejar-fuente.mjs [slug ...]
+ * Uso:  node tools/cotejar-fuente.mjs [--estricto] [slug ...]
  * Necesita el HTML cacheado en tools/cache/ (lo baja tools/extraer-plan.mjs).
  * Cuando el cotejo pasa, deja `cotejado: true` en el JSON.
+ *
+ * Sin caché no hay nada que comparar. Por defecto eso es un aviso; con
+ * `--estricto` es un error, para que nadie lea "todo bien" cuando en realidad
+ * no se cotejó ninguna carrera.
  */
 import fs from 'node:fs';
 import { CARRERAS, columnasDe } from './extraer-plan.mjs';
@@ -18,7 +22,11 @@ const texto = (h) =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const sinAcentos = (s) => s.normalize('NFD').replace(/\p{Mn}/gu, '').toLowerCase();
+const sinAcentos = (s) =>
+  s
+    .normalize('NFD')
+    .replace(/\p{Mn}/gu, '')
+    .toLowerCase();
 
 /** Filas de materia de la tabla original con su celda de correlativas. */
 function filasCrudas(html, cfg) {
@@ -32,13 +40,19 @@ function filasCrudas(html, cfg) {
     .filter((f) => f.length >= 4 && /^\d{1,5}$/.test(f[0]))
     .map((f) => {
       // Misma corrección que el extractor: una celda de más corre las columnas.
-      const g = !cfg.columnas && f.length === ancho + 1 ? [f[0], f[1] + ' ' + f[2], ...f.slice(3)] : f;
+      const g =
+        !cfg.columnas && f.length === ancho + 1 ? [f[0], f[1] + ' ' + f[2], ...f.slice(3)] : f;
       return { codigo: f[0], correlativas: g[cols.correl] ?? '' };
     });
 }
 
+const argumentos = process.argv.slice(2);
+const estricto = argumentos.includes('--estricto');
+const pedidas = argumentos.filter((a) => !a.startsWith('--'));
 let problemas = 0;
-const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(CARRERAS);
+let cotejadas = 0;
+let sinCache = 0;
+const slugs = pedidas.length ? pedidas : Object.keys(CARRERAS);
 
 for (const slug of slugs) {
   const cfg = CARRERAS[slug];
@@ -55,10 +69,18 @@ for (const slug of slugs) {
   const rutaHtml = `tools/cache/${slug}.html`;
   if (!fs.existsSync(rutaHtml)) {
     console.log(`----  ${slug}: sin HTML cacheado`);
+    sinCache++;
     continue;
   }
+  cotejadas++;
   // Los códigos se comparan normalizados a dos dígitos cuando el plan es de dos.
-  const anchoMax = Math.max(0, ...json.materias.map((m) => m.codigo).filter((c) => /^\d+$/.test(c)).map((c) => c.length));
+  const anchoMax = Math.max(
+    0,
+    ...json.materias
+      .map((m) => m.codigo)
+      .filter((c) => /^\d+$/.test(c))
+      .map((c) => c.length),
+  );
   const pad = (c) => (anchoMax <= 2 ? c.padStart(2, '0') : c);
   // Algunas tablas repiten la numeración en un bloque de electivas al final:
   // como el extractor, se queda con la primera aparición de cada código.
@@ -91,7 +113,9 @@ for (const slug of slugs) {
       .map((f) => pad(f.codigo)),
   );
   const conCorrJson = new Set(
-    json.materias.filter((m) => m.correlativas.length || m.correlativasNoResueltas?.length).map((m) => m.codigo),
+    json.materias
+      .filter((m) => m.correlativas.length || m.correlativasNoResueltas?.length)
+      .map((m) => m.codigo),
   );
   const perdidas = [...conCorrFuente].filter((c) => !conCorrJson.has(c));
   const inventadas = [...conCorrJson].filter((c) => !conCorrFuente.has(c) && codigosFuente.has(c));
@@ -111,4 +135,14 @@ for (const slug of slugs) {
   );
 }
 
+if (sinCache) {
+  const msg = `${sinCache} carrera(s) sin HTML en tools/cache/: no se cotejaron. Corré antes node tools/extraer-plan.mjs.`;
+  if (estricto) {
+    console.error('ERROR: ' + msg);
+    problemas++;
+  } else console.warn('aviso: ' + msg);
+}
+console.log(
+  `${cotejadas} carrera(s) cotejadas, ${problemas ? problemas + ' con problemas' : 'sin problemas'}.`,
+);
 process.exit(problemas ? 1 : 0);

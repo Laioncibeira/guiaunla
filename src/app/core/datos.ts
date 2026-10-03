@@ -137,7 +137,14 @@ export const CAMPUS = campusJson as unknown as {
   nota: string;
   viewBox: string;
   calles: readonly { nombre: string; lado: string }[];
-  accesos: readonly { id: string; nombre: string; detalle: string; x: number; y: number; principal?: boolean }[];
+  accesos: readonly {
+    id: string;
+    nombre: string;
+    detalle: string;
+    x: number;
+    y: number;
+    principal?: boolean;
+  }[];
   /** Lugares de cursada que no están en el predio, como el MUD. */
   externos: readonly { id: string; nombre: string; sigla: string; detalle: string }[];
   edificios: readonly Edificio[];
@@ -191,14 +198,7 @@ export async function cargarGrilla(slug: string): Promise<Horarios | null> {
   return modulo.default as Horarios;
 }
 
-export const DIAS: readonly Dia[] = [
-  'lunes',
-  'martes',
-  'miercoles',
-  'jueves',
-  'viernes',
-  'sabado',
-];
+export const DIAS: readonly Dia[] = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
 
 export const NOMBRE_DIA: Record<Dia, string> = {
   lunes: 'Lunes',
@@ -228,9 +228,7 @@ export const NOMBRE_TURNO: Record<Turno, string> = {
 
 /** Las materias que se están dictando este cuatrimestre, según la grilla. */
 export function dictadasEn(h: Horarios | null | undefined): ReadonlySet<string> {
-  return new Set(
-    (h?.clases ?? []).map((c) => c.materiaCodigo).filter((c): c is string => !!c),
-  );
+  return new Set((h?.clases ?? []).map((c) => c.materiaCodigo).filter((c): c is string => !!c));
 }
 
 // -------------------------------------------------------- año y cuatrimestre
@@ -259,23 +257,8 @@ export const anios = (carrera: Carrera): readonly number[] => {
   return Array.from({ length: total }, (_, i) => i + 1);
 };
 
-export const materiasDe = (carrera: Carrera, anio: number, cuatrimestre?: number) =>
-  carrera.materias.filter(
-    (m) =>
-      anioDe(carrera, m) === anio &&
-      (cuatrimestre === undefined || cuatrimestreDe(carrera, m) === cuatrimestre),
-  );
-
 /** "3° año" / "5° cuatrimestre", según cómo agrupa el plan de esa carrera. */
 export const nombreNivel = (carrera: Carrera, nivel: number): string =>
   carrera.tipoNivel === 'anio' ? `${nivel}° año` : `${nivel}° cuatrimestre`;
 
-export const nombreNivelCorto = (carrera: Carrera, nivel: number): string =>
-  carrera.tipoNivel === 'anio' ? `${nivel}° año` : `${nivel}° cuat.`;
-
-/** Sin acentos y en minúsculas, para buscar sin que importe cómo se escriba. */
-export const plano = (s: string): string =>
-  s
-    .normalize('NFD')
-    .replace(/\p{Mn}/gu, '')
-    .toLowerCase();
+export { plano } from './texto';

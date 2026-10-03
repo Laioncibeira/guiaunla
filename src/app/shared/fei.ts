@@ -17,7 +17,12 @@ import { CarreraElegida } from './ui';
       />
     </svg>
   `,
-  styles: `:host { display: inline-flex; line-height: 0; }`,
+  styles: `
+    :host {
+      display: inline-flex;
+      line-height: 0;
+    }
+  `,
 })
 export class Estrella {
   readonly color = input('var(--fei-violeta)');
@@ -45,6 +50,9 @@ export class Estrellas {
   readonly tam = input(12);
 }
 
+/** El sitio de la agrupación: adónde llevan el logo, el banner y la firma. */
+export const URL_FEI = 'https://frentedeestudiantesdeizquierda-fei.web.app/';
+
 /** El logo blanco. Va siempre sobre fondo oscuro, que es como está pensado. */
 @Component({
   selector: 'app-logo-fei',
@@ -61,8 +69,13 @@ export class Estrellas {
     </picture>
   `,
   styles: `
-    :host { display: inline-flex; line-height: 0; }
-    img { display: block; }
+    :host {
+      display: inline-flex;
+      line-height: 0;
+    }
+    img {
+      display: block;
+    }
   `,
 })
 export class LogoFei {
@@ -82,12 +95,7 @@ export class LogoFei {
   selector: 'app-banner-elecciones',
   imports: [Estrella, LogoFei],
   template: `
-    <a
-      class="banner"
-      [class.permanente]="!vigente()"
-      href="https://frentedeestudiantesdeizquierda-fei.web.app/"
-      rel="noopener"
-    >
+    <a class="banner" [class.permanente]="!vigente()" [href]="urlFei" rel="noopener">
       <div class="chispas" aria-hidden="true">
         <app-estrella color="var(--fei-amarillo)" [tam]="13" />
         <app-estrella color="var(--fei-rojo)" [tam]="9" />
@@ -113,7 +121,14 @@ export class LogoFei {
       />
 
       <div class="lista">
-        <img class="siete" src="lista7.webp" alt="Lista 7" width="320" height="105" decoding="async" />
+        <img
+          class="siete"
+          src="lista7.webp"
+          alt="Lista 7"
+          width="320"
+          height="105"
+          decoding="async"
+        />
         <app-logo-fei [ancho]="104" />
       </div>
     </a>
@@ -137,8 +152,12 @@ export class LogoFei {
       align-items: flex-start;
       gap: 7px;
     }
-    .chispas app-estrella:nth-child(2) { margin-top: 12px; }
-    .chispas app-estrella:nth-child(3) { margin-top: 4px; }
+    .chispas app-estrella:nth-child(2) {
+      margin-top: 12px;
+    }
+    .chispas app-estrella:nth-child(3) {
+      margin-top: 4px;
+    }
     .antetitulo {
       margin: 0;
       font-size: var(--t-xs);
@@ -168,12 +187,26 @@ export class LogoFei {
       padding-top: 12px;
       border-top: 1px solid var(--fei-borde);
     }
-    .siete { flex: none; display: block; width: 88px; height: auto; }
-    .revolucionemos { display: block; width: 100%; max-width: 300px; height: auto; margin: 14px auto 0; }
-    .permanente .revolucionemos { margin-top: 10px; }
+    .siete {
+      flex: none;
+      display: block;
+      width: 88px;
+      height: auto;
+    }
+    .revolucionemos {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 14px auto 0;
+    }
+    .permanente .revolucionemos {
+      margin-top: 10px;
+    }
   `,
 })
 export class BannerElecciones {
+  protected readonly urlFei = URL_FEI;
   private static readonly DESDE = '2026-09-14';
   private static readonly HASTA = '2026-09-17';
 
@@ -196,20 +229,37 @@ export class BannerElecciones {
   selector: 'app-firma-fei',
   imports: [Estrellas, LogoFei],
   template: `
-    <a href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener">
+    <a [href]="urlFei" rel="noopener">
       <app-estrellas [tam]="11" />
       <span>Hecha por estudiantes del</span>
       <span class="logos">
         <app-logo-fei [ancho]="124" />
-        <img src="firma-cesaco.webp" alt="Presidencia del CESACO, Centro de Estudiantes de Salud Comunitaria" width="380" height="181" decoding="async" />
+        <img
+          src="firma-cesaco.webp"
+          alt="Presidencia del CESACO, Centro de Estudiantes de Salud Comunitaria"
+          width="380"
+          height="181"
+          decoding="async"
+        />
       </span>
       <span class="ir">Conocé al FEI →</span>
     </a>
   `,
   styles: `
-    :host { display: block; }
-    .logos { display: flex; align-items: center; justify-content: center; gap: 18px; }
-    .logos img { display: block; width: 124px; height: auto; }
+    :host {
+      display: block;
+    }
+    .logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .logos img {
+      display: block;
+      width: 124px;
+      height: auto;
+    }
     a {
       display: flex;
       flex-direction: column;
@@ -222,11 +272,46 @@ export class BannerElecciones {
       color: #a79db0;
       font-size: var(--t-s);
     }
-    a:hover { color: #d8cfe0; }
-    .ir { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    a:hover {
+      color: #d8cfe0;
+    }
+    .ir {
+      color: var(--fei-amarillo);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   `,
 })
-export class FirmaFei {}
+export class FirmaFei {
+  protected readonly urlFei = URL_FEI;
+}
+
+/** El logo chico del FEI en la cabecera de las pantallas, con enlace al sitio. */
+@Component({
+  selector: 'app-enlace-fei',
+  imports: [LogoFei],
+  template: `
+    <a [href]="urlFei" rel="noopener" aria-label="Frente de Estudiantes de Izquierda">
+      <app-logo-fei [ancho]="48" />
+    </a>
+  `,
+  styles: `
+    :host {
+      flex: none;
+      display: inline-flex;
+    }
+    a {
+      display: inline-flex;
+      padding: 5px 6px;
+      border-radius: 8px;
+      background: var(--fei-fondo);
+    }
+  `,
+})
+export class EnlaceFei {
+  protected readonly urlFei = URL_FEI;
+}
 
 /**
  * Quiénes firman el formulario de contacto. El FEI firma siempre; el resto
@@ -243,12 +328,36 @@ export class FirmaFei {}
     <div class="logos" [class.varias]="departamento() !== null">
       @switch (departamento()) {
         @case ('humanidades-y-artes') {
-          <img src="firma-arte.webp" alt="Secretaría de Arte y Cultura del CEDHA" width="480" height="211" decoding="async" />
-          <img src="firma-dcyv.webp" alt="Secretaría de Diseño y Comunicación Visual del CEDHA" width="480" height="211" decoding="async" />
-          <img src="firma-tradu.webp" alt="Secretaría de Traductorado Público en Inglés del CEDHA" width="480" height="130" decoding="async" />
+          <img
+            src="firma-arte.webp"
+            alt="Secretaría de Arte y Cultura del CEDHA"
+            width="480"
+            height="211"
+            decoding="async"
+          />
+          <img
+            src="firma-dcyv.webp"
+            alt="Secretaría de Diseño y Comunicación Visual del CEDHA"
+            width="480"
+            height="211"
+            decoding="async"
+          />
+          <img
+            src="firma-tradu.webp"
+            alt="Secretaría de Traductorado Público en Inglés del CEDHA"
+            width="480"
+            height="130"
+            decoding="async"
+          />
         }
         @case ('salud-comunitaria') {
-          <img src="firma-cesaco.webp" alt="Presidencia del CESACO" width="380" height="181" decoding="async" />
+          <img
+            src="firma-cesaco.webp"
+            alt="Presidencia del CESACO"
+            width="380"
+            height="181"
+            decoding="async"
+          />
           <!-- Secretaría de Género del CESACO: va acá cuando llegue el archivo. -->
         }
       }
@@ -256,11 +365,34 @@ export class FirmaFei {}
     </div>
   `,
   styles: `
-    :host { display: block; }
-    .rot { margin: 0 0 10px; font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
-    .logos { display: flex; justify-content: center; }
-    .logos.varias { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; align-items: center; justify-items: center; }
-    img { display: block; width: 100%; max-width: 150px; height: auto; }
+    :host {
+      display: block;
+    }
+    .rot {
+      margin: 0 0 10px;
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #a79db0;
+    }
+    .logos {
+      display: flex;
+      justify-content: center;
+    }
+    .logos.varias {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 18px;
+      align-items: center;
+      justify-items: center;
+    }
+    img {
+      display: block;
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+    }
   `,
 })
 export class Firmas {

@@ -54,5 +54,7 @@ tools/mockup/hoja.html
 tools/mockup/*.svg
 .claude/
 firebase-debug.log
+firestore-debug.log
+ui-debug.log
 desktop.ini
 tools/secretos/

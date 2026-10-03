@@ -21,6 +21,7 @@ export type EstadoAvisos =
   | 'listo'
   | 'pidiendo'
   | 'suscripto'
+  | 'cancelando'
   | 'bloqueado'
   | 'error';
 
@@ -61,7 +62,7 @@ export class Avisos {
       const sub = await this.push.requestSubscription({ serverPublicKey: VAPID_PUBLICA });
       const json = sub.toJSON();
       if (!json.endpoint || !json.keys) throw new Error('suscripción incompleta');
-      const [db, fs] = await Promise.all([this.nube.firestore(), import('firebase/firestore')]);
+      const { db, fs } = await this.nube.conFirestore();
       const id = await huella(json.endpoint);
       await fs.setDoc(fs.doc(db, 'suscripciones', id), {
         endpoint: json.endpoint,
@@ -81,11 +82,34 @@ export class Avisos {
     }
   }
 
+  /**
+   * Deja de recibir avisos en este teléfono. El buzón deja de existir en el
+   * servicio de push; el próximo envío lo encuentra vencido (410) y borra su
+   * documento de Firestore, así que no hace falta permiso para borrarlo acá.
+   */
+  async desuscribir(): Promise<void> {
+    if (this.estado() !== 'suscripto') return;
+    this.estado.set('cancelando');
+    try {
+      await this.push.unsubscribe();
+    } catch {
+      /* ya no había suscripción: igual queda sin avisos */
+    }
+    try {
+      localStorage.removeItem(CLAVE);
+    } catch {
+      /* nada que borrar */
+    }
+    this.estado.set('listo');
+  }
+
   /** Safari en iPhone sólo permite avisos con la app en el inicio. */
   private esIphoneSinInstalar(): boolean {
     const ua = navigator.userAgent;
     const ios = /iPhone|iPad|iPod/.test(ua);
-    const instalada = window.matchMedia('(display-mode: standalone)').matches || (navigator as { standalone?: boolean }).standalone === true;
+    const instalada =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (navigator as { standalone?: boolean }).standalone === true;
     return ios && !instalada;
   }
 }
@@ -94,5 +118,8 @@ export class Avisos {
 async function huella(texto: string): Promise<string> {
   const datos = new TextEncoder().encode(texto);
   const hash = await crypto.subtle.digest('SHA-256', datos);
-  return [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 40);
+  return [...new Uint8Array(hash)]
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+    .slice(0, 40);
 }

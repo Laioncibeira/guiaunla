@@ -6,22 +6,10 @@
   "hosting": {
     "site": "guiaunla",
     "public": "dist/guiaunla/browser",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": false,
     "rewrites": [
-      {
-        "source": "/admin",
-        "destination": "/index.csr.html"
-      },
-      {
-        "source": "/admin/**",
-        "destination": "/index.csr.html"
-      },
       {
         "source": "**",
         "destination": "/index.csr.html"
@@ -45,7 +33,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+            "value": "default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google.com/images/cleardot.gif; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://content-firebaseappcheck.googleapis.com; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
           }
         ]
       },
@@ -73,11 +61,14 @@
     {
       "source": "functions",
       "codebase": "default",
-      "runtime": "nodejs20",
-      "ignore": [
-        "node_modules",
-        ".git"
-      ]
+      "runtime": "nodejs22",
+      "ignore": ["node_modules", ".git"]
     }
-  ]
+  ],
+  "emulators": {
+    "firestore": { "host": "127.0.0.1", "port": 8080 },
+    "hosting": { "host": "127.0.0.1", "port": 5000 },
+    "ui": { "enabled": false },
+    "singleProjectMode": true
+  }
 }

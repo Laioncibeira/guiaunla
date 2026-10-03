@@ -62,28 +62,28 @@
    agregamos un botón para elegirlo a mano. */
 @media (prefers-color-scheme: light) {
   :root:not([data-tema='oscuro']) {
-  color-scheme: light;
-  --bg: #faf8fb;
-  --superficie: #ffffff;
-  --superficie-2: #f2eff4;
-  --borde: #e2dde7;
-  --marca: #7b3fb5;
-  --marca-suave: #a274cc;
-  --sobre-marca: #ffffff;
-  --texto: #191720;
-  --texto-2: #5d5568;
-  --texto-3: #6b6376;
-  --naranja: #a85a12;
-  --verde: #1f7a52;
-  --sombra: 0 -12px 28px rgb(30 20 40 / 12%);
-  --n1: #7b3fb5;
-  --n2: #1f6fd0;
-  --n3: #0f7c78;
-  --n4: #a85a12;
-  --n5: #b5387f;
-  --n6: #1f7a52;
-  --n7: #8a6512;
-  --n8: #c02b2b;
+    color-scheme: light;
+    --bg: #faf8fb;
+    --superficie: #ffffff;
+    --superficie-2: #f2eff4;
+    --borde: #e2dde7;
+    --marca: #7b3fb5;
+    --marca-suave: #a274cc;
+    --sobre-marca: #ffffff;
+    --texto: #191720;
+    --texto-2: #5d5568;
+    --texto-3: #6b6376;
+    --naranja: #a85a12;
+    --verde: #1f7a52;
+    --sombra: 0 -12px 28px rgb(30 20 40 / 12%);
+    --n1: #7b3fb5;
+    --n2: #1f6fd0;
+    --n3: #0f7c78;
+    --n4: #a85a12;
+    --n5: #b5387f;
+    --n6: #1f7a52;
+    --n7: #8a6512;
+    --n8: #c02b2b;
   }
 }
 

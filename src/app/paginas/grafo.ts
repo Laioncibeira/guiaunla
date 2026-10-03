@@ -1,9 +1,27 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { afterNextRender, Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  inject,
+  signal,
+  untracked,
+  viewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { anios, dictadasEn, tieneCuatrimestres, type Carrera, type Materia } from '../core/datos';
+import {
+  anioDe,
+  anios,
+  cuatrimestreDe,
+  dictadasEn,
+  tieneCuatrimestres,
+  type Carrera,
+  type Materia,
+} from '../core/datos';
 import { Planes } from '../core/planes';
 import { buscar, vincular } from '../core/correlatividades';
 import {
@@ -17,7 +35,7 @@ import {
   type Filtro,
 } from '../core/explorar';
 import { calcularLayout, detalleDe, encuadrar, TARJETA, type Layout } from '../core/grafo';
-import { Aprobadas, Atras, CarreraElegida } from '../shared/ui';
+import { Aprobadas, Atras, recordarCarrera } from '../shared/ui';
 
 /** Con este ancho de viewBox la tarjeta se lee cómoda en un teléfono. */
 const CERCA_ANCHO = 340;
@@ -46,18 +64,35 @@ const TOLERANCIA_TOQUE_PX = 10;
           <h1>Correlatividades</h1>
           <p class="sub">
             {{ c.nombreCorto }} · {{ c.materias.length }} materias ·
-            <a routerLink="/carrera/elegir" [queryParams]="{ volver: rutaActual() }" class="cambiar">Cambiar</a>
+            <a routerLink="/carrera/elegir" [queryParams]="{ volver: rutaActual() }" class="cambiar"
+              >Cambiar</a
+            >
           </p>
         </div>
         <div class="vistas" role="group" aria-label="Cómo ver el plan">
-          <button type="button" [class.on]="vista() === 'mapa'" (click)="vista.set('mapa')">Mapa</button>
-          <button type="button" [class.on]="vista() === 'lista'" (click)="vista.set('lista')">Lista</button>
+          <button type="button" [class.on]="vista() === 'mapa'" (click)="vista.set('mapa')">
+            Mapa
+          </button>
+          <button type="button" [class.on]="vista() === 'lista'" (click)="vista.set('lista')">
+            Lista
+          </button>
         </div>
       </header>
 
       <div class="buscador">
         <label class="caja" [class.activa]="!!consulta()">
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/></svg>
+          <svg
+            viewBox="0 0 24 24"
+            width="17"
+            height="17"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          >
+            <circle cx="10.5" cy="10.5" r="6.5" />
+            <path d="m15.5 15.5 4 4" />
+          </svg>
           <input
             type="search"
             placeholder="Buscar una materia"
@@ -67,7 +102,9 @@ const TOLERANCIA_TOQUE_PX = 10;
             aria-label="Buscar una materia del plan"
           />
           @if (consulta()) {
-            <button type="button" (click)="consulta.set('')" aria-label="Borrar la búsqueda">×</button>
+            <button type="button" (click)="consulta.set('')" aria-label="Borrar la búsqueda">
+              ×
+            </button>
           }
         </label>
       </div>
@@ -82,11 +119,16 @@ const TOLERANCIA_TOQUE_PX = 10;
               [attr.aria-pressed]="activos().has(f.clave)"
               (click)="alternarFiltro(f.clave)"
             >
-              {{ f.label }}@if (activos().has(f.clave)) {<span class="x" aria-hidden="true"> ×</span>}
+              {{ f.label }}
+              @if (activos().has(f.clave)) {
+                <span class="x" aria-hidden="true"> ×</span>
+              }
             </button>
           }
           @if (activos().size || seleccion().size) {
-            <button type="button" class="chip limpiar" (click)="limpiarTodo()">{{ textoLimpiar() }}</button>
+            <button type="button" class="chip limpiar" (click)="limpiarTodo()">
+              {{ textoLimpiar() }}
+            </button>
           }
         </div>
       }
@@ -98,8 +140,12 @@ const TOLERANCIA_TOQUE_PX = 10;
               ><strong>{{ seleccion().size }}</strong>
               {{ seleccion().size === 1 ? 'materia seleccionada' : 'materias seleccionadas' }}</span
             >
-            <span>Habilita directamente <strong>{{ sim.habilitaDirecto.length }}</strong></span>
-            <span>Quedan cursables <strong>{{ sim.desbloqueadas.length }}</strong></span>
+            <span
+              >Habilita directamente <strong>{{ sim.habilitaDirecto.length }}</strong></span
+            >
+            <span
+              >Quedan cursables <strong>{{ sim.desbloqueadas.length }}</strong></span
+            >
           </div>
           @if (sim.desbloqueadas.length) {
             <p class="sim-lista">Podrías cursar: {{ nombresDesbloqueadas() }}</p>
@@ -118,7 +164,7 @@ const TOLERANCIA_TOQUE_PX = 10;
           @for (m of resultados(); track m.codigo) {
             <li>
               <button type="button" (click)="irA(m.codigo)">
-                <span class="raya" [style.background]="color(anioDeMateria(c, m))"></span>
+                <span class="raya" [style.background]="color(anioDe(c, m))"></span>
                 <span class="txt">
                   <span class="nom">{{ m.nombre }}</span>
                   <span class="meta"
@@ -136,7 +182,12 @@ const TOLERANCIA_TOQUE_PX = 10;
           <li class="rama-nodo">
             <div class="rama-fila">
               <span class="caret" aria-hidden="true">{{ n.hijos.length ? '▾' : '·' }}</span>
-              <button type="button" class="mini" [class.ok]="n.aprobada" (click)="prender(n.materia.codigo)">
+              <button
+                type="button"
+                class="mini"
+                [class.ok]="n.aprobada"
+                (click)="prender(n.materia.codigo)"
+              >
                 <span class="mono">{{ n.materia.codigo }}</span>
                 <span class="n">{{ n.materia.nombre }}</span>
                 @if (n.aprobada) {
@@ -207,7 +258,9 @@ const TOLERANCIA_TOQUE_PX = 10;
                             <span class="rama-titulo">Necesita</span>
                             <ul class="rama-hijos">
                               @for (h of raiz.hijos; track h.materia.codigo) {
-                                <ng-container *ngTemplateOutlet="ramaTpl; context: { $implicit: h }" />
+                                <ng-container
+                                  *ngTemplateOutlet="ramaTpl; context: { $implicit: h }"
+                                />
                               }
                             </ul>
                           </div>
@@ -221,12 +274,19 @@ const TOLERANCIA_TOQUE_PX = 10;
                               <li class="rama-nodo">
                                 <div class="rama-fila">
                                   <span class="caret" aria-hidden="true">·</span>
-                                  <button type="button" class="mini" [class.ok]="aprobada(d.codigo)" (click)="prender(d.codigo)">
+                                  <button
+                                    type="button"
+                                    class="mini"
+                                    [class.ok]="aprobada(d.codigo)"
+                                    (click)="prender(d.codigo)"
+                                  >
                                     <span class="mono">{{ d.codigo }}</span>
                                     <span class="n">
                                       {{ d.nombre }}
                                       @if (faltanPara(d.codigo); as faltan) {
-                                        <small class="a-medias">a medias: pide también {{ faltan }}</small>
+                                        <small class="a-medias"
+                                          >a medias: pide también {{ faltan }}</small
+                                        >
                                       }
                                     </span>
                                   </button>
@@ -279,7 +339,14 @@ const TOLERANCIA_TOQUE_PX = 10;
           >
             <defs>
               @for (a of aniosDe(c); track a) {
-                <marker [attr.id]="'punta' + a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <marker
+                  [attr.id]="'punta' + a"
+                  markerWidth="7"
+                  markerHeight="7"
+                  refX="6"
+                  refY="3.5"
+                  orient="auto"
+                >
                   <path d="M0 0 L7 3.5 L0 7 z" [attr.fill]="color(a)" />
                 </marker>
               }
@@ -328,21 +395,54 @@ const TOLERANCIA_TOQUE_PX = 10;
                 />
 
                 @if (detalle() === 'lejos') {
-                  <text [attr.x]="n.x + n.w / 2" [attr.y]="n.y + n.h / 2 + 7" text-anchor="middle" font-size="20" [attr.fill]="textoFicha(n.codigo)">
+                  <text
+                    [attr.x]="n.x + n.w / 2"
+                    [attr.y]="n.y + n.h / 2 + 7"
+                    text-anchor="middle"
+                    font-size="20"
+                    [attr.fill]="textoFicha(n.codigo)"
+                  >
                     {{ n.codigo }}
                   </text>
                 } @else {
-                  <text [attr.x]="n.x + 12" [attr.y]="n.y + 15" font-size="8.5" letter-spacing="0.5" [attr.fill]="textoTenue(n.codigo)">
+                  <text
+                    [attr.x]="n.x + 12"
+                    [attr.y]="n.y + 15"
+                    font-size="8.5"
+                    letter-spacing="0.5"
+                    [attr.fill]="textoTenue(n.codigo)"
+                  >
                     {{ n.codigo }}
                   </text>
                   @if (aprobada(n.codigo)) {
-                    <path [attr.d]="tilde(n)" fill="none" stroke="var(--verde)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                      [attr.d]="tilde(n)"
+                      fill="none"
+                      stroke="var(--verde)"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   }
                   @if (n.materia.dedicacion === 'anual') {
-                    <text [attr.x]="n.x + n.w - 12" [attr.y]="n.y + 15" text-anchor="end" font-size="8" [attr.fill]="textoTenue(n.codigo)">anual</text>
+                    <text
+                      [attr.x]="n.x + n.w - 12"
+                      [attr.y]="n.y + 15"
+                      text-anchor="end"
+                      font-size="8"
+                      [attr.fill]="textoTenue(n.codigo)"
+                    >
+                      anual
+                    </text>
                   }
                   @for (linea of n.lineas; track $index) {
-                    <text class="nombre" [attr.x]="n.x + 12" [attr.y]="n.y + 29 + $index * 11" font-size="10" [attr.fill]="textoFicha(n.codigo)">
+                    <text
+                      class="nombre"
+                      [attr.x]="n.x + 12"
+                      [attr.y]="n.y + 29 + $index * 11"
+                      font-size="10"
+                      [attr.fill]="textoFicha(n.codigo)"
+                    >
                       {{ linea }}
                     </text>
                   }
@@ -376,107 +476,519 @@ const TOLERANCIA_TOQUE_PX = 10;
     /* Alto exacto del área útil: la barra de abajo es fija y su lugar ya está
        reservado por el contenedor. */
     :host {
-      display: flex; flex-direction: column; min-height: 0; color: var(--texto);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      color: var(--texto);
       height: calc(100dvh - var(--barra) - env(safe-area-inset-bottom));
     }
-    header { display: flex; align-items: center; gap: var(--e2); padding: 14px var(--e4) 10px; border-bottom: 1px solid var(--borde); }
-    .titulo { flex: 1; min-width: 0; }
-    h1 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .cambiar { color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-    .vistas { flex: none; display: flex; border: 1px solid var(--borde); border-radius: 999px; background: var(--superficie); padding: 2px; }
-    .vistas button { min-height: 34px; padding: 0 11px; border: none; border-radius: 999px; background: none; color: var(--texto-2); font-size: var(--t-s); font-weight: 600; }
-    .vistas button.on { background: var(--marca); color: var(--sobre-marca); }
+    header {
+      display: flex;
+      align-items: center;
+      gap: var(--e2);
+      padding: 14px var(--e4) 10px;
+      border-bottom: 1px solid var(--borde);
+    }
+    .titulo {
+      flex: 1;
+      min-width: 0;
+    }
+    h1 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .cambiar {
+      color: var(--marca);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .vistas {
+      flex: none;
+      display: flex;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--superficie);
+      padding: 2px;
+    }
+    .vistas button {
+      min-height: 34px;
+      padding: 0 11px;
+      border: none;
+      border-radius: 999px;
+      background: none;
+      color: var(--texto-2);
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .vistas button.on {
+      background: var(--marca);
+      color: var(--sobre-marca);
+    }
 
-    .buscador { padding: 10px var(--e4) 8px; }
-    .caja { display: flex; align-items: center; gap: 9px; background: var(--superficie); border: 1px solid var(--borde); border-radius: 11px; padding: 0 var(--e3); min-height: 44px; color: var(--texto-3); }
-    .caja.activa { border-color: var(--marca); color: var(--marca); }
-    .caja input { flex: 1; min-width: 0; background: none; border: none; outline: none; color: var(--texto); font: inherit; font-size: var(--t-m); }
-    .caja button { background: none; border: none; font-size: 20px; line-height: 1; color: var(--texto-3); padding: 0 4px; min-width: 32px; min-height: 32px; }
-    .caja svg { flex: none; }
+    .buscador {
+      padding: 10px var(--e4) 8px;
+    }
+    .caja {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: 11px;
+      padding: 0 var(--e3);
+      min-height: 44px;
+      color: var(--texto-3);
+    }
+    .caja.activa {
+      border-color: var(--marca);
+      color: var(--marca);
+    }
+    .caja input {
+      flex: 1;
+      min-width: 0;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--texto);
+      font: inherit;
+      font-size: var(--t-m);
+    }
+    .caja button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      line-height: 1;
+      color: var(--texto-3);
+      padding: 0 4px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .caja svg {
+      flex: none;
+    }
 
-    .filtros { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 var(--e4) 8px; }
-    .chip { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto-2); font-size: var(--t-s); font-weight: 600; }
-    .chip.on { border-color: var(--marca); background: var(--marca); color: var(--sobre-marca); }
-    .chip.limpiar { border-style: dashed; color: var(--texto-3); }
-    .chip .x { font-weight: 400; opacity: 0.85; }
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 var(--e4) 8px;
+    }
+    .chip {
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid var(--borde);
+      background: var(--superficie);
+      color: var(--texto-2);
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .chip.on {
+      border-color: var(--marca);
+      background: var(--marca);
+      color: var(--sobre-marca);
+    }
+    .chip.limpiar {
+      border-style: dashed;
+      color: var(--texto-3);
+    }
+    .chip .x {
+      font-weight: 400;
+      opacity: 0.85;
+    }
 
-    .sim { margin: 0 var(--e4) 8px; padding: 10px 12px; border: 1px solid var(--marca); border-radius: var(--r); background: color-mix(in oklab, var(--marca) 12%, var(--superficie)); }
-    .sim-datos { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: var(--t-s); color: var(--texto-2); }
-    .sim-datos strong { color: var(--texto); font-weight: 700; }
-    .sim-lista { margin: 6px 0 0; font-size: var(--t-xs); color: var(--texto-2); line-height: 1.4; }
-    .sim-lista.parcial { color: var(--naranja); }
-    .a-medias { display: block; font-size: var(--t-xs); color: var(--naranja); margin-top: 2px; }
+    .sim {
+      margin: 0 var(--e4) 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--marca);
+      border-radius: var(--r);
+      background: color-mix(in oklab, var(--marca) 12%, var(--superficie));
+    }
+    .sim-datos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .sim-datos strong {
+      color: var(--texto);
+      font-weight: 700;
+    }
+    .sim-lista {
+      margin: 6px 0 0;
+      font-size: var(--t-xs);
+      color: var(--texto-2);
+      line-height: 1.4;
+    }
+    .sim-lista.parcial {
+      color: var(--naranja);
+    }
+    .a-medias {
+      display: block;
+      font-size: var(--t-xs);
+      color: var(--naranja);
+      margin-top: 2px;
+    }
 
-    .resultados { list-style: none; margin: 0; padding: 0 var(--e4); overflow-y: auto; flex: 1; }
-    .resultados button { display: flex; align-items: center; gap: 11px; width: 100%; padding: 11px 0; background: none; border: none; border-bottom: 1px solid var(--borde); text-align: left; min-height: 48px; color: var(--texto); }
-    .raya { width: 3px; align-self: stretch; border-radius: 2px; flex: none; }
-    .txt { min-width: 0; }
-    .nom { display: block; font-size: var(--t-m); font-weight: 500; }
-    .meta { display: block; font-size: var(--t-xs); color: var(--texto-3); margin-top: 2px; }
-    .nada { padding: var(--e4) 0; font-size: var(--t-m); color: var(--texto-2); }
+    .resultados {
+      list-style: none;
+      margin: 0;
+      padding: 0 var(--e4);
+      overflow-y: auto;
+      flex: 1;
+    }
+    .resultados button {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      padding: 11px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--borde);
+      text-align: left;
+      min-height: 48px;
+      color: var(--texto);
+    }
+    .raya {
+      width: 3px;
+      align-self: stretch;
+      border-radius: 2px;
+      flex: none;
+    }
+    .txt {
+      min-width: 0;
+    }
+    .nom {
+      display: block;
+      font-size: var(--t-m);
+      font-weight: 500;
+    }
+    .meta {
+      display: block;
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      margin-top: 2px;
+    }
+    .nada {
+      padding: var(--e4) 0;
+      font-size: var(--t-m);
+      color: var(--texto-2);
+    }
 
-    .lista { flex: 1; min-height: 0; overflow-y: auto; padding: 0 var(--e4) var(--e4); }
-    .instruccion { margin: 0 0 var(--e3); font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
-    .instruccion strong { color: var(--texto); }
-    .lista section { margin-bottom: var(--e4); }
-    .rot { margin: 0 0 var(--e2); padding-top: 7px; border-top: 2px solid; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--texto-2); }
-    .cuat { margin: var(--e3) 0 var(--e2); font-size: var(--t-xs); font-weight: 600; color: var(--texto-3); }
-    .item { margin-bottom: 7px; }
+    .lista {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 0 var(--e4) var(--e4);
+    }
+    .instruccion {
+      margin: 0 0 var(--e3);
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.45;
+    }
+    .instruccion strong {
+      color: var(--texto);
+    }
+    .lista section {
+      margin-bottom: var(--e4);
+    }
+    .rot {
+      margin: 0 0 var(--e2);
+      padding-top: 7px;
+      border-top: 2px solid;
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--texto-2);
+    }
+    .cuat {
+      margin: var(--e3) 0 var(--e2);
+      font-size: var(--t-xs);
+      font-weight: 600;
+      color: var(--texto-3);
+    }
+    .item {
+      margin-bottom: 7px;
+    }
     /* Apagar una fila no puede volverla ilegible: se apaga el marco y las
        etiquetas, y el nombre baja sólo hasta el gris secundario. */
-    .item.apagada .tarjeta { border-color: color-mix(in oklab, var(--borde) 55%, transparent); background: transparent; }
-    .item.apagada .nombre { color: var(--texto-2); font-weight: 500; }
-    .item.apagada .etiquetas { opacity: 0.5; }
-    .item.apagada .caret { opacity: 0.4; }
-    .rama-fila { display: flex; align-items: flex-start; gap: 6px; }
-    .caret { flex: none; width: 14px; padding-top: 12px; text-align: center; color: var(--texto-3); font-size: 11px; }
-    .tarjeta { flex: 1; min-width: 0; display: block; text-align: left; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 11px 12px; color: var(--texto); }
-    .tarjeta.on { border-color: var(--marca); background: color-mix(in oklab, var(--marca) 10%, var(--superficie)); }
-    .cabecera { display: flex; gap: 9px; align-items: baseline; }
-    .cod { font-size: var(--t-xs); color: var(--texto-3); min-width: 26px; }
-    .nombre { flex: 1; font-size: var(--t-m); font-weight: 600; color: var(--texto); }
-    .etiquetas { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
-    .et { font-size: var(--t-xs); color: var(--texto-3); border: 1px solid var(--borde); border-radius: 999px; padding: 2px 7px; }
-    .et.anual { color: var(--naranja); border-color: var(--naranja); }
-    .et.ahora { color: var(--marca); border-color: var(--marca); }
-    .et.ok, .et.libre { color: var(--verde); border-color: var(--verde); }
+    .item.apagada .tarjeta {
+      border-color: color-mix(in oklab, var(--borde) 55%, transparent);
+      background: transparent;
+    }
+    .item.apagada .nombre {
+      color: var(--texto-2);
+      font-weight: 500;
+    }
+    .item.apagada .etiquetas {
+      opacity: 0.5;
+    }
+    .item.apagada .caret {
+      opacity: 0.4;
+    }
+    .rama-fila {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .caret {
+      flex: none;
+      width: 14px;
+      padding-top: 12px;
+      text-align: center;
+      color: var(--texto-3);
+      font-size: 11px;
+    }
+    .tarjeta {
+      flex: 1;
+      min-width: 0;
+      display: block;
+      text-align: left;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 11px 12px;
+      color: var(--texto);
+    }
+    .tarjeta.on {
+      border-color: var(--marca);
+      background: color-mix(in oklab, var(--marca) 10%, var(--superficie));
+    }
+    .cabecera {
+      display: flex;
+      gap: 9px;
+      align-items: baseline;
+    }
+    .cod {
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      min-width: 26px;
+    }
+    .nombre {
+      flex: 1;
+      font-size: var(--t-m);
+      font-weight: 600;
+      color: var(--texto);
+    }
+    .etiquetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 7px;
+    }
+    .et {
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      padding: 2px 7px;
+    }
+    .et.anual {
+      color: var(--naranja);
+      border-color: var(--naranja);
+    }
+    .et.ahora {
+      color: var(--marca);
+      border-color: var(--marca);
+    }
+    .et.ok,
+    .et.libre {
+      color: var(--verde);
+      border-color: var(--verde);
+    }
 
-    .seccion { margin: var(--e2) 0 0 20px; }
-    .rama-titulo { display: block; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-3); margin-bottom: 4px; }
-    .rama-hijos { list-style: none; margin: 0; padding: 0 0 0 12px; border-left: 1px solid var(--borde); }
-    .rama-hijos.destraba { border-left-color: color-mix(in oklab, var(--verde) 50%, var(--borde)); }
-    .rama-nodo { margin: 4px 0; }
-    .mini { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 10px; border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie); color: var(--texto); text-align: left; }
-    .mini.ok { border-color: color-mix(in oklab, var(--verde) 55%, var(--borde)); }
-    .mini .mono { flex: none; font-size: var(--t-xs); color: var(--texto-3); min-width: 24px; }
-    .mini .n { flex: 1; font-size: var(--t-s); color: var(--texto); }
-    .tilde { flex: none; color: var(--verde); font-size: var(--t-s); }
-    .vacio-rama { margin: var(--e2) 0 0 20px; font-size: var(--t-s); color: var(--texto-2); }
-    .marcar { width: 100%; min-height: 44px; margin: var(--e2) 0 0; border-radius: 10px; border: 1px solid var(--borde); background: var(--superficie-2); color: var(--texto); font-size: var(--t-s); font-weight: 600; }
-    .aclaracion { font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; border: 1px dashed var(--borde); border-radius: var(--r); padding: var(--e3); }
+    .seccion {
+      margin: var(--e2) 0 0 20px;
+    }
+    .rama-titulo {
+      display: block;
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--texto-3);
+      margin-bottom: 4px;
+    }
+    .rama-hijos {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 12px;
+      border-left: 1px solid var(--borde);
+    }
+    .rama-hijos.destraba {
+      border-left-color: color-mix(in oklab, var(--verde) 50%, var(--borde));
+    }
+    .rama-nodo {
+      margin: 4px 0;
+    }
+    .mini {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 6px 10px;
+      border: 1px solid var(--borde);
+      border-radius: 9px;
+      background: var(--superficie);
+      color: var(--texto);
+      text-align: left;
+    }
+    .mini.ok {
+      border-color: color-mix(in oklab, var(--verde) 55%, var(--borde));
+    }
+    .mini .mono {
+      flex: none;
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      min-width: 24px;
+    }
+    .mini .n {
+      flex: 1;
+      font-size: var(--t-s);
+      color: var(--texto);
+    }
+    .tilde {
+      flex: none;
+      color: var(--verde);
+      font-size: var(--t-s);
+    }
+    .vacio-rama {
+      margin: var(--e2) 0 0 20px;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .marcar {
+      width: 100%;
+      min-height: 44px;
+      margin: var(--e2) 0 0;
+      border-radius: 10px;
+      border: 1px solid var(--borde);
+      background: var(--superficie-2);
+      color: var(--texto);
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .aclaracion {
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.45;
+      border: 1px dashed var(--borde);
+      border-radius: var(--r);
+      padding: var(--e3);
+    }
 
-    .anios { display: flex; gap: 4px; padding: 0 var(--e4) 6px; }
-    .anios span { flex: 1; text-align: center; font-size: 9px; font-weight: 600; color: var(--texto-2); border-top: 2px solid; padding-top: 5px; transition: opacity 0.15s; }
-    .anios span.fuera { opacity: 0.3; }
-    .lienzo { flex: 1; min-height: 200px; position: relative; margin: 0 var(--e4) var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); overflow: hidden; }
-    .lienzo svg { display: block; width: 100%; height: 100%; touch-action: none; }
-    .lienzo g { cursor: pointer; }
-    .lienzo text { font-family: var(--mono); font-weight: 500; }
-    .lienzo text.nombre { font-family: var(--sans); font-weight: 600; }
-    .controles { position: absolute; bottom: 10px; right: 10px; display: flex; align-items: center; gap: 6px; }
-    .controles button { min-width: 40px; min-height: 40px; border-radius: 10px; border: 1px solid var(--borde); background: color-mix(in oklab, var(--superficie-2) 88%, transparent); color: var(--texto); font-size: 18px; line-height: 1; }
-    .controles .todo { font-size: var(--t-xs); font-weight: 600; padding: 0 6px; }
-    .ayuda { position: absolute; left: 10px; bottom: 12px; max-width: 55%; background: var(--superficie-2); border: 1px solid var(--borde); border-radius: 999px; padding: 8px 12px; font-size: var(--t-xs); color: var(--texto-2); margin: 0; line-height: 1.3; }
-    .lista-oculta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-    .vacio { padding: var(--e5) var(--e4); }
+    .anios {
+      display: flex;
+      gap: 4px;
+      padding: 0 var(--e4) 6px;
+    }
+    .anios span {
+      flex: 1;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--texto-2);
+      border-top: 2px solid;
+      padding-top: 5px;
+      transition: opacity 0.15s;
+    }
+    .anios span.fuera {
+      opacity: 0.3;
+    }
+    .lienzo {
+      flex: 1;
+      min-height: 200px;
+      position: relative;
+      margin: 0 var(--e4) var(--e4);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      background: var(--superficie);
+      overflow: hidden;
+    }
+    .lienzo svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+    .lienzo g {
+      cursor: pointer;
+    }
+    .lienzo text {
+      font-family: var(--mono);
+      font-weight: 500;
+    }
+    .lienzo text.nombre {
+      font-family: var(--sans);
+      font-weight: 600;
+    }
+    .controles {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .controles button {
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--borde);
+      background: color-mix(in oklab, var(--superficie-2) 88%, transparent);
+      color: var(--texto);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .controles .todo {
+      font-size: var(--t-xs);
+      font-weight: 600;
+      padding: 0 6px;
+    }
+    .ayuda {
+      position: absolute;
+      left: 10px;
+      bottom: 12px;
+      max-width: 55%;
+      background: var(--superficie-2);
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: var(--t-xs);
+      color: var(--texto-2);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .lista-oculta {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    .vacio {
+      padding: var(--e5) var(--e4);
+    }
   `,
 })
 export class Grafo {
   private readonly ruta = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly aprobadas = inject(Aprobadas);
-  private readonly elegidaCarrera = inject(CarreraElegida);
   private readonly planes = inject(Planes);
   private readonly svg = viewChild<ElementRef<SVGSVGElement>>('svg');
 
@@ -487,9 +999,12 @@ export class Grafo {
   });
 
   /** El plan y la grilla los deja cargados el resolver de la ruta. */
-  protected readonly carrera = toSignal(this.ruta.data.pipe(map((d) => (d['carrera'] as Carrera | null) ?? null)), {
-    initialValue: (this.ruta.snapshot.data['carrera'] as Carrera | null) ?? null,
-  });
+  protected readonly carrera = toSignal(
+    this.ruta.data.pipe(map((d) => (d['carrera'] as Carrera | null) ?? null)),
+    {
+      initialValue: (this.ruta.snapshot.data['carrera'] as Carrera | null) ?? null,
+    },
+  );
   protected readonly consulta = signal('');
   protected readonly vista = signal<'mapa' | 'lista'>('mapa');
   protected readonly seleccion = signal<ReadonlySet<string>>(new Set());
@@ -599,9 +1114,14 @@ export class Grafo {
   constructor() {
     // El lienzo arranca cerca, donde la tarjeta se lee. Si el link trae una
     // materia se abre prendida: es lo que espera quien lo recibe por mensaje.
+    //
+    // La URL se lee sin seguirla (`untracked`): tocar una materia escribe
+    // `?materia=` y, si el efecto dependiera de eso, cada toque volvería a
+    // encuadrar el mapa y se perdería el zoom. Sólo se re-encuadra cuando
+    // cambia el plan o aparece el lienzo (al pasar de Lista a Mapa).
     effect(() => {
       const l = this.layout();
-      const pedida = this.query().get('materia');
+      const pedida = untracked(() => this.query().get('materia'));
       // Leer el lienzo acá hace que el efecto vuelva a correr cuando aparece
       // y el encuadre se calcule con la medida real.
       const caja = this.cajaLienzo();
@@ -616,11 +1136,7 @@ export class Grafo {
       }
     });
 
-    // Entrar por link a una carrera también la deja elegida en el teléfono.
-    effect(() => {
-      const c = this.carrera();
-      if (c && this.elegidaCarrera.slug() !== c.slug) this.elegidaCarrera.elegir(c.slug);
-    });
+    recordarCarrera(this.carrera);
 
     // En el teléfono se arranca por la lista, que se lee de un vistazo; en la
     // computadora, por el mapa, que ahí tiene lugar. Si el link trae una
@@ -669,8 +1185,7 @@ export class Grafo {
   protected color = (anio: number) => `var(--n${((anio - 1) % 8) + 1})`;
   protected aniosDe = (c: Carrera) => anios(c);
   protected tieneCuat = (c: Carrera) => tieneCuatrimestres(c);
-  protected anioDeMateria = (c: Carrera, m: Materia) =>
-    c.tipoNivel === 'anio' ? m.nivel : Math.ceil(m.nivel / 2);
+  protected anioDe = anioDe;
 
   /** Las filas de un año, partidas por cuatrimestre cuando el plan lo dice. */
   protected gruposDe(c: Carrera, anio: number): { titulo: string; filas: readonly Fila[] }[] {
@@ -685,9 +1200,8 @@ export class Grafo {
   }
 
   protected ubicacion(c: Carrera, m: Materia): string {
-    const anio = this.anioDeMateria(c, m);
-    const q = c.tipoNivel === 'cuatrimestre' ? ((m.nivel - 1) % 2) + 1 : null;
-    return q ? `${anio}° año, ${q}° cuatrimestre` : `${anio}° año`;
+    const q = cuatrimestreDe(c, m);
+    return q ? `${anioDe(c, m)}° año, ${q}° cuatrimestre` : `${anioDe(c, m)}° año`;
   }
 
   protected arbolDe(codigo: string) {

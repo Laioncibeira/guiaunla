@@ -118,7 +118,7 @@ const INICIO = new RegExp(
 function partirEntradas(filaCruda) {
   // La grilla anota la modalidad entre parentesis; sin ellos deja de
   // confundirse con el nombre de una materia.
-  const fila = filaCruda.replace(new RegExp("\\((\\d+%\\s*[Vv]irtual)\\)", "g"), "- $1");
+  const fila = filaCruda.replace(new RegExp('\\((\\d+%\\s*[Vv]irtual)\\)', 'g'), '- $1');
   const cortes = [];
   let ultimo = 0;
   for (const m of fila.matchAll(INICIO)) {
@@ -244,7 +244,9 @@ const escribir = process.argv.includes('--escribir');
 const sinPlan = [];
 
 for (const pagina of PAGINAS) {
-  const plan = JSON.parse(fs.readFileSync(`src/data/carreras/${pagina.slug}.json`, 'utf8')).materias;
+  const plan = JSON.parse(
+    fs.readFileSync(`src/data/carreras/${pagina.slug}.json`, 'utf8'),
+  ).materias;
   const alias = ALIAS[pagina.slug] ?? {};
   const bloque = lineas.slice(pagina.desde - 1, pagina.hasta);
   const cabecera = bloque.find((l) => l.includes('Lunes')) ?? '';
@@ -270,7 +272,8 @@ for (const pagina of PAGINAS) {
       if (!m) sinPlan.push({ carrera: pagina.slug, materia, lugar });
       else if (process.argv.includes('--dudosos') && m.score < 0.999)
         console.log(
-          '  ' + m.score.toFixed(2), (materia.slice(0, 46) + ' ').padEnd(48, '.'),
+          '  ' + m.score.toFixed(2),
+          (materia.slice(0, 46) + ' ').padEnd(48, '.'),
           plan.find((x) => x.codigo === m.codigo).nombre,
         );
       clases.push({
@@ -302,7 +305,10 @@ for (const pagina of PAGINAS) {
         pagina.nota,
       clases,
     };
-    fs.writeFileSync(`src/data/horarios/${pagina.slug}.json`, JSON.stringify(salida, null, 2) + '\n');
+    fs.writeFileSync(
+      `src/data/horarios/${pagina.slug}.json`,
+      JSON.stringify(salida, null, 2) + '\n',
+    );
   }
 
   const con = clases.filter((c) => c.materiaCodigo).length;
@@ -313,5 +319,6 @@ for (const pagina of PAGINAS) {
 
 if (sinPlan.length) {
   console.log('\nSin emparejar (optativas, seminarios, o algo para revisar):');
-  for (const s of sinPlan) console.log(`  ${s.carrera.slice(0, 12).padEnd(13)} ${s.lugar.padEnd(34)} ${s.materia}`);
+  for (const s of sinPlan)
+    console.log(`  ${s.carrera.slice(0, 12).padEnd(13)} ${s.lugar.padEnd(34)} ${s.materia}`);
 }

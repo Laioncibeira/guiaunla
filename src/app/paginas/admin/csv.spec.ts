@@ -3,7 +3,10 @@ import { aCsv, fechaHoraAr } from './csv';
 
 describe('CSV para Excel', () => {
   it('empieza con el BOM y separa con punto y coma', () => {
-    const csv = aCsv([['fecha', 'mensaje'], ['hoy', 'hola']]);
+    const csv = aCsv([
+      ['fecha', 'mensaje'],
+      ['hoy', 'hola'],
+    ]);
     expect(csv.charCodeAt(0)).toBe(0xfeff);
     expect(csv).toBe('﻿"fecha";"mensaje"\r\n"hoy";"hola"\r\n');
   });

@@ -1,21 +1,20 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { CALENDARIO, CAMPUS, type Edificio, type Evento } from '../core/datos';
-import { CarreraChip, CarreraElegida } from '../shared/ui';
+import { CarreraChip } from '../shared/ui';
 import { COLOR_TIPO, ETIQUETA_TIPO, comoIcs, diasHasta, fechaCorta, fechaLarga } from './formato';
-import { FirmaFei, LogoFei } from '../shared/fei';
+import { EnlaceFei, FirmaFei } from '../shared/fei';
 
 @Component({
   selector: 'app-fechas',
-  imports: [FirmaFei, CarreraChip, LogoFei],
+  imports: [FirmaFei, CarreraChip, EnlaceFei],
   template: `
     <header>
       <div style="flex:1">
         <h1>Fechas</h1>
         <p class="sub">Calendario académico {{ calendario.anio }}</p>
       </div>
-      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
+      <app-enlace-fei />
       <app-carrera-chip />
     </header>
     <main>
@@ -49,25 +48,114 @@ import { FirmaFei, LogoFei } from '../shared/fei';
     </main>
   `,
   styles: `
-    :host { display: flex; flex-direction: column; flex: 1; }
-    header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
-    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    main { padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: 9px; }
-    .filtros button { min-height: 40px; padding: 0 var(--e3); border-radius: 999px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto-2); font-size: var(--t-s); }
-    .filtros button.on { border-color: var(--marca); color: var(--marca); }
-    .card { display: flex; gap: var(--e3); align-items: flex-start; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--r); padding: 13px 14px; }
-    .card.pasado { opacity: 0.55; }
-    .raya { width: 3px; align-self: stretch; border-radius: 2px; flex: none; }
-    .cuerpo { flex: 1; min-width: 0; }
-    .tipo { font-size: 9.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
-    h2 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 600; line-height: 1.25; }
-    .cuando { margin: 5px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .detalle { margin: 6px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.4; }
-    .agendar { flex: none; min-height: 44px; display: flex; align-items: center; padding: 0 11px; border-radius: 9px; border: 1px solid var(--marca); color: var(--marca); font-size: var(--t-s); font-weight: 600; }
-    .fuente { font-size: var(--t-xs); color: var(--texto-3); line-height: 1.45; margin: var(--e2) 0 0; }
-    .vacio { font-size: var(--t-m); color: var(--texto-2); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: var(--e3);
+      padding: 18px var(--e4) var(--e3);
+    }
+    h1 {
+      margin: 0;
+      font-size: var(--t-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    main {
+      padding: 0 var(--e4) var(--e4);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .filtros button {
+      min-height: 40px;
+      padding: 0 var(--e3);
+      border-radius: 999px;
+      border: 1px solid var(--borde);
+      background: var(--superficie);
+      color: var(--texto-2);
+      font-size: var(--t-s);
+    }
+    .filtros button.on {
+      border-color: var(--marca);
+      color: var(--marca);
+    }
+    .card {
+      display: flex;
+      gap: var(--e3);
+      align-items: flex-start;
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 13px 14px;
+    }
+    .card.pasado {
+      opacity: 0.55;
+    }
+    .raya {
+      width: 3px;
+      align-self: stretch;
+      border-radius: 2px;
+      flex: none;
+    }
+    .cuerpo {
+      flex: 1;
+      min-width: 0;
+    }
+    .tipo {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 4px 0 0;
+      font-size: var(--t-m);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .cuando {
+      margin: 5px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .detalle {
+      margin: 6px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      line-height: 1.4;
+    }
+    .agendar {
+      flex: none;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border-radius: 9px;
+      border: 1px solid var(--marca);
+      color: var(--marca);
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .fuente {
+      font-size: var(--t-xs);
+      color: var(--texto-3);
+      line-height: 1.45;
+      margin: var(--e2) 0 0;
+    }
+    .vacio {
+      font-size: var(--t-m);
+      color: var(--texto-2);
+    }
   `,
 })
 export class Fechas {
@@ -85,7 +173,9 @@ export class Fechas {
   protected etiqueta = (e: Evento) => ETIQUETA_TIPO[e.tipo];
 
   protected rango(e: Evento): string {
-    return e.desde === e.hasta ? fechaLarga(e.desde) : `${fechaCorta(e.desde)} → ${fechaLarga(e.hasta)}`;
+    return e.desde === e.hasta
+      ? fechaLarga(e.desde)
+      : `${fechaCorta(e.desde)} → ${fechaLarga(e.hasta)}`;
   }
 
   protected ics(e: Evento): string {
@@ -142,8 +232,12 @@ export class Fechas {
             <title>{{ a.nombre }}</title>
           </circle>
         }
-        <text x="720" y="26" text-anchor="middle" font-size="19" fill="var(--texto-3)">vías del ferrocarril Roca</text>
-        <text x="720" y="750" text-anchor="middle" font-size="19" fill="var(--texto-3)">Av. 29 de Septiembre</text>
+        <text x="720" y="26" text-anchor="middle" font-size="19" fill="var(--texto-3)">
+          vías del ferrocarril Roca
+        </text>
+        <text x="720" y="750" text-anchor="middle" font-size="19" fill="var(--texto-3)">
+          Av. 29 de Septiembre
+        </text>
       </svg>
     </div>
 
@@ -163,7 +257,12 @@ export class Fechas {
 
     @if (elegido(); as e) {
       <section class="hoja">
-        <button type="button" class="tirador" (click)="elegido.set(null)" aria-label="Cerrar"></button>
+        <button
+          type="button"
+          class="tirador"
+          (click)="elegido.set(null)"
+          aria-label="Cerrar"
+        ></button>
         <div class="titulo">
           <span class="num">{{ e.num }}</span>
           <h2>{{ e.nombre }}</h2>
@@ -189,31 +288,164 @@ export class Fechas {
   styles: `
     /* Alto exacto del area util: la barra de abajo es fija y su lugar ya esta
        reservado por el contenedor, asi que la hoja inferior nunca queda debajo. */
-    :host { display: flex; flex-direction: column; min-height: 0;
-      height: calc(100dvh - var(--barra) - env(safe-area-inset-bottom)); }
-    header { padding: 18px var(--e4) var(--e3); }
-    h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .lienzo { flex: none; margin: 0 var(--e4); border: 1px solid var(--borde); border-radius: 14px; background: var(--superficie); padding: var(--e2); }
-    .lienzo svg { display: block; width: 100%; height: auto; }
-    .lienzo g { cursor: pointer; }
-    .lista { flex: 1; min-height: 0; overflow-y: auto; list-style: none; margin: var(--e3) 0 0; padding: 0 var(--e4); }
-    .lista button { display: flex; align-items: center; gap: 11px; width: 100%; min-height: 46px; padding: 8px 0; background: none; border: none; border-bottom: 1px solid var(--borde); text-align: left; }
-    .lista .num { flex: none; width: 26px; height: 26px; border-radius: 7px; background: var(--superficie-2); color: var(--texto-2); display: grid; place-items: center; font-size: var(--t-s); font-weight: 600; }
-    .lista button.on .num { background: var(--marca); color: var(--sobre-marca); }
-    .lista .nom { flex: 1; font-size: var(--t-m); }
-    .lista .aulas { flex: none; font-size: var(--t-xs); color: var(--verde); }
-    .hoja { flex: none; background: var(--superficie); border-top: 1px solid var(--borde); border-radius: var(--r-grande) var(--r-grande) 0 0; padding: 10px var(--e4) var(--e4); box-shadow: var(--sombra); margin-top: var(--e3); }
-    .tirador { display: block; width: 44px; height: 22px; margin: 0 auto 6px; background: none; border: none; position: relative; }
-    .tirador::before { content: ''; position: absolute; inset: 9px 3px; border-radius: 2px; background: var(--borde); }
-    .titulo { display: flex; align-items: center; gap: 10px; }
-    .num { width: 30px; height: 30px; border-radius: var(--r-chico); background: var(--marca); color: var(--sobre-marca); display: grid; place-items: center; font-weight: 700; font-size: var(--t-m); flex: none; }
-    h2 { margin: 0; font-size: 16.5px; font-weight: 700; }
-    .hoja p { margin: 11px 0 0; font-size: var(--t-m); color: var(--texto-2); line-height: 1.5; }
-    .aulas { color: var(--verde) !important; font-size: var(--t-s) !important; }
-    .ayuda { margin: 0 !important; }
-    .fuente { font-size: var(--t-xs) !important; color: var(--texto-3) !important; }
-    .google { display: flex; align-items: center; justify-content: center; min-height: 46px; margin-top: var(--e3); border-radius: 10px; background: var(--superficie-2); border: 1px solid var(--borde); font-size: var(--t-m); font-weight: 600; color: var(--texto); }
+    :host {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      height: calc(100dvh - var(--barra) - env(safe-area-inset-bottom));
+    }
+    header {
+      padding: 18px var(--e4) var(--e3);
+    }
+    h1 {
+      margin: 0;
+      font-size: var(--t-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      margin: 2px 0 0;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+    }
+    .lienzo {
+      flex: none;
+      margin: 0 var(--e4);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      background: var(--superficie);
+      padding: var(--e2);
+    }
+    .lienzo svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .lienzo g {
+      cursor: pointer;
+    }
+    .lista {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      list-style: none;
+      margin: var(--e3) 0 0;
+      padding: 0 var(--e4);
+    }
+    .lista button {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      min-height: 46px;
+      padding: 8px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--borde);
+      text-align: left;
+    }
+    .lista .num {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: var(--superficie-2);
+      color: var(--texto-2);
+      display: grid;
+      place-items: center;
+      font-size: var(--t-s);
+      font-weight: 600;
+    }
+    .lista button.on .num {
+      background: var(--marca);
+      color: var(--sobre-marca);
+    }
+    .lista .nom {
+      flex: 1;
+      font-size: var(--t-m);
+    }
+    .lista .aulas {
+      flex: none;
+      font-size: var(--t-xs);
+      color: var(--verde);
+    }
+    .hoja {
+      flex: none;
+      background: var(--superficie);
+      border-top: 1px solid var(--borde);
+      border-radius: var(--r-grande) var(--r-grande) 0 0;
+      padding: 10px var(--e4) var(--e4);
+      box-shadow: var(--sombra);
+      margin-top: var(--e3);
+    }
+    .tirador {
+      display: block;
+      width: 44px;
+      height: 22px;
+      margin: 0 auto 6px;
+      background: none;
+      border: none;
+      position: relative;
+    }
+    .tirador::before {
+      content: '';
+      position: absolute;
+      inset: 9px 3px;
+      border-radius: 2px;
+      background: var(--borde);
+    }
+    .titulo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .num {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--r-chico);
+      background: var(--marca);
+      color: var(--sobre-marca);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: var(--t-m);
+      flex: none;
+    }
+    h2 {
+      margin: 0;
+      font-size: 16.5px;
+      font-weight: 700;
+    }
+    .hoja p {
+      margin: 11px 0 0;
+      font-size: var(--t-m);
+      color: var(--texto-2);
+      line-height: 1.5;
+    }
+    .aulas {
+      color: var(--verde) !important;
+      font-size: var(--t-s) !important;
+    }
+    .ayuda {
+      margin: 0 !important;
+    }
+    .fuente {
+      font-size: var(--t-xs) !important;
+      color: var(--texto-3) !important;
+    }
+    .google {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin-top: var(--e3);
+      border-radius: 10px;
+      background: var(--superficie-2);
+      border: 1px solid var(--borde);
+      font-size: var(--t-m);
+      font-weight: 600;
+      color: var(--texto);
+    }
   `,
 })
 export class Campus {
@@ -250,16 +482,29 @@ export class Campus {
     </main>
   `,
   styles: `
-    main { padding: var(--e5) var(--e4); }
-    h1 { margin: 0 0 var(--e2); font-size: var(--t-xl); }
-    p { color: var(--texto-2); font-size: var(--t-m); }
-    .boton { display: flex; align-items: center; justify-content: center; min-height: 46px; margin-top: var(--e4); border-radius: 10px; background: var(--superficie-2); border: 1px solid var(--borde); font-weight: 600; color: var(--texto); }
+    main {
+      padding: var(--e5) var(--e4);
+    }
+    h1 {
+      margin: 0 0 var(--e2);
+      font-size: var(--t-xl);
+    }
+    p {
+      color: var(--texto-2);
+      font-size: var(--t-m);
+    }
+    .boton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin-top: var(--e4);
+      border-radius: 10px;
+      background: var(--superficie-2);
+      border: 1px solid var(--borde);
+      font-weight: 600;
+      color: var(--texto);
+    }
   `,
 })
 export class NoEncontrado {}
-
-/** Ruta vieja o incompleta hacia una carrera: se resuelve mostrando el listado. */
-export const rutaSlug = () => {
-  const r = inject(ActivatedRoute);
-  return toSignal(r.paramMap, { initialValue: r.snapshot.paramMap });
-};

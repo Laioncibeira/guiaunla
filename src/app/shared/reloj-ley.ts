@@ -36,36 +36,103 @@ import { Estrella } from './fei';
         </div>
       </div>
 
-      <p class="pie">Desde su promulgación, el 21 de octubre de 2025. <a class="mas" href="https://www.laizquierdadiario.com/Las-autoridades-y-las-conducciones-buscan-entregar-la-ley-de-financiamiento" target="_blank" rel="noopener">Leer más...</a></p>
+      <p class="pie">
+        Desde su promulgación, el 21 de octubre de 2025.
+        <a
+          class="mas"
+          href="https://www.laizquierdadiario.com/Las-autoridades-y-las-conducciones-buscan-entregar-la-ley-de-financiamiento"
+          target="_blank"
+          rel="noopener"
+          >Leer más...</a
+        >
+      </p>
     </section>
   `,
   styles: `
-    :host { display: block; }
+    :host {
+      display: block;
+    }
     section {
-      position: relative; overflow: hidden;
-      padding: 12px 14px 11px; border-radius: var(--r);
-      background: var(--fei-fondo); border: 1px solid var(--fei-borde); color: #f5f3f7;
+      position: relative;
+      overflow: hidden;
+      padding: 12px 14px 11px;
+      border-radius: var(--r);
+      background: var(--fei-fondo);
+      border: 1px solid var(--fei-borde);
+      color: #f5f3f7;
     }
-    .chispas { position: absolute; top: 12px; right: 14px; display: flex; gap: 6px; align-items: flex-start; }
-    .chispas app-estrella:first-child { margin-top: 8px; }
+    .chispas {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .chispas app-estrella:first-child {
+      margin-top: 8px;
+    }
     .antetitulo {
-      margin: 0; font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.11em;
-      text-transform: uppercase; color: var(--fei-rojo);
+      margin: 0;
+      font-size: var(--t-xs);
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--fei-rojo);
     }
-    h2 { margin: 3px 24px 9px 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
-    .fichas { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; }
+    h2 {
+      margin: 3px 24px 9px 0;
+      font-size: var(--t-m);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .fichas {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 8px;
+    }
     .ficha {
-      display: flex; flex-direction: column; align-items: center; gap: 2px;
-      padding: 7px 6px 6px; border-radius: 10px; background: #221f27; border: 1px solid var(--fei-borde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 7px 6px 6px;
+      border-radius: 10px;
+      background: #221f27;
+      border: 1px solid var(--fei-borde);
     }
     .num {
-      font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500;
-      font-size: 22px; line-height: 1; color: #f5f3f7;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1;
+      color: #f5f3f7;
     }
-    .dias .num { font-size: 28px; color: var(--fei-rojo); }
-    .rot { font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: #a79db0; }
-    .pie { margin: 9px 0 0; font-size: var(--t-xs); color: #a79db0; line-height: 1.4; }
-    .mas { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    .dias .num {
+      font-size: 28px;
+      color: var(--fei-rojo);
+    }
+    .rot {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #a79db0;
+    }
+    .pie {
+      margin: 9px 0 0;
+      font-size: var(--t-xs);
+      color: #a79db0;
+      line-height: 1.4;
+    }
+    .mas {
+      color: var(--fei-amarillo);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   `,
 })
 export class RelojLey {

@@ -35,9 +35,20 @@ import { Component, computed, DOCUMENT, inject, signal } from '@angular/core';
       border-radius: var(--r);
       background: var(--superficie);
     }
-    .txt { flex: 1; min-width: 0; }
-    strong { display: block; font-size: var(--t-m); }
-    span { display: block; font-size: var(--t-s); color: var(--texto-2); margin-top: 2px; }
+    .txt {
+      flex: 1;
+      min-width: 0;
+    }
+    strong {
+      display: block;
+      font-size: var(--t-m);
+    }
+    span {
+      display: block;
+      font-size: var(--t-s);
+      color: var(--texto-2);
+      margin-top: 2px;
+    }
     .si {
       flex: none;
       min-height: 40px;
@@ -69,7 +80,9 @@ export class Instalar {
   private readonly instalada = signal(this.yaInstalada());
 
   protected readonly sePuedeInstalar = computed(() => !!this.evento());
-  protected readonly visible = computed(() => !this.oculto() && !this.instalada() && this.hayVentana);
+  protected readonly visible = computed(
+    () => !this.oculto() && !this.instalada() && this.hayVentana,
+  );
 
   private readonly hayVentana = typeof this.doc.defaultView?.addEventListener === 'function';
 

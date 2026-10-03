@@ -2,9 +2,10 @@
  * Layout del grafo de correlatividades: columnas por nivel, filas ordenadas
  * para que se crucen menos líneas.
  *
- * Es la implementación de referencia: el componente de Angular usa el mismo
- * algoritmo (src/app/core/grafo/layout.ts). Acá sirve para generar el SVG
- * del mockup con datos reales y para mirar el resultado sin levantar la app.
+ * Es la copia que usa el mockup (tools/mockup/armar.mjs) para dibujar el SVG
+ * con datos reales sin levantar la app. La app usa src/app/core/grafo.ts: el
+ * algoritmo es el mismo, pero las medidas de las tarjetas ya no coinciden.
+ * Si cambia el layout de la app, este archivo no se entera.
  *
  * Uso:  node tools/layout-grafo.mjs <slug> [--svg salida.svg]
  */
@@ -41,8 +42,7 @@ export function calcularLayout(carrera, pasadas = 4, escala = 'tarjeta') {
   };
 
   const dependientes = new Map(materias.map((m) => [m.codigo, []]));
-  for (const m of materias)
-    for (const c of m.correlativas) dependientes.get(c)?.push(m.codigo);
+  for (const m of materias) for (const c of m.correlativas) dependientes.get(c)?.push(m.codigo);
 
   for (let p = 0; p < pasadas; p++) {
     const haciaAdelante = p % 2 === 0;
@@ -111,14 +111,29 @@ export function curva(o, d) {
 }
 
 /** Un color por nivel de origen, para distinguir de dónde sale cada línea. */
-export const COLOR_NIVEL = ['#c77dff', '#5da9ff', '#2dd4cf', '#ffa552', '#f783c7', '#4ade80', '#ffd166', '#ff6b6b'];
+export const COLOR_NIVEL = [
+  '#c77dff',
+  '#5da9ff',
+  '#2dd4cf',
+  '#ffa552',
+  '#f783c7',
+  '#4ade80',
+  '#ffd166',
+  '#ff6b6b',
+];
 
 export function aSvg(layout, opciones = {}) {
   const { seleccion = null, tema = 'oscuro' } = opciones;
   const c =
     tema === 'oscuro'
       ? { fondo: '#1a1a1a', nodo: '#242229', borde: '#3d3844', texto: '#f5f3f7', texto2: '#ab9fb3' }
-      : { fondo: '#faf9fb', nodo: '#ffffff', borde: '#e0dce4', texto: '#1a1a1a', texto2: '#5f5768' };
+      : {
+          fondo: '#faf9fb',
+          nodo: '#ffffff',
+          borde: '#e0dce4',
+          texto: '#1a1a1a',
+          texto2: '#5f5768',
+        };
 
   const pos = new Map(layout.nodos.map((n) => [n.codigo, n]));
   const necesita = seleccion ? new Set(pos.get(seleccion)?.correlativas ?? []) : new Set();

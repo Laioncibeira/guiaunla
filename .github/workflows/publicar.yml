@@ -1,0 +1,48 @@
+name: publicar
+
+# Cada cambio que entra a main se publica en https://guiaunla.web.app: la app
+# (Hosting) y las reglas e índices de Firestore. También se puede lanzar a
+# mano desde la pestaña Actions de GitHub ("Run workflow").
+#
+# Necesita el secreto FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7: la clave JSON
+# de una cuenta de servicio del proyecto con los roles Firebase Hosting Admin,
+# Firebase Rules Admin, Cloud Datastore Index Admin, Service Usage Consumer y
+# API Keys Viewer. Sin el secreto, el job avisa y no publica nada.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: publicar
+
+jobs:
+  firebase:
+    runs-on: ubuntu-latest
+    env:
+      CUENTA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7 }}
+    steps:
+      - name: ¿Está la credencial?
+        id: credencial
+        run: |
+          if [ -n "$CUENTA" ]; then echo "hay=si" >> "$GITHUB_OUTPUT"
+          else echo "::warning::Falta el secreto FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7: no se publica."; fi
+      - uses: actions/checkout@v5
+        if: steps.credencial.outputs.hay == 'si'
+      - uses: actions/setup-node@v5
+        if: steps.credencial.outputs.hay == 'si'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+        if: steps.credencial.outputs.hay == 'si'
+      - name: Verificar antes de publicar
+        if: steps.credencial.outputs.hay == 'si'
+        run: npm run verificar
+      - name: Publicar la app y las reglas de Firestore
+        if: steps.credencial.outputs.hay == 'si'
+        run: |
+          # La clave vive sólo en un archivo temporal de esta máquina, que se borra al terminar.
+          printf '%s' "$CUENTA" > "$RUNNER_TEMP/cuenta.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/cuenta.json"
+          npx -y firebase-tools@15 deploy --only hosting,firestore --project guiaunla-51aa7 --non-interactive
+          rm -f "$RUNNER_TEMP/cuenta.json"

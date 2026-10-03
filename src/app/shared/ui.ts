@@ -1,6 +1,21 @@
 import { Location } from '@angular/common';
-import { Component, computed, effect, inject, Injectable, input, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Injectable,
+  input,
+  signal,
+  type Signal,
+} from '@angular/core';
+import {
+  NavigationEnd,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { DEPARTAMENTOS, resumenPorSlug, type Carrera, type ResumenCarrera } from '../core/datos';
 import { Planes } from '../core/planes';
 
@@ -15,37 +30,6 @@ export const ICONOS: Record<string, string> = {
   atras: 'M14.5 5.5 8 12l6.5 6.5',
   grafo: 'M5 4.5h4v4H5zM15 4.5h4v4h-4zM10 15.5h4v4h-4zM7 8.5v3.5h10V8.5M12 12v3.5',
 };
-
-@Component({
-  selector: 'app-icono',
-  template: `
-    <svg
-      viewBox="0 0 24 24"
-      [attr.width]="tam()"
-      [attr.height]="tam()"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      @if (nombre() === 'calendario') {
-        <circle cx="12" cy="12" r="9" />
-      }
-      @if (nombre() === 'buscar') {
-        <circle cx="10.5" cy="10.5" r="6.5" />
-      }
-      <path [attr.d]="d()" />
-    </svg>
-  `,
-  styles: `:host { display: inline-flex; }`,
-})
-export class Icono {
-  readonly nombre = signal<string>('inicio');
-  readonly tam = signal(20);
-  protected readonly d = computed(() => ICONOS[this.nombre()] ?? '');
-}
 
 /** Barra inferior fija: cinco destinos, sin menú hamburguesa. */
 @Component({
@@ -115,14 +99,23 @@ export class Icono {
     a.activo {
       color: var(--marca);
     }
-    a { position: relative; }
+    a {
+      position: relative;
+    }
     /* Hasta que se elige carrera, la pestaña avisa que ahí se elige. */
     .punto {
-      position: absolute; top: 6px; left: calc(50% + 9px);
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--fei-amarillo); box-shadow: 0 0 0 2px var(--superficie);
+      position: absolute;
+      top: 6px;
+      left: calc(50% + 9px);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--fei-amarillo);
+      box-shadow: 0 0 0 2px var(--superficie);
     }
-    .marca { display: none; }
+    .marca {
+      display: none;
+    }
 
     @media (min-width: 900px) {
       nav {
@@ -249,16 +242,6 @@ export class Aprobadas {
     }
   }
 
-  limpiar(slug: string): void {
-    const nuevo = { ...this.mapa(), [slug]: [] };
-    this.mapa.set(nuevo);
-    try {
-      localStorage.setItem('guiaunla.aprobadas', JSON.stringify(nuevo));
-    } catch {
-      /* sin guardado */
-    }
-  }
-
   readonly señal = this.mapa.asReadonly();
 
   private leer(): Record<string, string[]> {
@@ -272,38 +255,73 @@ export class Aprobadas {
   }
 }
 
-export const usarCarrera = () => inject(CarreraElegida);
+/**
+ * Entrar por link a una carrera también la deja elegida en el teléfono.
+ * Se llama desde el constructor de las pantallas que muestran un plan.
+ */
+export function recordarCarrera(carrera: Signal<Carrera | null>): void {
+  const elegida = inject(CarreraElegida);
+  effect(() => {
+    const c = carrera();
+    if (c && elegida.slug() !== c.slug) elegida.elegir(c.slug);
+  });
+}
+
+/** Dónde se anota, en cada entrada del historial, cuántas pantallas propias hay detrás. */
+const POSICION = 'guiaunla.posicion';
 
 /**
- * Cuenta las navegaciones hechas dentro de la app, para saber si "atrás"
- * puede usar el historial del navegador o tiene que ir a una ruta fija.
+ * Sabe si "atrás" puede usar el historial del navegador o tiene que ir a una
+ * ruta fija.
  *
  * Quien entra por un link compartido no tiene adónde volver: el historial
  * anterior es de otro sitio o no existe. Quien llegó tocando dentro de la app
  * sí, y ahí "atrás" tiene que ser el atrás de verdad.
+ *
+ * Lleva la cuenta de cuántas pantallas de la app hay detrás de la actual:
+ * suma con cada pantalla nueva, no cambia cuando la URL se reemplaza (el mapa
+ * anota la materia elegida así) y, al volver con el botón del navegador,
+ * recupera el número que dejó anotado en esa entrada del historial.
  */
 @Injectable({ providedIn: 'root' })
 export class Historial {
   private readonly router = inject(Router);
-  private readonly internas = signal(0);
-  /** La última URL antes de la actual, o null si no hubo. */
-  readonly previa = signal<string | null>(null);
+  private readonly posicion = signal(0);
   private actual: string | null = null;
+  private pendiente:
+    | { readonly tipo: 'nueva' | 'reemplazo' }
+    | { readonly tipo: 'vuelta'; readonly posicion: number }
+    | null = null;
 
   constructor() {
     this.router.events.subscribe((e) => {
-      if (!(e instanceof NavigationEnd)) return;
-      if (this.actual !== null && this.actual !== e.urlAfterRedirects) {
-        this.previa.set(this.actual);
-        this.internas.update((n) => n + 1);
+      if (e instanceof NavigationStart) {
+        if (e.navigationTrigger === 'popstate') {
+          const anotada = e.restoredState?.[POSICION];
+          this.pendiente = { tipo: 'vuelta', posicion: typeof anotada === 'number' ? anotada : 0 };
+        } else {
+          const extras = this.router.currentNavigation()?.extras;
+          this.pendiente = {
+            tipo: extras?.replaceUrl || extras?.skipLocationChange ? 'reemplazo' : 'nueva',
+          };
+        }
+        return;
       }
+      if (!(e instanceof NavigationEnd)) return;
+      const p = this.pendiente;
+      this.pendiente = null;
+      if (p?.tipo === 'vuelta') this.posicion.set(p.posicion);
+      else if (p?.tipo === 'nueva' && this.actual !== null && this.actual !== e.urlAfterRedirects)
+        this.posicion.update((n) => n + 1);
       this.actual = e.urlAfterRedirects;
+      if (typeof history !== 'undefined')
+        history.replaceState({ ...history.state, [POSICION]: this.posicion() }, '');
     });
   }
 
   /** Hay una pantalla anterior de esta misma app en el historial. */
   puedeVolver(): boolean {
-    return this.internas() > 0;
+    return this.posicion() > 0;
   }
 }
 
@@ -312,15 +330,36 @@ export class Historial {
   selector: 'app-atras',
   template: `
     <button type="button" (click)="volver()" [attr.aria-label]="'Volver a ' + nombre()">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.9"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M14.5 5.5 8 12l6.5 6.5" />
+      </svg>
     </button>
   `,
   styles: `
-    :host { display: inline-flex; }
+    :host {
+      display: inline-flex;
+    }
     button {
-      width: 32px; height: 32px; flex: none; display: grid; place-items: center;
-      border: 1px solid var(--borde); border-radius: 9px; background: var(--superficie);
-      color: var(--texto-2); padding: 0;
+      width: 32px;
+      height: 32px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--borde);
+      border-radius: 9px;
+      background: var(--superficie);
+      color: var(--texto-2);
+      padding: 0;
     }
   `,
 })
@@ -347,7 +386,12 @@ export class Atras {
   selector: 'app-carrera-chip',
   imports: [RouterLink],
   template: `
-    <a routerLink="/carrera/elegir" [queryParams]="{ volver: volver() }" class="chip" [class.vacio]="!elegida.resumen()">
+    <a
+      routerLink="/carrera/elegir"
+      [queryParams]="{ volver: volver() }"
+      class="chip"
+      [class.vacio]="!elegida.resumen()"
+    >
       @if (elegida.resumen(); as c) {
         <span class="nombre" [style.color]="colorDe(c.departamento)">{{ c.nombreCorto }}</span>
         <span class="cambiar">Cambiar</span>
@@ -357,21 +401,52 @@ export class Atras {
     </a>
   `,
   styles: `
-    :host { display: inline-flex; max-width: 100%; }
+    :host {
+      display: inline-flex;
+      max-width: 100%;
+    }
     .chip {
-      display: inline-flex; align-items: center; gap: 7px; min-height: 36px; max-width: 100%;
-      padding: 0 12px; border: 1px solid var(--borde); border-radius: 999px;
-      background: var(--superficie); color: var(--texto-2); font-size: var(--t-s);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      max-width: 100%;
+      padding: 0 12px;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--superficie);
+      color: var(--texto-2);
+      font-size: var(--t-s);
       text-decoration: none;
     }
-    .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 104px; font-weight: 700; }
-    /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
-    .chip.vacio { border-color: var(--marca); animation: latir 2.4s ease-in-out infinite; }
-    @keyframes latir {
-      0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--marca) 45%, transparent); }
-      50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--marca) 0%, transparent); }
+    .nombre {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 104px;
+      font-weight: 700;
     }
-    .cambiar { flex: none; color: var(--marca); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+    /* Sin carrera, el chip late un poco: es el lugar para elegirla. */
+    .chip.vacio {
+      border-color: var(--marca);
+      animation: latir 2.4s ease-in-out infinite;
+    }
+    @keyframes latir {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--marca) 45%, transparent);
+      }
+      50% {
+        box-shadow: 0 0 0 6px color-mix(in srgb, var(--marca) 0%, transparent);
+      }
+    }
+    .cambiar {
+      flex: none;
+      color: var(--marca);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   `,
 })
 export class CarreraChip {

@@ -18,6 +18,7 @@ const plan = (materias: Carrera['materias']): Carrera => ({
   slug: 'prueba',
   nombre: 'Prueba',
   nombreCorto: 'Prueba',
+  tipo: 'licenciatura',
   departamento: 'humanidades-y-artes',
   titulo: 'Título',
   duracionAnios: 2,
@@ -29,8 +30,12 @@ const plan = (materias: Carrera['materias']): Carrera => ({
   materias,
 });
 
-const m = (codigo: string, nivel: number, correlativas: string[] = [], nombre = 'Materia ' + codigo) =>
-  ({ codigo, nombre, dedicacion: 'cuatrimestral' as const, nivel, correlativas });
+const m = (
+  codigo: string,
+  nivel: number,
+  correlativas: string[] = [],
+  nombre = 'Materia ' + codigo,
+) => ({ codigo, nombre, dedicacion: 'cuatrimestral' as const, nivel, correlativas });
 
 const cadena = plan([
   m('01', 1),
@@ -85,7 +90,11 @@ describe('qué puedo cursar', () => {
 
   it('lista todas las habilitadas con un estado dado', () => {
     const v = vincular(cadena);
-    expect(habilitadas(cadena, v, new Set(['01'])).map((x) => x.codigo)).toEqual(['02', '03', '06']);
+    expect(habilitadas(cadena, v, new Set(['01'])).map((x) => x.codigo)).toEqual([
+      '02',
+      '03',
+      '06',
+    ]);
   });
 });
 
