@@ -5,7 +5,38 @@ septiembre). Está escrito para alguien que está aprendiendo a programar: cada 
 explica la primera vez que aparece, y cada problema dice **dónde está**, **por qué importa** y
 **cómo se arregla**.
 
-Este documento no cambia nada del código. Lo único que agrega el pull request es este archivo.
+> **Actualización (versión 1.0.0, 3 de octubre de 2026).** El diagnóstico de abajo es la foto de
+> antes del mantenimiento y se deja como estaba, para aprender de él. Casi todo ya se resolvió;
+> el estado de cada tarea está en la tabla que sigue, el detalle en `CHANGELOG.md` y lo que queda
+> por hacer a mano en `NOTAS-PARA-LEON.md`.
+
+| # | Tarea de la sección 5 | Estado |
+|---|---|---|
+| 1 | CSP y hoja de estilos | ✅ Hecho, con un control en la CI (`tools/revisar-csp.mjs`) |
+| 2 | Ingreso y salida del panel | ✅ Hecho, con pruebas (`sesion.spec.ts`) |
+| 3 | Límites a las escrituras públicas | 🟡 Reglas de suscripciones endurecidas y App Check listo; **prenderlo y las alertas de uso los hace quien administra** |
+| 4 | Dependencias con avisos de seguridad | ✅ `npm audit` en 0 (app y `functions/`) |
+| 5 | Versión de Node documentada | ✅ `.nvmrc`, `engines` y README |
+| 6 | CI activa y cotejo que no pase en vacío | ✅ `.github/workflows/verificar.yml`, `cotejar-fuente.mjs --estricto` |
+| 7 | Zoom del mapa | ✅ |
+| 8 | `functions/` | ✅ Node 22, dependencias al día, lockfile; `npm run publicar` usa `--only` |
+| 9 | Respaldo de secretos y apiKey | 🟡 Documentado; **respaldar y restringir la clave los hace quien administra** |
+| 10 | Datos de 2027 | 🟡 El validador avisa a tiempo; **los datos los publica la universidad** |
+| 11 | Errores en el panel | ✅ |
+| 12 | Duplicados | ✅ Los de lógica. Quedan estilos parecidos entre pantallas: unificarlos cambia el diseño y conviene hacerlo mirándolo |
+| 13 | Código sin uso | ✅ (`camino`, `alcance` y `habilitadas` se quedan: son para una función futura) |
+| 14 | Modo estricto | ✅ `strict` y `strictTemplates`, más chequeo de tipos de las pruebas |
+| 15 | Prettier | ✅ |
+| 16 | `correlativasDe` | ✅ |
+| 17 | Service worker | ✅ Se mantiene la descarga completa (sirve para el modo sin señal) y el README ya lo dice |
+| 18 | Fuentes en el sitio | ✅ |
+| 19 | `tools/` | ✅ El boceto de 2,7 MB se queda: es el mockup que se usa para mirar el diseño |
+| 20 | Dejar de recibir avisos | ✅ |
+| 21 | Pruebas de las reglas | ✅ `npm run test:reglas` (12 pruebas, también en la CI) |
+| 22 | Pruebas de componentes | ⏳ Pendiente: hay pruebas de las guardas del panel, no de las pantallas |
+| 23 | Botón "atrás" | ✅ |
+| 24 | `@angular/forms` | ✅ |
+| 25 | Versión y CHANGELOG | ✅ 1.0.0 |
 
 ### Cómo se hizo la revisión
 

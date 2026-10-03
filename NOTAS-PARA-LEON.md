@@ -2,6 +2,75 @@
 
 Lo más nuevo arriba. Lo de abajo son las notas de las noches anteriores, que siguen valiendo.
 
+## Tercera etapa (3 de octubre): mantenimiento completo, versión 1.0.0
+
+Hice todo lo que salió de `DIAGNOSTICO.md` que se podía hacer desde el código. El detalle está en
+`CHANGELOG.md`; lo más importante:
+
+- **Los estilos en producción**: la CSP bloqueaba la hoja global. Con el teléfono en modo claro
+  la app se veía oscura y en la compu no aparecía el riel de la izquierda. Arreglado y con un
+  control (`tools/revisar-csp.mjs`) para que no vuelva.
+- **El panel**: entrar y salir ahora funciona sin recargar.
+- **El mapa**: tocar una materia ya no pierde el zoom; "atrás" ya no te saca de la app.
+- **Avisos**: hay botón "Dejar de recibir". Las suscripciones sólo aceptan servicios de push
+  reales.
+- **Seguridad**: dependencias al día (0 vulnerabilidades), reglas probadas con el emulador, App
+  Check listo para prender, `functions/` en Node 22 y sin tu mail en el código.
+- **GitHub**: cada PR se verifica solo, y cada cambio en `main` se publica solo cuando cargues la
+  credencial (ver abajo).
+
+### No pude publicar
+
+Desde donde trabajo no hay acceso a tu cuenta de Google, así que la app publicada sigue siendo la
+de antes. La publicación queda a un comando (paso 2).
+
+### Lo que necesito de vos, en orden
+
+1. **Aprobar y fusionar el pull request** en GitHub.
+2. **Publicar** (una vez, desde tu compu, con Node 24):
+   ```bash
+   git checkout main && git pull
+   npm ci
+   npx firebase-tools@15 login     # con la cuenta de Google dueña del proyecto
+   npm run publicar                # verifica todo y publica la app y las reglas
+   ```
+   Las reglas nuevas de Firestore sólo se suben así: el deploy automático publica la app, no las
+   reglas.
+3. **Publicación automática (opcional, 5 minutos)**: corré `npx firebase-tools@15 init hosting:github`,
+   elegí `Laioncibeira/guiaunla`, y cuando pregunte por armar workflows o por publicar al
+   fusionar, respondé **No** (ya están hechos). Si igual crea archivos en `.github/workflows/`
+   con `firebase-hosting` en el nombre, borralos sin subirlos. Lo que importa es que deja el
+   secreto `FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7` en el repo; desde ahí, cada cambio en `main`
+   se publica solo.
+4. **Si todavía no lo hiciste**: los pasos de Firebase Authentication de la segunda etapa (más
+   abajo). Sin eso nadie entra al panel.
+5. **Guardar los secretos** `tools/secretos/cuenta-servicio.json` y `tools/secretos/vapid.json`
+   en un gestor de contraseñas. Si se pierde `vapid.json`, los teléfonos suscriptos no reciben más
+   avisos. El formato de `vapid.json` está explicado arriba de todo en `functions/avisar-local.js`.
+6. **Restringir la apiKey** (Google Cloud → APIs y servicios → Credenciales → la clave "Browser
+   key" → Restricciones de aplicaciones → Sitios web): `https://guiaunla.web.app/*`,
+   `https://guiaunla-51aa7.web.app/*`, `https://guiaunla-51aa7.firebaseapp.com/*` y
+   `http://localhost:4200/*`.
+7. **Prender App Check**, contra el spam en el formulario y las visitas infladas:
+   1. En https://www.google.com/recaptcha/admin registrá un sitio **reCAPTCHA v3** con los
+      dominios `guiaunla.web.app`, `guiaunla-51aa7.web.app` y `localhost`.
+   2. Pegá la **clave de sitio** en `APP_CHECK_CLAVE` (`src/app/core/firebase-config.ts`) y publicá.
+   3. En la consola de Firebase → App Check → la app web → reCAPTCHA, pegá la **clave secreta**.
+   4. Dejá pasar unos días mirando las métricas de App Check y después tocá **Aplicar** en
+      Firestore. Recién ahí Firestore rechaza lo que no venga de la app.
+8. **Alertas de uso** (consola de Firebase → Uso y facturación): un aviso si las escrituras se
+   disparan te deja enterarte de un ataque antes de que se agote la cuota del día.
+9. **Datos con fecha**:
+   - El **calendario 2027**, apenas lo publique la universidad (el de 2026 llega hasta el 13 de
+     marzo de 2027). Se agrega `src/data/calendario/2027.json` y se cambia el import en
+     `src/app/core/datos.ts`. El validador avisa 60 días antes.
+   - Las **grillas del primer cuatrimestre 2027** cuando las publiquen los Departamentos.
+   - Correr `npm run datos` de vez en cuando para traer cambios de los planes (desde acá no tengo
+     acceso a unla.edu.ar).
+10. Sigue pendiente el logo de la **Secretaría de Género del CESACO**.
+
+---
+
 ## Segunda etapa (16 de septiembre): reloj, contacto, panel, 24 carreras
 
 Está todo publicado en https://guiaunla.web.app. Lo que pediste, punto por punto:

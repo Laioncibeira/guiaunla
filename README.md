@@ -25,18 +25,29 @@ inscripción, dónde queda cada edificio.
 
 No pide cuenta ni datos personales. La carrera elegida y las materias que marcás como aprobadas se
 guardan sólo en tu teléfono. El formulario de contacto es lo único que viaja a un servidor, y
-sólo cuando lo enviás.
+sólo cuando lo enviás. Las fuentes tipográficas salen del propio sitio: abrir la app no le avisa
+a nadie más.
 
 ## Cómo trabajar en el proyecto
 
+Hace falta **Node.js 24** (o 22.22.3 en adelante): con una versión más vieja Angular no compila.
+Con [nvm](https://github.com/nvm-sh/nvm), `nvm use` toma la versión de `.nvmrc`.
+
 ```bash
-npm install
+npm ci             # instala exactamente lo de package-lock.json
 npm start          # servidor de desarrollo en http://localhost:4200
 npm run ver        # lo mismo, accesible desde el celular en la misma wifi
-npm test           # motor de correlatividades, layout del grafo, CSV, visitas
+npm test           # motor de correlatividades, layout del grafo, CSV, sesión del panel...
+npm run test:reglas  # firestore.rules contra el emulador (necesita Java)
+npm run formato    # deja el código con el formato de Prettier
+npm run verificar  # pruebas, tipos, datos, build y CSP: lo mismo que la CI
 npm run build      # genera las páginas estáticas en dist/guiaunla/browser
-node tools/servir-dist.mjs   # sirve dist/ como lo hace Firebase Hosting, en :5055
+npm run previa     # build + emulador de Hosting con las cabeceras reales, en :5000
+node tools/servir-dist.mjs   # sirve dist/ sin cabeceras, en :5055
 ```
+
+En cada pull request y en cada cambio a `main`, GitHub corre lo mismo que `npm run verificar` más
+el formato y las reglas (`.github/workflows/verificar.yml`).
 
 ### Actualizar los datos
 
@@ -47,6 +58,11 @@ archivo aparte que se baja recién cuando alguien lo mira.
 ```bash
 npm run datos      # baja los 24 planes, los coteja contra la web y valida todo
 ```
+
+`validar-datos.mjs` también avisa cuando al calendario le quedan menos de 60 días o cuando una
+grilla es de un cuatrimestre que ya pasó. El calendario que usa la app es el que importa
+`src/app/core/datos.ts` (`calendario/2026.json`): para el año nuevo, se agrega el archivo y se
+cambia ese import.
 
 `extraer-plan.mjs` reconoce el formato de cada tabla por su encabezado; Trabajo Social sale de un
 PDF y Tecnologías Ferroviarias de una lista sin tabla. `cotejar-fuente.mjs` compara cada JSON
@@ -64,14 +80,19 @@ con el texto de la planilla del Departamento genera `src/data/horarios/<slug>.js
 
 ### Publicar
 
+**Automático:** cada cambio que entra a `main` se publica solo (`.github/workflows/publicar.yml`),
+siempre que el repo tenga el secreto `FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7`. Se crea una vez con
+`npx firebase-tools@15 init hosting:github` (elegí este repo y decí que no a todo lo demás).
+
+**A mano**, desde tu computadora, después de `npx firebase-tools@15 login` con la cuenta de Google
+dueña del proyecto:
+
 ```bash
-npm run build
-npx firebase deploy --only hosting
-npx firebase deploy --only firestore   # sólo si cambiaron las reglas o los índices
+npm run publicar   # verifica todo y publica Hosting y las reglas de Firestore
 ```
 
-Hace falta tener la CLI de Firebase instalada (`npm install -g firebase-tools`) y haber hecho
-`firebase login` con la cuenta de Google dueña del proyecto.
+No uses `firebase deploy` a secas: también intentaría publicar las Cloud Functions, que necesitan
+el plan Blaze.
 
 ## Cómo está armado
 
@@ -81,11 +102,17 @@ Hace falta tener la CLI de Firebase instalada (`npm install -g firebase-tools`) 
 - **Datos bajo demanda**: `src/app/core/planes.ts` carga el plan y la grilla de una carrera con
   `import()` la primera vez que se piden y los guarda en memoria. El bundle inicial no crece con
   cada carrera nueva.
-- **Se instala como app**: manifest en modo `standalone` y service worker. La app y la carrera
-  elegida quedan guardadas para abrir sin señal; las demás se guardan al visitarlas.
+- **Se instala como app**: manifest en modo `standalone` y service worker. En la primera visita el
+  service worker baja y guarda toda la app, con los 24 planes, las fuentes y las imágenes
+  (~1,6 MB sin comprimir): después abre sin señal cualquier carrera. Las páginas HTML se guardan
+  al visitarlas.
 - **Firebase** (Firestore + Auth) sólo para lo que no puede ser un archivo: contactos, novedades,
   visitas y la sesión del panel. El SDK se carga con `import()` desde `src/app/core/firebase.ts`
-  y nunca entra en el bundle inicial ni en el pre-render. Las reglas están en `firestore.rules`.
+  y nunca entra en el bundle inicial ni en el pre-render. Las reglas están en `firestore.rules` y
+  se prueban con el emulador (`tools/reglas.spec.mjs`). App Check queda listo para prenderse con
+  una clave de reCAPTCHA (`APP_CHECK_CLAVE` en `src/app/core/firebase-config.ts`).
+- **Seguridad del sitio**: `firebase.json` manda una CSP que sólo permite scripts del propio sitio.
+  `tools/revisar-csp.mjs` falla si el build trae algún script escrito dentro del HTML.
 - **Un layout, dos anchos**: se diseñó a 390 px; desde 900 px la barra pasa a un riel a la
   izquierda y el contenido a una columna de 760 px.
 
