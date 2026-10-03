@@ -18,6 +18,7 @@ const plan = (materias: Carrera['materias']): Carrera => ({
   slug: 'prueba',
   nombre: 'Prueba',
   nombreCorto: 'Prueba',
+  tipo: 'licenciatura',
   departamento: 'humanidades-y-artes',
   titulo: 'Título',
   duracionAnios: 2,

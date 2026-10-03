@@ -14,6 +14,7 @@ const plan = (materias: Carrera['materias'], tipoNivel: Carrera['tipoNivel'] = '
   slug: 'prueba',
   nombre: 'Prueba',
   nombreCorto: 'Prueba',
+  tipo: 'licenciatura',
   departamento: 'humanidades-y-artes',
   titulo: 'Título',
   duracionAnios: 2,

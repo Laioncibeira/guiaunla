@@ -21,6 +21,8 @@ jobs:
         run: npm run formato:revisar
       - name: Pruebas de la lógica
         run: npm test
+      - name: Tipos de las pruebas
+        run: npm run test:tipos
       - name: Datos consistentes
         run: node tools/validar-datos.mjs
       - name: Build con las páginas pre-generadas
