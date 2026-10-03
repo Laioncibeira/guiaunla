@@ -21,6 +21,7 @@ export type EstadoAvisos =
   | 'listo'
   | 'pidiendo'
   | 'suscripto'
+  | 'cancelando'
   | 'bloqueado'
   | 'error';
 
@@ -79,6 +80,27 @@ export class Avisos {
     } catch {
       this.estado.set(Notification.permission === 'denied' ? 'bloqueado' : 'error');
     }
+  }
+
+  /**
+   * Deja de recibir avisos en este teléfono. El buzón deja de existir en el
+   * servicio de push; el próximo envío lo encuentra vencido (410) y borra su
+   * documento de Firestore, así que no hace falta permiso para borrarlo acá.
+   */
+  async desuscribir(): Promise<void> {
+    if (this.estado() !== 'suscripto') return;
+    this.estado.set('cancelando');
+    try {
+      await this.push.unsubscribe();
+    } catch {
+      /* ya no había suscripción: igual queda sin avisos */
+    }
+    try {
+      localStorage.removeItem(CLAVE);
+    } catch {
+      /* nada que borrar */
+    }
+    this.estado.set('listo');
   }
 
   /** Safari en iPhone sólo permite avisos con la app en el inicio. */

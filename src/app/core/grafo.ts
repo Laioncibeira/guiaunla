@@ -10,6 +10,7 @@
  */
 import type { Carrera, Materia } from './datos';
 import { anioDe, cuatrimestreDe } from './datos';
+import { vincular } from './correlatividades';
 
 export interface Medidas {
   readonly ancho: number;
@@ -101,8 +102,8 @@ export function calcularLayout(carrera: Carrera, medidas: Medidas = TARJETA, pas
   const fila = new Map<string, number>();
   for (const col of columnas) col.forEach((m, i) => fila.set(m.codigo, i));
 
-  const dependientes = new Map<string, string[]>(materias.map((m) => [m.codigo, []]));
-  for (const m of materias) for (const c of m.correlativas) dependientes.get(c)?.push(m.codigo);
+  // Lo que habilita cada materia: el baricentro hacia atrás mira a sus dependientes.
+  const dependientes = vincular(carrera).habilita;
 
   const baricentro = (vecinas: readonly string[]): number | null => {
     const filas = vecinas.map((c) => fila.get(c)).filter((f): f is number => f !== undefined);

@@ -13,7 +13,7 @@ import {
 } from '../core/datos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Planes } from '../core/planes';
-import { FirmaFei, LogoFei } from '../shared/fei';
+import { EnlaceFei, FirmaFei } from '../shared/fei';
 
 /** Índice del día de hoy en la semana; el domingo cae en lunes. */
 function diaDeHoy(): Dia {
@@ -23,7 +23,7 @@ function diaDeHoy(): Dia {
 
 @Component({
   selector: 'app-horarios',
-  imports: [RouterLink, FirmaFei, CarreraChip, LogoFei],
+  imports: [RouterLink, FirmaFei, CarreraChip, EnlaceFei],
   template: `
     <header>
       <div style="flex:1">
@@ -38,7 +38,7 @@ function diaDeHoy(): Dia {
           }
         </p>
       </div>
-      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
+      <app-enlace-fei />
       <app-carrera-chip />
     </header>
 
@@ -137,7 +137,6 @@ function diaDeHoy(): Dia {
   styles: `
     :host { display: flex; flex-direction: column; flex: 1; }
     header { display: flex; align-items: center; gap: var(--e3); padding: 18px var(--e4) var(--e3); }
-    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
     .boton + .boton { margin-top: var(--e2); }
     h1 { margin: 0; font-size: var(--t-2xl); font-weight: 700; letter-spacing: -0.02em; }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }

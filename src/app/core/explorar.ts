@@ -57,12 +57,12 @@ export function calcularRama(
 }
 
 /** Un nodo del árbol de correlativas: la materia y, de hijos, lo que pide. */
-export interface Nodo {
+export interface NodoArbol {
   readonly materia: Materia;
   /** Profundidad desde la raíz. 0 es la materia elegida. */
   readonly nivel: number;
   readonly aprobada: boolean;
-  readonly hijos: readonly Nodo[];
+  readonly hijos: readonly NodoArbol[];
 }
 
 /**
@@ -77,8 +77,8 @@ export function construirArbol(
   carrera: Carrera,
   aprobadas: ReadonlySet<string> = new Set(),
   v: Vinculos = vincular(carrera),
-): Nodo | null {
-  const armar = (cod: string, nivel: number, ancestros: ReadonlySet<string>): Nodo | null => {
+): NodoArbol | null {
+  const armar = (cod: string, nivel: number, ancestros: ReadonlySet<string>): NodoArbol | null => {
     const materia = v.porCodigo.get(cod);
     if (!materia || ancestros.has(cod)) return null;
     const siguientes = new Set(ancestros).add(cod);
@@ -88,7 +88,7 @@ export function construirArbol(
       aprobada: aprobadas.has(cod),
       hijos: necesita(v, cod)
         .map((m) => armar(m.codigo, nivel + 1, siguientes))
-        .filter((n): n is Nodo => n !== null),
+        .filter((n): n is NodoArbol => n !== null),
     };
   };
   return armar(codigo, 0, new Set());

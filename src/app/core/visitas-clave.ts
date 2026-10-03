@@ -1,4 +1,5 @@
 /** Funciones puras del contador de visitas, sin Angular: se prueban solas. */
+import { plano } from './texto';
 
 /**
  * Clave de pantalla para el contador: '/' → 'inicio',
@@ -8,10 +9,7 @@
 export function claveDeRuta(url: string): string | null {
   const limpia = url.split('?')[0].split('#')[0].replace(/^\/+|\/+$/g, '');
   if (limpia === 'admin' || limpia.startsWith('admin/')) return null;
-  const clave = (limpia || 'inicio')
-    .normalize('NFD')
-    .replace(/\p{Mn}/gu, '')
-    .toLowerCase()
+  const clave = plano(limpia || 'inicio')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
     .slice(0, 40);

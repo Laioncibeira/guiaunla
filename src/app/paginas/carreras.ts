@@ -1,10 +1,10 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { NOMBRE_TIPO, nombreNivel, type Carrera, type Materia } from '../core/datos';
 import { habilita, necesita, vincular } from '../core/correlatividades';
-import { Atras, CarreraElegida } from '../shared/ui';
+import { Atras, recordarCarrera } from '../shared/ui';
 
 @Component({
   selector: 'app-carrera',
@@ -104,18 +104,13 @@ import { Atras, CarreraElegida } from '../shared/ui';
 })
 export class DetalleCarrera {
   private readonly ruta = inject(ActivatedRoute);
-  private readonly elegida = inject(CarreraElegida);
   /** El plan lo carga el resolver de la ruta antes de mostrar la pantalla. */
   protected readonly carrera = toSignal(this.ruta.data.pipe(map((d) => (d['carrera'] as Carrera | null) ?? null)), {
     initialValue: (this.ruta.snapshot.data['carrera'] as Carrera | null) ?? null,
   });
 
   constructor() {
-    // Entrar por link a una carrera también la deja elegida en el teléfono.
-    effect(() => {
-      const c = this.carrera();
-      if (c && this.elegida.slug() !== c.slug) this.elegida.elegir(c.slug);
-    });
+    recordarCarrera(this.carrera);
   }
 
   protected readonly niveles = computed(() =>
@@ -133,15 +128,31 @@ export class DetalleCarrera {
     return partes.join(' · ');
   }
 
-  protected correlativasDe(m: Materia): string {
+  /**
+   * El texto chico de cada materia ("necesita 01, 02 · habilita 3"). Se arma
+   * una vez por plan: antes se recorría el plan entero por cada materia en
+   * cada dibujo.
+   */
+  private readonly textosCorrelativas = computed(() => {
     const c = this.carrera();
-    if (!c || !m.correlativas.length) return '';
+    const textos = new Map<string, string>();
+    if (!c) return textos;
     const v = vincular(c);
-    const antes = necesita(v, m.codigo).map((x) => x.codigo);
-    const despues = habilita(v, m.codigo).length;
-    const a = antes.length ? `necesita ${antes.join(', ')}` : '';
-    const d = despues ? `habilita ${despues}` : '';
-    const r = m.correlativasParaRendir?.length ? `para rendir: ${m.correlativasParaRendir.join(', ')}` : '';
-    return [a, d, r].filter(Boolean).join(' · ');
+    for (const m of c.materias) {
+      const antes = necesita(v, m.codigo).map((x) => x.codigo);
+      const despues = habilita(v, m.codigo).length;
+      const partes = [
+        antes.length ? `necesita ${antes.join(', ')}` : '',
+        despues ? `habilita ${despues}` : '',
+        m.correlativasParaRendir?.length ? `para rendir: ${m.correlativasParaRendir.join(', ')}` : '',
+      ].filter(Boolean);
+      if (partes.length) textos.set(m.codigo, partes.join(' · '));
+    }
+    return textos;
+  });
+
+  protected correlativasDe(m: Materia): string {
+    return this.textosCorrelativas().get(m.codigo) ?? '';
   }
+
 }

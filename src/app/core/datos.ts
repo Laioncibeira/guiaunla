@@ -259,23 +259,9 @@ export const anios = (carrera: Carrera): readonly number[] => {
   return Array.from({ length: total }, (_, i) => i + 1);
 };
 
-export const materiasDe = (carrera: Carrera, anio: number, cuatrimestre?: number) =>
-  carrera.materias.filter(
-    (m) =>
-      anioDe(carrera, m) === anio &&
-      (cuatrimestre === undefined || cuatrimestreDe(carrera, m) === cuatrimestre),
-  );
-
 /** "3° año" / "5° cuatrimestre", según cómo agrupa el plan de esa carrera. */
 export const nombreNivel = (carrera: Carrera, nivel: number): string =>
   carrera.tipoNivel === 'anio' ? `${nivel}° año` : `${nivel}° cuatrimestre`;
 
-export const nombreNivelCorto = (carrera: Carrera, nivel: number): string =>
-  carrera.tipoNivel === 'anio' ? `${nivel}° año` : `${nivel}° cuat.`;
 
-/** Sin acentos y en minúsculas, para buscar sin que importe cómo se escriba. */
-export const plano = (s: string): string =>
-  s
-    .normalize('NFD')
-    .replace(/\p{Mn}/gu, '')
-    .toLowerCase();
+export { plano } from './texto';

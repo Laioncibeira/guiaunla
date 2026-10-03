@@ -1,9 +1,9 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { afterNextRender, Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { afterNextRender, Component, computed, effect, ElementRef, inject, signal, untracked, viewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { anios, dictadasEn, tieneCuatrimestres, type Carrera, type Materia } from '../core/datos';
+import { anioDe, anios, cuatrimestreDe, dictadasEn, tieneCuatrimestres, type Carrera, type Materia } from '../core/datos';
 import { Planes } from '../core/planes';
 import { buscar, vincular } from '../core/correlatividades';
 import {
@@ -17,7 +17,7 @@ import {
   type Filtro,
 } from '../core/explorar';
 import { calcularLayout, detalleDe, encuadrar, TARJETA, type Layout } from '../core/grafo';
-import { Aprobadas, Atras, CarreraElegida } from '../shared/ui';
+import { Aprobadas, Atras, recordarCarrera } from '../shared/ui';
 
 /** Con este ancho de viewBox la tarjeta se lee cómoda en un teléfono. */
 const CERCA_ANCHO = 340;
@@ -118,7 +118,7 @@ const TOLERANCIA_TOQUE_PX = 10;
           @for (m of resultados(); track m.codigo) {
             <li>
               <button type="button" (click)="irA(m.codigo)">
-                <span class="raya" [style.background]="color(anioDeMateria(c, m))"></span>
+                <span class="raya" [style.background]="color(anioDe(c, m))"></span>
                 <span class="txt">
                   <span class="nom">{{ m.nombre }}</span>
                   <span class="meta"
@@ -476,7 +476,6 @@ export class Grafo {
   private readonly ruta = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly aprobadas = inject(Aprobadas);
-  private readonly elegidaCarrera = inject(CarreraElegida);
   private readonly planes = inject(Planes);
   private readonly svg = viewChild<ElementRef<SVGSVGElement>>('svg');
 
@@ -599,9 +598,14 @@ export class Grafo {
   constructor() {
     // El lienzo arranca cerca, donde la tarjeta se lee. Si el link trae una
     // materia se abre prendida: es lo que espera quien lo recibe por mensaje.
+    //
+    // La URL se lee sin seguirla (`untracked`): tocar una materia escribe
+    // `?materia=` y, si el efecto dependiera de eso, cada toque volvería a
+    // encuadrar el mapa y se perdería el zoom. Sólo se re-encuadra cuando
+    // cambia el plan o aparece el lienzo (al pasar de Lista a Mapa).
     effect(() => {
       const l = this.layout();
-      const pedida = this.query().get('materia');
+      const pedida = untracked(() => this.query().get('materia'));
       // Leer el lienzo acá hace que el efecto vuelva a correr cuando aparece
       // y el encuadre se calcule con la medida real.
       const caja = this.cajaLienzo();
@@ -616,11 +620,7 @@ export class Grafo {
       }
     });
 
-    // Entrar por link a una carrera también la deja elegida en el teléfono.
-    effect(() => {
-      const c = this.carrera();
-      if (c && this.elegidaCarrera.slug() !== c.slug) this.elegidaCarrera.elegir(c.slug);
-    });
+    recordarCarrera(this.carrera);
 
     // En el teléfono se arranca por la lista, que se lee de un vistazo; en la
     // computadora, por el mapa, que ahí tiene lugar. Si el link trae una
@@ -669,8 +669,7 @@ export class Grafo {
   protected color = (anio: number) => `var(--n${((anio - 1) % 8) + 1})`;
   protected aniosDe = (c: Carrera) => anios(c);
   protected tieneCuat = (c: Carrera) => tieneCuatrimestres(c);
-  protected anioDeMateria = (c: Carrera, m: Materia) =>
-    c.tipoNivel === 'anio' ? m.nivel : Math.ceil(m.nivel / 2);
+  protected anioDe = anioDe;
 
   /** Las filas de un año, partidas por cuatrimestre cuando el plan lo dice. */
   protected gruposDe(c: Carrera, anio: number): { titulo: string; filas: readonly Fila[] }[] {
@@ -685,9 +684,8 @@ export class Grafo {
   }
 
   protected ubicacion(c: Carrera, m: Materia): string {
-    const anio = this.anioDeMateria(c, m);
-    const q = c.tipoNivel === 'cuatrimestre' ? ((m.nivel - 1) % 2) + 1 : null;
-    return q ? `${anio}° año, ${q}° cuatrimestre` : `${anio}° año`;
+    const q = cuatrimestreDe(c, m);
+    return q ? `${anioDe(c, m)}° año, ${q}° cuatrimestre` : `${anioDe(c, m)}° año`;
   }
 
   protected arbolDe(codigo: string) {

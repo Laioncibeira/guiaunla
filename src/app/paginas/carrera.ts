@@ -1,6 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DEPARTAMENTOS, INDICE, NOMBRE_TIPO, plano, type ResumenCarrera } from '../core/datos';
 import { Atras, CarreraElegida, ICONOS } from '../shared/ui';
@@ -116,7 +116,6 @@ export class SelectorCarrera {
   /** Adónde ir después de elegir; sin valor, al hub de Tu carrera. */
   readonly volver = input<string | null>(null);
   private readonly elegida = inject(CarreraElegida);
-  private readonly router = inject(Router);
 
   protected readonly departamentos = DEPARTAMENTOS;
   protected readonly consulta = signal('');

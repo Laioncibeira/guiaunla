@@ -45,6 +45,9 @@ export class Estrellas {
   readonly tam = input(12);
 }
 
+/** El sitio de la agrupación: adónde llevan el logo, el banner y la firma. */
+export const URL_FEI = 'https://frentedeestudiantesdeizquierda-fei.web.app/';
+
 /** El logo blanco. Va siempre sobre fondo oscuro, que es como está pensado. */
 @Component({
   selector: 'app-logo-fei',
@@ -85,7 +88,7 @@ export class LogoFei {
     <a
       class="banner"
       [class.permanente]="!vigente()"
-      href="https://frentedeestudiantesdeizquierda-fei.web.app/"
+      [href]="urlFei"
       rel="noopener"
     >
       <div class="chispas" aria-hidden="true">
@@ -174,6 +177,7 @@ export class LogoFei {
   `,
 })
 export class BannerElecciones {
+  protected readonly urlFei = URL_FEI;
   private static readonly DESDE = '2026-09-14';
   private static readonly HASTA = '2026-09-17';
 
@@ -196,7 +200,7 @@ export class BannerElecciones {
   selector: 'app-firma-fei',
   imports: [Estrellas, LogoFei],
   template: `
-    <a href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener">
+    <a [href]="urlFei" rel="noopener">
       <app-estrellas [tam]="11" />
       <span>Hecha por estudiantes del</span>
       <span class="logos">
@@ -226,7 +230,27 @@ export class BannerElecciones {
     .ir { color: var(--fei-amarillo); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   `,
 })
-export class FirmaFei {}
+export class FirmaFei {
+  protected readonly urlFei = URL_FEI;
+}
+
+/** El logo chico del FEI en la cabecera de las pantallas, con enlace al sitio. */
+@Component({
+  selector: 'app-enlace-fei',
+  imports: [LogoFei],
+  template: `
+    <a [href]="urlFei" rel="noopener" aria-label="Frente de Estudiantes de Izquierda">
+      <app-logo-fei [ancho]="48" />
+    </a>
+  `,
+  styles: `
+    :host { flex: none; display: inline-flex; }
+    a { display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
+  `,
+})
+export class EnlaceFei {
+  protected readonly urlFei = URL_FEI;
+}
 
 /**
  * Quiénes firman el formulario de contacto. El FEI firma siempre; el resto

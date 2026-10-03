@@ -4,7 +4,7 @@ import { Novedades } from '../core/novedades';
 import { Avisos } from '../core/avisos';
 import { CarreraChip, CarreraElegida } from '../shared/ui';
 import { Instalar } from '../shared/instalar';
-import { BannerElecciones, Estrella, FirmaFei, Firmas, LogoFei } from '../shared/fei';
+import { BannerElecciones, EnlaceFei, Estrella, FirmaFei, Firmas } from '../shared/fei';
 import { Tutorial } from '../shared/tutorial';
 import { RelojLey } from '../shared/reloj-ley';
 import { FormularioContacto } from '../shared/contacto';
@@ -20,7 +20,7 @@ import { fechaCorta } from './formato';
     Estrella,
     FirmaFei,
     Firmas,
-    LogoFei,
+    EnlaceFei,
     Tutorial,
     RelojLey,
     FormularioContacto,
@@ -31,7 +31,7 @@ import { fechaCorta } from './formato';
         <h1>Guía UNLa <app-estrella color="var(--fei-violeta)" [tam]="15" /></h1>
         <p class="sub">Universidad Nacional de Lanús</p>
       </div>
-      <a class="fei" href="https://frentedeestudiantesdeizquierda-fei.web.app/" rel="noopener" aria-label="Frente de Estudiantes de Izquierda"><app-logo-fei [ancho]="48" /></a>
+      <app-enlace-fei />
       <app-carrera-chip />
     </header>
 
@@ -78,7 +78,13 @@ import { fechaCorta } from './formato';
             <p class="avisos-nota">Aceptá el permiso que te pide el navegador…</p>
           }
           @case ('suscripto') {
-            <p class="avisos-nota ok">✓ Te avisamos en este teléfono cuando haya una novedad.</p>
+            <p class="avisos-nota ok">
+              ✓ Te avisamos en este teléfono cuando haya una novedad.
+              <button type="button" class="avisos-baja" (click)="avisos.desuscribir()">Dejar de recibir</button>
+            </p>
+          }
+          @case ('cancelando') {
+            <p class="avisos-nota">Cancelando los avisos…</p>
           }
           @case ('ios-sin-instalar') {
             <p class="avisos-nota">Para recibir avisos en iPhone, primero agregá la app a tu inicio (Compartir → "Agregar a inicio") y abrila desde ahí.</p>
@@ -116,13 +122,7 @@ import { fechaCorta } from './formato';
     h1, .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     /* En el teléfono el subtítulo no entra al lado del logo y la carrera. */
     @media (max-width: 599px) { .sub { display: none; } }
-    .fei { flex: none; display: inline-flex; padding: 5px 6px; border-radius: 8px; background: var(--fei-fondo); }
     .sub { margin: 2px 0 0; font-size: var(--t-s); color: var(--texto-2); }
-    .pastilla {
-      border: 1px solid var(--borde); background: var(--superficie);
-      border-radius: 999px; padding: 8px 13px; font-size: var(--t-s);
-      color: var(--texto-2); min-height: 36px; display: flex; align-items: center;
-    }
     main { flex: 1; padding: 0 var(--e4) var(--e4); display: flex; flex-direction: column; gap: var(--e4); }
     @media (min-width: 900px) {
       main { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
@@ -146,6 +146,10 @@ import { fechaCorta } from './formato';
     }
     .avisos-nota { margin: 10px 0 0; font-size: var(--t-s); color: var(--texto-2); line-height: 1.45; }
     .avisos-nota.ok { color: var(--verde); }
+    .avisos-baja {
+      margin-left: 4px; padding: 0; border: none; background: none; font: inherit;
+      color: var(--texto-2); text-decoration: underline; text-underline-offset: 2px;
+    }
     .sin-novedades { margin: 0; padding: 12px 14px; border: 1px dashed var(--borde); border-radius: var(--r); font-size: var(--t-s); color: var(--texto-2); }
     .novedad .fecha { display: block; font-family: var(--mono); font-size: var(--t-xs); color: var(--texto-3); }
     .novedad h3 { margin: 4px 0 0; font-size: var(--t-m); font-weight: 700; line-height: 1.25; }

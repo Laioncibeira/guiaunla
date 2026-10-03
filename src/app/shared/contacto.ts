@@ -1,4 +1,4 @@
-import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
+import { afterNextRender, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contacto, CONTACTO_MAX, NOMBRE_MAX, MENSAJE_MAX, validar, type ResultadoEnvio } from '../core/contacto';
 import { Estrellas } from './fei';

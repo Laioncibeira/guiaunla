@@ -7,6 +7,7 @@
  * códigos y sale qué puede cursar y qué le falta.
  */
 import type { Carrera, Materia } from './datos';
+import { plano } from './texto';
 
 export interface Vinculos {
   /** codigo -> materias que esa materia habilita (la vuelta de `correlativas`). */
@@ -110,19 +111,9 @@ export function camino(v: Vinculos, desde: string, hasta: string): readonly stri
 
 /** Materias del plan que coinciden con lo que se escribió (nombre o código). */
 export function buscar(carrera: Carrera, texto: string): readonly Materia[] {
-  const q = texto
-    .normalize('NFD')
-    .replace(/\p{Mn}/gu, '')
-    .toLowerCase()
-    .trim();
+  const q = plano(texto).trim();
   if (!q) return [];
   return carrera.materias.filter(
-    (m) =>
-      m.codigo.toLowerCase().includes(q) ||
-      m.nombre
-        .normalize('NFD')
-        .replace(/\p{Mn}/gu, '')
-        .toLowerCase()
-        .includes(q),
+    (m) => m.codigo.toLowerCase().includes(q) || plano(m.nombre).includes(q),
   );
 }
