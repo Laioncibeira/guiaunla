@@ -1,18 +1,27 @@
 {
   "name": "guiaunla",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": "^22.22.3 || >=24.15.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "ver": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "vitest run",
     "test:watch": "vitest",
-    "datos": "node tools/extraer-plan.mjs && node tools/cotejar-fuente.mjs && node tools/validar-datos.mjs",
-    "ver": "ng serve --host 0.0.0.0"
+    "test:reglas": "npx -y firebase-tools@15 emulators:exec --only firestore --project demo-guiaunla \"vitest run tools/reglas.spec.mjs\"",
+    "formato": "prettier --write .",
+    "formato:revisar": "prettier --check .",
+    "datos": "node tools/extraer-plan.mjs && node tools/cotejar-fuente.mjs --estricto && node tools/validar-datos.mjs",
+    "verificar": "npm test && node tools/validar-datos.mjs && npm run build && node tools/revisar-csp.mjs",
+    "previa": "npm run build && npx -y firebase-tools@15 emulators:start --only hosting",
+    "publicar": "npm run verificar && npx -y firebase-tools@15 deploy --only hosting,firestore"
   },
-  "private": true,
-  "packageManager": "npm@11.13.0",
   "dependencies": {
     "@angular/common": "^22.2.1",
     "@angular/compiler": "^22.2.1",
@@ -32,6 +41,7 @@
     "@angular/build": "^22.2.1",
     "@angular/cli": "^22.2.1",
     "@angular/compiler-cli": "^22.2.1",
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@types/node": "^24.0.0",
     "jsdom": "^28.0.0",
     "prettier": "^3.9.9",

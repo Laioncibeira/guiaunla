@@ -25,8 +25,9 @@ if (!fs.existsSync(RAIZ)) {
 const csp = JSON.parse(fs.readFileSync('firebase.json', 'utf8'))
   .hosting.headers.flatMap((h) => h.headers)
   .find((h) => h.key === 'Content-Security-Policy')?.value;
-if (!csp || !/script-src 'self'(;|$)/.test(csp)) {
-  console.error("firebase.json no tiene la CSP con script-src 'self' que este control supone.");
+const scriptSrc = csp?.match(/script-src ([^;]*)/)?.[1] ?? '';
+if (!scriptSrc.includes("'self'") || /'unsafe-inline'|'unsafe-eval'/.test(scriptSrc)) {
+  console.error("firebase.json tiene que tener una CSP con script-src 'self' y sin 'unsafe-inline'.");
   process.exit(1);
 }
 
