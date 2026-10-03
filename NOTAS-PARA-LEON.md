@@ -22,7 +22,7 @@ Hice todo lo que salió de `DIAGNOSTICO.md` que se podía hacer desde el código
 ### No pude publicar
 
 Desde donde trabajo no hay acceso a tu cuenta de Google, así que la app publicada sigue siendo la
-de antes. La publicación queda a un comando (paso 2).
+de antes. Con la credencial del paso 1 cargada en GitHub, fusionar el PR la publica.
 
 ### Lo que necesito de vos, en orden
 
