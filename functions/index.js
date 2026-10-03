@@ -2,7 +2,8 @@
  * Función de Firebase: cuando una novedad pasa a publicada, avisa a todos
  * los teléfonos suscriptos. Corre sola; no hay que tocar nada desde el panel.
  *
- * Necesita el plan Blaze del proyecto y el secreto VAPID_PRIVADA:
+ * Necesita el plan Blaze del proyecto y el secreto VAPID_PRIVADA (el mismo
+ * valor que "privada" en tools/secretos/vapid.json):
  *   firebase functions:secrets:set VAPID_PRIVADA
  *   firebase deploy --only functions
  */
