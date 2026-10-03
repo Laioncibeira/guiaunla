@@ -80,9 +80,12 @@ con el texto de la planilla del Departamento genera `src/data/horarios/<slug>.js
 
 ### Publicar
 
-**Automático:** cada cambio que entra a `main` se publica solo (`.github/workflows/publicar.yml`),
-siempre que el repo tenga el secreto `FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7`. Se crea una vez con
-`npx firebase-tools@15 init hosting:github` (elegí este repo y decí que no a todo lo demás).
+**Automático:** cada cambio que entra a `main` publica la app y las reglas de Firestore
+(`.github/workflows/publicar.yml`), siempre que el repo tenga el secreto
+`FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7`: la clave JSON de una cuenta de servicio del proyecto
+(los roles necesarios están en el comentario del workflow). Cómo crearla, paso a paso, en
+`NOTAS-PARA-LEON.md`. También se puede publicar a mano desde la pestaña Actions → `publicar` →
+**Run workflow**.
 
 **A mano**, desde tu computadora, después de `npx firebase-tools@15 login` con la cuenta de Google
 dueña del proyecto:

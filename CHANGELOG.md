@@ -27,7 +27,7 @@ Primera versión numerada: el mantenimiento que sale de `DIAGNOSTICO.md`.
   cada visita.
 - App Check listo para prender con una clave de reCAPTCHA.
 - Verificación automática en GitHub (formato, pruebas, tipos, datos, build, CSP y reglas) y
-  publicación automática al fusionar en `main`.
+  publicación automática de la app y las reglas al fusionar en `main`.
 - Pruebas de las reglas de Firestore contra el emulador y de las guardas del panel.
 - `npm run verificar`, `npm run publicar`, `npm run previa`, `npm run formato`.
 - El validador avisa cuando el calendario o las grillas están por quedar viejos.

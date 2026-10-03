@@ -16,8 +16,8 @@ Hice todo lo que salió de `DIAGNOSTICO.md` que se podía hacer desde el código
   reales.
 - **Seguridad**: dependencias al día (0 vulnerabilidades), reglas probadas con el emulador, App
   Check listo para prender, `functions/` en Node 22 y sin tu mail en el código.
-- **GitHub**: cada PR se verifica solo, y cada cambio en `main` se publica solo cuando cargues la
-  credencial (ver abajo).
+- **GitHub**: cada PR se verifica solo, y cada cambio en `main` (la app y las reglas) se publica
+  solo cuando cargues la credencial (ver abajo).
 
 ### No pude publicar
 
@@ -26,22 +26,29 @@ de antes. La publicación queda a un comando (paso 2).
 
 ### Lo que necesito de vos, en orden
 
-1. **Aprobar y fusionar el pull request** en GitHub.
-2. **Publicar** (una vez, desde tu compu, con Node 24):
+1. **Darle a GitHub una credencial para publicar** (una sola vez, todo desde el navegador):
+   1. https://console.cloud.google.com/iam-admin/serviceaccounts?project=guiaunla-51aa7 →
+      **Crear cuenta de servicio**. Nombre: `github-publicar`.
+   2. Roles (botón **Agregar otro rol** para cada uno): **Firebase Hosting Admin**, **Firebase
+      Rules Admin**, **Cloud Datastore Index Admin**, **Service Usage Consumer** y **API Keys
+      Viewer**. Listo.
+   3. Entrá a la cuenta creada → pestaña **Claves** → **Agregar clave** → **Crear clave nueva** →
+      **JSON**. Se baja un archivo.
+   4. https://github.com/Laioncibeira/guiaunla/settings/secrets/actions → **New repository
+      secret**. Nombre: `FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7`. Valor: abrí el archivo con un
+      editor de texto y pegá **todo** su contenido. **Add secret**.
+   5. Borrá el archivo que se bajó (o guardalo en el gestor de contraseñas). No lo subas al repo ni
+      lo pegues en ningún chat.
+2. **Fusionar el pull request.** Al entrar a `main`, GitHub verifica todo y publica la app y las
+   reglas de Firestore (pestaña **Actions** → `publicar`). Desde ahí, cada cambio que se fusione se
+   publica solo, y se puede volver a publicar a mano con **Run workflow**.
+3. **Publicar desde tu compu (sólo si hiciera falta)**, con Node 24:
    ```bash
    git checkout main && git pull
    npm ci
    npx firebase-tools@15 login     # con la cuenta de Google dueña del proyecto
    npm run publicar                # verifica todo y publica la app y las reglas
    ```
-   Las reglas nuevas de Firestore sólo se suben así: el deploy automático publica la app, no las
-   reglas.
-3. **Publicación automática (opcional, 5 minutos)**: corré `npx firebase-tools@15 init hosting:github`,
-   elegí `Laioncibeira/guiaunla`, y cuando pregunte por armar workflows o por publicar al
-   fusionar, respondé **No** (ya están hechos). Si igual crea archivos en `.github/workflows/`
-   con `firebase-hosting` en el nombre, borralos sin subirlos. Lo que importa es que deja el
-   secreto `FIREBASE_SERVICE_ACCOUNT_GUIAUNLA_51AA7` en el repo; desde ahí, cada cambio en `main`
-   se publica solo.
 4. **Si todavía no lo hiciste**: los pasos de Firebase Authentication de la segunda etapa (más
    abajo). Sin eso nadie entra al panel.
 5. **Guardar los secretos** `tools/secretos/cuenta-servicio.json` y `tools/secretos/vapid.json`
