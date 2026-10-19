@@ -4,6 +4,15 @@ Lo más nuevo arriba. Las versiones siguen [SemVer](https://semver.org/lang/es/)
 cambia si algo deja de funcionar como antes, el segundo con funciones nuevas y el tercero con
 arreglos.
 
+## 1.2.0 — octubre de 2026
+
+### Nuevo
+
+- `/ELECCIONES`: pestaña CEDEPYT con las cursadas de Desarrollo Productivo y Tecnológico (falta
+  Economía Empresarial), en el mismo formato que las del CESACO. Orden de las pestañas: CESACO,
+  CEDEPYT y el mapa. Los links con `#cesaco`, `#cedepyt` o `#mapa` abren esa pestaña.
+- `tools/elecciones/desde-xlsx.py` convierte la planilla del Departamento a ese formato.
+
 ## 1.1.0 — octubre de 2026
 
 ### Nuevo
