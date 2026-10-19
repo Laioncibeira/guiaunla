@@ -65,7 +65,7 @@
         ]
       },
       {
-        "regex": "^/delegados(/.*)?$",
+        "regex": "^/ELECCIONES(/.*)?$",
         "headers": [
           {
             "key": "X-Robots-Tag",

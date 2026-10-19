@@ -22,7 +22,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)", "!/delegados/**"]
+        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)", "!/ELECCIONES/**"]
       }
     },
     {
@@ -34,19 +34,19 @@
       }
     },
     {
-      "name": "delegados",
+      "name": "elecciones",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/delegados/**"]
+        "files": ["/ELECCIONES/**"]
       }
     }
   ],
-  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**", "!/delegados", "!/delegados/**"],
+  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**", "!/ELECCIONES", "!/ELECCIONES/**"],
   "dataGroups": [
     {
-      "name": "delegados",
-      "urls": ["/delegados"],
+      "name": "elecciones",
+      "urls": ["/ELECCIONES"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 1,

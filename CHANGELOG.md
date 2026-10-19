@@ -8,7 +8,7 @@ arreglos.
 
 ### Nuevo
 
-- `/delegados`: cursadas por turno (Salud Comunitaria) con textos para copiar a WhatsApp y el mapa
+- `/ELECCIONES`: cursadas por turno (Salud Comunitaria) con textos para copiar a WhatsApp y el mapa
   del campus con los edificios donde se vota. Se entra sólo con el link, no se indexa y anda sin
   señal.
 

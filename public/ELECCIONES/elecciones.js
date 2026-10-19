@@ -135,7 +135,7 @@ const $days = document.getElementById('days'),
   $day = document.getElementById('day');
 let current;
 try {
-  current = localStorage.getItem('delegados.dia');
+  current = localStorage.getItem('elecciones.dia');
 } catch (e) {}
 if (!DIAS.includes(current)) current = DIAS[0];
 
@@ -181,7 +181,7 @@ function renderDays() {
     b.onclick = () => {
       current = d;
       try {
-        localStorage.setItem('delegados.dia', d);
+        localStorage.setItem('elecciones.dia', d);
       } catch (e) {}
       renderDays();
       renderDay();
@@ -460,7 +460,7 @@ function drawMap() {
 drawMap();
 function showView(v) {
   try {
-    localStorage.setItem('delegados.vista', v);
+    localStorage.setItem('elecciones.vista', v);
   } catch (e) {}
   document.getElementById('v-horarios').hidden = v !== 'horarios';
   document.getElementById('v-mapa').hidden = v !== 'mapa';
@@ -475,7 +475,7 @@ document.getElementById('tab-horarios').onclick = () => showView('horarios');
 document.getElementById('tab-mapa').onclick = () => showView('mapa');
 let vista;
 try {
-  vista = localStorage.getItem('delegados.vista');
+  vista = localStorage.getItem('elecciones.vista');
 } catch (e) {}
 if (location.hash === '#mapa') vista = 'mapa';
 showView(vista === 'mapa' ? 'mapa' : 'horarios');
