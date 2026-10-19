@@ -42,7 +42,16 @@
       }
     }
   ],
-  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**", "!/ELECCIONES", "!/ELECCIONES/**"],
+  "navigationUrls": [
+    "/**",
+    "!/**/*.*",
+    "!/admin",
+    "!/admin/**",
+    "!/ELECCIONES",
+    "!/ELECCIONES/**",
+    "!/elecciones",
+    "!/Elecciones"
+  ],
   "dataGroups": [
     {
       "name": "elecciones",

@@ -22,7 +22,7 @@ inscripción, dónde queda cada edificio.
 | Campus | Esquema del predio con los 32 edificios y cómo llegar a cada uno. |
 | Fechas | El calendario académico 2026, con un botón para agendar cada fecha. |
 | `/admin` | Panel de la agrupación: contactos recibidos (con exportación a Excel), novedades y visitas. No aparece en la barra. |
-| `/ELECCIONES` | Cursadas por turno para recorrer las aulas: textos listos para copiar a WhatsApp y el mapa con dónde se vota. Sólo con el link: ningún botón lleva ahí y los buscadores no la indexan. |
+| `/ELECCIONES` | Cursadas por turno para recorrer las aulas: textos listos para copiar a WhatsApp y el mapa con dónde se vota. Sólo con el link: ningún botón lleva ahí y los buscadores no la indexan. `/elecciones` y `/Elecciones` redirigen acá. |
 
 No pide cuenta ni datos personales. La carrera elegida y las materias que marcás como aprobadas se
 guardan sólo en tu teléfono. El formulario de contacto es lo único que viaja a un servidor, y

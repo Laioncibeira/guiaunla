@@ -9,6 +9,18 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/elecciones",
+        "destination": "/ELECCIONES",
+        "type": 301
+      },
+      {
+        "source": "/Elecciones",
+        "destination": "/ELECCIONES",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
