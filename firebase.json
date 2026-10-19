@@ -9,6 +9,18 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/elecciones",
+        "destination": "/ELECCIONES",
+        "type": 301
+      },
+      {
+        "source": "/Elecciones",
+        "destination": "/ELECCIONES",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
@@ -38,7 +50,16 @@
         ]
       },
       {
-        "source": "**/*.@(js|css|svg|woff2)",
+        "regex": "^/(chunk|main|polyfills|styles)-[^/]+\\.(js|css)$",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/media/**",
         "headers": [
           {
             "key": "Cache-Control",
@@ -49,6 +70,19 @@
       {
         "source": "/ngsw.json",
         "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "regex": "^/ELECCIONES(/.*)?$",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          },
           {
             "key": "Cache-Control",
             "value": "no-cache"
@@ -66,9 +100,17 @@
     }
   ],
   "emulators": {
-    "firestore": { "host": "127.0.0.1", "port": 8080 },
-    "hosting": { "host": "127.0.0.1", "port": 5000 },
-    "ui": { "enabled": false },
+    "firestore": {
+      "host": "127.0.0.1",
+      "port": 8080
+    },
+    "hosting": {
+      "host": "127.0.0.1",
+      "port": 5000
+    },
+    "ui": {
+      "enabled": false
+    },
     "singleProjectMode": true
   }
 }
