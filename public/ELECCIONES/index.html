@@ -16,24 +16,38 @@
     <div class="wrap">
       <h1>Cursadas por turno</h1>
       <div class="views" role="tablist">
-        <button type="button" role="tab" id="tab-horarios" aria-selected="true">
-          Horarios del CESACO
-        </button>
+        <button type="button" role="tab" id="tab-cesaco" aria-selected="true">CESACO</button>
+        <button type="button" role="tab" id="tab-cedepyt" aria-selected="false">CEDEPYT</button>
         <button type="button" role="tab" id="tab-mapa" aria-selected="false">
           Mapa del campus
         </button>
       </div>
-      <div id="v-horarios">
+      <div id="v-cesaco">
         <p class="sub">
-          Son las cursadas del <strong>CESACO</strong>, el centro de estudiantes de Salud
-          Comunitaria. Elegí el día y tocá <strong>Copiar</strong> en el turno que quieras. El texto
-          queda listo para pegar en WhatsApp, con títulos en negrita.
+          Cursadas del <strong>CESACO</strong>, el centro de estudiantes de Salud Comunitaria. Elegí
+          el día y tocá <strong>Copiar</strong> en el turno que quieras. El texto queda listo para
+          pegar en WhatsApp, con títulos en negrita.
         </p>
-        <nav class="days" id="days" aria-label="Días"></nav>
-        <section id="day"></section>
+        <nav class="days" id="days-cesaco" aria-label="Días"></nav>
+        <section id="day-cesaco"></section>
         <p class="hint">
           Orden: Trabajo Social, Enfermería, Nutrición y después el resto. Dentro de cada carrera,
           por edificio y número de aula.
+        </p>
+      </div>
+      <div id="v-cedepyt" hidden>
+        <p class="sub">
+          Cursadas del <strong>CEDEPYT</strong>, el centro de estudiantes de Desarrollo Productivo y
+          Tecnológico. Elegí el día y tocá <strong>Copiar</strong> en el turno que quieras. El texto
+          queda listo para pegar en WhatsApp, con títulos en negrita.
+        </p>
+        <nav class="days" id="days-cedepyt" aria-label="Días"></nav>
+        <section id="day-cedepyt"></section>
+        <p class="hint">
+          Orden: Economía Política, Tecnologías Ferroviarias, Turismo, Sistemas, Gestión Ambiental
+          Urbana, Alimentos y Logística. Dentro de cada carrera, por edificio y número de aula.
+          Entre paréntesis: año o cohorte, docentes y aclaraciones. Todavía falta Economía
+          Empresarial.
         </p>
       </div>
       <div id="v-mapa" hidden>

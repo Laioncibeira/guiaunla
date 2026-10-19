@@ -82,8 +82,11 @@ con el texto de la planilla del Departamento genera `src/data/horarios/<slug>.js
 ### La página de elecciones
 
 `/ELECCIONES` no es parte de Angular: es una página aparte en `public/ELECCIONES/` (HTML, CSS y JS
-sin compilar), igual a como se diseñó. Para cambiar los horarios, se edita la lista `DATA` al
-principio de `public/ELECCIONES/elecciones.js`. Las fuentes salen de `@fontsource` (las copia
+sin compilar), igual a como se diseñó. Tiene una pestaña por centro de estudiantes (CESACO y CEDEPYT) y el mapa al
+final. Los horarios son las listas `CESACO` y `CEDEPYT` al principio de
+`public/ELECCIONES/elecciones.js`. La del CEDEPYT se genera desde la planilla del Departamento
+con `python3 tools/elecciones/desde-xlsx.py planilla.xlsx` (necesita `pip install openpyxl`);
+una hoja nueva se agrega a `CARRERAS` en ese script. Las fuentes salen de `@fontsource` (las copia
 `angular.json` a `ELECCIONES/fuentes/`), el service worker la guarda para abrirla sin señal, y
 `firebase.json` le pone `noindex` y `no-cache` para que cada cambio se vea apenas se publica.
 
