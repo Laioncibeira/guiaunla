@@ -4,6 +4,20 @@ Lo más nuevo arriba. Las versiones siguen [SemVer](https://semver.org/lang/es/)
 cambia si algo deja de funcionar como antes, el segundo con funciones nuevas y el tercero con
 arreglos.
 
+## 1.1.0 — octubre de 2026
+
+### Nuevo
+
+- `/delegados`: cursadas por turno (Salud Comunitaria) con textos para copiar a WhatsApp y el mapa
+  del campus con los edificios donde se vota. Se entra sólo con el link, no se indexa y anda sin
+  señal.
+
+### Arreglado
+
+- Los archivos sin huella en el nombre (como `icono.svg` o `ngsw-worker.js`) ya no se guardan un
+  año en el navegador: ese caché queda sólo para los archivos de Angular, que cambian de nombre
+  en cada versión.
+
 ## 1.0.0 — octubre de 2026
 
 Primera versión numerada: el mantenimiento que sale de `DIAGNOSTICO.md`.

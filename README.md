@@ -22,6 +22,7 @@ inscripción, dónde queda cada edificio.
 | Campus | Esquema del predio con los 32 edificios y cómo llegar a cada uno. |
 | Fechas | El calendario académico 2026, con un botón para agendar cada fecha. |
 | `/admin` | Panel de la agrupación: contactos recibidos (con exportación a Excel), novedades y visitas. No aparece en la barra. |
+| `/delegados` | Cursadas por turno para recorrer las aulas: textos listos para copiar a WhatsApp y el mapa con dónde se vota. Sólo con el link: ningún botón lleva ahí y los buscadores no la indexan. |
 
 No pide cuenta ni datos personales. La carrera elegida y las materias que marcás como aprobadas se
 guardan sólo en tu teléfono. El formulario de contacto es lo único que viaja a un servidor, y
@@ -77,6 +78,14 @@ Las rutas, el pre-render y el selector se arman solos desde el índice.
 Para cargar la grilla de horarios de una carrera: `node tools/extraer-aulas.mjs <grilla.txt> --escribir`
 con el texto de la planilla del Departamento genera `src/data/horarios/<slug>.json`; después
 `npm run datos` deja el índice al día.
+
+### La página de delegados
+
+`/delegados` no es parte de Angular: es una página aparte en `public/delegados/` (HTML, CSS y JS
+sin compilar), igual a como se diseñó. Para cambiar los horarios, se edita la lista `DATA` al
+principio de `public/delegados/delegados.js`. Las fuentes salen de `@fontsource` (las copia
+`angular.json` a `delegados/fuentes/`), el service worker la guarda para abrirla sin señal, y
+`firebase.json` le pone `noindex` y `no-cache` para que cada cambio se vea apenas se publica.
 
 ### Publicar
 

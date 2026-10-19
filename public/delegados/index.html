@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cursadas por turno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Página sólo para quien tiene el link: no se indexa ni se enlaza desde la app. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0f141b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3f5f8" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/icono.svg" />
+    <link rel="stylesheet" href="/delegados/delegados.css" />
+    <script src="/delegados/delegados.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Cursadas por turno</h1>
+      <div class="views" role="tablist">
+        <button type="button" role="tab" id="tab-horarios" aria-selected="true">Horarios</button>
+        <button type="button" role="tab" id="tab-mapa" aria-selected="false">
+          Mapa del campus
+        </button>
+      </div>
+      <div id="v-horarios">
+        <p class="sub">
+          Elegí el día y tocá <strong>Copiar</strong> en el turno que quieras. El texto queda listo
+          para pegar en WhatsApp, con títulos en negrita.
+        </p>
+        <nav class="days" id="days" aria-label="Días"></nav>
+        <section id="day"></section>
+        <p class="hint">
+          Orden: Trabajo Social, Enfermería, Nutrición y después el resto. Dentro de cada carrera,
+          por edificio y número de aula.
+        </p>
+      </div>
+      <div id="v-mapa" hidden>
+        <p class="sub">
+          Predio 29 de Septiembre, Remedios de Escalada. Tocá un edificio para ver su nombre. En el
+          celular, deslizá el mapa hacia los costados.
+        </p>
+        <div class="mapbox">
+          <svg
+            id="map"
+            viewBox="0 0 1440 790"
+            role="img"
+            aria-label="Mapa del campus de la UNLa"
+          ></svg>
+        </div>
+        <div class="legend">
+          <span><i class="sw round" style="background: var(--entry)"></i>Entrada</span>
+          <span><i class="sw" style="background: var(--vote)"></i>Edificio donde se vota</span>
+          <span
+            ><i class="sw" style="background: var(--b-used)"></i>Edificio con aulas de las
+            cursadas</span
+          >
+        </div>
+        <div class="info" id="info" aria-live="polite">
+          Tocá un edificio del mapa o de la lista.
+        </div>
+        <ul class="blist" id="blist"></ul>
+        <p class="hint">Esquema orientativo y sin escala, basado en el mapa de guiaunla.web.app.</p>
+      </div>
+    </div>
+  </body>
+</html>

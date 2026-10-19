@@ -27,6 +27,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "bricolage-grotesque-latin-{600,800}-normal.woff2",
+                "input": "node_modules/@fontsource/bricolage-grotesque/files",
+                "output": "delegados/fuentes"
+              },
+              {
+                "glob": "atkinson-hyperlegible-latin-{400,700}-normal.woff2",
+                "input": "node_modules/@fontsource/atkinson-hyperlegible/files",
+                "output": "delegados/fuentes"
               }
             ],
             "styles": [

@@ -22,7 +22,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)"]
+        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)", "!/delegados/**"]
       }
     },
     {
@@ -32,7 +32,27 @@
       "resources": {
         "files": ["/**/index.html"]
       }
+    },
+    {
+      "name": "delegados",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/delegados/**"]
+      }
     }
   ],
-  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**"]
+  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**", "!/delegados", "!/delegados/**"],
+  "dataGroups": [
+    {
+      "name": "delegados",
+      "urls": ["/delegados"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 1,
+        "maxAge": "30d",
+        "timeout": "5s"
+      }
+    }
+  ]
 }
