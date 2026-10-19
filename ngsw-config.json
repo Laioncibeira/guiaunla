@@ -22,7 +22,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)"]
+        "files": ["/**/*.(svg|webp|png|webmanifest|woff2)", "!/ELECCIONES/**"]
       }
     },
     {
@@ -32,7 +32,36 @@
       "resources": {
         "files": ["/**/index.html"]
       }
+    },
+    {
+      "name": "elecciones",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/ELECCIONES/**"]
+      }
     }
   ],
-  "navigationUrls": ["/**", "!/**/*.*", "!/admin", "!/admin/**"]
+  "navigationUrls": [
+    "/**",
+    "!/**/*.*",
+    "!/admin",
+    "!/admin/**",
+    "!/ELECCIONES",
+    "!/ELECCIONES/**",
+    "!/elecciones",
+    "!/Elecciones"
+  ],
+  "dataGroups": [
+    {
+      "name": "elecciones",
+      "urls": ["/ELECCIONES"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 1,
+        "maxAge": "30d",
+        "timeout": "5s"
+      }
+    }
+  ]
 }
